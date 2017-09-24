@@ -1,0 +1,2892 @@
+{
+  "code": 0,
+  "message": "",
+  "data": {
+    "rows": 120,
+    "data": [
+      {
+        "phasetype": "200",
+        "phase": "20160101120",
+        "time_draw": "2016-01-02 00:01:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "9",
+                "3",
+                "0",
+                "1",
+                "8"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f\u5355",
+          "unit": "<span class=\"orange\">\u5927<\/span><span class=\"orange\">\u53cc<\/span>",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101119",
+        "time_draw": "2016-01-01 23:56:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "7",
+                "8",
+                "6",
+                "5",
+                "9"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "unit": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101118",
+        "time_draw": "2016-01-01 23:51:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "0",
+                "9",
+                "2",
+                "9",
+                "9"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "unit": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "last": "<span class=\"orange\">\u7ec4\u4e09<\/span>"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101117",
+        "time_draw": "2016-01-01 23:46:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "1",
+                "9",
+                "8",
+                "2",
+                "8"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "unit": "<span class=\"orange\">\u5927<\/span><span class=\"orange\">\u53cc<\/span>",
+          "last": "<span class=\"orange\">\u7ec4\u4e09<\/span>"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101116",
+        "time_draw": "2016-01-01 23:41:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "8",
+                "0",
+                "4",
+                "0",
+                "2"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "unit": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101115",
+        "time_draw": "2016-01-01 23:36:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "1",
+                "6",
+                "1",
+                "0",
+                "9"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "unit": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101114",
+        "time_draw": "2016-01-01 23:31:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "9",
+                "3",
+                "0",
+                "2",
+                "8"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "unit": "<span class=\"orange\">\u5927<\/span><span class=\"orange\">\u53cc<\/span>",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101113",
+        "time_draw": "2016-01-01 23:26:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "2",
+                "0",
+                "5",
+                "4",
+                "8"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "unit": "<span class=\"orange\">\u5927<\/span><span class=\"orange\">\u53cc<\/span>",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101112",
+        "time_draw": "2016-01-01 23:21:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "1",
+                "1",
+                "2",
+                "6",
+                "3"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span><span class=\"orange\">\u53cc<\/span>",
+          "unit": "\u5c0f\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101111",
+        "time_draw": "2016-01-01 23:16:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "5",
+                "5",
+                "3",
+                "3",
+                "9"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f\u5355",
+          "unit": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "last": "<span class=\"orange\">\u7ec4\u4e09<\/span>"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101110",
+        "time_draw": "2016-01-01 23:11:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "0",
+                "3",
+                "8",
+                "6",
+                "4"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span><span class=\"orange\">\u53cc<\/span>",
+          "unit": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101109",
+        "time_draw": "2016-01-01 23:06:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "2",
+                "6",
+                "2",
+                "3",
+                "5"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f\u5355",
+          "unit": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101108",
+        "time_draw": "2016-01-01 23:01:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "2",
+                "4",
+                "0",
+                "5",
+                "0"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "unit": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "last": "<span class=\"orange\">\u7ec4\u4e09<\/span>"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101107",
+        "time_draw": "2016-01-01 22:56:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "4",
+                "2",
+                "0",
+                "1",
+                "1"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f\u5355",
+          "unit": "\u5c0f\u5355",
+          "last": "<span class=\"orange\">\u7ec4\u4e09<\/span>"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101106",
+        "time_draw": "2016-01-01 22:51:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "3",
+                "5",
+                "1",
+                "0",
+                "9"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "unit": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101105",
+        "time_draw": "2016-01-01 22:46:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "1",
+                "7",
+                "3",
+                "0",
+                "2"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "unit": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101104",
+        "time_draw": "2016-01-01 22:41:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "1",
+                "4",
+                "8",
+                "9",
+                "1"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "unit": "\u5c0f\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101103",
+        "time_draw": "2016-01-01 22:36:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "5",
+                "3",
+                "1",
+                "1",
+                "4"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f\u5355",
+          "unit": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "last": "<span class=\"orange\">\u7ec4\u4e09<\/span>"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101102",
+        "time_draw": "2016-01-01 22:31:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "3",
+                "7",
+                "8",
+                "8",
+                "8"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span><span class=\"orange\">\u53cc<\/span>",
+          "unit": "<span class=\"orange\">\u5927<\/span><span class=\"orange\">\u53cc<\/span>",
+          "last": "<span class=\"red\">\u8c79\u5b50<\/span> "
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101101",
+        "time_draw": "2016-01-01 22:26:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "5",
+                "4",
+                "2",
+                "5",
+                "1"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "unit": "\u5c0f\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101100",
+        "time_draw": "2016-01-01 22:21:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "8",
+                "6",
+                "3",
+                "0",
+                "5"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "unit": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101099",
+        "time_draw": "2016-01-01 22:16:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "0",
+                "0",
+                "7",
+                "4",
+                "2"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "unit": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101098",
+        "time_draw": "2016-01-01 22:11:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "3",
+                "7",
+                "0",
+                "7",
+                "8"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "unit": "<span class=\"orange\">\u5927<\/span><span class=\"orange\">\u53cc<\/span>",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101097",
+        "time_draw": "2016-01-01 22:06:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "9",
+                "6",
+                "0",
+                "3",
+                "5"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f\u5355",
+          "unit": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101096",
+        "time_draw": "2016-01-01 22:01:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "1",
+                "2",
+                "4",
+                "3",
+                "3"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f\u5355",
+          "unit": "\u5c0f\u5355",
+          "last": "<span class=\"orange\">\u7ec4\u4e09<\/span>"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101095",
+        "time_draw": "2016-01-01 21:51:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "5",
+                "1",
+                "0",
+                "0",
+                "8"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "unit": "<span class=\"orange\">\u5927<\/span><span class=\"orange\">\u53cc<\/span>",
+          "last": "<span class=\"orange\">\u7ec4\u4e09<\/span>"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101094",
+        "time_draw": "2016-01-01 21:41:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "5",
+                "9",
+                "7",
+                "1",
+                "3"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f\u5355",
+          "unit": "\u5c0f\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101093",
+        "time_draw": "2016-01-01 21:31:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "9",
+                "1",
+                "8",
+                "6",
+                "6"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span><span class=\"orange\">\u53cc<\/span>",
+          "unit": "<span class=\"orange\">\u5927<\/span><span class=\"orange\">\u53cc<\/span>",
+          "last": "<span class=\"orange\">\u7ec4\u4e09<\/span>"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101092",
+        "time_draw": "2016-01-01 21:21:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "3",
+                "6",
+                "8",
+                "3",
+                "3"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f\u5355",
+          "unit": "\u5c0f\u5355",
+          "last": "<span class=\"orange\">\u7ec4\u4e09<\/span>"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101091",
+        "time_draw": "2016-01-01 21:11:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "0",
+                "0",
+                "6",
+                "2",
+                "3"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "unit": "\u5c0f\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101090",
+        "time_draw": "2016-01-01 21:01:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "9",
+                "1",
+                "6",
+                "8",
+                "5"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span><span class=\"orange\">\u53cc<\/span>",
+          "unit": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101089",
+        "time_draw": "2016-01-01 20:51:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "1",
+                "7",
+                "0",
+                "3",
+                "9"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f\u5355",
+          "unit": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101088",
+        "time_draw": "2016-01-01 20:41:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "0",
+                "9",
+                "9",
+                "9",
+                "6"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "unit": "<span class=\"orange\">\u5927<\/span><span class=\"orange\">\u53cc<\/span>",
+          "last": "<span class=\"orange\">\u7ec4\u4e09<\/span>"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101087",
+        "time_draw": "2016-01-01 20:31:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "5",
+                "0",
+                "1",
+                "8",
+                "6"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span><span class=\"orange\">\u53cc<\/span>",
+          "unit": "<span class=\"orange\">\u5927<\/span><span class=\"orange\">\u53cc<\/span>",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101086",
+        "time_draw": "2016-01-01 20:21:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "1",
+                "4",
+                "1",
+                "1",
+                "9"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f\u5355",
+          "unit": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "last": "<span class=\"orange\">\u7ec4\u4e09<\/span>"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101085",
+        "time_draw": "2016-01-01 20:11:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "3",
+                "1",
+                "7",
+                "3",
+                "1"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f\u5355",
+          "unit": "\u5c0f\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101084",
+        "time_draw": "2016-01-01 20:01:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "3",
+                "9",
+                "0",
+                "9",
+                "5"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "unit": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101083",
+        "time_draw": "2016-01-01 19:51:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "9",
+                "4",
+                "7",
+                "6",
+                "1"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span><span class=\"orange\">\u53cc<\/span>",
+          "unit": "\u5c0f\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101082",
+        "time_draw": "2016-01-01 19:41:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "4",
+                "9",
+                "4",
+                "5",
+                "5"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "unit": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "last": "<span class=\"orange\">\u7ec4\u4e09<\/span>"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101081",
+        "time_draw": "2016-01-01 19:31:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "2",
+                "2",
+                "7",
+                "3",
+                "9"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f\u5355",
+          "unit": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101080",
+        "time_draw": "2016-01-01 19:21:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "8",
+                "5",
+                "2",
+                "9",
+                "8"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "unit": "<span class=\"orange\">\u5927<\/span><span class=\"orange\">\u53cc<\/span>",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101079",
+        "time_draw": "2016-01-01 19:11:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "1",
+                "1",
+                "2",
+                "5",
+                "3"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "unit": "\u5c0f\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101078",
+        "time_draw": "2016-01-01 19:01:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "2",
+                "1",
+                "2",
+                "1",
+                "8"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f\u5355",
+          "unit": "<span class=\"orange\">\u5927<\/span><span class=\"orange\">\u53cc<\/span>",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101077",
+        "time_draw": "2016-01-01 18:51:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "7",
+                "4",
+                "1",
+                "0",
+                "6"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "unit": "<span class=\"orange\">\u5927<\/span><span class=\"orange\">\u53cc<\/span>",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101076",
+        "time_draw": "2016-01-01 18:41:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "1",
+                "6",
+                "6",
+                "8",
+                "1"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span><span class=\"orange\">\u53cc<\/span>",
+          "unit": "\u5c0f\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101075",
+        "time_draw": "2016-01-01 18:31:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "0",
+                "3",
+                "1",
+                "4",
+                "8"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "unit": "<span class=\"orange\">\u5927<\/span><span class=\"orange\">\u53cc<\/span>",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101074",
+        "time_draw": "2016-01-01 18:21:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "9",
+                "2",
+                "1",
+                "2",
+                "4"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "unit": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101073",
+        "time_draw": "2016-01-01 18:11:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "6",
+                "4",
+                "4",
+                "7",
+                "1"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "unit": "\u5c0f\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101072",
+        "time_draw": "2016-01-01 18:01:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "1",
+                "1",
+                "8",
+                "7",
+                "1"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "unit": "\u5c0f\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101071",
+        "time_draw": "2016-01-01 17:51:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "8",
+                "9",
+                "2",
+                "8",
+                "7"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span><span class=\"orange\">\u53cc<\/span>",
+          "unit": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101070",
+        "time_draw": "2016-01-01 17:41:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "6",
+                "7",
+                "8",
+                "6",
+                "6"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span><span class=\"orange\">\u53cc<\/span>",
+          "unit": "<span class=\"orange\">\u5927<\/span><span class=\"orange\">\u53cc<\/span>",
+          "last": "<span class=\"orange\">\u7ec4\u4e09<\/span>"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101069",
+        "time_draw": "2016-01-01 17:31:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "6",
+                "4",
+                "2",
+                "0",
+                "3"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "unit": "\u5c0f\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101068",
+        "time_draw": "2016-01-01 17:21:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "3",
+                "0",
+                "5",
+                "2",
+                "8"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "unit": "<span class=\"orange\">\u5927<\/span><span class=\"orange\">\u53cc<\/span>",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101067",
+        "time_draw": "2016-01-01 17:11:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "3",
+                "4",
+                "7",
+                "1",
+                "9"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f\u5355",
+          "unit": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101066",
+        "time_draw": "2016-01-01 17:01:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "5",
+                "2",
+                "8",
+                "5",
+                "7"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "unit": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101065",
+        "time_draw": "2016-01-01 16:51:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "3",
+                "1",
+                "9",
+                "0",
+                "7"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "unit": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101064",
+        "time_draw": "2016-01-01 16:41:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "5",
+                "0",
+                "0",
+                "0",
+                "6"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "unit": "<span class=\"orange\">\u5927<\/span><span class=\"orange\">\u53cc<\/span>",
+          "last": "<span class=\"orange\">\u7ec4\u4e09<\/span>"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101063",
+        "time_draw": "2016-01-01 16:31:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "6",
+                "4",
+                "5",
+                "9",
+                "8"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "unit": "<span class=\"orange\">\u5927<\/span><span class=\"orange\">\u53cc<\/span>",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101062",
+        "time_draw": "2016-01-01 16:21:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "8",
+                "2",
+                "3",
+                "7",
+                "9"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "unit": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101061",
+        "time_draw": "2016-01-01 16:11:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "4",
+                "2",
+                "2",
+                "6",
+                "1"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span><span class=\"orange\">\u53cc<\/span>",
+          "unit": "\u5c0f\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101060",
+        "time_draw": "2016-01-01 16:01:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "5",
+                "1",
+                "4",
+                "1",
+                "7"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f\u5355",
+          "unit": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101059",
+        "time_draw": "2016-01-01 15:51:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "2",
+                "4",
+                "8",
+                "7",
+                "2"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "unit": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101058",
+        "time_draw": "2016-01-01 15:41:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "6",
+                "3",
+                "8",
+                "4",
+                "9"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "unit": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101057",
+        "time_draw": "2016-01-01 15:31:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "2",
+                "0",
+                "9",
+                "5",
+                "0"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "unit": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101056",
+        "time_draw": "2016-01-01 15:21:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "1",
+                "8",
+                "7",
+                "4",
+                "4"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "unit": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "last": "<span class=\"orange\">\u7ec4\u4e09<\/span>"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101055",
+        "time_draw": "2016-01-01 15:11:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "1",
+                "1",
+                "9",
+                "4",
+                "2"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "unit": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101054",
+        "time_draw": "2016-01-01 15:01:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "6",
+                "3",
+                "6",
+                "2",
+                "4"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "unit": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101053",
+        "time_draw": "2016-01-01 14:51:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "0",
+                "4",
+                "7",
+                "6",
+                "9"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span><span class=\"orange\">\u53cc<\/span>",
+          "unit": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101052",
+        "time_draw": "2016-01-01 14:41:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "7",
+                "2",
+                "0",
+                "7",
+                "7"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "unit": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "last": "<span class=\"orange\">\u7ec4\u4e09<\/span>"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101051",
+        "time_draw": "2016-01-01 14:31:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "4",
+                "6",
+                "7",
+                "2",
+                "4"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "unit": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101050",
+        "time_draw": "2016-01-01 14:21:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "7",
+                "6",
+                "9",
+                "3",
+                "7"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f\u5355",
+          "unit": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101049",
+        "time_draw": "2016-01-01 14:11:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "1",
+                "3",
+                "9",
+                "8",
+                "5"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span><span class=\"orange\">\u53cc<\/span>",
+          "unit": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101048",
+        "time_draw": "2016-01-01 14:01:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "7",
+                "6",
+                "9",
+                "1",
+                "7"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f\u5355",
+          "unit": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101047",
+        "time_draw": "2016-01-01 13:51:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "1",
+                "5",
+                "0",
+                "9",
+                "1"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "unit": "\u5c0f\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101046",
+        "time_draw": "2016-01-01 13:41:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "4",
+                "7",
+                "6",
+                "8",
+                "4"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span><span class=\"orange\">\u53cc<\/span>",
+          "unit": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101045",
+        "time_draw": "2016-01-01 13:31:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "9",
+                "8",
+                "7",
+                "9",
+                "2"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "unit": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101044",
+        "time_draw": "2016-01-01 13:21:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "7",
+                "1",
+                "4",
+                "2",
+                "1"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "unit": "\u5c0f\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101043",
+        "time_draw": "2016-01-01 13:11:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "3",
+                "4",
+                "6",
+                "1",
+                "1"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f\u5355",
+          "unit": "\u5c0f\u5355",
+          "last": "<span class=\"orange\">\u7ec4\u4e09<\/span>"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101042",
+        "time_draw": "2016-01-01 13:01:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "7",
+                "6",
+                "2",
+                "9",
+                "0"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "unit": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101041",
+        "time_draw": "2016-01-01 12:51:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "8",
+                "3",
+                "4",
+                "1",
+                "9"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f\u5355",
+          "unit": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101040",
+        "time_draw": "2016-01-01 12:41:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "4",
+                "4",
+                "3",
+                "7",
+                "5"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "unit": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101039",
+        "time_draw": "2016-01-01 12:31:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "4",
+                "0",
+                "4",
+                "4",
+                "3"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "unit": "\u5c0f\u5355",
+          "last": "<span class=\"orange\">\u7ec4\u4e09<\/span>"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101038",
+        "time_draw": "2016-01-01 12:21:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "1",
+                "8",
+                "2",
+                "1",
+                "1"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f\u5355",
+          "unit": "\u5c0f\u5355",
+          "last": "<span class=\"orange\">\u7ec4\u4e09<\/span>"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101037",
+        "time_draw": "2016-01-01 12:11:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "2",
+                "0",
+                "1",
+                "8",
+                "3"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span><span class=\"orange\">\u53cc<\/span>",
+          "unit": "\u5c0f\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101036",
+        "time_draw": "2016-01-01 12:01:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "9",
+                "7",
+                "6",
+                "6",
+                "0"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span><span class=\"orange\">\u53cc<\/span>",
+          "unit": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "last": "<span class=\"orange\">\u7ec4\u4e09<\/span>"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101035",
+        "time_draw": "2016-01-01 11:51:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "5",
+                "8",
+                "4",
+                "0",
+                "9"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "unit": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101034",
+        "time_draw": "2016-01-01 11:41:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "5",
+                "1",
+                "0",
+                "3",
+                "1"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f\u5355",
+          "unit": "\u5c0f\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101033",
+        "time_draw": "2016-01-01 11:31:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "6",
+                "5",
+                "5",
+                "8",
+                "1"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span><span class=\"orange\">\u53cc<\/span>",
+          "unit": "\u5c0f\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101032",
+        "time_draw": "2016-01-01 11:21:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "6",
+                "3",
+                "5",
+                "9",
+                "1"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "unit": "\u5c0f\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101031",
+        "time_draw": "2016-01-01 11:11:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "3",
+                "7",
+                "8",
+                "3",
+                "2"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f\u5355",
+          "unit": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101030",
+        "time_draw": "2016-01-01 11:01:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "8",
+                "3",
+                "8",
+                "8",
+                "4"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span><span class=\"orange\">\u53cc<\/span>",
+          "unit": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "last": "<span class=\"orange\">\u7ec4\u4e09<\/span>"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101029",
+        "time_draw": "2016-01-01 10:51:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "3",
+                "7",
+                "5",
+                "6",
+                "1"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span><span class=\"orange\">\u53cc<\/span>",
+          "unit": "\u5c0f\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101028",
+        "time_draw": "2016-01-01 10:41:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "4",
+                "5",
+                "2",
+                "4",
+                "4"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "unit": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "last": "<span class=\"orange\">\u7ec4\u4e09<\/span>"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101027",
+        "time_draw": "2016-01-01 10:31:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "6",
+                "5",
+                "1",
+                "9",
+                "5"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "unit": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101026",
+        "time_draw": "2016-01-01 10:21:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "6",
+                "9",
+                "8",
+                "8",
+                "3"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span><span class=\"orange\">\u53cc<\/span>",
+          "unit": "\u5c0f\u5355",
+          "last": "<span class=\"orange\">\u7ec4\u4e09<\/span>"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101025",
+        "time_draw": "2016-01-01 10:11:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "9",
+                "1",
+                "9",
+                "1",
+                "3"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f\u5355",
+          "unit": "\u5c0f\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101024",
+        "time_draw": "2016-01-01 10:01:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "6",
+                "9",
+                "0",
+                "1",
+                "2"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f\u5355",
+          "unit": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101023",
+        "time_draw": "2016-01-01 01:56:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "3",
+                "7",
+                "9",
+                "2",
+                "2"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "unit": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "last": "<span class=\"orange\">\u7ec4\u4e09<\/span>"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101022",
+        "time_draw": "2016-01-01 01:51:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "7",
+                "7",
+                "5",
+                "8",
+                "1"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span><span class=\"orange\">\u53cc<\/span>",
+          "unit": "\u5c0f\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101021",
+        "time_draw": "2016-01-01 01:46:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "6",
+                "6",
+                "3",
+                "2",
+                "2"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "unit": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "last": "<span class=\"orange\">\u7ec4\u4e09<\/span>"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101020",
+        "time_draw": "2016-01-01 01:41:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "4",
+                "0",
+                "1",
+                "6",
+                "6"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span><span class=\"orange\">\u53cc<\/span>",
+          "unit": "<span class=\"orange\">\u5927<\/span><span class=\"orange\">\u53cc<\/span>",
+          "last": "<span class=\"orange\">\u7ec4\u4e09<\/span>"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101019",
+        "time_draw": "2016-01-01 01:36:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "0",
+                "4",
+                "4",
+                "2",
+                "5"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "unit": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101018",
+        "time_draw": "2016-01-01 01:31:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "7",
+                "6",
+                "3",
+                "1",
+                "4"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f\u5355",
+          "unit": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101017",
+        "time_draw": "2016-01-01 01:26:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "4",
+                "6",
+                "2",
+                "1",
+                "9"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f\u5355",
+          "unit": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101016",
+        "time_draw": "2016-01-01 01:21:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "8",
+                "0",
+                "9",
+                "7",
+                "5"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "unit": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101015",
+        "time_draw": "2016-01-01 01:16:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "4",
+                "8",
+                "7",
+                "5",
+                "4"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "unit": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101014",
+        "time_draw": "2016-01-01 01:11:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "1",
+                "4",
+                "1",
+                "1",
+                "0"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f\u5355",
+          "unit": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "last": "<span class=\"orange\">\u7ec4\u4e09<\/span>"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101013",
+        "time_draw": "2016-01-01 01:06:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "7",
+                "6",
+                "2",
+                "9",
+                "6"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "unit": "<span class=\"orange\">\u5927<\/span><span class=\"orange\">\u53cc<\/span>",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101012",
+        "time_draw": "2016-01-01 01:01:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "5",
+                "9",
+                "1",
+                "5",
+                "2"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "unit": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101011",
+        "time_draw": "2016-01-01 00:56:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "2",
+                "8",
+                "9",
+                "2",
+                "1"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "unit": "\u5c0f\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101010",
+        "time_draw": "2016-01-01 00:51:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "7",
+                "1",
+                "6",
+                "4",
+                "5"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "unit": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101009",
+        "time_draw": "2016-01-01 00:46:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "9",
+                "1",
+                "0",
+                "5",
+                "6"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "unit": "<span class=\"orange\">\u5927<\/span><span class=\"orange\">\u53cc<\/span>",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101008",
+        "time_draw": "2016-01-01 00:41:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "5",
+                "4",
+                "0",
+                "8",
+                "5"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span><span class=\"orange\">\u53cc<\/span>",
+          "unit": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101007",
+        "time_draw": "2016-01-01 00:36:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "2",
+                "4",
+                "5",
+                "3",
+                "1"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f\u5355",
+          "unit": "\u5c0f\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101006",
+        "time_draw": "2016-01-01 00:31:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "3",
+                "2",
+                "2",
+                "8",
+                "3"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span><span class=\"orange\">\u53cc<\/span>",
+          "unit": "\u5c0f\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101005",
+        "time_draw": "2016-01-01 00:26:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "4",
+                "0",
+                "5",
+                "7",
+                "5"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "unit": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "last": "<span class=\"orange\">\u7ec4\u4e09<\/span>"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101004",
+        "time_draw": "2016-01-01 00:21:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "8",
+                "4",
+                "6",
+                "3",
+                "0"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f\u5355",
+          "unit": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101003",
+        "time_draw": "2016-01-01 00:16:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "0",
+                "3",
+                "8",
+                "1",
+                "2"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f\u5355",
+          "unit": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101002",
+        "time_draw": "2016-01-01 00:11:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "2",
+                "1",
+                "3",
+                "6",
+                "1"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span><span class=\"orange\">\u53cc<\/span>",
+          "unit": "\u5c0f\u5355",
+          "last": "\u7ec4\u516d"
+        }
+      },
+      {
+        "phasetype": "200",
+        "phase": "20160101001",
+        "time_draw": "2016-01-01 00:06:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "8",
+                "7",
+                "0",
+                "5",
+                "6"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "<span class=\"orange\">\u5927<\/span>\u5355",
+          "unit": "<span class=\"orange\">\u5927<\/span><span class=\"orange\">\u53cc<\/span>",
+          "last": "\u7ec4\u516d"
+        }
+      }
+    ]
+  },
+  "redirect": "",
+  "datetime": "2016-01-12 23:32:25",
+  "timestamp": 1452612745
+}

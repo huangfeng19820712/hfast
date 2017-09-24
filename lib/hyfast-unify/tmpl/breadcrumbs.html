@@ -1,0 +1,19 @@
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs">
+    <div class="container">
+        <h1 class="pull-left"><%=data.name%></h1>
+
+        <ul class="pull-right breadcrumb">
+            <%if(data.menuDates){%>
+
+                <%for(var i=0;data.menuDates.length>i;i++){%>
+                    <li><a href="javascript:void(0)"><%=data.menuDates[i].name%></a></li>
+                <%}%>
+            <%}%>
+            |<a class="refresh" href="javascript:void(0)">
+            <span class="icon icon-refresh"></span>
+            刷新</a>
+        </ul>
+    </div><!--/container-->
+</div><!--/breadcrumbs-->
+<!--=== End Breadcrumbs ===-->

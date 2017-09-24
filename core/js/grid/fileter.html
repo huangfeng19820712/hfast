@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+     <script language="javascript">
+        /* var webRoot = getContextPath(),
+         moduleWebRoot = EULER_CONFIG.moduleWebRoot,
+         mappingPath = [webRoot, "/", moduleWebRoot, "/"].join(""),  //映射路径;
+         theme = EULER_CONFIG["ui"]["project"]["theme"];   //主题风格*/
+        var webRoot = '/';
+
+        document.write("<script type='text/javascript'  src='/core/js/global.js'></" + "script>");
+        document.write("<script type='text/javascript'  src='/core/js/require-config.js'></" + "script>");
+    </script>
+    <script language="javascript">
+        $global.BaseFramework.init();
+    </script>
+</head>
+<body>
+    
+        <div id="main"></div>
+           
+</body>
+</html>

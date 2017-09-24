@@ -1,0 +1,13 @@
+<fieldset class="<%=data.collapsible?'':'noborder'%>">
+    <legend>
+        <%if(data.collapsible){%>
+        <a href="#" title="" class="btn-borderless"><i class="fa fa-chevron-up"></i></a>
+        <%}%>
+        <span class="title">
+            <%=data.title%>
+        </span>
+
+    </legend>
+    <div id="<%=data.mainRegionId%>"></div>
+</fieldset>
+

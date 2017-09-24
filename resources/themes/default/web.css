@@ -1,0 +1,80 @@
+img.verify-code{
+    margin: 0;
+    padding: 0;
+    height: 32px;
+    cursor:pointer;
+}
+
+
+.error-v1 {
+    padding-bottom: 30px;
+    text-align: center;
+}
+
+.error-v1 p {
+    color: #555;
+    font-size: 16px;
+}
+
+.error-v1 span {
+    color: #555;
+    display: block;
+    font-size: 35px;
+    font-weight: 200;
+}
+
+.error-v1 span.error-v1-title {
+    color: #777;
+    font-size: 180px;
+    line-height: 200px;
+    padding-bottom: 20px;
+}
+
+/*For Mobile Devices*/
+@media (max-width: 500px) {
+    .error-v1 p {
+        font-size: 12px;
+    }
+
+    .error-v1 span {
+        font-size: 25px;
+    }
+
+    .error-v1 span.error-v1-title {
+        font-size: 140px;
+    }
+}
+
+.topbar-v3 {
+    z-index: 99;
+    padding: 3px 0;
+    position: relative;
+    background: #2a2a2a;
+}
+
+/*在顶部的金额部分*/
+.header-sticky .money{
+    height: 100%;
+    min-width: 100px;
+    display: table-cell;
+    vertical-align: middle;
+    padding-top: 20px;
+}
+.header-sticky .money h2{
+    height: 30px;
+}
+.header-fixed .header.header-sticky .money{
+    padding-top: 30px;
+}
+.header .money .badge{
+    font-size: 25px
+}
+
+
+#main{
+    background: #f8f8f8 none repeat scroll 0 0;
+}
+.content-md{
+    padding-top: 20px;
+    padding-top: 20px;
+}

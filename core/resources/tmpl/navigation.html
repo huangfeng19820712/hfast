@@ -1,0 +1,29 @@
+<li class="<%if(data.subMenu){%>dropdown<%}else{%>dropdown-menu-item<%}%>">
+    <a href="<%=data.url?'#'+data.url:'javascript:void(0);'%>"
+       class="<%if(data.subMenu){%>dropdown-toggle<%}%>"
+       data-toggle="<%if(data.subMenu){%>dropdown<%}%>">
+        <%=data.label%>
+        <%if(data.subMenu){%>
+        <span class="caret"></span>
+        <%}%>
+    </a>
+    <%if(data.subMenu){%>
+    <ul class="dropdown-menu">
+        <%_.each(_.sortBy(data.subMenu, 'orderNo'),function(menu){%>
+        <li class="<%if(menu.subMenu){%>dropdown-subMenu-item<%}%>">
+            <a href="<%=menu.url?'#'+menu.url:'javascript:void(0);'%>"
+               class="<%if(data.subMenu){%>dropdown-toggle<%}%>"
+               data-toggle="<%if(menu.subMenu){%>dropdown<%}%>"><%=menu.label%></a>
+            <%if(menu.subMenu){%>
+            <ul class="dropdown-menu">
+                <%_.sortBy(_.sortBy(menu.subMenu, 'orderNo'), 'orderNo');_.each(menu.subMenu,function(item){%>
+                <li><a href="#<%=item.url%>"><%=item.label%></a></li>
+                <%});%>
+            </ul>
+            <%}%>
+        </li>
+        <%});%>
+    </ul>
+    <%}%>
+</li>
+

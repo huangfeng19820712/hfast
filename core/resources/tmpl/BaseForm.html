@@ -1,0 +1,73 @@
+<!--=== Content Part ===-->
+<%EditorFactory = require("core/js/controls/ComponentFactory");%>
+<div class="container content">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+            <div class="panel panel-blue">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-tasks"></i><%=data.title%></h3>
+                </div>
+                <div class="panel-body">
+                    <form class="margin-bottom-40 sky-form" id="<%=data.formId%>">
+                        <div>
+                            <fieldset>
+                                <%_.each(data.fields,function(item,i){%>
+                                <section>
+                                    <label class="label">
+                                        <%=item.label%>
+                                        <%if(item.rules&&item.rules.required){%><span class="color-red">*</span><%}%>
+                                    </label>
+                                    <label class="input <%=item.disable?'state-disabled':''%>">
+                                        <%if(item.iconSkin){%>
+                                        <i class="icon-append fa <%=item.iconSkin%>"></i>
+                                        <%}%>
+                                        <%if(item.editorType==EditorFactory.Type.PASSWORD_EDITOR){%>
+                                        <input type="password" class="form-control" name="<%=item.realName%>"
+                                               id="<%=item.id%>" placeholder="<%=item.label%>"
+                                        <%=item.disable?'state-disabled':''%>
+                                        />
+                                        <%}else if(item.editorType==EditorFactory.Type.NUMBER_EDITOR){%>
+                                        <input type="text" class="form-control amount" name="<%=item.realName%>"
+                                               id="<%=item.id%>" placeholder="<%=item.label%>"
+                                               value="<%=item.value!=''?item.value:''%>"
+                                        <%=item.disable?'state-disabled':''%>
+                                        />
+                                        <%}else{%>
+                                        <input type="text" class="form-control" name="<%=item.realName%>"
+                                               id="<%=item.id%>" placeholder="<%=item.label%>"
+                                               value="<%=item.value!=''?item.value:''%>"
+                                        <%=item.disable?'disabled':''%>
+                                        />
+                                        <%}%>
+                                    </label>
+                                </section>
+                                <%})%>
+                            </fieldset>
+                        </div>
+
+                        <footer>
+                            <div class="col-lg-6">
+                                <button class="btn-u btn-block btn-u-light-green" type="reset">重置</button>
+                            </div>
+                            <div class="col-lg-6">
+                                <button class="btn-u btn-block btn-u-blue" id="register" type="submit">提交</button>
+                            </div>
+                            <%if(data.warnInfo){%>
+                            <div class="col-lg-12 bg-warning">
+                                <span class="text-highlights text-highlights-red rounded-2x"><%=data.warnInfo.title%></span>
+                                <%_.each(data.warnInfo.messages,function(item,i){%>
+                                    <%if(i!=data.warnInfo.messages.length){%>
+                                    <BR/>
+                                    <%}%>
+                                    <%=item%>
+                                <%})%>
+                            </div>
+                            <%}%>
+                        </footer>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!--/container-->
+<!--=== End Content Part ===-->

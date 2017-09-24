@@ -1,0 +1,48 @@
+@CHARSET "UTF-8";
+
+.k-notification.k-notification-error,
+	.k-notification.k-notification-success,
+	.k-notification.k-notification-info,
+	.k-notification.k-notification-warn
+	{
+	width: 300px;
+}
+
+.k-notification.k-notification-error h3,
+	.k-notification.k-notification-success h3,
+	.k-notification.k-notification-info h3,
+	.k-notification.k-notification-warn h3
+	{
+	font-size: 1em;
+	padding: 32px 10px 5px;
+}
+
+.k-notification.k-notification-error span {
+	float: left;
+	margin: 30px 15px 30px 15px;
+	background: url(images/icon-alert-danger-xxl.png) no-repeat;
+	width: 48px;
+	height: 48px;
+}
+
+.k-notification.k-notification-success span {
+	float: left;
+	margin: 30px 15px 30px 15px;
+	background: url(images/icon-alert-success-xxl.png) no-repeat;
+	width: 48px;
+	height: 48px;
+}
+.k-notification.k-notification-info span {
+	float: left;
+	margin: 30px 15px 30px 15px;
+	background: url(images/icon-alert-info-xxl.png) no-repeat;
+	width: 48px;
+	height: 48px;
+}
+.k-notification.k-notification-warn span {
+	float: left;
+	margin: 30px 15px 30px 15px;
+	background: url(images/icon-alert-warn-xxl.png) no-repeat;
+	width: 48px;
+	height: 48px;
+}

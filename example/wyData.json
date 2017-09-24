@@ -1,0 +1,36 @@
+{
+  "code": 0,
+  "message": "",
+  "data": {
+    "rows": 120,
+    "data": [
+      {
+        "phasetype": "200",
+        "phase": "20160104120",
+        "time_draw": "2016-01-05 00:01:00",
+        "result": {
+          "result": [
+            {
+              "key": "ball",
+              "data": [
+                "5",
+                "2",
+                "3",
+                "2",
+                "3"
+              ]
+            }
+          ]
+        },
+        "ext": {
+          "ten": "\u5c0f<span class=\"orange\">\u53cc<\/span>",
+          "unit": "\u5c0f\u5355",
+          "last": "<span class=\"orange\">\u7ec4\u4e09<\/span>"
+        }
+      }
+    ]
+  },
+  "redirect": "",
+  "datetime": "2016-01-12 22:56:04",
+  "timestamp": 1452610564
+}

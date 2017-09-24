@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=IE7">-->
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
+    <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=EDGE">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script language="javascript">
+        /* var webRoot = getContextPath(),
+         moduleWebRoot = EULER_CONFIG.moduleWebRoot,
+         mappingPath = [webRoot, "/", moduleWebRoot, "/"].join(""),  //映射路径;
+         theme = EULER_CONFIG["ui"]["project"]["theme"];   //主题风格*/
+        var webRoot = '/';
+
+        document.write("<script type='text/javascript'  src='/core/js/global.js'></" + "script>");
+        document.write("<script type='text/javascript'  src='/core/js/require-config.js'></" + "script>");
+    </script>
+    <script language="javascript">
+        $global.BaseFramework.init();
+    </script>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            overflow: hidden; /*为解决弹出框内容显示tab页时，出现垂直滚动条的问题 add by chenmk 2014.07.10 */
+        }
+
+        html, body, #main {
+            height: 100%;
+            width: 100%;
+            border:0;
+        }
+    </style>
+</head>
+<body>
+<div id="main"></div>
+</body>
+</html>

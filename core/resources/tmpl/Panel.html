@@ -1,0 +1,19 @@
+<%if(data.isShowHeader){%>
+<div class="panel-heading">
+    <h3 class="panel-title"><i class="<%=data.iconSkin%>"></i><span class="title"><%=data.title%></span></h3>
+
+    <div id="<%=data.headerLeftRegionId%>" class="panel-heading-leftToolbar">
+        <%if(data.brief){%>
+        <em> - <%=data.brief%></em>
+        <%}%>
+    </div>
+    <div id="<%=data.headerRightRegionId%>" class="panel-heading-rightToolbar panel-heading-toolbar">
+    </div>
+</div>
+<%}%>
+<div id="<%=data.mainRegionId%>" class="panel-content">
+</div>
+<%if(data.footerRegionId){%>
+<div id="<%=data.footerRegionId%>" class="panel-footer">
+</div>
+<%}%>

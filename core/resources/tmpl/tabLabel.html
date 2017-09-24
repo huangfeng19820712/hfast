@@ -1,0 +1,7 @@
+<li id="<%=data.tabLabelId%>" class="<%=data.checked?'active':''%>" data-tab-id="<%=data.tabId%>">
+    <a href="<%=data.href%>" data-toggle="tab"><%=data.label%>
+        <%if(data.closeable){%>
+        <i class="fa fa-times-circle" style="cursor:pointer" data-tab-id="<%=data.tabId%>"></i>
+        <%}%>
+    </a>
+</li>
