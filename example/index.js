@@ -7,17 +7,13 @@
  */
 define([
     "core/js/SinglePageApplication",
-    "lib/hyfast-unify/header",
     $Component.NAVIGATIONBAR.src,
-    "lib/hyfast-unify/breadcrumbs",
-    "web/view/login",
-    "lib/hyfast-unify/footer",
     "back-to-top","core/js/interval/Interval",
     "bootstrap",
     "jquery.migrate",
     "smoothScroll","backbone.super"
-], function ( SinglePageApplication,Header,
-              NavigationBar,Breadcrumbs, Login, Footer,
+], function ( SinglePageApplication,
+              NavigationBar,
              Scrolltotop,Interval) {
     var app = SinglePageApplication.extend({
         header: null,
