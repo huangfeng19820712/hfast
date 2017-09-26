@@ -25,7 +25,7 @@ define(["core/js/layout/FluidLayout",
                                 width: "400px",
                                 comConf: {
                                     playerMode: $cons.playerMode.FLV,
-                                    url: "http://10683.liveplay.myqcloud.com/live/10683_475805.flv"
+                                    url: "http://XXX/XXXX.flv"
                                 }
                             }
                         }
@@ -42,7 +42,7 @@ define(["core/js/layout/FluidLayout",
                                 width: "400px",
                                 comConf: {
                                     playerMode: $cons.playerMode.RTMP,
-                                    url: "rtmp://rtmp.new-live.net/yuemei/14426_2bccf18f64d5eed07236"
+                                    url: "rtmp://XXXX"
                                 }
                             }
                         }
@@ -59,7 +59,7 @@ define(["core/js/layout/FluidLayout",
                                 width: "400px",
                                 comConf: {
                                     playerMode: $cons.playerMode.FLV,
-                                    url: "http://imgoss.hkz2.com/public/attachment/201709/215874/1505017975433.png"
+                                    url: "http://XXXX/XXX.png"
                                 }
                             }
                         }
