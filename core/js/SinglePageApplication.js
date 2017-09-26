@@ -20,12 +20,12 @@ define(["jquery",
     //在此可以进行应用的初始化操作
     var SinglePageApplication = Application.extend({
         /**
-         * [可选]{String}应用系统的整个应用的工作区对应的表单元素
+         * [可选]{String}应用系统的整个应用的工作区对应的元素
          * @default #application
          */
         applicationRegionEl: null,
         /**
-         * [可选]{String}应用系统的整个应用的工作区对应的表单元素
+         * [可选]{String}应用系统的整个应用的工作区中住区域对应的元素
          * @default #main
          */
         mainRegionEl: null,

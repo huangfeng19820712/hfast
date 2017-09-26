@@ -16,7 +16,7 @@ define(["core/js/base/BaseView",
               Utils,DropDownContainer,Region,Panel) {
 
         var view = BaseView.extend({
-            onrender: function () {
+            mountContent: function () {
                 var items = [];
                 for(var i=0;i<=9;i++){
                     items.push({
@@ -24,7 +24,6 @@ define(["core/js/base/BaseView",
                         text:i.toString(),
                     })
                 }
-
                 var dropDownContainer = new DropDownContainer({
                     $container: this.$el,
                     text: "number",

@@ -390,7 +390,7 @@ define(["jquery",
             this.close();
             this.comRef = relatedObject;
             var content = this._getRegionContent(relatedObject);      //渲染区域中的内容（即设置content的内容）
-            //如果没有挂着的容器的时候或者不是我们组件对象，才需要调用_open函数，加载内容
+            //如果没有挂载的容器的时候或者不是我们组件对象，才需要调用_open函数，加载内容
             if(!relatedObject.getContainer||!relatedObject.getContainer()){
                 this._open(content);                //打开（显示）区域中的内容
             }

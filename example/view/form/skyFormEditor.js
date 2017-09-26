@@ -32,10 +32,10 @@ define([
                 {fields:["text","password"]},{
                     comXtype:$Component.BOOTSTRAPGRID,
                     comConf:{
-                        thead: ["XX", "值", "十位", "个位", "后三"],
+                        thead: ["test1", "test2", "test3", "test4", "test5"],
                         colModel: [{
                             name: "periodNum",
-                            label: "期号",
+                            label: "test1",
                             formatter: function (row) {
                                 //获取最后三位数
                                 if(!row.periodNum){
@@ -44,35 +44,22 @@ define([
                                     return row.periodNum.substr(8,3);
                                 }
                             },
-                        }, {name: "result", label: "开奖号"},
-                            {name: "", label: "十位"},
-                            {name: "", label: "个位"},
-                            {name: "", label: "后三"},
+                        }, {name: "result", label: "test2"},
+                            {name: "", label: "test3"},
+                            {name: "", label: "test4"},
+                            {name: "", label: "test5"},
                         ],
                         $url: "/ssResult/getAll.action",
                         data: [
-                            ["001","2 7 0 0 9","小双","大单","组三"],
-                            ["001","2 7 0 0 9","小双","大单","组三"],
-                            ["001","2 7 0 0 9","小双","大单","组三"],
-                            ["001","2 7 0 0 9","小双","大单","组三"],
-                            ["001","2 7 0 0 9","小双","大单","组三"],
-                            ["001","2 7 0 0 9","小双","大单","组三"],
-                            ["001","2 7 0 0 9","小双","大单","组三"],
+                            ["001","test2","test3","test4","test51"],
+                            ["001","test2","test3","test4","test5"],
+                            ["001","test2","test3","test4","test5test5"],
+                            ["001","test2","test3","test4test4","test5"],
+                            ["001","test2","test3","test4","test5"],
+                            ["001","test2","test3","test4","test5"],
+                            ["001","test2","test3","test4","test5"],
                         ],
-                        /*oninitialized: function () {
-                            //初始化data
-                            var that = this;
-                            /!*var ajaxClient = ApplicationContext.getAjaxClient();
-                             ajaxClient.buildClientRequest(this.$url)
-                             .addParams({"resultDate": "20120209"})
-                             .post(function (compositeResponse) {
-                             var obj = compositeResponse.getSuccessResponse();
-                             if (obj) {
-                             that.data = obj;
-                             that.createTbody();
-                             }
-                             });*!/
-                        },*/
+
 
 
                     }

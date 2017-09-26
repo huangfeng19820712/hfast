@@ -7,7 +7,7 @@ define([
     "core/js/utils/ApplicationUtils","core/js/wrap/EditWrap"
 ], function (ToolStrip,DropDownContainer,ApplicationUtils,EditWrap) {
     var toolStrip = ToolStrip.extend({
-        oninitialized:function(event){
+        initializeHandle:function(){
             var that = this;
             this.itemOptions = [{
                 roundedClass:$Rounded.ROUNDED,

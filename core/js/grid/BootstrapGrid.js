@@ -17,7 +17,7 @@ define(["jquery",
         $tbody:null,
         $url:null,
         $pagination:null,
-        model:new PageModel(),
+        model:null,//new PageModel(),
         /**
          * [{
          *      name:null   //字段的唯一表示

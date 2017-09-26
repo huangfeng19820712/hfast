@@ -523,7 +523,7 @@ div.fielset-main {
 
 .tp-loader.spinner0 {
     animation: 1.2s ease-in-out 0s normal none infinite running;
-    background: #fff url("/images/welcome/loading.gif") no-repeat scroll center center;
+    background: #fff url("../images/welcome/loading.gif") no-repeat scroll center center;
     border-radius: 3px;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.15);
     height: 40px;
@@ -544,7 +544,7 @@ div.fielset-main {
 }
 
 .tp-loader.spinner5 {
-    background: #fff url("../assets/loader.gif") no-repeat scroll 10px 10px;
+    background: #fff url("../images/welcome/loading.gif") no-repeat scroll 10px 10px;
     border-radius: 3px;
     height: 44px;
     margin: -22px;

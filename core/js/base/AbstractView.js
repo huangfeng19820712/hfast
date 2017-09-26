@@ -358,8 +358,8 @@ define(["core/js/utils/Utils",
                     };
                     this.$container = container;
                 }
-                if (this.amountHandler) {
-                    this.amountHandler();
+                if (this.mountHandler) {
+                    this.mountHandler();
                 } else {
                     var $el = this.$el;
                     this._mountElHandle($el,$container);

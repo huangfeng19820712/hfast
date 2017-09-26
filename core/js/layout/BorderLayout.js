@@ -45,7 +45,7 @@ define(["jquery",
          * @private
          */
         _autoCalculateHeight:function(newHeight){
-            var height =newHeight-this.getParent().$el.offset().top- this.$bottomReferent.outerHeight() ;
+            var height =newHeight-this.$container.offset().top- this.$bottomReferent.outerHeight() ;
             this.setHeight(height);
         },
         /**
@@ -114,8 +114,8 @@ define(["jquery",
          * @override
          */
         onshow:function(){
-            if(this.$bottomReferent!=null&&!this.height){
-                var height = this.$bottomReferent.offset().top - this.getParent().$el.offset().top ;
+            if(this.$bottomReferent!=null&&this.$bottomReferent.length>0&&!this.height){
+                var height = this.$bottomReferent.offset().top - this.$container.offset().top ;
                 this.setHeight(height);
                 //注册窗口改变事件
                 this.registerEvent();

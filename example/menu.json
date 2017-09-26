@@ -196,59 +196,6 @@
       "visible": "1",
       "orderNo": null
     },{
-      "id": "03",
-      "name": "服务器交互",
-      "url": null,
-      "type": "1",
-      "code": null,
-      "visible": "1",
-      "orderNo": null
-    },{
-      "id": "0301",
-      "name": "配置参数",
-      "pid": "03",
-      "url": "server/confManage",
-      "type": "1",
-      "code": "confManage",
-      "visible": "1",
-      "orderNo": null
-    },{
-      "id": "0302",
-      "name": "查询模型",
-      "pid": "03",
-      "url": "server/query?entity=qryquery",
-      "type": "1",
-      "code": "query",
-      "visible": "1",
-      "orderNo": null
-    },{
-      "id": "0303",
-      "name": "查询模型列表",
-      "pid": "03",
-      "url": "server/query?entity=qrycolumn",
-      "type": "1",
-      "code": "query",
-      "visible": "1",
-      "orderNo": null
-    },{
-      "id": "0304",
-      "name": "字段类型列表",
-      "pid": "03",
-      "url": "server/query?entity=dmdatatype",
-      "type": "1",
-      "code": "query",
-      "visible": "1",
-      "orderNo": null
-    },{
-      "id": "0305",
-      "name": "表单",
-      "pid": "03",
-      "url": "server/form",
-      "type": "1",
-      "code": "form",
-      "visible": "1",
-      "orderNo": null
-    },{
       "id": "9",
       "name": "表单",
       "url": "form",

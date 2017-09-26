@@ -6,15 +6,12 @@
  * To change this template use File | Settings | File Templates.
  */
 define([
-    "core/js/SinglePageApplication",
-    $Component.NAVIGATIONBAR.src,
-    "back-to-top","core/js/interval/Interval",
-    "bootstrap",
-    "jquery.migrate",
-    "smoothScroll","backbone.super"
-], function ( SinglePageApplication,
-              NavigationBar,
-             Scrolltotop,Interval) {
+        "core/js/SinglePageApplication",
+        $Component.NAVIGATIONBAR.src,
+        //必须先加载BaseView对象，不然后续BaseView的子类会显示不出来
+        "core/js/base/BaseView"
+    ], function ( SinglePageApplication,
+                  NavigationBar) {
     var app = SinglePageApplication.extend({
         header: null,
         breadcrumbs: null,
@@ -58,21 +55,8 @@ define([
                     }
                 }]
             });
-            //this.header = new Header({el: el,defaultMenuDates:defaultMenuDates, menuDates: menuDates});
-            //添加面包屑的div
-            /*el.append("<div id='breadcrumbs'></div>");
-            this.breadcrumbs = new Breadcrumbs({el: el.find("#breadcrumbs")});*/
             el.append("<div id='main'></div>");
-            //this.main = new Login({el: el.find("#main")});
-            //this.footer = new Footer({el: $("body")});
-            //Scrolltotop.init();
             this.setApplicationContext();
-            /*this.interval =new Interval()
-            this.interval.run();*/
-            //如果登录成功，则执行登录成功后的业务
-            //if(applicationContext.isAuthenticated()){
-            //    this.loginSuc();
-            //}
         },
         loginSuc:function(){
             //登录成功后，框架需要做的业务
