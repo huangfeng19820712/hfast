@@ -59,6 +59,7 @@ function $globalRequireConfig(webRoot) {
             "fancytree":$route.getJs("fancytree"),
             "waypoints":$route.getJs("counterup","waypoints"),
             "jquery.counterup":$route.getJs("counterup","jquery.counterup"),
+            "jquery.cubeportfolio":$route.getJs("cubeportfolio","jquery.cubeportfolio"),
             "jquery.mCustomScrollbar":$route.getJs("mCustomScrollbar","jquery.mCustomScrollbar.concat"),
             "validate":$route.getJs("jquery.validate","messages_zh"),
             "smoothScroll":$route.getJs("smoothScroll"),
@@ -152,6 +153,7 @@ function $globalRequireConfig(webRoot) {
                 $route.getJs("jquery.fileDownload","shBrushXml"),
                 $route.getJs("jquery.fileDownload","jquery.gritter"),*/
             ]},
+            "jquery.cubeportfolio":{deps:['jquery',$route.getCss("cubeportfolio")]},
             "jquery.mCustomScrollbar":{deps:[$route.getCss("mCustomScrollbar","jquery.mCustomScrollbar"),
                 $route.getJs("mCustomScrollbar","jquery.mousewheel")],exports:'$.fn.mCustomScrollbar'},
             "fancytree":{deps:['jquery','jquery-ui',$route.getCss("fancytree")]},

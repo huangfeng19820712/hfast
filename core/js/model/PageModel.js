@@ -107,7 +107,24 @@ define(["underscore",
         getPageSize:function(){
             return this.get("pageSize");
         },
-        
+        /**
+         * 获取分页相关的请求，主要是一页的数据条数，与当前页,注意请求的参数默认兼容jqgrid的参数
+         * @param {Number} currentPage  当前的页数
+         * @resturn {Object}
+         */
+        getPageParam:function(currentPage){
+            return {
+                "page": currentPage||this.getCurrentPage(),
+                "rows": this.getPageSize()
+            };
+        },
+        /**
+         * 从服务器获取分页的数据
+         * @param {Number} currentPage  当前的页数
+         */
+        pageFetch:function(currentPage){
+            this.fetch({data:this.getPageParam(currentPage)});
+        },
         /**
          *  获取分页的数据
          * @param currentPage   {Number}    当前的页数

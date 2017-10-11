@@ -74,6 +74,7 @@ define(["jquery", "underscore", "core/js/Class"], function ($, _, Class) {
             var func = null;
             for (var i = 0; i < this.listeners.length; i++) {
                 func = this.listeners[i];
+                var runFunc = func;
                 //如果入参中指定了context或target，就将方法的上下文（this对象）绑定到该context或target上，使得所有的组件触发的事件，this都绑定到当前组件上
                 var args = null;
                 if (context != null || target != null) {
@@ -83,11 +84,15 @@ define(["jquery", "underscore", "core/js/Class"], function ($, _, Class) {
                     var argArray = _.toArray(arguments);
                     if(argArray.length>2){
                         args = _.toArray(arguments).slice(2);
-
                     }
-                    func = _.bind(func, context,e,args);
+                    //必须包含e对象，函数中第一个对象必须是event的对象
+                    var union = _.union([e], _.flatten(args));
+                    //func = _.bind(func, context,e,args);
+                    runFunc = function(){
+                        return func.apply(context,union);
+                    };
                 }
-                result = func();
+                result = runFunc();
                 if (result == null)
                     result = true;
                 if (!result)

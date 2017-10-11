@@ -167,6 +167,15 @@ define(["core/js/Class", "core/js/Event"], function (Class, MXEvent) {
             var eventObj = null;
             if(argArray.length>1){
                 var otherArgs = _.toArray(arguments).slice(1);
+                //过滤掉jQuery的event对象，应该已经存在e.jqEvent中
+                otherArgs = _.filter(otherArgs, function(obj){
+                    //通过jquery.event特有的属性来判断是否是event对象
+                    if(obj.preventDefault&&obj.type&&obj.currentTarget&&obj.delegateTarget){
+                        return false;
+                    }else{
+                        return true;
+                    }
+                });
                 eventObj = eventObject.fire(e, this,otherArgs);
             }else{
                 eventObj = eventObject.fire(e, this);

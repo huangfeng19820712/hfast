@@ -17,27 +17,47 @@ define(["core/js/controls/Control",
             this.$el.attr("href",this.url);
             // this.$el.css({display:"block"});
             if(this.playerMode==$cons.playerMode.FLV){
-
+                var that = this;
                 this.$el.flowplayer( this.flvPath,{
+                    log: { level: 'debug', filter: 'org.flowplayer.slowmotion.*' },
                     clip:{
                         autoPlay:this.autoPlay,
 
                     },
-                    onError: $.proxy(this.onError,this)
+                    onStart:function(play){
+                        that.onStart.apply(this,play);
+                    },
+                    onError:function(play){
+                        that.onError.apply(this,play);
+                    },
+                    onStop:function(play){
+                        that.onStop.apply(this,play);
+                    },
                 });
             }else{
                 this.createRtmp();
             }
         },
         createRtmp:function(){
+            var that = this;
             this.$el.flowplayer(this.flvPath,{
                 clip: {
                     url: this.url,
                     provider: 'rtmp',
                     live: true,
-                    autoPlay:this.autoPlay
+                    autoPlay:this.autoPlay,
                 },
-                onError: $.proxy(this.onError,this),
+                onStart:function(play){
+                    that.onStart.apply(this,play);
+                },
+                onError:function(play){
+                    that.onError.apply(this,play);
+                },
+                onStop:function(play){
+                    console.info(">>>");
+                    that.trigger("stop");
+                },
+                //onStop: $.proxy(this.stopPlay,this),
                 plugins: {
                     rtmp: {
                         url: this.rtmpPath,
@@ -45,9 +65,11 @@ define(["core/js/controls/Control",
                 }
             });
         },
-        onError:function(){
-            console.info(">>>>");
-        }
+        /*onstart:function(){
+        },
+        onstop:function(player){
+        },
+        onerror:function(){}*/
     });
     return Player;
 })

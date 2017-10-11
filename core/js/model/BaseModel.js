@@ -67,6 +67,42 @@ define(["underscore",
             return this.get("syncable");
         },
 
+        /**
+         * 设置fetchSuccess的回调方法
+         * @param {function} func      函数
+         * @param {Object} context   上下文
+         * @param {Anything} additionalArguments    给函数传参的对象
+         */
+        setFetchSuccessFunction:function(func,context){
+            var args = [];
+            if(!_.isFunction(func)){
+                return ;
+            }
+            if(arguments.length>2){
+                args = args.slice.call(arguments,2);
+                //args = arguments.slice(2);
+            }
+            //$.proxy.apply(func,context,args);
+            this.on("fetchSuccess",function(){ return func.apply(context,args)});
+        },
+        /**
+         * 设置fetchSuccess的回调方法,仅执行一次
+         * @param {function} func      函数
+         * @param {Object} context   上下文
+         * @param {Anything} additionalArguments    给函数传参的对象
+         */
+        setFetchSuccessOnceFunction:function(func,context){
+            var args = [];
+            if(!_.isFunction(func)){
+                return ;
+            }
+            if(arguments.length>2){
+                args = args.slice.call(arguments,2);
+                //args = arguments.slice(2);
+            }
+            //$.proxy.apply(func,context,args);
+            this.once("fetchSuccess",function(){ return func.apply(context,args)});
+        },
         /*fetch: function(options){
             options = options ? _.clone(options) : {};
             if (options.parse === void 0) options.parse = true;
@@ -142,7 +178,7 @@ define(["underscore",
             var that = this;
             ajaxClient.buildClientRequest(params.url)
                 .addParams(params.data)
-                .get(function (compositeResponse) {
+                .post(function (compositeResponse) {
                     var obj = compositeResponse.getSuccessResponse();
                     if (obj&&obj.result) {
                         if (!model.set(model.parse(obj.result, options), options)) return false;

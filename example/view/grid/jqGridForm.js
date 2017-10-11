@@ -36,6 +36,7 @@ define([
                     datatype: "local",
                     data: mydata,
                     colMenu:false,
+                    postData:{"gridPlugin" : "jqGrid"},
                     colModel: [
                         { label: 'Inv No', name: 'id', width: 75,editable:true, key:true },
                         { label: 'Date', name: 'invdate',editable:true, width: 90 },

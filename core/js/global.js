@@ -63,6 +63,7 @@ $global.constants = {
         'fileinput': '4.3.9',
         'ueditor': '1.4.3.3',
         'fancytree': '2.20.0',
+        'cubeportfolio':'2.3.3',
         'flowplayer':'3.2.13'
     },
     /**
@@ -338,6 +339,13 @@ $Component = $cons.component = {
         name: "Control",
         src: "core/js/controls/Control"
     },
+    /*===============media的过滤器组件start===========================*/
+    PORTFOLIOBOX:{
+        name: "Portfoliobox",
+        src: "core/js/media/Portfoliobox"
+    },
+    /*===============media的过滤器组件end===========================*/
+
     /*===============grid的过滤器组件===========================*/
     DATEFILTER:{
         name: "DateFilter",
@@ -556,7 +564,7 @@ $Component = $cons.component = {
     PLAYER: {
         name: "Player",
         label: "图片组件",
-        src: "core/js/controls/Player"
+        src: "core/js/media/Player"
     },
     ICON: {
         name: "Icon",

@@ -759,6 +759,23 @@ define(["underscore", "core/js/Class"], function (_, Class) {
         return result;
     }
     /**
+     * 简单对象的转换
+     * @source  {Object}    源对象
+     * @mapObject   {Object} map对象，key是目标对象的属性，value是源对象的属性
+     * @return  {Object}    返回目标对象
+     */
+    $.convert = function(source,mapObject){
+        var result = {};
+        _.each(mapObject,function(value, key, list){
+            var sourceKey = value;
+            if(!value){
+                sourceKey = key;
+            }
+            result[key] = source[sourceKey];
+        });
+        return result;
+    }
+    /**
      * 判断浏览器类型，ie版本针对10以下
      * @type {{version: *, safari: boolean, opera: boolean, msie: boolean, mozilla: boolean}}
      */

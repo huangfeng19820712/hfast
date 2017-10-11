@@ -45,7 +45,11 @@ define(["jquery",
          * @private
          */
         _autoCalculateHeight:function(newHeight){
-            var height =newHeight-this.$container.offset().top- this.$bottomReferent.outerHeight() ;
+            var bottomHeight = 0;
+            if(this.$bottomReferent&&this.$bottomReferent.outerHeight){
+                bottomHeight = this.$bottomReferent.outerHeight();
+            }
+            var height =newHeight-this.$container.offset().top- bottomHeight ;
             this.setHeight(height);
         },
         /**
@@ -114,12 +118,19 @@ define(["jquery",
          * @override
          */
         onshow:function(){
-            if(this.$bottomReferent!=null&&this.$bottomReferent.length>0&&!this.height){
-                var height = this.$bottomReferent.offset().top - this.$container.offset().top ;
+            if(!this.height){
+                //如果没有设置高度，则计算高度
+                var height = 0;
+                if(this.$bottomReferent!=null&&this.$bottomReferent.length>0){
+                    height = this.$bottomReferent.offset().top - this.$container.offset().top ;
+                }else{
+                    height = $("body").height() - this.$container.offset().top ;
+                }
                 this.setHeight(height);
                 //注册窗口改变事件
                 this.registerEvent();
             }
+
             //this.setHeight("100px");
             this.plugin = this.$el.layout(this._getLayoutConf());
         },
