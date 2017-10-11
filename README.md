@@ -16,4 +16,7 @@ hfast
 * [Backbone](http://backbonejs.org/)
 * [Bootstrap](http://getbootstrap.com/)
 
+### 在线示例
+
+[http://www.hfast.cn/example/](http://www.hfast.cn/example/)
 
