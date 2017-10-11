@@ -18,5 +18,5 @@ hfast
 
 ### 在线示例
 
-[http://www.hfast.cn/example/](http://www.hfast.cn/example/)
+[http://www.hfast.cn/example/index.html](http://www.hfast.cn/example/index.html)
 
