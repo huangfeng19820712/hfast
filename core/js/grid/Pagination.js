@@ -15,7 +15,11 @@ define([
         /**
          * 可以选择的分页个数，默认是单数
          */
-        itemNum: 7,
+        itemNum: null,
+        /**
+         * itemNum的默认值
+         */
+        itemNumDefault:7,
         pageButtons: null,
         pageSize:10,
         currentPage: 1,
@@ -32,6 +36,10 @@ define([
          * 挂载内容
          */
         mountContent: function (triggerEvent) {
+            this.itemNum = this.itemNumDefault;
+            if(this.itemNumDefault>this.totalPage){
+                this.itemNum = this.totalPage;
+            }
             this.initButtonGroup();
             this.$el.append(this.$buttonGroup);
 
@@ -86,6 +94,9 @@ define([
                 }
             }];
             var itemNum = this.itemNum;
+            /*if(this.itemNum>this.totalPage){
+                itemNum = this.totalPage;
+            }*/
             for (var i = 1; i <= itemNum; i++) {
                 result.push({
                     text: i,

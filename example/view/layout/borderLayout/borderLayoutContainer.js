@@ -49,10 +49,10 @@ define(["core/js/layout/BorderLayout",
                 this._super();
 
                 //获取中心区域
-                this.getCenterRegion().show("demo/view/layout/panelView");
+                this.getCenterRegion().show(APP_NAME+"/view/layout/panelView");
                 // 获取顶部（北）区域
                 var that = this;
-                this.getNorthRegion().show("demo/view/layout/labelView",
+                this.getNorthRegion().show(APP_NAME+"/view/layout/labelView",
                     {text: "顶部（北）区域",
                         onshow:function(e){
                             if(this._super){
@@ -63,7 +63,7 @@ define(["core/js/layout/BorderLayout",
                         }});
 
                 // 获取底部（南）区域
-                this.getSouthRegion().show("demo/view/layout/labelView", {
+                this.getSouthRegion().show(APP_NAME+"/view/layout/labelView", {
                     text: "底部（南）区域",
                     onshow:function(e){
                         if(this._super){
@@ -72,7 +72,7 @@ define(["core/js/layout/BorderLayout",
                         that.resizeRegion(BorderLayout.Region.SOUTH);
                     }});
                 // 获取左边（西）区域
-                this.getWestRegion().show("demo/view/layout/accordion/accordionDemo",{
+                this.getWestRegion().show(APP_NAME+"/view/layout/accordion/accordionDemo",{
                     onshow:function(e){
                         if(this._super){
                             this._super(e);
@@ -81,13 +81,12 @@ define(["core/js/layout/BorderLayout",
                     }
                 });
                 // 获取右边（东）区域
-                this.getEastRegion().show("demo/view/layout/labelView", {text: "右边（东）区域"});
+                this.getEastRegion().show(APP_NAME+"/view/layout/labelView", {text: "右边（东）区域"});
 
                 //this.hideRegions()
             },
             onshow:function(e){
                 this._super();
-                //this.plugin.allowOverflow(BorderLayout.Region.CENTER);
             }
         });
         return view;

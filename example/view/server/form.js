@@ -34,25 +34,13 @@ define([
             formPanel:null,
             ajaxClient:null,
             initializeHandle:function(){
-                var applicationContext = ApplicationUtils.getApplicationContext();
-                this.ajaxClient = applicationContext.getAjaxClient();
-
+                this._super();
                 var postParam = {shortName:"frmform"};
 
                 this.model = new FieldModel();
                 this.model.setAjaxClient(this.ajaxClient);
                 this.model.fetch({data:postParam});
-                this.model.on("fetchSuccess",$.proxy(this.rendForm,this));
-                /*var that = this;
-                ajaxClient.buildClientRequest(fieldUrl)
-                    .addParams(postParam)
-                    .post(function (compositeResponse) {
-                        var obj = compositeResponse.getSuccessResponse();
-                        if (obj&&obj.result) {
-                            that.rendForm(obj.result);
-                        }
-                    });*/
-
+                this.model.setFetchSuccessFunction(this.rendForm,this);
             },
             rendForm:function(){
                 var that = this;
@@ -64,15 +52,9 @@ define([
                         var formModel = new FormModel();
                         formModel.setAjaxClient(that.ajaxClient);
                         formModel.fetch({data:{id:"1"}});
-                        formModel.on("fetchSuccess",$.proxy(that.setValues,that,formModel));
+                        formModel.setFetchSuccessFunction(that.setValues,that,formModel);
                     }
                 });
-                // this.formPanel.render(this.$el);
-                /*var formModel = new FormModel();
-                formModel.setAjaxClient(that.ajaxClient);
-                formModel.fetch({data:{id:"1"}});*/
-                // formModel.on("fetchSuccess",$.proxy(this.setValues,this,formModel));
-                // this.formPanel.show();
             },
             /**
              * 设置值

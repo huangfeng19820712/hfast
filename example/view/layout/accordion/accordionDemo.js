@@ -56,7 +56,7 @@ define(['jquery',
         },
         //监听渲染事件
         onrender: function (e) {
-            this.getRegionByIndex(1).show("demo/view/layout/labelView",
+            this.getRegionByIndex(1).show(APP_NAME+"/view/layout/labelView",
                 {text: "one",/**
                  * 定义是否可以拖动,boolean值
                  */

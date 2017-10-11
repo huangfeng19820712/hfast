@@ -989,3 +989,50 @@ nav.page-tabs .page-tabs-content {
     margin-left: 0px;
 }
 /*导航条，菜单部分end*/
+/*portfolio start*/
+.cube-portfolio.cbp-caption-zoom .cbp-caption-activeWrap {
+    background: rgba(39, 58, 78, 0.6) none repeat scroll 0 0;
+}
+.cube-portfolio .link-captions {
+    list-style: outside none none;
+    margin: 0 0 20px;
+    padding-left: 0;
+    text-align: center;
+}
+.cube-portfolio .link-captions li {
+    display: inline-block;
+    padding: 0 2px;
+}
+.cube-portfolio .link-captions li i {
+    background: #fff none repeat scroll 0 0;
+    color: #444;
+    display: inline-block;
+    height: 30px;
+    padding: 8px;
+    text-align: center;
+    width: 30px;
+}
+.cube-portfolio .link-captions li i:hover {
+    background: #72c02c none repeat scroll 0 0;
+    color: #fff;
+    transition: all 0.2s ease-in-out 0s;
+}
+
+.cube-portfolio .cbp-item:hover {
+    /*box-shadow: 5px 5px 5px #ada5a5;*/
+    box-shadow: 0 0 8px #0e0e0e;
+    -webkit-transition: box-shadow 0.2s ease-in-out;
+    -moz-transition: box-shadow 0.2s ease-in-out;
+    -o-transition: box-shadow 0.2s ease-in-out;
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+.cube-portfolio .cbp-wrapper{
+    position: relative;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.cube-portfolio .cbp-item-wrapper{
+    padding: 7px;
+}
+/*portfolio end*/
