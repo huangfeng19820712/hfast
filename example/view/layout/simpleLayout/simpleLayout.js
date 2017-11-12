@@ -2,7 +2,7 @@
  * @author:   * @date: 2016/1/21
  */
 define(["core/js/layout/SimpleLayout",
-    "demo/view/login/clouds"],
+    APP_NAME+"/view/login/clouds"],
     function (SimpleLayout,clouds
     ) {
         var view = SimpleLayout.extend({

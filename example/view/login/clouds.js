@@ -3,10 +3,10 @@
  */
 define([
         "core/js/controls/Control",
-        "text!demo/tmpl/xVertex.html",
-        "text!demo/tmpl/xFragment.html",
-        "demo/clouds/assets/three.min",
-        "demo/clouds/assets/Detector",
+        "text!"+APP_NAME+"/tmpl/xVertex.html",
+        "text!"+APP_NAME+"/tmpl/xFragment.html",
+        APP_NAME+"/clouds/assets/three.min",
+        APP_NAME+"/clouds/assets/Detector",
     ],
     function (Control,xVertex,xFragment) {
         var Clouds = Control.extend({

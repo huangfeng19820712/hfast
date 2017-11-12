@@ -125,11 +125,15 @@ define(["jquery",
                         var fieldObj = that.createField(field);
                         that._fieldsObj[field.name] = fieldObj;
                         fieldObj.render();
-                        var m = i%that.totalColumnNum;
-                        if(m==0){
-                            row = that._addRow(j);
-                            that.getMainRegionEl().append(row);
-                            j++;
+                        if(that.totalColumnNum>1){
+                            var m = i%that.totalColumnNum;
+                            if(m==0){
+                                row = that._addRow(j);
+                                that.getMainRegionEl().append(row);
+                                j++;
+                            }
+                        }else{
+                            row = that.getMainRegionEl();
                         }
                         row.append(fieldObj.$el);
                         i++;
