@@ -780,7 +780,10 @@
 .sky-form .radio.state-error i,
 .sky-form .checkbox.state-error i,
 .sky-form .toggle.state-error i,
-.sky-form .toggle.state-error input:checked + i {
+.sky-form .toggle.state-error input:checked + i,
+.sky-form .state-error .bootstrap-tagsinput,
+.sky-form .state-error .file-caption,
+.sky-form .state-error .bootstrap-select button:first-child{
 	background: #fff0f0;
 }
 .sky-form .state-error + em {
@@ -793,6 +796,20 @@
 	color: #ee9393;
 }
 .sky-form .rating.state-error + em {
+	margin-top: -4px;
+	margin-bottom: 4px;
+}
+
+.sky-form .state-error + .error {
+	display: block;
+	margin-top: 6px;
+	padding: 0 1px;
+	font-style: normal;
+	font-size: 11px;
+	line-height: 15px;
+	color: #ee9393;
+}
+.sky-form .rating.state-error + .error {
 	margin-top: -4px;
 	margin-bottom: 4px;
 }
@@ -1032,4 +1049,8 @@
 .sky-form .radio + .radio,
 .sky-form .checkbox + .checkbox {
   margin-top: 0;
+}
+
+.sky-form .bootstrap-select.state-error:first-child {
+	background: #fff0f0;
 }

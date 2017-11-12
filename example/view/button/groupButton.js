@@ -56,7 +56,7 @@ define(["core/js/base/BaseView",
             checkNum:function(){
                 var e = arguments[arguments.length];
                 var items= null;
-                if(arguments.length==3){
+                if(arguments.length==2){
                     items = arguments[0]
                 }
                 var numGroupComponent = this.getNumGroupComponent(0);

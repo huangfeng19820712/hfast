@@ -2,8 +2,9 @@
  * @author:   * @date: 2015/9/22
  */
 define(["core/js/grid/JqGrid",
-        "core/js/utils/ApplicationUtils"],
-    function (JqGrid,ApplicationUtils) {
+        "core/js/utils/ApplicationUtils",
+        "core/js/utils/Utils"],
+    function (JqGrid,ApplicationUtils,Utils) {
         var BaseGrid = JqGrid.extend({
             columnsUrl:null,
             exportExcelUrl:null,
@@ -17,12 +18,6 @@ define(["core/js/grid/JqGrid",
                         if(obj&&obj.result){
                             that.initColums(obj.result);
                         }
-                        /*if (!obj.successful) {
-                            //成功失败
-                            that.showErrorMsg(obj.errMsg);
-                        }else{
-                            that.initColums(obj.result);
-                        }*/
                     },false);
                 if(this.postData){
                     this.postData = {};
@@ -52,6 +47,16 @@ define(["core/js/grid/JqGrid",
 
             },
             initColums:function(data){
+                for(var i in data){
+                    //设置编辑与查询的子项
+                    if($.isNotBank(data[i].itemValue)){
+                        data[i].edittype="select";
+                        data[i].editoptions={value:data[i].itemValue};
+                        data[i].stype = "select";
+                        data[i].formatter = "select";
+                        data[i].searchoptions={value:":全部;"+data[i].itemValue};
+                    }
+                }
                 this.colModel = data;
             },
             getAjaxClient:function(){

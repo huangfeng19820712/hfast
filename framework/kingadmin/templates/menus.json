@@ -1,0 +1,48 @@
+{
+    "menus": [
+        {
+            "iconClass": "fa-clipboard",
+            "title": "Pages",
+            "items": [
+                {
+                    "title": "Profile",
+                    "href": "page-profile.html"
+                },
+                {
+                    "title": "Invoice",
+                    "href": "page-profile.html"
+                }
+            ]
+        },
+        {
+            "iconClass": "fa-bar-chart-o",
+            "title": "Charts &amp; Statistics",
+            "items": [
+                {
+                    "title": "Profile",
+                    "href": "page-profile.html"
+                },
+                {
+                    "title": "Invoice",
+                    "href": "page-profile.html"
+                }
+            ]
+        },
+        {
+            "iconClass": "fa-edit",
+            "title": "Forms",
+            "items": [
+                {
+                    "title": "Profile",
+                    "href": "page-profile.html"
+                },
+                {
+                    "title": "Invoice",
+                    "href": "page-profile.html"
+                }
+            ]
+        }
+
+    ]
+
+}

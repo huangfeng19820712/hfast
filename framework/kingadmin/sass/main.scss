@@ -1,0 +1,59 @@
+/*	
+*	############################################################################
+*	
+*	KINGADMIN Admin Dashboard Style
+*	---------------------------------------------------------------------
+*
+*	Version		1.2
+*	Author		The Develovers
+*	Copyright	Copyright 2014 The Develovers
+*	
+*	############################################################################
+*/
+
+
+// Import main
+@import "vendors/_bootstrap-switch";
+@import "vendors/_bootstrap-multiselect";
+@import "vendors/_bootstrap-colorpicker";
+@import "vendors/_simplecolorpicker";
+@import "vendors/_datepicker";
+@import "vendors/_daterangepicker-bs3";
+@import "vendors/_ui.jqgrid";
+@import "vendors/_jquery.gritter";
+@import "vendors/_fullcalendar";
+@import "vendors/_bootstrap-progressbar-3.0.0";
+@import "vendors/_dropzone";
+@import "vendors/_bootstrap-tour";
+@import "vendors/_bootstrap-editable";
+@import "vendors/_typeahead.js-bootstrap";
+@import "vendors/_select2";
+@import "vendors/_bootstrap-slider";
+@import "vendors/_summernote";
+@import "vendors/_summernote-bs3";
+@import "vendors/_bootstrap-markdown";
+@import "vendors/_bootstrap-tagsinput";
+@import "modules/_mixins";
+
+// Import partials
+@import "partials/_base";
+@import "partials/_general";
+@import "partials/_top-bar";
+@import "partials/_navigation";
+@import "partials/_main-content";
+@import "partials/_chart";
+@import "partials/_ui-elements";
+@import "partials/_tables";
+@import "partials/_forms";
+@import "partials/_components";
+@import "partials/pages/_profile";
+@import "partials/pages/_invoice";
+@import "partials/pages/_knowledgebase";
+@import "partials/pages/_404";
+@import "partials/pages/_login";
+@import "partials/pages/_register";
+@import "partials/pages/_inbox";
+@import "partials/_footer";
+
+
+

@@ -2,7 +2,7 @@
  * 视图的工具类，由于BaseView与Control中都有关于视图的操作，
  * @author:   * @date: 2015/12/29
  */
-define(["underscore", "core/js/Class"], function (_, Class) {
+define(["core/js/Class"], function ( Class) {
     var ViewUtils = Class.extend({
         /**
          * 生成icon的class
@@ -33,6 +33,23 @@ define(["underscore", "core/js/Class"], function (_, Class) {
          */
         getControl:function(){
 
+        },
+        /**
+         * 自动计算高度
+         * @param newHeight         新的高度
+         * @param $el               需要设置高度的对象
+         * @param $bottomReferent   底部的el对象
+         */
+        autoCalculateHeight:function(newHeight,$el,$bottomReferent){
+            var bottomHeight = 0;
+            if($bottomReferent&&$bottomReferent.outerHeight){
+                bottomHeight = $bottomReferent.outerHeight();
+            }
+            var height =newHeight-$el.offset().top- bottomHeight ;
+            var oldHeight = $el.height();
+            if(oldHeight<=height){
+                $el.height(height);
+            }
         }
     });
     ViewUtils.getInstance = function () {

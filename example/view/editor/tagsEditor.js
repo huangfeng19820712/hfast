@@ -4,8 +4,10 @@
 define([
         "backbone",
         "core/js/layout/Panel",
+        "core/js/CommonConstant",
+        "core/js/controls/ToolStripItem",
         "core/js/utils/ApplicationUtils"],
-    function (Backbone,Panel,ApplicationUtils) {
+    function (Backbone,Panel,CommonConstant,ToolStripItem,ApplicationUtils) {
         var view = Panel.extend({
             /*Panel的配置项 start*/
             title:"表单-",
@@ -24,18 +26,21 @@ define([
             },
             footerRegion: {
                 comXtype: $Component.TOOLSTRIP,
+                textAlign: $TextAlign.RIGHT,
                 comConf: {
                     /*Panel的配置项 start*/
-                    textAlign: $TextAlign.RIGHT,
-                    items: [{
+
+                    spacing: CommonConstant.Spacing.DEFAULT,
+                    itemOptions: [{
+                        themeClass: ToolStripItem.ThemeClass.PRIMARY,
                         text: "确定",
                         onclick: function (e) {
                             var panelRegion = ApplicationUtils.getMainRegion();
                             var editor = panelRegion.getComRef().getMainRegionRef().getComRef();
-                            console.info(editor.getValue());
-                            console.info(editor.getValueObjects());
+                            editor.getValue();
                         }
                     }, {
+                        themeClass: ToolStripItem.ThemeClass.CANCEL,
                         text: "取消",
                         onclick: function (e) {
                             $.window.confirm("测试1", {

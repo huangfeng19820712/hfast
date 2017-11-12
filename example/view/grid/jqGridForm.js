@@ -39,7 +39,7 @@ define([
                     postData:{"gridPlugin" : "jqGrid"},
                     colModel: [
                         { label: 'Inv No', name: 'id', width: 75,editable:true, key:true },
-                        { label: 'Date', name: 'invdate',editable:true, width: 90 },
+                        { label: 'Date', name: 'invdate',editable:true, width: 90 ,editrules : {required : true}},
                         { label: 'Client', name: 'name', editable:true,width: 100 },
                         { label: 'Amount', name: 'amount',editable:true, width: 80 },
                         { label: 'Tax', name: 'tax',editable:true, width: 80 },

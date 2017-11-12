@@ -64,6 +64,7 @@ $global.constants = {
         'ueditor': '1.4.3.3',
         'fancytree': '2.20.0',
         'cubeportfolio':'2.3.3',
+        'bootstrap-select':'1.12.4',
         'flowplayer':'3.2.13'
     },
     /**
@@ -189,6 +190,7 @@ $global.constants = {
             DEFAULT: '<input type="text" class="form-control" /><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>',
             SIMPLE: '<input type="text" class="form-control" />',
             FILE: '<input type="file" class="form-control file" data-preview-file-type="text" />',
+            SELECT: '<select class="form-control"></select>',
             TEXTAREA: '<textarea class="form-control"></textarea>'
         },
         Grid: {
@@ -408,6 +410,12 @@ $Component = $cons.component = {
         src: "core/js/editors/AutoCompleteEditor",
         type: $cons.componentType.EDITOR
     },
+    SELECTEDITOR: {
+        name: "SelectEditor",
+        label: "自完成编辑器",
+        src: "core/js/editors/SelectEditor",
+        type: $cons.componentType.EDITOR
+    },
     TAGSEDITOR: {
         name: "TagsEditor",
         label: "标签编辑器",
@@ -459,8 +467,14 @@ $Component = $cons.component = {
     },
     BORDERLAYOUT: {
         name: "BorderLayout",
-        label: "便捷布局",
+        label: "边界布局",
         src: "core/js/layout/BorderLayout",
+        type: $cons.componentType.CONTAINER
+    },
+    SIMPLELAYOUT: {
+        name: "SimpleLayout",
+        label: "简单布局",
+        src: "core/js/layout/SimpleLayout",
         type: $cons.componentType.CONTAINER
     },
     ACCORDION: {

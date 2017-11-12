@@ -1,0 +1,78 @@
+/*
+Error: File to import not found or unreadable: compass/typography.
+       Load paths:
+         
+        on line 6 of partials/_base.scss
+        from line 39 of main.scss
+
+1: /*	
+2: *	############################################################################
+3: *	
+4: *	KINGADMIN Admin Dashboard Style
+5: *	---------------------------------------------------------------------
+6: *
+7: *	Version		1.2
+8: *	Author		The Develovers
+9: *	Copyright	Copyright 2014 The Develovers
+10: *	
+11: *	############################################################################
+
+Backtrace:
+partials/_base.scss:6
+main.scss:39
+D:/soft/ruby-2.2.1-x64-mingw32/lib/ruby/gems/2.2.0/gems/sass-3.4.13/lib/sass/tree/import_node.rb:66:in `rescue in import'
+D:/soft/ruby-2.2.1-x64-mingw32/lib/ruby/gems/2.2.0/gems/sass-3.4.13/lib/sass/tree/import_node.rb:45:in `import'
+D:/soft/ruby-2.2.1-x64-mingw32/lib/ruby/gems/2.2.0/gems/sass-3.4.13/lib/sass/tree/import_node.rb:28:in `imported_file'
+D:/soft/ruby-2.2.1-x64-mingw32/lib/ruby/gems/2.2.0/gems/sass-3.4.13/lib/sass/tree/import_node.rb:37:in `css_import?'
+D:/soft/ruby-2.2.1-x64-mingw32/lib/ruby/gems/2.2.0/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:311:in `visit_import'
+D:/soft/ruby-2.2.1-x64-mingw32/lib/ruby/gems/2.2.0/gems/sass-3.4.13/lib/sass/tree/visitors/base.rb:36:in `visit'
+D:/soft/ruby-2.2.1-x64-mingw32/lib/ruby/gems/2.2.0/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+D:/soft/ruby-2.2.1-x64-mingw32/lib/ruby/gems/2.2.0/gems/sass-3.4.13/lib/sass/stack.rb:79:in `block in with_base'
+D:/soft/ruby-2.2.1-x64-mingw32/lib/ruby/gems/2.2.0/gems/sass-3.4.13/lib/sass/stack.rb:115:in `with_frame'
+D:/soft/ruby-2.2.1-x64-mingw32/lib/ruby/gems/2.2.0/gems/sass-3.4.13/lib/sass/stack.rb:79:in `with_base'
+D:/soft/ruby-2.2.1-x64-mingw32/lib/ruby/gems/2.2.0/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:158:in `visit'
+D:/soft/ruby-2.2.1-x64-mingw32/lib/ruby/gems/2.2.0/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:325:in `block (2 levels) in visit_import'
+D:/soft/ruby-2.2.1-x64-mingw32/lib/ruby/gems/2.2.0/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:325:in `map'
+D:/soft/ruby-2.2.1-x64-mingw32/lib/ruby/gems/2.2.0/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:325:in `block in visit_import'
+D:/soft/ruby-2.2.1-x64-mingw32/lib/ruby/gems/2.2.0/gems/sass-3.4.13/lib/sass/stack.rb:88:in `block in with_import'
+D:/soft/ruby-2.2.1-x64-mingw32/lib/ruby/gems/2.2.0/gems/sass-3.4.13/lib/sass/stack.rb:115:in `with_frame'
+D:/soft/ruby-2.2.1-x64-mingw32/lib/ruby/gems/2.2.0/gems/sass-3.4.13/lib/sass/stack.rb:88:in `with_import'
+D:/soft/ruby-2.2.1-x64-mingw32/lib/ruby/gems/2.2.0/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:322:in `visit_import'
+D:/soft/ruby-2.2.1-x64-mingw32/lib/ruby/gems/2.2.0/gems/sass-3.4.13/lib/sass/tree/visitors/base.rb:36:in `visit'
+D:/soft/ruby-2.2.1-x64-mingw32/lib/ruby/gems/2.2.0/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+D:/soft/ruby-2.2.1-x64-mingw32/lib/ruby/gems/2.2.0/gems/sass-3.4.13/lib/sass/stack.rb:79:in `block in with_base'
+D:/soft/ruby-2.2.1-x64-mingw32/lib/ruby/gems/2.2.0/gems/sass-3.4.13/lib/sass/stack.rb:115:in `with_frame'
+D:/soft/ruby-2.2.1-x64-mingw32/lib/ruby/gems/2.2.0/gems/sass-3.4.13/lib/sass/stack.rb:79:in `with_base'
+D:/soft/ruby-2.2.1-x64-mingw32/lib/ruby/gems/2.2.0/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:158:in `visit'
+D:/soft/ruby-2.2.1-x64-mingw32/lib/ruby/gems/2.2.0/gems/sass-3.4.13/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+D:/soft/ruby-2.2.1-x64-mingw32/lib/ruby/gems/2.2.0/gems/sass-3.4.13/lib/sass/tree/visitors/base.rb:52:in `map'
+D:/soft/ruby-2.2.1-x64-mingw32/lib/ruby/gems/2.2.0/gems/sass-3.4.13/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+D:/soft/ruby-2.2.1-x64-mingw32/lib/ruby/gems/2.2.0/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
+D:/soft/ruby-2.2.1-x64-mingw32/lib/ruby/gems/2.2.0/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+D:/soft/ruby-2.2.1-x64-mingw32/lib/ruby/gems/2.2.0/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
+D:/soft/ruby-2.2.1-x64-mingw32/lib/ruby/gems/2.2.0/gems/sass-3.4.13/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+D:/soft/ruby-2.2.1-x64-mingw32/lib/ruby/gems/2.2.0/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
+D:/soft/ruby-2.2.1-x64-mingw32/lib/ruby/gems/2.2.0/gems/sass-3.4.13/lib/sass/tree/visitors/base.rb:36:in `visit'
+D:/soft/ruby-2.2.1-x64-mingw32/lib/ruby/gems/2.2.0/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:157:in `visit'
+D:/soft/ruby-2.2.1-x64-mingw32/lib/ruby/gems/2.2.0/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:8:in `visit'
+D:/soft/ruby-2.2.1-x64-mingw32/lib/ruby/gems/2.2.0/gems/sass-3.4.13/lib/sass/tree/root_node.rb:36:in `css_tree'
+D:/soft/ruby-2.2.1-x64-mingw32/lib/ruby/gems/2.2.0/gems/sass-3.4.13/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+D:/soft/ruby-2.2.1-x64-mingw32/lib/ruby/gems/2.2.0/gems/sass-3.4.13/lib/sass/engine.rb:368:in `_render_with_sourcemap'
+D:/soft/ruby-2.2.1-x64-mingw32/lib/ruby/gems/2.2.0/gems/sass-3.4.13/lib/sass/engine.rb:285:in `render_with_sourcemap'
+D:/soft/ruby-2.2.1-x64-mingw32/lib/ruby/gems/2.2.0/gems/sass-3.4.13/lib/sass/plugin/compiler.rb:490:in `update_stylesheet'
+D:/soft/ruby-2.2.1-x64-mingw32/lib/ruby/gems/2.2.0/gems/sass-3.4.13/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+D:/soft/ruby-2.2.1-x64-mingw32/lib/ruby/gems/2.2.0/gems/sass-3.4.13/lib/sass/plugin/compiler.rb:209:in `each'
+D:/soft/ruby-2.2.1-x64-mingw32/lib/ruby/gems/2.2.0/gems/sass-3.4.13/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+D:/soft/ruby-2.2.1-x64-mingw32/lib/ruby/gems/2.2.0/gems/sass-3.4.13/lib/sass/plugin.rb:82:in `update_stylesheets'
+D:/soft/ruby-2.2.1-x64-mingw32/lib/ruby/gems/2.2.0/gems/sass-3.4.13/lib/sass/exec/sass_scss.rb:361:in `watch_or_update'
+D:/soft/ruby-2.2.1-x64-mingw32/lib/ruby/gems/2.2.0/gems/sass-3.4.13/lib/sass/exec/sass_scss.rb:51:in `process_result'
+D:/soft/ruby-2.2.1-x64-mingw32/lib/ruby/gems/2.2.0/gems/sass-3.4.13/lib/sass/exec/base.rb:52:in `parse'
+D:/soft/ruby-2.2.1-x64-mingw32/lib/ruby/gems/2.2.0/gems/sass-3.4.13/lib/sass/exec/base.rb:19:in `parse!'
+D:/soft/ruby-2.2.1-x64-mingw32/lib/ruby/gems/2.2.0/gems/sass-3.4.13/bin/sass:13:in `<top (required)>'
+D:/soft/ruby-2.2.1-x64-mingw32/bin/sass:23:in `load'
+D:/soft/ruby-2.2.1-x64-mingw32/bin/sass:23:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: File to import not found or unreadable: compass/typography.\A        Load paths:\A          \A         on line 6 of partials/_base.scss\A         from line 39 of main.scss\A \A 1: /*	\A 2: *	############################################################################\A 3: *	\A 4: *	KINGADMIN Admin Dashboard Style\A 5: *	---------------------------------------------------------------------\A 6: *\A 7: *	Version		1.2\A 8: *	Author		The Develovers\A 9: *	Copyright	Copyright 2014 The Develovers\A 10: *	\A 11: *	############################################################################"; }

@@ -22,7 +22,6 @@ define(["core/js/layout/FluidLayout",
                             mainRegion: {
                                 comXtype: $Component.PLAYER,
                                 height: "600px",
-                                width: "400px",
                                 comConf: {
                                     playerMode: $cons.playerMode.FLV,
                                     url: "http://XXX/XXXX.flv"
@@ -39,7 +38,6 @@ define(["core/js/layout/FluidLayout",
                             mainRegion: {
                                 comXtype: $Component.PLAYER,
                                 height: "600px",
-                                width: "400px",
                                 comConf: {
                                     playerMode: $cons.playerMode.RTMP,
                                     url: "rtmp://XXXX"
@@ -56,7 +54,6 @@ define(["core/js/layout/FluidLayout",
                             mainRegion: {
                                 comXtype: $Component.PLAYER,
                                 height: "600px",
-                                width: "400px",
                                 comConf: {
                                     playerMode: $cons.playerMode.FLV,
                                     url: "http://XXXX/XXX.png"

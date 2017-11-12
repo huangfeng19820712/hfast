@@ -118,6 +118,12 @@ define([
                     searchOperators: this.searchOperators
                 });
             }
+            this.$table.closest(".ui-jqgrid-bdiv").css({ "overflow-x" : "hidden" });
+            /*var w2 = parseInt(this.$el.find('.ui-jqgrid-labels>th:eq(2)').css('width'))-3;
+            this.$el.find('.ui-jqgrid-labels>th:eq(2)').css('width',w2);
+            this.$el.find('tr').find("td:eq(2)").each(function(){
+                $(this).css('width',w2);
+            })*/
         },
         /**
          * 创建
@@ -150,8 +156,12 @@ define([
                 datatype: this.datatype,
                 //colNames: [' ', 'id', '期数', '创建日期', '结果', '状态'],
                 colModel: realyColModel,
-                //height: 400,
-                autowidth:true,
+                height:  'auto' ,
+                //minHeight:"150px",
+                //autowidth:true,
+                //autowidth: true,
+                width:this.$container.width()-1,
+                //shrinkToFit: true,
                 altRows: true,//设置为交替行表格,默认为false 效果??
                 rowNum: this.rowNum,
                 rowList: this.rowList,
@@ -247,15 +257,17 @@ define([
                     that.filters.push(filter);
                 }else{
                     //如果是文本过滤器
-                    element.searchoptions = {
-                        sopt:[ "bw", // 开始于 ( LIKE val% )
-                            "bn", // 不开始于 ( not like val%)
-                            "ew", // 结束于 (LIKE %val )
-                            "en", //不结束于(not LIKE %val )
-                            "cn", // 包含 (LIKE %val% )
-                            "nc"  // 不包含(not LIKE %val% )
-                        ]
-                    };
+                    if(!element.searchoptions){
+                        element.searchoptions = {
+                            sopt:[ "bw", // 开始于 ( LIKE val% )
+                                "bn", // 不开始于 ( not like val%)
+                                "ew", // 结束于 (LIKE %val )
+                                "en", //不结束于(not LIKE %val )
+                                "cn", // 包含 (LIKE %val% )
+                                "nc"  // 不包含(not LIKE %val% )
+                            ]
+                        };
+                    }
                 }
                /* element.searchoptions.dataInit = function(el){
                     var options = {$container: $(el).parent(),

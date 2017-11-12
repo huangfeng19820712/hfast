@@ -1,4 +1,6 @@
 /**
+ * 使用jquery-validator组件
+ * https://github.com/jquery-validation/jquery-validation/releases/tag/1.17.0
  * @author:   * @date: 2016/2/8
  */
 define(["core/js/Component","validate"],function(Component){
@@ -17,6 +19,7 @@ define(["core/js/Component","validate"],function(Component){
                 errorPlacement:this.errorPlacement,
                 rules:this.rules,
                 submitHandler:this.submitHandler,
+                ignore:""
             };
             if(this.messages){
                 conf.messages = this.messages;
@@ -25,7 +28,10 @@ define(["core/js/Component","validate"],function(Component){
         },
         // Do not change code below
         errorPlacement: function (error, element) {
-            error.insertAfter(element.parent());
+
+            element.closest(".hfast-view").append(error);
+            error.prev().addClass("state-error");
+            //error.insertAfter(element.closest(".hfast-view"));
         },
         messages: null,
         /**

@@ -53,7 +53,7 @@ define([ "jquery", "kendo", "dialog",
 	   success:function(msg){
 		   notification.show({
 			   title: "",
-	            message: msg
+			   message: msg
 	        },"success");
 	   }
 	}

@@ -75,6 +75,7 @@ function $globalRequireConfig(webRoot) {
             "bootstrap-datepicker.locale":$route.getLocale("bootstrap","bootstrap-datepicker"),
             "bootstrap-datetimepicker":$route.getJs("bootstrap","bootstrap-datetimepicker"),
             "bootstrap-datetimepicker.locale":$route.getLocale("bootstrap","bootstrap-datetimepicker"),
+            "bootstrap-select":$route.getJs("bootstrap-select"),
             "ladda":$route.getJs("ladda"),
 
             "icheck":$route.getJs("icheck"),
@@ -182,6 +183,7 @@ function $globalRequireConfig(webRoot) {
                 $route.getCss("bootstrap",
                 "bootstrap-datetimepicker"),"bootstrap-datetimepicker"]},
             "bootstrap.touchspin":{deps:["css!lib/touchspin/3.0.1/jquery.bootstrap-touchspin.css"]},
+            "bootstrap-select":{deps:['jquery',$route.getCss("bootstrap-select")]},
             "fileinput":{deps:[
                 $route.getJs("fileinput","canvas-to-blob"),
                 $route.getJs("fileinput","sortable"),

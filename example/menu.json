@@ -145,19 +145,10 @@
     },{
       "id": "0106",
       "name": "编码设计器",
-      "url": "designer/codeDesigner?jsPath=demo/view/button/toolStrip",
+      "url": "designer/CodeDesigner?jsPath=demo/view/button/toolStrip",
       "type": "1",
       "pid": "01",
-      "code": "codeDesigner",
-      "visible": "1",
-      "orderNo": null
-    },{
-      "id": "0107",
-      "name": "播放器",
-      "url": "other/player",
-      "type": "1",
-      "pid": "01",
-      "code": "player",
+      "code": "CodeDesigner",
       "visible": "1",
       "orderNo": null
     },{
@@ -426,8 +417,23 @@
       "visible": "1",
       "orderNo": null
     },{
+      "id": "12",
+      "name": "分析",
+      "url": "analysis",
+      "pid": null,
+      "tip": null,
+      "leafed": null,
+      "remark": null,
+      "chain": null,
+      "icon": null,
+      "type": "1",
+      "code": "analysis",
+      "visible": "1",
+      "orderNo": null
+    },{
       "id": "16",
       "name": "编辑器",
+      "url": "analysis",
       "pid": null,
       "tip": null,
       "leafed": null,
@@ -552,7 +558,7 @@
       "orderNo": null
     },{
       "id": "1609",
-      "name": "富文本编辑器",
+      "name": "多行本编辑器",
       "url": "editor/multilineEditor",
       "pid": "16",
       "tip": null,
@@ -607,7 +613,7 @@
       "visible": "1",
       "orderNo": null
     },{
-      "id": "1600",
+      "id": "1612",
       "name": "查询编辑器",
       "url": "editor/searchEditor",
       "pid": "16",
@@ -618,6 +624,20 @@
       "icon": null,
       "type": "1",
       "code": "searchEditor",
+      "visible": "1",
+      "orderNo": null
+    },{
+      "id": "1613",
+      "name": "选择编辑器",
+      "url": "editor/selectEditor",
+      "pid": "16",
+      "tip": null,
+      "leafed": null,
+      "remark": null,
+      "chain": null,
+      "icon": null,
+      "type": "1",
+      "code": "selectEditor",
       "visible": "1",
       "orderNo": null
     },{
@@ -705,6 +725,20 @@
       "visible": "1",
       "orderNo": null
     },{
+      "id": "1705",
+      "name": "导航标签",
+      "url": "layout/tab/navtabLayout",
+      "pid": "17",
+      "tip": null,
+      "leafed": null,
+      "remark": null,
+      "chain": null,
+      "icon": null,
+      "type": "1",
+      "code": "navtabLayout",
+      "visible": "1",
+      "orderNo": null
+    },{
       "id": "1101",
       "name": "borderLayoutContainer",
       "url": "layout/borderLayout/borderLayoutContainer",
@@ -747,7 +781,7 @@
       "visible": "1",
       "orderNo": null
     },{
-      "id": "1103",
+      "id": "1104",
       "name": "下拉框容器",
       "url": "layout/dropDownContainer/button",
       "pid": "11",
@@ -758,6 +792,20 @@
       "icon": null,
       "type": "1",
       "code": "dropDownContainerButton",
+      "visible": "1",
+      "orderNo": null
+    },{
+      "id": "1105",
+      "name": "简单布局",
+      "url": "layout/simpleLayout/simpleLayout",
+      "pid": "11",
+      "tip": null,
+      "leafed": null,
+      "remark": null,
+      "chain": null,
+      "icon": null,
+      "type": "1",
+      "code": "simpleLayout",
       "visible": "1",
       "orderNo": null
     },{
@@ -792,6 +840,54 @@
       "icon": null,
       "type": "1",
       "code": "navigationBar",
+      "visible": "1",
+      "orderNo": null
+    },{
+      "id": "05",
+      "name": "多媒体",
+      "type": "1",
+      "visible": "1",
+      "orderNo": null
+    },{
+      "id": "0501",
+      "name": "播放器",
+      "url": "media/player",
+      "pid": "05",
+      "tip": null,
+      "leafed": null,
+      "remark": null,
+      "chain": null,
+      "icon": null,
+      "type": "1",
+      "code": "player",
+      "visible": "1",
+      "orderNo": null
+    },{
+      "id": "0502",
+      "name": "Portfolio",
+      "url": "media/portfolio",
+      "pid": "05",
+      "tip": null,
+      "leafed": null,
+      "remark": null,
+      "chain": null,
+      "icon": null,
+      "type": "1",
+      "code": "portfolio",
+      "visible": "1",
+      "orderNo": null
+    },{
+      "id": "0503",
+      "name": "thumbnail",
+      "url": "media/thumbnail",
+      "pid": "05",
+      "tip": null,
+      "leafed": null,
+      "remark": null,
+      "chain": null,
+      "icon": null,
+      "type": "1",
+      "code": "thumbnail",
       "visible": "1",
       "orderNo": null
     }

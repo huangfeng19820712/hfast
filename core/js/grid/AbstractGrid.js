@@ -13,6 +13,7 @@ define([
          *      name:{String}[必填]<字段的唯一表示>
          *      label：{String}<显示的列标题,如果不填，则显示name的内容>
          *      editor:{String|Object}<编辑器,可以是字符串，也可以是编辑器的对象>
+         *      searchoptions：{Array}<下拉框的选项>
          * }
          * ]
          */

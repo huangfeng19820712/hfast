@@ -10,7 +10,7 @@ define([
 
         var view = BaseViewModel.extend({
             $INIT: "/"+ CONFIG.appName+"/menu.json",
-            initializeHandle:function(){
+            mountContent:function(){
                 var applicationContext = ApplicationUtils.getApplicationContext();
                 var ajaxClient = applicationContext.getAjaxClient();
                 var defaultMenuDates, menuDates ;
@@ -24,7 +24,7 @@ define([
                             var menus = that.getMenus(menuDates);
                             that.rendNavBar(menus);
                         }
-                    }, true);
+                    }, false);
                 /*var that = this;
                  ajaxClient.buildClientRequest(fieldUrl)
                  .addParams(postParam)
@@ -34,8 +34,8 @@ define([
                  that.rendForm(obj.result);
                  }
                  });*/
-
             },
+
             rendNavBar:function(data){
                 var view = new NavigationBar({
                     $container:this.$el,

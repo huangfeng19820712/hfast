@@ -8,8 +8,14 @@ define(["core/js/controls/Control",
         "text!core/resources/tmpl/portfoliobox.html",
         "jquery.cubeportfolio",],
     function (Control, ViewUtils, CommonConstant,Template) {
+        var CubePortfolio = $.fn.cubeportfolio.Constructor;
+        $.extend(CubePortfolio.prototype, {
+            updateImagesMarkup: function(src, title, counter) {
+                console.info(">>>>");
+            }
+        });
         var Portfoliobox = Control.extend({
-            xtype:$Component.PORTFOLIO,
+            xtype:$Component.PORTFOLIOBOX,
             className:"container-fluid",
             /**
              * {Array}实体表单上的字段信息

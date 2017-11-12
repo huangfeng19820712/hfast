@@ -214,7 +214,7 @@ define(["jquery",
             if (this.$label == null&&this.label){
                 this.$label = this.get$('<label class="label"/>');
                 this.$label.append(this.label);
-                if(this.required){
+                if(this.required||(this.rules&&this.rules.required)){
                     this.$label.append('<span class="color-red">*</span>');
                 }
 

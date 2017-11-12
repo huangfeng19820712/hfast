@@ -209,6 +209,9 @@ define(["jquery",
                 fieldsetConfig.readOnly = this.readOnly;
             }
 
+            fieldsetConfig.totalColumnNum = this.totalColumnNum;
+            fieldsetConfig.defaultColumnSize = this.defaultColumnSize;
+
             if(!config){
                 this.handleHiddenFields(fields);
                 //去除hidden的字段

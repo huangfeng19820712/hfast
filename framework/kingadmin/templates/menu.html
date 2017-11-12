@@ -1,0 +1,23 @@
+<!-- main-nav -->
+<nav class="main-nav">
+    <ul class="main-menu">
+        <li class="active"><a href="index.html"><i class="fa fa-dashboard fa-fw"></i><span class="text">Dashboard</span></a></li>
+        <%_.each(data.menus,function(item, j){%>
+            <li ><a href="#" class="js-sub-menu-toggle"><i class="fa fa-clipboard fa-fw"></i><span class="text">Pages</span>
+                <i class="toggle-icon fa fa-angle-left"></i></a>
+                <ul class="sub-menu ">
+                    <li ><a href="page-profile.html"><span class="text">Profile</span></a></li>
+                    <li ><a href="page-invoice.html"><span class="text">Invoice</span></a></li>
+                    <li ><a href="page-knowledgebase.html"><span class="text">Knowledge Base</span></a></li>
+                    <li ><a href="page-inbox.html"><span class="text">Inbox</span></a></li>
+                    <li ><a href="page-register.html"><span class="text">Register</span></a></li>
+                    <li ><a href="page-login.html"><span class="text">Login</span></a></li>
+                    <li ><a href="page-404.html"><span class="text">404</span></a></li>
+                    <li ><a href="page-blank.html"><span class="text">Blank Page</span></a></li>
+                </ul>
+            </li>
+        <%})%>
+
+    </ul>
+</nav>
+<!-- /main-nav -->

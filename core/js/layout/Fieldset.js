@@ -79,11 +79,15 @@ define(["jquery",
          * 容器中分的列数，系统会自动分为最多12列,所有次数最好能被12整除，
          * 如果defaultColumnSize为null，则整除totalColumnNum后的栏位大小会设置会修改defaultColumnSize的值
          */
-        totalColumnNum:null,
+        totalColumnNum:1,
         /**
          * 默认的栏位大小
          */
         defaultColumnSize:null,
+        /**
+         * 默认的栏位class类
+         */
+        _defaultColumnClassName:null,
         /*-------------------------------  初始化及私有方法 start ---------------------------------------------------*/
         initializeHandle: function () {
             this._super();
@@ -95,6 +99,15 @@ define(["jquery",
                 collapsible:this.collapsible,
             };
             this._fieldsObj={};
+            if(this.defaultColumnSize!=null){
+                this._defaultColumnClassName = this.defaultColumnSize;
+            }else{
+                if(this.totalColumnNum){
+                    this._defaultColumnClassName = $cons.fluidLayoutClassnamePre+Math.floor(12 / this.totalColumnNum);
+                }else{
+                    this._defaultColumnClassName = $Column.COL_MD_12;
+                }
+            }
         },
 
         /**
@@ -104,15 +117,37 @@ define(["jquery",
         createFields: function (fields) {
             if (fields != null && _.isArray(fields)) {
                 var that = this;
+                var i = 0;
+                var j = 0;
+                var row = null;
                 _.each(fields,function(field,key){
                     if(field){
                         var fieldObj = that.createField(field);
                         that._fieldsObj[field.name] = fieldObj;
                         fieldObj.render();
-                        that.getMainRegionEl().append(fieldObj.$el);
+                        var m = i%that.totalColumnNum;
+                        if(m==0){
+                            row = that._addRow(j);
+                            that.getMainRegionEl().append(row);
+                            j++;
+                        }
+                        row.append(fieldObj.$el);
+                        i++;
                     }
                 });
             }
+        },
+        /**
+         * 创建行
+         * @param num
+         * @private
+         */
+        _addRow:function(num){
+            var el = $("<div/>");
+            //添加
+            el.css("display","inline-block");
+            el.attr("id",this.id+"_row"+num);
+            return el;
         },
         createField: function (field) {
             if(field.editorType==null){
@@ -123,6 +158,9 @@ define(["jquery",
             }
             if(this.readOnly!=undefined&&field.readOnly==undefined){
                 field.readOnly = this.readOnly;
+            }
+            if(this._defaultColumnClassName){
+                field.className = field.className?field.className+" "+this._defaultColumnClassName:this._defaultColumnClassName;
             }
             return ComponentFactory.createEditor(field.editorType,field);
         },

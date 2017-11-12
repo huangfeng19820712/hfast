@@ -125,6 +125,19 @@ define(["jquery",
         disabled:false,
 
         /**
+         * 容器中分的列数，系统会自动分为最多12列,所有次数最好能被12整除，
+         * 如果defaultColumnSize为null，则整除totalColumnNum后的栏位大小会设置会修改defaultColumnSize的值
+         */
+        totalColumnNum:null,
+        /**
+         * 默认的栏位大小
+         */
+        defaultColumnSize:null,
+        /**
+         * 默认的栏位class类
+         */
+        _defaultColumnClassName:null,
+        /**
          * 滚动到指定的编辑器
          * add by 2014.12.17
          * @param fieldName
@@ -499,7 +512,6 @@ define(["jquery",
             //初始值要先处理，不然会引起引用的问题
             this._reset();
             this.setAjaxClient(this.ajaxClient);   //设置Ajax请求的客户端
-
             // this.afterInitializeHandle(options, triggerEvent);
         },
 
