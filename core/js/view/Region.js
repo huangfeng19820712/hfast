@@ -205,7 +205,7 @@ define(["jquery",
             this.ensureEl();  //初始化$el */
             var content = this._getComContent();  //有指定内容，就先显示内容
             if (content) {
-                this.childrenCount++;
+                //this.childrenCount++;
                 this._showRegionContent(content);
                 return;
             }

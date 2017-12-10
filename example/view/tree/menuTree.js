@@ -10,7 +10,7 @@ define(["core/js/layout/Panel"],
             brief:"摘要",
 
             /*Panel 配置 End*/
-            oninitialized:function(triggerEvent){
+            beforeInitializeHandle:function(options, triggerEvent){
                 this._super();
                 this.mainRegion={
                     comXtype:$Component.TREE,

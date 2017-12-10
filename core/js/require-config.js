@@ -56,7 +56,7 @@ function $globalRequireConfig(webRoot) {
             "fileinput":$route.getJs("fileinput","zh"),
             "ueditor": "/lib/ueditor/1.4.3/lang/zh-cn/zh-cn", //必须先加载语言包，否则ie下会报错,
             "spin":$route.getJs("spin"),
-            "fancytree":$route.getJs("fancytree"),
+            "fancytree":$route.getJs("fancytree","fancytree-all"),
             "waypoints":$route.getJs("counterup","waypoints"),
             "jquery.counterup":$route.getJs("counterup","jquery.counterup"),
             "jquery.cubeportfolio":$route.getJs("cubeportfolio","jquery.cubeportfolio"),
@@ -81,6 +81,8 @@ function $globalRequireConfig(webRoot) {
             "icheck":$route.getJs("icheck"),
             "fuelux.wizard":$route.getJs("fuelux","wizard"),
             "flowplayer":$route.getJs("flowplayer"),
+
+            "parallax-slider":$route.getJs("parallax-slider"),
 
             'king-common':$route.getKingadminJs("king-common"),
             'king-chart-stat':$route.getKingadminJs("king-chart-stat"),
@@ -194,6 +196,7 @@ function $globalRequireConfig(webRoot) {
                 $route.getCss("fileinput") ,
 
             ]},
+            "parallax-slider":{deps:["modernizr",$route.getCss("parallax-slider")]},
             "ueditor": {
                 "deps": [
                     $route.getJs("ueditor","ueditor.config"),

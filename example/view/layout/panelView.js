@@ -13,7 +13,8 @@ define([
         help:"内容1",
         brief:"摘要1",
         mainRegion:"aaaa",
-        width:500,
+        width:"100%",
+        height:"100%",
         draggable:true,
         footerRegion:{
             comXtype:$Component.TOOLSTRIP,
@@ -48,13 +49,13 @@ define([
                 activeClass: "ui-state-active",
                 hoverClass: "ui-state-hover",
                 drop: function( event, ui ) {
-                    var clazz = ui.draggable.data("control").componentClass;
+                   /* var clazz = ui.draggable.data("control").componentClass;
                     if(clazz){
                         var component = new clazz({
                             $container:mainRegionRef.$el,
                         });
                         component.render();
-                    }
+                    }*/
                 }
             });
             mainRegionRef.$el.sortable({

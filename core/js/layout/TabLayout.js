@@ -52,6 +52,7 @@ define(["jquery",
         leftToolStripOption:null,
         rightToolStrip:null,
         rightToolStripOption:null,
+
         /**
          * {Array}  所有的tabId
          */
@@ -82,7 +83,17 @@ define(["jquery",
             this.$el.addClass(this.model);
             //this.$el.addClass(this.position);
             this._initTabs();
-
+            //添加内容显示的事件
+            var that = this;
+            this.$('a[data-toggle="tab"]').on('show.bs.tab',function(event){
+                var tabId = $(event.target).parent().data("tabId");
+                that.trigger("showTab",event);
+            });
+            this.$('a[data-toggle="tab"]').on('shown.bs.tab',function(event){
+                var tabId = $(event.target).parent().data("tabId");
+                that.handleShowJqGrid(tabId);
+                that.trigger("shownTab",event);
+            });
             this.regionsRender();
         },
         afterMountContent:function(triggerEvent){
@@ -93,7 +104,17 @@ define(["jquery",
             }
         },
 
+        handleShowJqGrid:function(tabId){
 
+            var contentRef = this.getContentRefByTabId(tabId);
+            //针对jqgrid做特殊处理
+            if(contentRef&&contentRef.comRef&&contentRef.comRef.xtype === $Component.JQGRID){
+                //设置grid的宽度，tab切换过来是，宽度变成0
+                var el = contentRef.comRef.$el;
+                var width = el.width();
+                contentRef.comRef.$table.jqGrid('setGridWidth',width);
+            }
+        },
 
         /**
          *初始化tab
@@ -208,7 +229,9 @@ define(["jquery",
             this.$navs = $("<nav/>");
             this.$navs.addClass("page-tabs J_menuTabs");
             this.$navs.append("<ul class='nav nav-tabs page-tabs-content'/>");
-            return this.$navs
+            this.$navsDiv = $("<div class='nav-div'/>");
+            this.$navsDiv.append(this.$navs);
+            return this.$navsDiv;
         },
         /**
          *创建tab的label
@@ -268,6 +291,16 @@ define(["jquery",
         /*-------------------------------  初始化及私有方法 end ---------------------------------------------------*/
 
         /**
+         * 显示tab的内容事件，显示前触发，输入的参数是tab对象
+         * @param event jquery的事件对象
+         */
+        onshowTab:null,
+        /**
+         * 显示tab的内容事件，显示前触发，输入的参数是tab对象
+         * @param event jquery的事件对象
+         */
+        onshownTab:null,
+        /**
          * 获取tabid
          * @returns {string}
          */
@@ -297,6 +330,22 @@ define(["jquery",
         getContentRefById: function (contentId) {
             return this.getRegion(contentId);
         },
+        /**
+         * 根据tabId获取内容对象
+         * @param tabId
+         */
+        getContentRefByTabId:function(tabId){
+            return this.getRegion(this.getContentId(tabId));
+        },
+        /**
+         * 根据序号获取内容的区域对象
+         * @param index
+         */
+        getContentRefByIndex:function(index){
+            var tabId = this.getTabId(index);
+            var contentId = this.getContentId(tabId);
+            return this.getContentRefById(contentId);
+        },
 
         labelTotalWidth: function(l){
             var k = 0;
@@ -310,7 +359,7 @@ define(["jquery",
             //marginLeft
             var marginLeft = Math.abs(parseInt(this.$navs.css("margin-left")));
             //非label的宽度，导航的宽度
-            var buttonsWidth = that.labelTotalWidth(this.$labels.children().not(this.$navs));
+            var buttonsWidth = that.labelTotalWidth(this.$labels.children().not(this.$navsDiv));
             //导航条的宽度
             var navWidth = this.$labels.outerWidth(true) - buttonsWidth;
             //偏移量
@@ -351,7 +400,7 @@ define(["jquery",
             //marginLeft
             var marginLeft = Math.abs(parseInt(this.$navs.css("margin-left")));
             //非label的宽度，导航的宽度
-            var buttonsWidth = that.labelTotalWidth(this.$labels.children().not(this.$navs));
+            var buttonsWidth = that.labelTotalWidth(this.$labels.children().not(this.$navsDiv));
             //导航条的宽度
             var navWidth = this.$labels.outerWidth(true) - buttonsWidth;
             //偏移量

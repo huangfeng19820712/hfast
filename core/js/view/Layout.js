@@ -90,13 +90,27 @@ define(["core/js/base/BaseView",
                 return null;
             return this.regionManager.getAllRegions();
         },
-
+        /**
+         * 根据名车获取区域对象，即使对象中的属性
+         * @param name
+         * @returns {*}
+         */
         getRegion: function (name) {
             if(!this.regionManager)
                 return null;
             return this.regionManager.get(name);
         },
-
+        /**
+         * 根据index获取区域对象
+         * @param idx   区域对象中的index，从0开始
+         */
+        getRegionByIndex:function(idx){
+            var values = _.values(this.getAllRegions());
+            if(values&&idx<=values.length){
+                return values[idx];
+            }
+            return;
+        },
         // Add a single region, by name, to the layout
         addRegion: function (name, definition) {
             return this.insertRegion(name, definition, null, null);

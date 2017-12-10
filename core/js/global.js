@@ -65,6 +65,7 @@ $global.constants = {
         'fancytree': '2.20.0',
         'cubeportfolio':'2.3.3',
         'bootstrap-select':'1.12.4',
+        'parallax-slider':'1.0',
         'flowplayer':'3.2.13'
     },
     /**
@@ -90,8 +91,7 @@ $global.constants = {
     },
     viewModel: {
         DEFAULT: 0,
-        EDIT: 1,
-
+        EDIT: 1
     },
     /* xtype:{
      BASEVIEW:"BaseView",
@@ -487,6 +487,12 @@ $Component = $cons.component = {
         name: "TabLayout",
         label: "标签布局",
         src: "core/js/layout/TabLayout",
+        type: $cons.componentType.CONTAINER
+    },
+    PARALLAXLAYOUT: {
+        name: "ParallaxLayout",
+        label: "标签布局",
+        src: "core/js/layout/ParallaxLayout",
         type: $cons.componentType.CONTAINER
     },
     PILLLAYOUT: {

@@ -249,7 +249,8 @@ define(["core/js/utils/Utils",
                     }
                     this.setClassName(this.className);
                     this.setRoundedClass(this.roundedClass);
-                    this.setTheme(this.themeClass, this.theme, this.className);
+                    //主题，默认是this.xtype.name.toLowerCase()+this.theme
+                    this.setTheme(this.themeClass, this.theme, this.xtype.name.toLowerCase());
                 }
 
                 if (this.textAlign) {
@@ -263,13 +264,13 @@ define(["core/js/utils/Utils",
              * 设置主题
              * @param theme
              */
-            setTheme: function (themeClass, theme, className) {
+            setTheme: function (themeClass, theme, xtypeName) {
                 var themeClassNew = themeClass;
                 if (themeClassNew == null) {
-                    if (theme == null || className == null) {
+                    if (theme == null || xtypeName == null) {
                         return;
                     }
-                    var themeClassNew = className + "-" + theme;
+                    var themeClassNew = xtypeName + "-" + theme;
                 }
                 if (themeClassNew != null) {
                     this.$el.addClass(themeClassNew);

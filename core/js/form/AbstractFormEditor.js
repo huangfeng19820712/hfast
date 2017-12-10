@@ -128,7 +128,7 @@ define(["jquery",
          * 容器中分的列数，系统会自动分为最多12列,所有次数最好能被12整除，
          * 如果defaultColumnSize为null，则整除totalColumnNum后的栏位大小会设置会修改defaultColumnSize的值
          */
-        totalColumnNum:null,
+        totalColumnNum:1,
         /**
          * 默认的栏位大小
          */

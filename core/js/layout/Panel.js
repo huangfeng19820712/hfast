@@ -12,6 +12,7 @@ define(["jquery",
     "text!core/resources/tmpl/Panel.html",
     "core/js/view/Region","core/js/controls/ToolStrip",
     "core/js/controls/ToolStripItem","core/js/controls/HelpLink","core/js/layout/AbstractPanel",
+    "jquery.layout",
     "core/js/utils/Utils"
 ], function ($, CommonConstant, Container, LayoutTemplate,Region,ToolStrip,ToolStripItem,HelpLink,AbstractPanel) {
     var Panel = Container.extend(AbstractPanel).extend({
@@ -35,9 +36,18 @@ define(["jquery",
             className:"panel-footer",
             containerName:"footerRegion",
         },
+        topToolbarRegionConf:{
+            className:"panel-topToolbar",
+            containerName:"topToolbarRegion",
+        },
         headerLeftRegionRef:null,
         headerRightRegionRef:null,
         footerRegionRef:null,
+        topToolbarRegionRef:null,
+        /**
+         * 引用的外部插件
+         */
+        plugin:null,
         /**
          * 布局模版
          */
@@ -59,13 +69,22 @@ define(["jquery",
          */
         headerRightRegion:null,
 
-
-        _focus: false,          //控制面板是否处于关注的状态
-
+        /**
+         * 控制面板是否处于关注的状态
+         * @property    {Boolean}
+         * @default     false
+         */
+        _focus: false,
         /**
          * 底部子内容
          */
         footerRegion:null,
+
+        /**
+         * 顶部的区域
+         * @property    {Object}
+         */
+        topToolbarRegion:null,
         /**
          * 是否显示标题
          */
@@ -74,10 +93,10 @@ define(["jquery",
          * 标题栏左边的小图片css
          */
         iconSkin:"fa fa-windows",
-
-
         className:$Component.PANEL.name.toLowerCase(),
         theme:"default",
+
+        layout: "fit",
         /*-------------------------------  初始化及私有方法 start ---------------------------------------------------*/
         initializeHandle: function () {
             this._super();
@@ -86,23 +105,29 @@ define(["jquery",
                 title:this.title,
                 brief:this.brief,
                 iconSkin:this.iconSkin,
+                northId:this.getNorthId(),
                 isShowHeader:this.isShowHeader,
                 headerLeftRegionId:this.getConfId(this.headerLeftRegionConf),
                 headerRightRegionId:this.getConfId(this.headerRightRegionConf),
                 mainRegionId:this.getConfId(this.mainRegionConf),
                 footerRegionId:this.getConfId(this.footerRegionConf),
+                topToolbarRegionId:this.getConfId(this.topToolbarRegionConf)
             };
             //this._super(options,triggerEvent);
         },
-        /*render:function(container, triggerEvent){
+        getNorthId:function(){
+            return this.id+"_north";
+        },
 
-            this._super(container, triggerEvent);
-        },*/
         mountContent:function(){
             this._super();
             //有内容才显示footer
             if(!this.footerRegion){
                 this.hideFooter();
+            }
+            //有内容才显示topToolbar
+            if(!this.topToolbarRegion){
+                this.hideTopToolbar();
             }
             //添加帮助按钮
             if(this.help!=null){
@@ -119,6 +144,35 @@ define(["jquery",
                     }
                 }
             };
+
+            if(this.height){
+                this.plugin = this.$el.layout({
+                    defaults:{
+                        //closable:false,
+                        slidable:false,
+                        spacing_open:0,
+                    },
+                    center:{
+                        className:"panel-content",
+                        paneSelector:"#"+this.getConfId(this.mainRegionConf),
+                        id:this.getConfId(this.mainRegionConf)
+                    },
+                    north:{
+                        paneSelector:"#"+this.getNorthId(),
+                        padding:0,
+                        id:this.getNorthId()
+                    },
+                    south:{
+                        paneSelector:"#"+this.getConfId(this.footerRegionConf),
+                        id:this.getConfId(this.footerRegionConf)
+                    }
+                });
+            }
+        },
+        onrender:function(){
+            if(this.plugin){
+                this.plugin.resizeAll();
+            }
 
         },
         /**
@@ -192,7 +246,7 @@ define(["jquery",
                                     that.focus();
                                 }
                             }
-                        },{
+                        }/*,{
                             mode:ToolStripItem.Mode.LINK,
                             iconSkin:"fa-chevron-up",
                             realClass:"btn-borderless",
@@ -203,7 +257,7 @@ define(["jquery",
                                     that.collapse();
                                 }
                             }
-                        },{
+                        }*/,{
                             iconSkin:"fa-times",
                             realClass:"btn-borderless",
                             mode:ToolStripItem.Mode.LINK,
@@ -216,6 +270,10 @@ define(["jquery",
 
                 this._addItem(this.headerRightRegionConf);
             }
+            if(this.topToolbarRegion!=null){
+                this.topToolbarRegionConf  = _.extend(this.topToolbarRegionConf,this.topToolbarRegion);
+            }
+            this._addItem(this.topToolbarRegionConf);
 
             if(_.isString(this.mainRegion)){
                 //如果是字符串，则把字符串作为内容
@@ -228,6 +286,7 @@ define(["jquery",
                 this.footerRegionConf  = _.extend(this.footerRegionConf,this.footerRegion);
             }
             this._addItem(this.footerRegionConf);
+
         },
 
 
@@ -236,11 +295,17 @@ define(["jquery",
             this.getFooterEl().show();
 
         },
+        getFooterEl:function(){
+            return this.$el.children(".panel-footer");
+        },
         hideFooter:function(){
             this.getFooterEl().hide();
         },
-        getFooterEl:function(){
-            return this.$el.children(".panel-footer");
+        hideTopToolbar:function(){
+            this.getTopToolbarEl().hide();
+        },
+        getTopToolbarEl:function(){
+            return this.$el.children(".panel-topToolbar");
         }
     });
     return Panel;

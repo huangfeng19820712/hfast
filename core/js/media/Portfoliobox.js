@@ -11,7 +11,7 @@ define(["core/js/controls/Control",
         var CubePortfolio = $.fn.cubeportfolio.Constructor;
         $.extend(CubePortfolio.prototype, {
             updateImagesMarkup: function(src, title, counter) {
-                console.info(">>>>");
+                //console.info(">>>>");
             }
         });
         var Portfoliobox = Control.extend({

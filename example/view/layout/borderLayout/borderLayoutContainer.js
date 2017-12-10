@@ -57,6 +57,7 @@ define(["core/js/layout/BorderLayout",
                     },
                     {
                         region: BorderLayout.Region.CENTER,  //中间区域
+                        padding:0,
                         showOverflowOnHover:true
                     }
                 ];
@@ -64,7 +65,7 @@ define(["core/js/layout/BorderLayout",
             //监听渲染事件
             mountContent: function () {
                 this._super();
-
+                var that = this;
                 //获取中心区域
                 this.getCenterRegion().show(APP_NAME+"/view/layout/panelView");
                 // 获取 底部（南）区域
@@ -109,9 +110,6 @@ define(["core/js/layout/BorderLayout",
                 //this.getEastRegion().show(APP_NAME+"/view/layout/labelView", {text: "右边（东）区域"});
 
                 //this.hideRegions()
-            },
-            onshow:function(e){
-                this._super();
             }
         });
         return view;

@@ -23,6 +23,12 @@ html, body {
     panel  start
 */
 
+.panel-default > .panel-layout> .panel-heading {
+    color: #333333;
+    background-color: #f5f5f5;
+    border-color: #dddddd;
+}
+
 .row-panel {
     margin-bottom: 0;
 }
@@ -30,7 +36,7 @@ html, body {
 .panel {
     border-width: 1px;
     border-style: solid;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
     background-color: #f9f9f9;
     /*border-color: lightgrey;*/
     min-width: 300px;
@@ -224,7 +230,8 @@ html, body {
     /*padding: 20px 10px;*/
 }
 
-.panel .panel-footer {
+.panel .panel-footer,
+.panel .panel-topToolbar{
     padding: 7px 10px;
     min-height: 35px;
     border-top-width: 1px;
@@ -233,8 +240,19 @@ html, body {
     background-color: #f7f7f7;
 }
 
+.panel .panel-footer.panel-layout,
+.panel .panel-layout .panel-topToolbar{
+    min-height: 0px;
+    padding:0;
+}
+
 .panel .btn-link {
     color: inherit;
+}
+
+.panel .panel-layout{
+    padding: 0px;
+    border: 0px
 }
 
 /*
@@ -283,7 +301,8 @@ html, body {
     border-color: #3498db;
 }
 
-.panel-blue > .panel-heading {
+.panel-blue > .panel-heading,
+.panel-blue > .panel-layout> .panel-heading {
     background: #3498db;
 }
 
@@ -292,7 +311,8 @@ html, body {
     border-color: #e74c3c;
 }
 
-.panel-red > .panel-heading {
+.panel-red > .panel-heading,
+.panel-red > .panel-layout> .panel-heading {
     background: #e74c3c;
 }
 
@@ -300,8 +320,8 @@ html, body {
 .panel-green {
     border-color: #2ecc71;
 }
-
-.panel-green > .panel-heading {
+.panel-green > .panel-heading,
+.panel-green > .panel-layout> .panel-heading {
     background: #2ecc71;
 }
 
@@ -310,7 +330,8 @@ html, body {
     border-color: #1abc9c;
 }
 
-.panel-sea > .panel-heading {
+.panel-sea > .panel-heading,
+.panel-sea > .panel-layout> .panel-heading {
     background: #1abc9c;
 }
 
@@ -318,8 +339,8 @@ html, body {
 .panel-orange {
     border-color: #e67e22;
 }
-
-.panel-orange > .panel-heading {
+.panel-orange > .panel-heading,
+.panel-orange > .panel-layout> .panel-heading {
     background: #e67e22;
 }
 
@@ -327,8 +348,8 @@ html, body {
 .panel-yellow {
     border-color: #f1c40f;
 }
-
-.panel-yellow > .panel-heading {
+.panel-yellow > .panel-heading,
+.panel-yellow > .panel-layout> .panel-heading {
     background: #f1c40f;
 }
 
@@ -337,7 +358,8 @@ html, body {
     border-color: #95a5a6;
 }
 
-.panel-grey > .panel-heading {
+.panel-grey > .panel-heading,
+.panel-grey > .panel-layout> .panel-heading {
     background: #95a5a6;
 }
 
@@ -346,7 +368,8 @@ html, body {
     border-color: #555;
 }
 
-.panel-dark > .panel-heading {
+.panel-dark > .panel-heading,
+.panel-dark > .panel-layout> .panel-heading {
     background: #555;
 }
 
@@ -355,7 +378,8 @@ html, body {
     border-color: #9b6bcc;
 }
 
-.panel-purple > .panel-heading {
+.panel-purple > .panel-heading,
+.panel-purple > .panel-layout> .panel-heading {
     background: #9b6bcc;
 }
 
@@ -364,7 +388,8 @@ html, body {
     border-color: #27d7e7;
 }
 
-.panel-aqua > .panel-heading {
+.panel-aqua > .panel-heading,
+.panel-aqua > .panel-layout> .panel-heading {
     background: #27d7e7;
 }
 
@@ -373,7 +398,8 @@ html, body {
     border-color: #9c8061;
 }
 
-.panel-brown > .panel-heading {
+.panel-brown > .panel-heading,
+.panel-brown > .panel-layout> .panel-heading {
     background: #9c8061;
 }
 
@@ -382,7 +408,8 @@ html, body {
     border-color: #4765a0;
 }
 
-.panel-dark-blue > .panel-heading {
+.panel-dark-blue > .panel-heading,
+.panel-dark-blue > .panel-layout> .panel-heading {
     background: #4765a0;
 }
 
@@ -391,7 +418,8 @@ html, body {
     border-color: #79d5b3;
 }
 
-.panel-light-green > .panel-heading {
+.panel-light-green > .panel-heading,
+.panel-light-green > .panel-layout> .panel-heading {
     background: #79d5b3;
 }
 
@@ -400,7 +428,8 @@ html, body {
     border-color: #585f69;
 }
 
-.panel-default-dark > .panel-heading {
+.panel-default-dark > .panel-heading,
+.panel-default-dark > .panel-layout> .panel-heading {
     background: #585f69;
 }
 
@@ -891,6 +920,9 @@ html, body {
     background: #fafafa;
     border-bottom: solid 2px #72c02c;
 }
+.content-tabs .nav-div{
+    overflow: hidden;
+}
 .page-tabs a {
     display: block;
     float: left;
@@ -1036,3 +1068,10 @@ nav.page-tabs .page-tabs-content {
     padding: 7px;
 }
 /*portfolio end*/
+
+/*tree start*/
+.fancytree-ext-filter .fancytree-icon span.fancytree-childcounter{
+    height: auto;
+}
+/*tree end*/
+

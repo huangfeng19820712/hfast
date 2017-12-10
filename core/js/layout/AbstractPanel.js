@@ -41,6 +41,7 @@ define(["jquery",
          * 标题
          */
         title: null,
+
         /**
          * 设置title的值，并显示到页面中
          * @param title

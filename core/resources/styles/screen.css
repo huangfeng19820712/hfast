@@ -1,0 +1,198 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* line 13, ../sass/screen.scss */
+.da-slide-current .panel {
+  left: 10%;
+  opacity: 1;
+}
+
+/* line 17, ../sass/screen.scss */
+.da-slide .panel {
+  left: 110%;
+}
+
+/* Slide in from the left*/
+/* line 23, ../sass/screen.scss */
+.da-slide-fromleft .panel {
+  -moz-animation: fromLeftAnim2 0.6s ease-in 0.6s both;
+  -webkit-animation: fromLeftAnim2 0.6s ease-in 0.6s both;
+  animation: fromLeftAnim2 0.6s ease-in 0.6s both;
+}
+
+@-moz-keyframes fromLeftAnim2 {
+  0% {
+    left: -110%;
+    opacity: 0;
+  }
+  100% {
+    left: 10%;
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fromLeftAnim2 {
+  0% {
+    left: -110%;
+    opacity: 0;
+  }
+  100% {
+    left: 10%;
+    opacity: 1;
+  }
+}
+@keyframes fromLeftAnim2 {
+  0% {
+    left: -110%;
+    opacity: 0;
+  }
+  100% {
+    left: 10%;
+    opacity: 1;
+  }
+}
+/* Slide out to the right */
+/* line 31, ../sass/screen.scss */
+.da-slide-toright .panel {
+  -moz-animation: toRightAnim2 0.6s ease-in 0.3s both;
+  -webkit-animation: toRightAnim2 0.6s ease-in 0.3s both;
+  animation: toRightAnim2 0.6s ease-in 0.3s both;
+}
+
+@-moz-keyframes toRightAnim2 {
+  0% {
+    left: 10%;
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+@-webkit-keyframes toRightAnim2 {
+  0% {
+    left: 10%;
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+@keyframes toRightAnim2 {
+  0% {
+    left: 10%;
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+/* Slide in from the right*/
+/* line 40, ../sass/screen.scss */
+.da-slide-fromright .panel {
+  -moz-animation: fromRightAnim2 0.6s ease-in 0.8s both;
+  -webkit-animation: fromRightAnim2 0.6s ease-in 0.8s both;
+  animation: fromRightAnim2 0.6s ease-in 0.8s both;
+}
+
+@-moz-keyframes fromRightAnim2 {
+  0% {
+    left: 110%;
+    opacity: 0;
+  }
+  100% {
+    left: 10%;
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fromRightAnim2 {
+  0% {
+    left: 110%;
+    opacity: 0;
+  }
+  100% {
+    left: 10%;
+    opacity: 1;
+  }
+}
+@keyframes fromRightAnim2 {
+  0% {
+    left: 110%;
+    opacity: 0;
+  }
+  100% {
+    left: 10%;
+    opacity: 1;
+  }
+}
+/* Slide out to the left */
+/* line 48, ../sass/screen.scss */
+.da-slide-toleft .panel {
+  -moz-animation: toLeftAnim2 0.6s ease-in 0.3s both;
+  -webkit-animation: toLeftAnim2 0.6s ease-in 0.3s both;
+  animation: toLeftAnim2 0.6s ease-in 0.3s both;
+}
+
+@-moz-keyframes toLeftAnim2 {
+  0% {
+    left: 10%;
+    opacity: 1;
+  }
+  30% {
+    left: 15%;
+    opacity: 1;
+  }
+  100% {
+    left: -50%;
+    opacity: 0;
+  }
+}
+@-webkit-keyframes toLeftAnim2 {
+  0% {
+    left: 10%;
+    opacity: 1;
+  }
+  30% {
+    left: 15%;
+    opacity: 1;
+  }
+  100% {
+    left: -50%;
+    opacity: 0;
+  }
+}
+@keyframes toLeftAnim2 {
+  0% {
+    left: 10%;
+    opacity: 1;
+  }
+  30% {
+    left: 15%;
+    opacity: 1;
+  }
+  100% {
+    left: -50%;
+    opacity: 0;
+  }
+}
+/*Higher Resolutions*/
+@media (min-width: 1440px) {
+  /* line 57, ../sass/screen.scss */
+  .da-slide .panel {
+    margin-left: 3%;
+  }
+}
+@media (min-width: 1680px) {
+  /* line 57, ../sass/screen.scss */
+  .da-slide .panel {
+    margin-left: 7%;
+  }
+}
+@media (min-width: 1920px) {
+  /* line 57, ../sass/screen.scss */
+  .da-slide .panel {
+    margin-left: 12%;
+  }
+}

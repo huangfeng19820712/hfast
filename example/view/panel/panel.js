@@ -36,11 +36,38 @@ define(["core/js/layout/FluidLayout",
             comXtype:$Component.PANEL,
             comConf:{
                 title:"测试1",
+                height:300,
                 theme:$Theme.BLUE,
                 help:"内容1",
                 brief:"摘要1",
                 mainRegion:"aaaa",
                 footerRegion:{
+                    comXtype:$Component.TOOLSTRIP,
+                    textAlign:$TextAlign.RIGHT,
+                    comConf:{
+                        /*Panel的配置项 start*/
+                        spacing :CommonConstant.Spacing.DEFAULT,
+                        itemOptions: [{
+                            themeClass:ToolStripItem.ThemeClass.PRIMARY,
+                            text:"确定",
+                            onclick: function () {
+                                $.window.alert("测试1");
+                            }
+                        },{
+                            themeClass:ToolStripItem.ThemeClass.CANCEL,
+                            text: "取消",
+                            onclick: function () {
+                                $.window.confirm("测试1", {
+                                    yesHandle: function () {
+                                        alert(">>>");
+                                    }
+                                });
+                            }
+                        }]
+                        /*Panel 配置 End*/
+                    }
+                },
+                topToolbarRegion:{
                     comXtype:$Component.TOOLSTRIP,
                     textAlign:$TextAlign.RIGHT,
                     comConf:{

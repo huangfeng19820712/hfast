@@ -82,7 +82,6 @@ define(["core/js/utils/Utils",
              * 组件完全渲染后，触发此时间
              * @param triggerEvent
              */
-
             triggerRender:function(triggerEvent){
                 this.rendered = true;
                 //触发渲染完成后的事件
@@ -99,6 +98,11 @@ define(["core/js/utils/Utils",
              * @param id
              */
             childRenderDone:function(id){
+                /*if(this.xtype.name=="Panel"){
+                    console.info(this.childRenderCount);
+                }*/
+
+
                 this.childRenderCount++;
                 // console.info("组件id："+this.id+"有子组件:"+this.childrenCount+";子组件id："+id+"完成渲染；已渲染："+this.childRenderCount);
                 if(!this.rendered&&this.childrenCount==this.childRenderCount){

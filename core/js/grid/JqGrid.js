@@ -15,6 +15,7 @@ define([
     //"css!lib/jqGrid/5.2.0/css/ui.jqgrid-bootstrap-ui.css",
     "css!resources/themes/default/jqGrid.css",
 ], function (AbstractGrid,Utils,ComponentFactory) {
+
     //$.jgrid.defaults.styleUI = 'Bootstrap';
     $.jgrid.defaults.responsive = true;
     $.jgrid.defaults.styleUI = 'Bootstrap';
@@ -90,6 +91,10 @@ define([
          * 初始化jqgrid的版本为5
          */
         initGrid:function(){
+            /*
+             * jgrid没有返回对象，调用方法的格式：
+             * jQuery("#grid_id").jqGrid('method', parameter1,...parameterN );
+             */
             this.$table.jqGrid(this.getGridOptions());
             var that = this;
             if(this.pageable){
