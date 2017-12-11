@@ -240,17 +240,19 @@ define(["core/js/utils/Utils",
                 if (this.realClass != null) {
                     this.setRealClass(this.realClass);
                 } else {
+                    var xtypeName = this.className;
                     if (this.xtype != null) {
                         this.$el.addClass($cons.className.view);
                         /**
                          * 自动添加标识组件的className
                          */
                         this.$el.addClass(this.xtype.name.toLowerCase());
+                        xtypeName =  this.xtype.name;
                     }
                     this.setClassName(this.className);
                     this.setRoundedClass(this.roundedClass);
                     //主题，默认是this.xtype.name.toLowerCase()+this.theme
-                    this.setTheme(this.themeClass, this.theme, this.xtype.name.toLowerCase());
+                    this.setTheme(this.themeClass, this.theme,xtypeName);
                 }
 
                 if (this.textAlign) {
@@ -270,7 +272,7 @@ define(["core/js/utils/Utils",
                     if (theme == null || xtypeName == null) {
                         return;
                     }
-                    var themeClassNew = xtypeName + "-" + theme;
+                    var themeClassNew = (xtypeName?xtypeName.toLowerCase():"") + "-" + theme;
                 }
                 if (themeClassNew != null) {
                     this.$el.addClass(themeClassNew);

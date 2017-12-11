@@ -111,7 +111,8 @@ define(["jquery",
             if(contentRef&&contentRef.comRef&&contentRef.comRef.xtype === $Component.JQGRID){
                 //设置grid的宽度，tab切换过来是，宽度变成0
                 var el = contentRef.comRef.$el;
-                var width = el.width();
+                //减2，2为border的内容
+                var width = el.width()-2;
                 contentRef.comRef.$table.jqGrid('setGridWidth',width);
             }
         },
