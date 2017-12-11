@@ -6,8 +6,9 @@ define(["jquery",
     "core/js/CommonConstant",
     $Component.TOOLSTRIP.src,
     "core/js/layout/Container",
+    "core/js/utils/ApplicationUtils",
     "text!core/resources/tmpl/tabLabel.html"
-], function ($, CommonConstant,ToolStrip, Container,tabLabelTmpl) {
+], function ($, CommonConstant,ToolStrip, Container,ApplicationUtil,tabLabelTmpl) {
     var TabLayout = Container.extend({
         xtype:$Component.TABLAYOUT,
         /**
@@ -103,18 +104,37 @@ define(["jquery",
                 this.$navs.css("margin-left",width+"px");
             }
         },
-
+        /**
+         * 处理包含JqGrid的tab
+         * @param tabId
+         */
         handleShowJqGrid:function(tabId){
-
             var contentRef = this.getContentRefByTabId(tabId);
             //针对jqgrid做特殊处理
-            if(contentRef&&contentRef.comRef&&contentRef.comRef.xtype === $Component.JQGRID){
-                //设置grid的宽度，tab切换过来是，宽度变成0
-                var el = contentRef.comRef.$el;
-                //减2，2为border的内容
-                var width = el.width()-2;
-                contentRef.comRef.$table.jqGrid('setGridWidth',width);
+            if(contentRef&&contentRef.comRef){
+                if(contentRef.comRef.xtype === $Component.JQGRID){
+                    this.refreshGrid(contentRef.comRef);
+                }else{
+                    var childrenComponent = ApplicationUtil.getChildrenComponent(contentRef.comRef,$Component.JQGRID);
+                    var that = this;
+                    _.each(childrenComponent,function(item,idx,list){
+                        that.refreshGrid(item);
+                    });
+                }
+
             }
+        },
+        /**
+         * 刷新grid组件，让其显示出来
+         * @param gridComponent
+         */
+        refreshGrid:function(gridComponent){
+            //设置grid的宽度，tab切换过来是，宽度变成0
+            var el = gridComponent.$el;
+            //减2，2为border的内容
+            var width = el.width()-2;
+            gridComponent.$table.jqGrid('setGridWidth',width);
+            //contentRef.comRef.reload();
         },
 
         /**

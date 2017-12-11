@@ -152,8 +152,18 @@ define([ "core/js/context/ApplicationContext"],
             getAllComponent:function(){
                 var componentManager = this.getApplicationContext().getComponentManager();
                 if(componentManager){
-                    return componentManager.getAllComponent();
+                    return componentManager.getComponents();
                 }
+            },
+            /**
+             * 获取子组件
+             * @param component
+             * @param xtype
+             * @returns {Array}
+             */
+            getChildrenComponent:function(component,xtype){
+                var childrenComponent = this.getApplicationContext().getComponentManager().getChildrenComponent(component, xtype);
+                return childrenComponent;
             },
             /**
              * 页面跳转

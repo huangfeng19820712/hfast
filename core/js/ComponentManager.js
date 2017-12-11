@@ -15,6 +15,10 @@ define(["underscore", "core/js/Class"], function (_, Class) {
             }
             this.getComponents()[id] = component;
         },
+        /**
+         * 获取所有的组件
+         * @returns {null}
+         */
         getComponents:function(){
             if(!this.components){
                 this.components = {};
@@ -55,10 +59,22 @@ define(["underscore", "core/js/Class"], function (_, Class) {
             delete this.getComponents()[id];
         },
         /**
-         * 获取所有的
+         * 获取子组件
+         * @param component
+         * @param xtype
+         * @returns {Array}
          */
-        getAllComponent:function(){
-            return this.components;
+        getChildrenComponent:function(component,xtype){
+            var result = [];
+            var className =  ".hfast-view";
+            if(xtype){
+                className+="."+ xtype.name.toLowerCase();
+            }
+            var compoents = component.$el.find(className);
+            _.each(compoents,function(item,index,list){
+                result.push($(item).data("control"));
+            });
+            return result;
         }
 
     });

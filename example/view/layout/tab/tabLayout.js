@@ -58,30 +58,36 @@ define(["core/js/layout/TabLayout",
                     }
                 }
             },{
+                label:"表格2",
+                content:{
+                    comXtype:$Component.FIELDSET,
+                    comConf:{
+                        title:"测试1",
+                        mainRegion:{
+                            comXtype:$Component.JQGRID,
+                            comConf:{
+                                datatype: "local",
+                                data: mydata,
+                                colModel: [
+                                    { label: 'Inv No', name: 'id', width: 75, key:true },
+                                    { label: 'Date', name: 'invdate', width: 90 },
+                                    { label: 'Client', name: 'name', width: 100 },
+                                    { label: 'Amount', name: 'amount', width: 80 },
+                                    { label: 'Tax', name: 'tax', width: 80 },
+                                    { label: 'Total', name: 'total', width: 80 },
+                                    { label: 'Notes', name: 'note', width: 150 }
+                                ],
+                                pageable:false,
+                                filterable:false,
+                            }
+                        }
+                    }
+                }
+            },{
                 label:"字符串",
                 content:"字符串"
             },{
                 label:"表格1",
-                content:{
-                    comXtype:$Component.JQGRID,
-                    comConf:{
-                        datatype: "local",
-                        data: mydata,
-                        colModel: [
-                            { label: 'Inv No', name: 'id', width: 75, key:true },
-                            { label: 'Date', name: 'invdate', width: 90 },
-                            { label: 'Client', name: 'name', width: 100 },
-                            { label: 'Amount', name: 'amount', width: 80 },
-                            { label: 'Tax', name: 'tax', width: 80 },
-                            { label: 'Total', name: 'total', width: 80 },
-                            { label: 'Notes', name: 'note', width: 150 }
-                        ],
-                        pageable:false,
-                        filterable:false,
-                    }
-                }
-            },{
-                label:"表格2",
                 content:{
                     comXtype:$Component.JQGRID,
                     comConf:{
