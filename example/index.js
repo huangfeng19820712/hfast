@@ -10,7 +10,7 @@ define([
         $Component.NAVIGATIONBAR.src,
         //必须先加载BaseView对象，不然后续BaseView的子类会显示不出来
         "core/js/base/BaseView",
-        "css!"+APP_NAME+"/css/app.css"
+        "css!"+APP_NAME+"/resources/styles/app.css"
     ], function ( SinglePageApplication,
                   NavigationBar) {
     var app = SinglePageApplication.extend({
