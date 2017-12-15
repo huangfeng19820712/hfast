@@ -119,14 +119,19 @@ define([
             var modalDialog = $.window.getActive();
             modalDialog.setTitle(options.title||$i18n.alertLabel);
             modalDialog.setBody(msg);
-            var buttonGroup = new ToolStrip({
-                textAlign:$TextAlign.RIGHT,
-                realClass:"btn-group text-right",
-                spacing :CommonConstant.Spacing.DEFAULT,
-                itemOptions: options.buttons
-            });
-            buttonGroup.render();
-            modalDialog.setFooter(buttonGroup.$el);
+            if(options.buttons){
+                var buttonGroup = new ToolStrip({
+                    textAlign:$TextAlign.RIGHT,
+                    realClass:"btn-group text-right",
+                    spacing :CommonConstant.Spacing.DEFAULT,
+                    itemOptions: options.buttons
+                });
+                buttonGroup.render();
+                modalDialog.setFooter(buttonGroup.$el);
+                modalDialog.showFooter();
+            }else{
+                modalDialog.hideFooter();
+            }
             modalDialog.show();
         };
         $.window.alertError = function(){

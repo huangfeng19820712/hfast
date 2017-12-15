@@ -5,7 +5,7 @@
 define(["core/js/controls/Control",
     "core/js/utils/ViewUtils",
     "core/js/CommonConstant",
-    "text!/demo/tmpl/thumbnail.html",
+    "text!"+APP_NAME+"/resources/tmpl/thumbnail.html",
     "jquery.cubeportfolio"], function (Control, ViewUtils, CommonConstant,Template) {
     var portfolio = Control.extend({
         className:"container-fluid",

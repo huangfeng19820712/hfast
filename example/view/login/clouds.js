@@ -3,8 +3,8 @@
  */
 define([
         "core/js/controls/Control",
-        "text!"+APP_NAME+"/tmpl/xVertex.html",
-        "text!"+APP_NAME+"/tmpl/xFragment.html",
+        "text!"+APP_NAME+"/resources/tmpl/xVertex.html",
+        "text!"+APP_NAME+"/resources/tmpl/xFragment.html",
         APP_NAME+"/clouds/assets/three.min",
         APP_NAME+"/clouds/assets/Detector",
     ],

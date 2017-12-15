@@ -66,6 +66,7 @@ $global.constants = {
         'cubeportfolio':'2.3.3',
         'bootstrap-select':'1.12.4',
         'parallax-slider':'1.0',
+        'echarts':'3.8.4',
         'flowplayer':'3.2.13'
     },
     /**
@@ -590,6 +591,11 @@ $Component = $cons.component = {
         name: "Icon",
         label: "图片组件",
         src: "core/js/controls/Icon"
+    },
+    ECHART: {
+        name: "Echart",
+        label: "图表组件",
+        src: "core/js/chart/Echart"
     },
     LABEL: {
         name: "Label",

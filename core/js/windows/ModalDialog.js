@@ -80,6 +80,12 @@ define(["jquery",
         setFooter: function(footer){
             this.$footer.empty().append(footer);
         },
+        showFooter:function(){
+            this.$footer.show();
+        },
+        hideFooter:function(){
+            this.$footer.hide();
+        },
         hide: function () {
             if(this.beforeHide instanceof Function){
                 var result = this.beforeHide();

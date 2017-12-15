@@ -155,8 +155,10 @@ define([
                     }]
                     /*Panel 配置 End*/
                 }
+            },
+            onrender:function(){
+                console.info(">>>");
             }
-
         });
         return view;
     });

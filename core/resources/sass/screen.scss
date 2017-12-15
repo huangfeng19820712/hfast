@@ -6,20 +6,21 @@
 //@import "compass/reset";
 @import "compass/css3/animation";
 
+/*
 $width-1440:1440px;
 $width-1680:1680px;
 $width-1920:1920px;
 
-.da-slide-current .panel{
-     left: 10%;
-     opacity: 1;
-}
+//.da-slide-current .panel{
+//     left: 10%;
+//     opacity: 1;
+//}
 .da-slide .panel{
      //position: absolute;
      //opacity: 0;
-     left: 110%;
+     //left: 110%;
 }
-/* Slide in from the left*/
+/!* Slide in from the left*!/
 .da-slide-fromleft .panel {
      @include animation(fromLeftAnim2 0.6s ease-in 0.6s both);
 }
@@ -27,16 +28,17 @@ $width-1920:1920px;
      0%{ left: -110%; opacity: 0; }
      100%{ left: 10%; opacity: 1; }
 }
-/* Slide out to the right */
-.da-slide-toright .panel{
+/!* Slide out to the right *!/
+//.da-slide-toright .panel,
+.da-slide-toright .fluidlayout>.region{
      @include animation(toRightAnim2 0.6s ease-in 0.3s both);
      //position: absolute;
 }
 @include keyframes(toRightAnim2){
-     0%{ left: 10%;  opacity: 1; }
+     0%{opacity: 1; }
      100%{ left: 100%; opacity: 0;}
 }
-/* Slide in from the right*/
+/!* Slide in from the right*!/
 .da-slide-fromright .panel{
      @include animation(fromRightAnim2 0.6s ease-in 0.8s both);
 }
@@ -44,7 +46,7 @@ $width-1920:1920px;
      0%{ left: 110%; opacity: 0; }
      100%{ left: 10%; opacity: 1; }
 }
-/* Slide out to the left */
+/!* Slide out to the left *!/
 .da-slide-toleft .panel{
      @include animation(toLeftAnim2 0.6s ease-in 0.3s both);
 }
@@ -53,7 +55,7 @@ $width-1920:1920px;
      30%{ left: 15%;  opacity: 1; }
      100%{ left: -50%; opacity: 0; }
 }
-/*Higher Resolutions*/
+/!*Higher Resolutions*!/
 .da-slide .panel{
      @media (min-width: $width-1440) {
           margin-left:3%;
@@ -65,6 +67,27 @@ $width-1920:1920px;
           margin-left:12%;
      }
 
+}
+*/
+
+
+.animation,
+.da-slide-toright .fluidlayout>.region
+{
+     /*width:100px;
+     height:100px;*/
+     left:600px;
+     /*background:red;*/
+     position:absolute;
+     /*overflow: hidden;*/
+     animation:mymove 5s infinite 0.4s both;
+     /*-webkit-animation:mymove 5s infinite; /!*Safari and Chrome*!/*/
+}
+
+@keyframes mymove
+{
+     /*0%{ left: 50%; opacity: 1; }*/
+     100%{ left: 100%; opacity: 0;}
 }
 
 

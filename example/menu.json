@@ -187,6 +187,24 @@
       "visible": "1",
       "orderNo": null
     },{
+      "id": "0203",
+      "name": "过滤树",
+      "pid": "02",
+      "url": "tree/filterTree",
+      "type": "1",
+      "code": "tree",
+      "visible": "1",
+      "orderNo": null
+    },{
+      "id": "0204",
+      "name": "编辑树",
+      "pid": "02",
+      "url": "tree/editTree",
+      "type": "1",
+      "code": "tree",
+      "visible": "1",
+      "orderNo": null
+    },{
       "id": "9",
       "name": "表单",
       "url": "form",
@@ -725,23 +743,9 @@
       "visible": "1",
       "orderNo": null
     },{
-      "id": "1705",
-      "name": "导航标签",
-      "url": "layout/tab/navtabLayout",
-      "pid": "17",
-      "tip": null,
-      "leafed": null,
-      "remark": null,
-      "chain": null,
-      "icon": null,
-      "type": "1",
-      "code": "navtabLayout",
-      "visible": "1",
-      "orderNo": null
-    },{
       "id": "1101",
       "name": "borderLayoutContainer",
-      "url": "layout/borderLayout/borderLayoutContainer",
+      "url": null,
       "pid": "11",
       "tip": null,
       "leafed": null,
@@ -749,7 +753,35 @@
       "chain": null,
       "icon": null,
       "type": "1",
+      "code": null,
+      "visible": "1",
+      "orderNo": null
+    },{
+      "id": "110101",
+      "name": "borderLayoutContainer",
+      "url": "layout/borderLayout/borderLayoutContainer",
+      "pid": "1101",
+      "tip": null,
+      "leafed": null,
+      "remark": null,
+      "chain": null,
+      "icon": null,
+      "type": "1",
       "code": "borderLayoutContainer",
+      "visible": "1",
+      "orderNo": null
+    },{
+      "id": "110101",
+      "name": "树与表单",
+      "url": "layout/borderLayout/treeAndForm",
+      "pid": "1101",
+      "tip": null,
+      "leafed": null,
+      "remark": null,
+      "chain": null,
+      "icon": null,
+      "type": "1",
+      "code": "treeAndForm",
       "visible": "1",
       "orderNo": null
     },{
@@ -806,6 +838,20 @@
       "icon": null,
       "type": "1",
       "code": "simpleLayout",
+      "visible": "1",
+      "orderNo": null
+    },{
+      "id": "1106",
+      "name": "多版面布局",
+      "url": "layout/parallaxLayout/parallaxLayout",
+      "pid": "11",
+      "tip": null,
+      "leafed": null,
+      "remark": null,
+      "chain": null,
+      "icon": null,
+      "type": "1",
+      "code": "parallaxLayout",
       "visible": "1",
       "orderNo": null
     },{

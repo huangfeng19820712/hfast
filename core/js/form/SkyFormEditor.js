@@ -47,6 +47,11 @@ define(["jquery",
         formModel:null,
 
         /**
+         * 面板的全局默认是否伸缩，如果group有定义则覆盖此值
+         */
+        defaultCollapsible:true,
+
+        /**
          * 所有编辑器的对象
          */
         _editors:null,
@@ -151,10 +156,10 @@ define(["jquery",
                     continue;
                 }
                 var createFieldset = this._createFieldset(config,this.fields);
-                if(!config.id){
+                /*if(!config.id){
                     //赋值id，方便检索对象
                     config.id = createFieldset.id;
-                }
+                }*/
                 result[createFieldset.id] = createFieldset;
             }
 
@@ -197,7 +202,7 @@ define(["jquery",
 
             fieldsetConfig["parent"] = this;   //设置面板的父类为当前编辑器
             if(config==null||config.collapsible==null){
-                fieldsetConfig["collapsible"] = true;
+                fieldsetConfig["collapsible"] = this.defaultCollapsible;
             }else{
                 fieldsetConfig["collapsible"] = config.collapsible
             }

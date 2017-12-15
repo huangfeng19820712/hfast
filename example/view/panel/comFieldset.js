@@ -48,9 +48,6 @@ define(["core/js/layout/FluidLayout",
 
         var view = Fieldset.extend({
             title:"测试1",
-            theme:$Theme.BLUE,
-            help:"内容1",
-            brief:"摘要1",
             mainRegion:{
                 comXtype:$Component.BOOTSTRAPGRID,
                 comConf:{

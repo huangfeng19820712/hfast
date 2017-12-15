@@ -240,8 +240,8 @@ define(["core/js/utils/Utils",
                 if (this.realClass != null) {
                     this.setRealClass(this.realClass);
                 } else {
-                    var xtypeName = this.className;
-                    if (this.xtype != null) {
+                    var xtypeName = this.themeClassPre;
+                    if (this.themeClassPre==null&&this.xtype != null) {
                         this.$el.addClass($cons.className.view);
                         /**
                          * 自动添加标识组件的className

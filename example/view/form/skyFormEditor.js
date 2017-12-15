@@ -7,9 +7,8 @@ define([
         "core/js/editors/TextEditor",
         "core/js/windows/Window"],
     function (Backbone,SkyFormEditor, TextEditor, Window) {
-
-
         var skyFormEditor = SkyFormEditor.extend({
+            test:{text:1},
             fields:[{
                 label:"时间",
                 name:"datetime",
@@ -65,7 +64,11 @@ define([
                     }
                 }]
         });
-
+        var skyFormEditor2 = new skyFormEditor();
+        console.info(skyFormEditor2.test.text);
+        skyFormEditor2.test.text =2;
+        var skyFormEditor3 = new skyFormEditor();
+        console.info(skyFormEditor3.test.text);
         return skyFormEditor;
     });
 

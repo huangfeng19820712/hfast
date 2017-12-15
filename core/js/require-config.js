@@ -64,7 +64,7 @@ function $globalRequireConfig(webRoot) {
             "validate":$route.getJs("jquery.validate","messages_zh"),
             "smoothScroll":$route.getJs("smoothScroll"),
             "back-to-top":$route.getJs("back-to-top"),
-
+            "echarts":$route.getJs("echarts"),
             "usa_states":$route.getJs("mapael","usa_states"),
 
 

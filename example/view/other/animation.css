@@ -1,0 +1,17 @@
+.animation
+{
+    /*width:100px;
+    height:100px;*/
+    left:600px;
+    /*background:red;*/
+    position:absolute;
+    /*overflow: hidden;*/
+    animation:mymove 5s infinite 0.4s both;
+    /*-webkit-animation:mymove 5s infinite; /!*Safari and Chrome*!/*/
+}
+
+@keyframes mymove
+{
+    /*0%{ left: 50%; opacity: 1; }*/
+    100%{ left: 100%; opacity: 0;}
+}

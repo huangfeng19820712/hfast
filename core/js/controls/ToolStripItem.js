@@ -87,7 +87,10 @@ define(["jquery",
          * 是否允许回车键导航：即按回车键触发单击操作
          */
         enterKeyNavigatable: false,
-
+        /**
+         * 主题的样式class前缀
+         */
+        themeClassPre:"btn",
         /**
          * 聚焦按钮
          * add by 2014.07.14
