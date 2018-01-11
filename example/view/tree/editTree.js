@@ -16,10 +16,41 @@ define(["core/js/layout/Panel",
             beforeInitializeHandle:function(options, triggerEvent){
                 this._super();
                 var menuTree = this.getMenuTree();
+                var that = this;
                 this.mainRegion={
                     comXtype:$Component.TREE,
-                        comConf:{
+                    comConf:{
                         data:menuTree,
+                        pluginConf:{
+                            //extraClasses:"label rounded label-success",
+                            /**
+                             * 渲染节点的时候，添加节点的信息
+                             * @param event
+                             * @param data
+                             */
+                            renderNode:function(event,data){
+                                var node = data.node;
+                                $(node.span).find(">.fancytree-title").addClass("label rounded label-success");
+                                that.createNodeLabel($(node.span),node.title);
+                            },
+                            /*expand:function(event,data){
+                                _.each(data.node.children,function(item,index,list){
+                                    //$(node.span).append("<span class='label rounded label-success pull-right'>"+node.title+"</span>");
+
+                                    that.createNodeLabel($(item.span),item.title);
+                                });
+                            },
+                            init:function(event,data){
+                                data.tree.visit(function(node){
+                                    //$(node.span).append("<span class='label rounded label-success pull-right'>"+node.title+"</span>");
+                                    that.createNodeLabel($(node.span),node.title);
+                                    //node.setExpanded(true);
+                                });
+                            },*/
+                        },
+
+
+
                     }
                 };
                 var that = this;
@@ -89,6 +120,12 @@ define(["core/js/layout/Panel",
                         /*Panel 配置 End*/
                     }
                 };
+            },
+            createNodeLabel:function(node,title){
+                var find = node.find(".label-number");
+                if(!find||find.length==0){
+                    node.append("<span class='label-number label rounded label-success pull-right'>"+title+"</span>");
+                }
             },
             getMenuTree:function(){
                 var applicationContext = ApplicationUtils.getApplicationContext();

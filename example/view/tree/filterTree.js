@@ -15,8 +15,15 @@ define(["core/js/layout/Panel",
                 this._super();
                 this.mainRegion={
                     comXtype:$Component.TREE,
-                        comConf:{
+                    comConf:{
                         data:[this.getModuleTree("core/js/base/AbstractView")],
+                        pluginConf:{
+                            renderNode:function(event,data){
+                                var node = data.node;
+                                //$(node.span).find(">.fancytree-title").addClass("label rounded label-success");
+                                that.createNodeLabel($(node.span),node.title);
+                            },
+                        },
                     }
                 };
                 var that = this;
@@ -51,6 +58,12 @@ define(["core/js/layout/Panel",
                         },]
                     }
                 };
+            },
+            createNodeLabel:function(node,title){
+                var find = node.find(".label-number");
+                if(!find||find.length==0){
+                    node.append("<span class='label-number label rounded label-success pull-right'>"+title+"</span>");
+                }
             },
             getModuleTree:function(moduleName,arr){
                 var va = window.rtree.tree[moduleName];

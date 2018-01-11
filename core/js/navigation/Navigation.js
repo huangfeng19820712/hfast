@@ -7,8 +7,8 @@ define([
     "text!core/resources/tmpl/navigation.html"
 ], function (CommonConstant,AbstractControlView,Template) {
     var Navigation = AbstractControlView.extend({
-        xtype:$cons.NAVIGATION,
-        className:"nav navbar-nav",
+        xtype:$Component.NAVIGATION,
+        //className:"nav navbar-nav",
         /**
          * {Array}
          * <code>
@@ -24,6 +24,7 @@ define([
         data:null,
         template:Template,
         mountContent:function(){
+            //this.initClass();
             var that = this;
             this.$el.append('<ul class="nav navbar-nav"/>');
             var ul = this.$el.find("ul");

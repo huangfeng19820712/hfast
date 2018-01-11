@@ -25,7 +25,6 @@ define([
         currentPage: 1,
         totalPage: null,
         className: "pagination",
-        theme: $Theme.DEFAULT,
         goButton: null,
         textInput:null,
         /**
@@ -193,16 +192,19 @@ define([
             var itemValues = [];
             var start = 1;
             var realItemNum = itemNum;
-            //处理总页数小于规定的子项数
-            if (totalPage < itemNum) {
-                realItemNum = totalPage;
-            }
-            //处理
-            if (totalPage - center + 1 < currentPage) {
-                start = totalPage - itemNum + 1;
-            } else if (currentPage > center) {
-                //当前页面减去中间数
-                start = currentPage - center + 1;
+            if(this.itemNum<this.totalPage){
+                //当总页数大于现实的页数时，才需要处理
+                //处理总页数小于规定的子项数
+                if (totalPage < itemNum) {
+                    realItemNum = totalPage;
+                }
+                //处理
+                if (totalPage - center + 1 < currentPage) {
+                    start = totalPage - itemNum + 1;
+                } else if (currentPage > center) {
+                    //当前页面减去中间数
+                    start = currentPage - center + 1;
+                }
             }
             for (var i = 1; i <= realItemNum; i++, start++) {
                 itemValues[i] = start;

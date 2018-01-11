@@ -17,6 +17,117 @@ define(["core/js/layout/TabLayout",
         ];
 
         var view = TabLayout.extend({
+            lazyRendered:true,
+            beforeInitializeHandle: function () {
+                this._super();
+                this.tabs = [{
+                    label:"表格1",
+                    content:{
+                        comXtype:$Component.FIELDSET,
+                        comConf:{
+                            title:"测试1",
+                            mainRegion:{
+                                comXtype:$Component.JQGRID,
+                                comConf:{
+                                    datatype: "local",
+                                    data: mydata,
+                                    colModel: [
+                                        { label: 'Inv No', name: 'id', width: 75, key:true },
+                                        { label: 'Date', name: 'invdate', width: 90 },
+                                        { label: 'Client', name: 'name', width: 100 },
+                                        { label: 'Amount', name: 'amount', width: 80 },
+                                        { label: 'Tax', name: 'tax', width: 80 },
+                                        { label: 'Total', name: 'total', width: 80 },
+                                        { label: 'Notes', name: 'note', width: 150 }
+                                    ],
+                                    //pageable:false,
+                                    //filterable:false,
+                                }
+                            }
+                        }
+                    }
+                },{
+                    label:"表格2",
+                    content:{
+                        comXtype:$Component.FIELDSET,
+                        comConf:{
+                            title:"测试1",
+                            mainRegion:{
+                                comXtype:$Component.JQGRID,
+                                comConf:{
+                                    datatype: "local",
+                                    data: mydata,
+                                    colModel: [
+                                        { label: 'Inv No', name: 'id', width: 75, key:true },
+                                        { label: 'Date', name: 'invdate', width: 90 },
+                                        { label: 'Client', name: 'name', width: 100 },
+                                        { label: 'Amount', name: 'amount', width: 80 },
+                                        { label: 'Tax', name: 'tax', width: 80 },
+                                        { label: 'Total', name: 'total', width: 80 },
+                                        { label: 'Notes', name: 'note', width: 150 }
+                                    ],
+                                    //pageable:false,
+                                    //filterable:false,
+                                }
+                            }
+                        }
+                    }
+                },{
+                    label:"字段集组件",
+                    content:{
+                        comXtype: $Component.FIELDSET,
+                        comConf: {
+                            fields: [{
+                                label: "时间",
+                                name: "datetime",
+                                editorType: $Component.DATETIMEEDITOR,
+                                rules: {
+                                    required: true,
+                                },
+                            },{
+                                label: "文本",
+                                name: "text",
+                                editorType: $Component.TEXTEDITOR,
+                                rules: {
+                                    required: true,
+                                    maxlength: 20,
+                                },
+                            },{
+                                label: "日期",
+                                name: "date",
+                                editorType: $Component.DATEEDITOR,
+                                rules: {
+                                    required: true,
+                                    maxlength: 20,
+                                },
+                            }]
+                        }
+                    }
+                },{
+                    label:"字符串",
+                    content:"字符串"
+                },{
+                    label:"表格3",
+                    content:{
+                        comXtype:$Component.JQGRID,
+                        comConf:{
+                            datatype: "local",
+                            data: mydata,
+                            colModel: [
+                                { label: 'Inv No', name: 'id', width: 75, key:true },
+                                { label: 'Date', name: 'invdate', width: 90 },
+                                { label: 'Client', name: 'name', width: 100 },
+                                { label: 'Amount', name: 'amount', width: 80 },
+                                { label: 'Tax', name: 'tax', width: 80 },
+                                { label: 'Total', name: 'total', width: 80 },
+                                { label: 'Notes', name: 'note', width: 150 }
+                            ],
+                            pageable:false,
+                            filterable:false,
+                        }
+                    }
+                }];
+            },
             onshowTab:function(event){
                 var tabId = $(event.target).parent().data("tabId");
                 console.info("before>"+tabId);
@@ -26,87 +137,6 @@ define(["core/js/layout/TabLayout",
                 var tabId = $(event.target).parent().data("tabId");
                 console.info("after>"+tabId);
             },
-            tabs: [{
-                label:"字段集组件",
-                content:{
-                    comXtype: $Component.FIELDSET,
-                    comConf: {
-                        fields: [{
-                            label: "时间",
-                            name: "datetime",
-                            editorType: $Component.DATETIMEEDITOR,
-                            rules: {
-                                required: true,
-                            },
-                        },{
-                            label: "文本",
-                            name: "text",
-                            editorType: $Component.TEXTEDITOR,
-                            rules: {
-                                required: true,
-                                maxlength: 20,
-                            },
-                        },{
-                            label: "日期",
-                            name: "date",
-                            editorType: $Component.DATEEDITOR,
-                            rules: {
-                                required: true,
-                                maxlength: 20,
-                            },
-                        }]
-                    }
-                }
-            },{
-                label:"表格2",
-                content:{
-                    comXtype:$Component.FIELDSET,
-                    comConf:{
-                        title:"测试1",
-                        mainRegion:{
-                            comXtype:$Component.JQGRID,
-                            comConf:{
-                                datatype: "local",
-                                data: mydata,
-                                colModel: [
-                                    { label: 'Inv No', name: 'id', width: 75, key:true },
-                                    { label: 'Date', name: 'invdate', width: 90 },
-                                    { label: 'Client', name: 'name', width: 100 },
-                                    { label: 'Amount', name: 'amount', width: 80 },
-                                    { label: 'Tax', name: 'tax', width: 80 },
-                                    { label: 'Total', name: 'total', width: 80 },
-                                    { label: 'Notes', name: 'note', width: 150 }
-                                ],
-                                pageable:false,
-                                filterable:false,
-                            }
-                        }
-                    }
-                }
-            },{
-                label:"字符串",
-                content:"字符串"
-            },{
-                label:"表格1",
-                content:{
-                    comXtype:$Component.JQGRID,
-                    comConf:{
-                        datatype: "local",
-                        data: mydata,
-                        colModel: [
-                            { label: 'Inv No', name: 'id', width: 75, key:true },
-                            { label: 'Date', name: 'invdate', width: 90 },
-                            { label: 'Client', name: 'name', width: 100 },
-                            { label: 'Amount', name: 'amount', width: 80 },
-                            { label: 'Tax', name: 'tax', width: 80 },
-                            { label: 'Total', name: 'total', width: 80 },
-                            { label: 'Notes', name: 'note', width: 150 }
-                        ],
-                        pageable:false,
-                        filterable:false,
-                    }
-                }
-            }]
         });
 
 

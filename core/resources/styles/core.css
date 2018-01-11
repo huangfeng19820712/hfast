@@ -454,7 +454,6 @@ html, body {
 .fieldset fieldset legend .fa {
     margin-right: 5px;
 }
-
 .sky-form .col {
     margin-bottom: 20px;
 }
@@ -467,53 +466,12 @@ div.fielset-main {
     height: auto;
 }
 
+.fieldset-row{
+    display:inline-block;
+    width: 100%;
+}
 /*  fieldset end*/
-/* tab  start */
-.tab-blue .nav-tabs > .active > a,
-.tab-blue .nav-tabs > .active > a:hover,
-.tab-blue .nav-tabs > .active > a:focus,
-.tab-blue .nav-tabs > li > a:hover {
-    background: #3498db;
-}
 
-.tab-blue .nav-tabs {
-    border-bottom-color: #3498db;
-}
-
-.tab-green .nav-tabs > .active > a,
-.tab-green .nav-tabs > .active > a:hover,
-.tab-green .nav-tabs > .active > a:focus,
-.tab-green .nav-tabs > li > a:hover {
-    background: #72c02c;
-}
-
-.tab-green .nav-tabs {
-    border-bottom-color: #72c02c;
-}
-
-.tab-orange .nav-tabs > .active > a,
-.tab-orange .nav-tabs > .active > a:hover,
-.tab-orange .nav-tabs > .active > a:focus,
-.tab-orange .nav-tabs > li > a:hover {
-    background: #e67e22;
-}
-
-.tab-orange .nav-tabs {
-    border-bottom-color: #e67e22;
-}
-
-.tab-light-green .nav-tabs > .active > a,
-.tab-light-green .nav-tabs > .active > a:hover,
-.tab-light-green .nav-tabs > .active > a:focus,
-.tab-light-green .nav-tabs > li > a:hover {
-    background: #79d5b3;
-}
-
-.tab-light-green .nav-tabs {
-    border-bottom-color: #79d5b3;
-}
-
-/*  tab end */
 
 /* load start*/
 @-webkit-keyframes tp-rotateplane {
@@ -786,34 +744,6 @@ nav.pagination {
     margin: 0;
 }
 
-.pagination-default button.btn-default.active,
-.pagination-green button.btn-default.active {
-    background-color: #72c02c;
-    border-color: #72c02c;
-}
-
-.pagination-default button:hover,
-.pagination-green button:hover {
-    color: #fff;
-    background: #5fb611;
-    border-color: #5fb611;
-}
-
-.pagination-blue button.btn-default.active {
-    background-color: #3498db;
-    border-color: #3498db;
-}
-
-.pagination-orange button.btn-default.active {
-    background-color: #e67e22;
-    border-color: #e67e22;
-}
-
-.pagination-light-green button.btn-default.active {
-    background-color: #79d5b3;
-    border-color: #79d5b3;
-}
-
 .pagination > div > div {
     float: left;
 }
@@ -1073,5 +1003,85 @@ nav.page-tabs .page-tabs-content {
 .fancytree-ext-filter .fancytree-icon span.fancytree-childcounter{
     height: auto;
 }
+
+.tree span.fancytree-title{
+    color: #555;
+}
+
+.tree span.fancytree-title.label{
+    color: #fff;
+}
 /*tree end*/
+
+/*shrotcut start*/
+.shortcut {
+    width: 80px;
+    overflow: hidden;
+    cursor: pointer;
+    padding: 0;
+    position: absolute;
+}
+.shortcut>.icon{
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    margin: 0 auto;
+    color: white;
+    box-sizing: border-box;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    text-align: center;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    display: block;
+    font-size: 37px;
+    line-height: 50px;
+}
+.shortcut>.title {
+    color: white;
+    font-size: 12px;
+    text-align: center;
+    line-height: 18px;
+    margin-bottom: 5px;
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.3);
+    border-radius:10px 10px 10px 10px;
+}
+.shortcut:hover{
+    background-color: rgba(62, 61, 61, 0.11);
+}
+/*.shortcutlist .placeholder{
+    height: 83px;
+}*/
+.ui-sortable-placeholder{
+    background-color: rgba(62, 61, 61, 0.11);
+}
+
+
+/*shrotcut end*/
+
+/*dropdowncontainer start*/
+.dropdowncontainer .dropdown-menu{
+    padding:0;
+}
+/*dropdowncontainer end*/
+/* tab  start */
+/*.tab-v2 .nav-tabs a,
+.tab-v3 .nav-tabs a,
+.tab-v4 .nav-tabs a {
+    font-size: 14px;
+    padding: 5px 15px;
+}*/
+/* tab  end */
+
+.container-fluid .utils-inline-block{
+    display: inline-block;
+    float: none;
+    /*设置line boxes顶部看起*/
+    vertical-align: top;
+}
+
+
+
+
 

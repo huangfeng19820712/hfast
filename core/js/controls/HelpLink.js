@@ -17,10 +17,10 @@ define(["core/js/controls/ToolStripItem",
             this.$el.popover({
                 container: 'body',
                 html: true,
-                trigger:"focus",
+                trigger:"focus hover",
                 title:this.panelTitle,
                 content: this.mainContent,
-                placement:this.placement||"top"
+                placement:this.placement||"right"
             });
         },
         //销毁popover

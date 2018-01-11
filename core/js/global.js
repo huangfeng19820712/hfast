@@ -67,6 +67,10 @@ $global.constants = {
         'bootstrap-select':'1.12.4',
         'parallax-slider':'1.0',
         'echarts':'3.8.4',
+        'animate':'3.5.2',
+        'web-animations':'2.0',
+        'muuri':'0.5.3',
+        'hammer':'2.0.7',
         'flowplayer':'3.2.13'
     },
     /**
@@ -201,7 +205,7 @@ $global.constants = {
             DEFAULT: '<div href="#" id="<%=data.id%>" class="list-group-item"><%if(data.badge){%><span class="badge"><%=data.badge%></span><%}%><%=data.content%></div>',
         },
         Link: {
-            DEFAULT: '<a href="#" <%if(data.title){%>title="<%=data.title%>"<%}%> class="btn-borderless"><i class="fa <%=data.iconSkin%>"></i><%=data.text%></a>',
+            DEFAULT: '<a href="javascript:void(0)" <%if(data.title){%>title="<%=data.title%>"<%}%> class="btn-borderless"><i class="fa <%=data.iconSkin%>"></i><%=data.text%></a>',
         },
         Tooltip: {
             //DEFAULT:'<div class="tooltip <%=data.align%>" role=""><div class="tooltip-arrow"></div> <div class="tooltip-inner"> <%=data.text%> </div> </div>'
@@ -521,6 +525,12 @@ $Component = $cons.component = {
         name: "List",
         label: "列表组件",
         src: "core/js/list/List",
+        type: $cons.componentType.GRID
+    },
+    SHORTCUTLIST: {
+        name: "ShortcutList",
+        label: "快捷方式列表",
+        src: "core/js/list/ShortcutList",
         type: $cons.componentType.GRID
     },
     BOOTSTRAPGRID: {
@@ -876,7 +886,7 @@ $global.BaseFramework = {
             alert("请确定工程中存在conf.js文件，否则系统无法使用！");
             return;
         }
-        var jsConfig = CONFIG;  //设置euler-conf.js中的配置值
+        var jsConfig = CONFIG;  //设置conf.js中的配置值
         this.jsConfig = jsConfig;
 
         var config = jsConfig;//this.dbEulerConfig || jsEulerConfig;  //如果有数据库中有配置，那么就取数据库；否则就取js中的配置

@@ -4,9 +4,31 @@
 define(["core/js/tree/Tree"],
     function (Tree) {
         var view = Tree.extend({
+            createNodeLabel:function(node,title){
+                var find = node.find(".label-success");
+                if(!find||find.length==0){
+                    node.append("<span class='label rounded label-success pull-right'>"+title+"</span>");
+                }
+            },
             initialize:function(options,triggerEvent){
                 var tree = this.getModuleTree("core/js/base/AbstractView");
                 this.data=[tree];
+                var that = this;
+                this.pluginConf = {
+                    expand:function(event,data){
+                        _.each(data.node.children,function(item,index,list){
+                            //$(node.span).append("<span class='label rounded label-success pull-right'>"+node.title+"</span>");
+                            that.createNodeLabel($(item.span),item.key);
+                        });
+                    },
+                    init:function(event,data){
+                        data.tree.visit(function(node){
+                            //$(node.span).append("<span class='label rounded label-success pull-right'>"+node.title+"</span>");
+                            that.createNodeLabel($(node.span),node.key);
+                            //node.setExpanded(true);
+                        });
+                    },
+                },
                 this._super(options,triggerEvent);
             },
             getModuleTree:function(moduleName,arr){

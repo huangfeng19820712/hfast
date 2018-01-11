@@ -94,7 +94,6 @@ define(["jquery",
          */
         iconSkin:"fa fa-windows",
         className:$Component.PANEL.name.toLowerCase(),
-        theme:"default",
 
         layout: "fit",
         /*-------------------------------  初始化及私有方法 start ---------------------------------------------------*/
@@ -173,7 +172,6 @@ define(["jquery",
             if(this.plugin){
                 this.plugin.resizeAll();
             }
-
         },
         /**
          * 取消关注
@@ -226,45 +224,78 @@ define(["jquery",
             if(this.items==null){
                 this.items = [];
             }
-
             var that = this;
             if(this.isShowHeader){
 
                 this._addItem(this.headerLeftRegionConf);
+                var linkItems = [];
+                /*{
+                    mode:ToolStripItem.Mode.LINK,
+                        iconSkin:"fa-eye",
+                    realClass:"btn-borderless",
+                    onclick:function(){
+                    if(that._focus){
+                        that.unfocus();
+                    }else{
+                        that.focus();
+                    }
+                }
+                }/!*,{
+                 mode:ToolStripItem.Mode.LINK,
+                 iconSkin:"fa-chevron-up",
+                 realClass:"btn-borderless",
+                 onclick:function(e){
+                 if(that._collapsed){
+                 that.expand();
+                 }else{
+                 that.collapse();
+                 }
+                 }
+                 }*!/,{
+                    iconSkin:"fa-times",
+                        realClass:"btn-borderless",
+                        mode:ToolStripItem.Mode.LINK,
+                        onclick:function(e){
+                        that.close();
+                    }
+                }*/
+                linkItems.push({
+                    mode:ToolStripItem.Mode.LINK,
+                    iconSkin:"fa-eye",
+                    realClass:"btn-borderless",
+                    onclick:function(){
+                        if(that._focus){
+                            that.unfocus();
+                        }else{
+                            that.focus();
+                        }
+                    }
+                });
+                linkItems.push({
+                    mode:ToolStripItem.Mode.LINK,
+                    iconSkin:"fa-chevron-up",
+                    realClass:"btn-borderless",
+                    onclick:function(){
+                        //e.preventDefault();
+                        if (that._collapsed) {
+                            that.expand();
+                        } else {
+                            that.collapse();
+                        }
+                    }
+                });
+                linkItems.push({
+                    iconSkin:"fa-times",
+                    realClass:"btn-borderless",
+                    mode:ToolStripItem.Mode.LINK,
+                    onclick:function(e){
+                        that.close();
+                    }});
                 this.headerRightRegion = {
                     comXtype:$Component.TOOLSTRIP,
                     comConf:{
                         className:"btn-group panel-header-toolbar",
-                        itemOptions:[{
-                            mode:ToolStripItem.Mode.LINK,
-                            iconSkin:"fa-eye",
-                            realClass:"btn-borderless",
-                            onclick:function(){
-                                if(that._focus){
-                                    that.unfocus();
-                                }else{
-                                    that.focus();
-                                }
-                            }
-                        }/*,{
-                            mode:ToolStripItem.Mode.LINK,
-                            iconSkin:"fa-chevron-up",
-                            realClass:"btn-borderless",
-                            onclick:function(e){
-                                if(that._collapsed){
-                                    that.expand();
-                                }else{
-                                    that.collapse();
-                                }
-                            }
-                        }*/,{
-                            iconSkin:"fa-times",
-                            realClass:"btn-borderless",
-                            mode:ToolStripItem.Mode.LINK,
-                            onclick:function(e){
-                                that.close();
-                            }
-                        }]
+                        itemOptions:linkItems
                     }
                 };
 

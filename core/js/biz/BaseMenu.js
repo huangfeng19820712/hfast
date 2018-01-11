@@ -101,6 +101,7 @@ define(["core/js/base/BaseView",
                 this.$el.find(".navItem").remove();
             },
             render: function (container, triggerEvent) {
+                this.initClass();
                 if (!this.menuDates) {
                     return;
                 }

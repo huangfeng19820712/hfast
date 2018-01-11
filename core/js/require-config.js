@@ -65,6 +65,11 @@ function $globalRequireConfig(webRoot) {
             "smoothScroll":$route.getJs("smoothScroll"),
             "back-to-top":$route.getJs("back-to-top"),
             "echarts":$route.getJs("echarts"),
+            "animate":$route.getCss("animate"),
+            "web-animations":$route.getJs("web-animations"),
+            "muuri":$route.getJs("muuri"),
+            //与muuri中对hammerjs引用一致
+            "hammerjs":$route.getJs("hammer"),
             "usa_states":$route.getJs("mapael","usa_states"),
 
 
@@ -202,6 +207,14 @@ function $globalRequireConfig(webRoot) {
                     $route.getJs("ueditor","ueditor.config"),
                     $route.getJs("ueditor","ueditor.all")],
                 "exports": "ueditor"
+            },
+            "muuri": {
+                "deps": [
+                    "web-animations",
+                    "hammerjs"]
+            },
+            "hammerjs": {
+                "exports": "Hammer"
             },
             "ladda":{deps:[
                 "bootstrap",

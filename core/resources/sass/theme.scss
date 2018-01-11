@@ -1,0 +1,167 @@
+@charset "utf-8";
+$theme-name: -blue -red -green -sea -orange -yellow -grey -purple -aqua -brown -dark-blue -light-green -default-dark;
+
+$theme-blue: #3498db;
+$theme-red: #e74c3c;
+$theme-green: #2ecc71;
+$theme-sea: #1abc9c;
+$theme-orange: #e67e22;
+$theme-yellow: #f1c40f;
+$theme-grey: #95a5a6;
+
+$theme-purple: #9b6bcc;
+$theme-aqua: #27d7e7;
+$theme-brown: #9c8061;
+
+$color: (
+        color-blue: #3498db,
+        color-red: #e74c3c,
+        color-green:#2ecc71,
+        color-sea:#1abc9c,
+        color-orange:#e67e22,
+        color-yellow:#f1c40f,
+        color-grey:#95a5a6,
+        color-purple:#9b6bcc,
+        color-aqua:#27d7e7,
+        color-brown:#9c8061,
+);
+
+/*设置fieldset start*/
+@each $name in $theme-name {
+  .fieldset#{$name} .btn-borderless {
+    color: map-get($color, color#{$name});
+  }
+}
+
+/*设置fieldset end*/
+
+/* tab  start */
+@each $name in $theme-name {
+  .tablayout#{$name} .nav-tabs > .active > a,
+  .tablayout#{$name} .nav-tabs > .active > a:hover,
+  .tablayout#{$name} .nav-tabs > .active > a:focus,
+  .tablayout#{$name} .nav-tabs > li > a:hover {
+    background: map-get($color, color#{$name});
+  }
+  .tablayout#{$name} .nav-tabs {
+    border-bottom-color: map-get($color, color#{$name});
+  }
+  .tablayout#{$name} .content-tabs {
+    border-bottom: solid 2px map-get($color, color#{$name});
+  }
+
+  .tablayout#{$name}.tab-v2 .nav-tabs li.active a,
+  {
+    background: #fff;
+    border-top: solid 2px map-get($color, color#{$name});
+  }
+  .tablayout#{$name}.tab-v2 .nav-tabs li.active a,
+  .tablayout#{$name}.tab-v2 .nav-tabs > .active > a:hover,
+  .tablayout#{$name}.tab-v2 .nav-tabs > .active > a:focus,
+  .tablayout#{$name}.tab-v2 .nav-tabs > li > a:hover {
+    background: #fff;
+  }
+
+}
+
+/* tab  end */
+/* panel  start */
+@each $name in $theme-name {
+  .panel#{$name} {
+    border-color: map-get($color, color#{$name});
+  }
+
+  .panel#{$name} > .panel-heading,
+  .panel#{$name} > .panel-layout > .panel-heading {
+    background: map-get($color, color#{$name});
+  }
+
+}
+
+/* panel  end */
+
+/* header start*/
+@each $name in $theme-name {
+  .header .navbar-nav.baseview#{$name} > li > a:hover,
+  .header .navbar-nav.baseview#{$name} > .active > a {
+    bottom: -2px;
+    position: relative;
+    border-bottom: solid 2px map-get($color, color#{$name});
+  }
+  /*子菜单栏*/
+  .header .baseview#{$name} .dropdown-menu {
+    border-top: solid 2px map-get($color, color#{$name});
+    border-bottom: solid 2px #687074;
+  }
+  .header .navbar-nav.baseview#{$name} > li:hover > a,
+  .header .navbar-nav.baseview#{$name} > .open > a,
+  .header .navbar-nav.baseview#{$name} > .open > a:hover,
+  .header .navbar-nav.baseview#{$name} > .open > a:focus {
+    color: map-get($color, color#{$name});
+  }
+  .header .baseview#{$name} .btn-u {
+    background: map-get($color, color#{$name});
+  }
+  .header .baseview#{$name}.nav > li > .search:hover {
+    color: map-get($color, color#{$name});
+    border-bottom-color: map-get($color, color#{$name});
+  }
+}
+
+/* header end*/
+
+/*pagination start*/
+@each $name in $theme-name {
+  .pagination#{$name} button.btn-default.active {
+    background-color: map-get($color, color#{$name});
+    border-color: map-get($color, color#{$name});
+  }
+}
+
+/*pagination end*/
+/*link start*/
+@each $name in $theme-name {
+  a.btn#{$name},
+  .toolstrip#{$name} a{
+    color: map-get($color, color#{$name});
+  }
+  /*.btn#{$name} i{
+    color: map-get($color, color#{$name});
+  }*/
+  .btn#{$name} i:hover,
+  .toolstrip#{$name} a:hover{
+    color: #333;
+  }
+}
+
+/*link end*/
+
+/*breadcrumbs start*/
+@each $name in $theme-name {
+  .baseview#{$name} .breadcrumb a:hover,
+  .baseview#{$name} .breadcrumb a:focus, {
+    color: map-get($color, color#{$name});
+  }
+}
+
+/*breadcrumbs end*/
+/*navigation start*/
+@each $name in $theme-name {
+  .navigation#{$name} .navbar-nav a:hover,
+  .navigation#{$name} .navbar-nav a:focus,
+  .navigation#{$name} .navbar-nav > .open > a,
+  .navigation#{$name} .navbar-nav > .open > a:hover,
+  .navigation#{$name} .navbar-nav > .open > a:focus {
+    color: map-get($color, color#{$name});
+  }
+
+}
+
+/*navigation end*/
+
+
+
+
+
+
+

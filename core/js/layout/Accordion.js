@@ -9,7 +9,7 @@ define(["jquery",
     "jquery.layout"
 ], function ($, CommonConstant, Container,LayoutTemplate) {
     var Accordion = Container.extend({
-        xtype:$Component.ACCORDIONLAYOUT,
+        xtype:$Component.ACCORDION,
         className:"panel-group",
         /**
          * {Array}

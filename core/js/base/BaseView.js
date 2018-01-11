@@ -75,6 +75,7 @@ define(["core/js/Event","backbone","core/js/windows/messageBox",
         _initElAttr: function () {
             this.setHeight(this.height);  //设置视图的高度
             this.setParent(this.parent);  //设置父视图
+            this.initClass();
         },
         /**
          * 视图渲染

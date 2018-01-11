@@ -152,12 +152,39 @@
       "visible": "1",
       "orderNo": null
     },{
-      "id": "010",
+      "id": "0107",
       "name": "标签",
       "url": "other/label",
       "type": "1",
       "pid": "01",
       "code": "label",
+      "visible": "1",
+      "orderNo": null
+    },{
+      "id": "0108",
+      "name": "echarts",
+      "url": "chart/echart",
+      "type": "1",
+      "pid": "01",
+      "code": "echarts",
+      "visible": "1",
+      "orderNo": null
+    },{
+      "id": "0109",
+      "name": "css的动画效果",
+      "url": "other/animationCss",
+      "type": "1",
+      "pid": "01",
+      "code": "animationCss",
+      "visible": "1",
+      "orderNo": null
+    },{
+      "id": "0110",
+      "name": "主题",
+      "url": "other/theme",
+      "type": "1",
+      "pid": "01",
+      "code": "theme",
       "visible": "1",
       "orderNo": null
     },{
@@ -394,6 +421,20 @@
       "orderNo": null
     },{
       "id": "1304",
+      "name": "快捷图片",
+      "url": "list/shortcutList",
+      "pid": "13",
+      "tip": null,
+      "leafed": null,
+      "remark": null,
+      "chain": null,
+      "icon": null,
+      "type": "1",
+      "code": "shortcutList",
+      "visible": "1",
+      "orderNo": null
+    },{
+      "id": "1305",
       "name": "分页控件",
       "url": "grid/pagination",
       "pid": "13",
@@ -407,7 +448,7 @@
       "visible": "1",
       "orderNo": null
     },{
-      "id": "1305",
+      "id": "1306",
       "name": "jqGrid列表",
       "url": "grid/jqGrid",
       "pid": "13",
@@ -421,7 +462,7 @@
       "visible": "1",
       "orderNo": null
     },{
-      "id": "1305",
+      "id": "1307",
       "name": "jqGrid列表-表单",
       "url": "grid/jqGridForm",
       "pid": "13",
@@ -432,20 +473,6 @@
       "icon": null,
       "type": "1",
       "code": "jqGridForm",
-      "visible": "1",
-      "orderNo": null
-    },{
-      "id": "12",
-      "name": "分析",
-      "url": "analysis",
-      "pid": null,
-      "tip": null,
-      "leafed": null,
-      "remark": null,
-      "chain": null,
-      "icon": null,
-      "type": "1",
-      "code": "analysis",
       "visible": "1",
       "orderNo": null
     },{

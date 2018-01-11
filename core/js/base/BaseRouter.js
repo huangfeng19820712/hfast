@@ -8,7 +8,10 @@
 define(["underscore",
         "backbone",
         "core/js/utils/ApplicationUtils",
-    "core/js/utils/Utils","core/js/view/Region"
+        "core/js/utils/Utils",
+        "core/js/view/Region",
+        "core/js/utils/JqueryUtils",
+        $route.getCss("animate"),
     ], function (_, Backbone, ApplicationUtils, Utils,Region) {
     var BaseRouter = Backbone.Router.extend({
         //该路由下子路由与模块名的映射：定义模块名（即子路由中请求地址的前缀）与该模块对应子路由的路径映射（该路径是基于requirejs的配置{@link require-config.js}进行设定的）
@@ -25,6 +28,10 @@ define(["underscore",
          * 默认资源的验证是从服务器获取验证信息
          */
         isActiveResAuthMode:true,
+        /**
+         * 关掉页面的动态效果,主要使用animatecss实现
+         */
+        closeAnimate:null,
         /**
          * 动态加载页面
          * @param viewUrl  基于requirejs指定的基础路径的View的URL
@@ -251,7 +258,28 @@ define(["underscore",
         doAction: function () {
             var obj = $.getRouteObject.apply(this, arguments);
             if($.isNotBank(obj.route)){
-                this.getMainRegion().show(CONFIG.currentModuleName+"/view/" + obj.route, obj.param);
+                //this.outAanimate();
+                var that = this;
+                if(this.closeAnimate&&this.getMainChildren().length>0){
+                    this.getMainChildren().animateCss(this.closeAnimate,function(){
+                        that.getMainRegion().show(CONFIG.currentModuleName+"/view/" + obj.route, obj.param);
+                    });
+                }else{
+                    that.getMainRegion().show(CONFIG.currentModuleName+"/view/" + obj.route, obj.param);
+                }
+
+            }
+        },
+        /**
+         * 获取组区域的子节点
+         */
+        getMainChildren:function(){
+            var $el = this.getMainRegion().$el;
+            if(!$el){
+                $el = $(this.getMainRegion().el);
+            }
+            if($el){
+                return $el.children();
             }
         },
         /**

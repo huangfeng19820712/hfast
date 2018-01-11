@@ -91,6 +91,7 @@ define(["jquery",
          * 主题的样式class前缀
          */
         themeClassPre:"btn",
+        theme:"default",
         /**
          * 聚焦按钮
          * add by 2014.07.14

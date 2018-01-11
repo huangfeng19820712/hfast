@@ -13,6 +13,7 @@ define([
          * 此item存放唯一布局的组件信息
          */
         item:null,
+        onresize:null,
         /*-------------------------------  初始化及私有方法 start ---------------------------------------------------*/
 
 
@@ -23,11 +24,31 @@ define([
         initItems:function(){
             this._super();
             if(this.item){
+                var that = this;
                 var itemConfig = _.extend(this.item,{
                     region: BorderLayout.Region.CENTER,  //中间区域
                     padding:0,
-                    border:0
-            });
+                    border:0,
+                    /**
+                     * Five parameters are automatically returned to all callback functions, in this order:
+                     * @param name - Always one of: "north", "south", "east" or "west"
+                     * @param element - The pane-element the callback was for, inside a jQuery wrapper
+                     * @param state - The 'state branch' for this pane, eg: state.north
+                     * @param options - The 'option branch' for this pane, eg: options.north
+                     * @param name - If a 'name' was specified when creating the layout, else returns an empty string.
+                     */
+                    onresize:function(pane,element,state,options,name){
+                        var event = {};
+                        event.layout = {
+                            "pane":pane,
+                            "element":element,
+                            "state":state,
+                            "options":options,
+                            "name":name
+                        };
+                        that.trigger("resize",event);
+                    }
+                });
                 this.items = [itemConfig];
             }
 

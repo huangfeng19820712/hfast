@@ -76,8 +76,8 @@
  * @author:
  * @date:
  */
-define(["jquery", "underscore", "core/js/rpc/AjaxClient"], function ($, _, AjaxClient) {
-
+define([], function () {
+    var AJAXCLIENT_URL = "core/js/rpc/AjaxClient";
     var FrameworkConfAccessor = {
 
         _dependOnPlatformModuleNames: null,
@@ -390,6 +390,7 @@ define(["jquery", "underscore", "core/js/rpc/AjaxClient"], function ($, _, AjaxC
             }
         },
         _loadJSConf: function(jsConfPath){
+            var AjaxClient = require(AJAXCLIENT_URL)
             var ajaxClient = new AjaxClient(jsConfPath);
             var result = null;
             ajaxClient.get({
@@ -431,7 +432,8 @@ define(["jquery", "underscore", "core/js/rpc/AjaxClient"], function ($, _, AjaxC
          * @private
          */
         _getMergePropValue: function(propPath){
-            var eulerConfig = {};//$global.BaseFramework.getDBEulerConfig() || $global.BaseFramework.getJSConfig();
+            //var eulerConfig = $global.BaseFramework.getDBEulerConfig() || $global.BaseFramework.getJSConfig();
+            var eulerConfig = $global.BaseFramework.getJSConfig();
             return this._getPropValueByPropPath(eulerConfig, propPath);
         },
         /**

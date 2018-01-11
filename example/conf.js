@@ -67,7 +67,7 @@ var CONFIG = {
         },
         project: {
             cssFiles: "",   //[可选]应用额外包含进来的css文件名（全局性的），多个值用逗号分隔
-            theme: "default",      //项目主题
+            theme: $Theme.BLUE,      //项目主题
             pageMode: "div",    //页面的渲染模式，值可为div|iframe，主要是针对于Tab页的，如果tab页指定的url是内部的，那么就采用div模式；如果tab页指定的url是集成的，那么就采用iframe模式
             spacing: 5              //应用中默认的间隔
         },

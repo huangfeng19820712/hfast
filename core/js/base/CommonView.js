@@ -3,8 +3,9 @@
  * @author:   * @date: 2015/12/29
  */
 define(["core/js/utils/Utils",
-        "core/js/utils/ApplicationUtils"],
-    function (Utils, ApplicationUtils) {
+        "core/js/utils/ApplicationUtils",
+        "core/js/FrameworkConfAccessor"],
+    function (Utils, ApplicationUtils,FrameworkConfAccessor) {
 
         return {
             /**
@@ -44,6 +45,27 @@ define(["core/js/utils/Utils",
              *  区域父节点，组件包含了区域，区域里面包含了子组件
              */
             regionParent:null,
+            /**
+             * 主题
+             */
+            theme: null,
+            /**
+             * 主题的css，如果有，已此为准，如果没有则以theme为准
+             */
+            themeClass: null,
+            /**
+             * 圆角的CSS样式
+             */
+            roundedClass: null,
+            /**
+             * 样式
+             */
+            className: null,
+            /**
+             * 对应dom中的class的真实值，如果此属性有值，则className、theme、themeClass 、roundedClass
+             * 全部无效
+             */
+            realClass: null,
             /***********************AbstractView与BaseView一样***********************************/
             /**
              * 挂摘内容是很重要的，所以添加一个
@@ -61,6 +83,83 @@ define(["core/js/utils/Utils",
                     //子组件都渲染完后，才触发本组件渲染完成事件
                     this.triggerRender(triggerEvent);
                 }
+            },
+            /**
+             * 出事dom的class
+             */
+            initClass: function () {
+                if (this.realClass != null) {
+                    this.setRealClass(this.realClass);
+                } else {
+                    var xtypeName = this.themeClassPre;
+                    if (this.themeClassPre==null&&this.xtype != null) {
+                        this.$el.addClass($cons.className.view);
+                        /**
+                         * 自动添加标识组件的className
+                         */
+                        this.$el.addClass(this.xtype.name.toLowerCase());
+                        xtypeName =  this.xtype.name;
+                    }
+                    this.setClassName(this.className);
+                    this.setRoundedClass(this.roundedClass);
+                    var theme = this.theme||FrameworkConfAccessor.getProjectTheme();
+                    //主题，默认是this.xtype.name.toLowerCase()+this.theme
+                    this.setTheme(this.themeClass, theme,xtypeName);
+                }
+
+                if (this.textAlign) {
+                    this.$el.addClass(this.textAlign);
+                }
+                if (this.float) {
+                    this.$el.addClass(this.float);
+                }
+            },
+            /**
+             * 设置主题
+             * @param theme
+             */
+            setTheme: function (themeClass, theme, xtypeName) {
+                var themeClassNew = themeClass;
+                if (themeClassNew == null) {
+                    if (theme == null || xtypeName == null) {
+                        return;
+                    }
+                    var themeClassNew = (xtypeName?xtypeName.toLowerCase():"") + "-" + theme;
+                }
+                if (themeClassNew != null) {
+                    this.$el.addClass(themeClassNew);
+                }
+            },
+            /**
+             * 设置dom的class
+             * @param realClass
+             */
+            setRealClass: function (realClass) {
+                if (realClass == null) {
+                    return;
+                }
+                this.$el.removeClass().addClass(realClass);
+            },
+
+            /**
+             * 设置 {@link className} 字段的值。
+             *
+             * @param className
+             *                   一个字符串，一个或多个空格分隔的class名。
+             */
+            setClassName: function (className) {
+                if (className == null)
+                    return;
+
+                this.className = className;
+                this.$el.addClass($cons.className.container);
+                this.$el.addClass(className);
+            },
+            setRoundedClass: function (roundedClass) {
+                if (roundedClass == null) {
+                    return;
+                }
+                this.$el.addClass(roundedClass);
             },
             initDraggable:function(){
                 //完全渲染完后,给组件添加拖拽功能

@@ -36,7 +36,7 @@ define([
             "max-width":$(window).width(),
         });
         //设置滚动条
-        h.w.css({"overflow":"auto"});
+        //h.w.css({"overflow":"auto"});
         //设置弹窗在可是的区域中居中
         h.w.position({
             my: "center",
@@ -77,7 +77,6 @@ define([
         filterable:true,//是否要过滤
         datatype:"json",
         formatterComs:null,
-
         /**
          * {Array} 存放查询的编辑器
          */
@@ -91,11 +90,17 @@ define([
          * 初始化jqgrid的版本为5
          */
         initGrid:function(){
+
+            var gridOptions = this.getGridOptions();
+            //pluginConf的配置信息可以覆盖conf中的信息
+            if(this.pluginConf){
+                gridOptions = _.extend(gridOptions,this.pluginConf);
+            }
             /*
              * jgrid没有返回对象，调用方法的格式：
              * jQuery("#grid_id").jqGrid('method', parameter1,...parameterN );
              */
-            this.$table.jqGrid(this.getGridOptions());
+            this.$table.jqGrid(gridOptions);
             var that = this;
             if(this.pageable){
                 this.$table.navGrid("#"+this.getPagerId(),{

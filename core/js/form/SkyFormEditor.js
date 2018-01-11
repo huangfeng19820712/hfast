@@ -41,6 +41,10 @@ define(["jquery",
         $groups: null,
 
         _groupMap: null,
+        /**
+         * groups中index与id的映射集合
+         */
+        _indexIdMap:null,
 
         fieldIdPref: "field",
 
@@ -141,9 +145,15 @@ define(["jquery",
         _createGroupObjects: function (groupConfigArray) {
             var that = this,
                 result = {};
+            if(this._indexIdMap==null){
+                this._indexIdMap = {};
+            }
             if (groupConfigArray == null){
-                var id =  $.createId(this.fieldIdPref);    //要求配置项中都必须有ID，然后以id做为键进行存储，便于后续对其的访问
-                result[id] = this._createFieldset(null,this.fields);
+                //var id =  $.createId(this.fieldIdPref);    //要求配置项中都必须有ID，然后以id做为键进行存储，便于后续对其的访问
+                var createFieldset =  this._createFieldset(null,this.fields);
+                result[createFieldset.id] = createFieldset;
+
+                this._indexIdMap[0] = createFieldset.id;
                 return result;
             }
             if ($.isPlainObject(groupConfigArray))
@@ -156,11 +166,13 @@ define(["jquery",
                     continue;
                 }
                 var createFieldset = this._createFieldset(config,this.fields);
+                result[createFieldset.id] = createFieldset;
+                this._indexIdMap[i] = createFieldset.id;
                 /*if(!config.id){
                     //赋值id，方便检索对象
                     config.id = createFieldset.id;
                 }*/
-                result[createFieldset.id] = createFieldset;
+
             }
 
             return result;
@@ -171,8 +183,9 @@ define(["jquery",
          * @returns {*}
          */
         getFieldset:function(index){
-            var group = this.groups[index];
-            return  this._groupMap[group.id];
+            //var group = this.groups[index];
+            var id = this._indexIdMap(index);
+            return  this._groupMap[id];
         },
         /**
          * 获取分组主体区要显示内容的配置

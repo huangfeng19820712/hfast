@@ -49,6 +49,12 @@ define(["core/js/layout/BorderLayout",
                 // 获取左边（西）区域
                 this.getCenterRegion().show(APP_NAME+"/view/form/validateForm",{
                     height:"100%",
+                    onrender: function (e) {
+                        if (this._super) {
+                            this._super(e);
+                        }
+                        that.resizeRegion(BorderLayout.Region.CENTER);
+                    }
                 });
             }
         });

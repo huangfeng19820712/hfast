@@ -50,7 +50,6 @@ define(["jquery",
          */
         iconSkin: "fa fa-windows",
         className: $Component.FIELDSET.name.toLowerCase(),
-        theme: "default",
         /**
          * {Array}实体表单上的字段信息
          * [{
@@ -148,8 +147,9 @@ define(["jquery",
          */
         _addRow:function(num){
             var el = $("<div/>");
+            el.addClass("fieldset-row");
             //添加
-            el.css("display","inline-block");
+            //el.css("display","inline-block");
             el.attr("id",this.id+"_row"+num);
             return el;
         },

@@ -11,6 +11,11 @@ define([
         xtype:$Component.TREE,
 
         plugin: null,
+        /**
+         * 插件的配置信息
+         * @property {Object}
+         */
+        pluginConf:null,
         model:null,
         /**
          * 可以查看FancytreeNode的相关信息
@@ -62,13 +67,18 @@ define([
          * @private
          */
         _initWithPlugIn: function () {
-            this.plugin = this.$el.fancytree(this.getConf());
+            var conf = this.getConf();
+            //pluginConf的配置信息可以覆盖conf中的信息
+            if(this.pluginConf){
+
+                conf = _.extend(conf,this.pluginConf);
+            }
+            this.plugin = this.$el.fancytree(conf);
         },
         /**
          * 获取树的配置信息
          */
         getConf: function () {
-
             var conf = {
                 extensions: [],
                 checkbox: this.checkbox,
@@ -79,6 +89,7 @@ define([
                 debugLevel: 0, // 0:quiet, 1:normal, 2:debug
                 focusOnSelect: true, // Set focus when node is checked by a mouse click
                 quicksearch: true, // Navigate to next node by typing the first letters
+                init:this.initTree,//初始化时调用
             };
             if(this.filterable){
                 conf.extensions.push("filter");

@@ -13,6 +13,7 @@ define(["core/js/layout/BorderLayout",
               ViewUtils
     ) {
         var view = BorderLayout.extend({
+            positions:null,
             /**
              * 设置底部的参考对象，以便设置容器的高度
              */
@@ -30,14 +31,36 @@ define(["core/js/layout/BorderLayout",
                             realClass:"btn-group text-right",
                             spacing :CommonConstant.Spacing.DEFAULT,
                             itemOptions: [{
-                                text: "向右移动",
+                                text: "向右移出",
+                                onclick: function () {
+                                    console.info(">>>>");
+                                    var panelObj = that.getCenterRegion().comRef;
+                                    var jqObjects = panelObj.$el.children(".hfast-view");
+
+                                    that.relativeToAbsolute(jqObjects);
+                                    //jqObjects.addClass("toRightAnimation");
+                                    //$.window.alert(panelObj.mainRegion.content);
+                                }
+                            },{
+                                text: "从左移入",
                                 onclick: function () {
                                     console.info(">>>>");
                                     var panelObj = that.getCenterRegion().comRef;
                                     var jqObjects = panelObj.$el.children(".hfast-view");
 
                                     that.absoluteToRelative(jqObjects);
-                                    jqObjects.addClass("animation");
+                                    jqObjects.addClass("toLeftAnimation");
+                                    //$.window.alert(panelObj.mainRegion.content);
+                                }
+                            },{
+                                text: "向左移动",
+                                onclick: function () {
+                                    console.info(">>>>");
+                                    var panelObj = that.getCenterRegion().comRef;
+                                    var jqObjects = panelObj.$el.children(".hfast-view");
+
+                                    that.relativeToAbsolute(jqObjects);
+                                    jqObjects.addClass("toLeftAnimation");
                                     //$.window.alert(panelObj.mainRegion.content);
                                 }
                             }],
@@ -57,19 +80,44 @@ define(["core/js/layout/BorderLayout",
                     }
                 ];
             },
-            absoluteToRelative:function(jqObjects){
+            relativeToAbsolute:function(jqObjects){
                 //先保存位置信息，因为设置了position属性后，位置信息会改变
-                var positions = [];
+                this.positions = [];
+                var that = this;
                 _.each(jqObjects,function(item,idx,list){
                     var el = $(item);
-                    positions[idx] = el.offset();
+                    that.positions[idx] = el.offset();
                 });
+                //$(jqObjects[0]).animate({left:'250px'},"flow");
                 //把相对位置改成绝对位置
                 _.each(jqObjects,function(item,idx,list){
                     var el = $(item);
-                    var position = positions[idx];
+                    var position = that.positions[idx];
                     el.css("position", "absolute");
                     el.offset(position);
+                    el.animate({left:'+=2000px'},5000);
+                    /*el.css("animation-duration", (4+0.2*idx)+"s");
+                    el.css("animation-delay", (0.4+0.2*idx)+"s");
+                    el.offset(position);*/
+                });
+
+            },
+            absoluteToRelative:function(jqObjects){
+                //先保存位置信息，因为设置了position属性后，位置信息会改变
+                this.positions = [];
+                var that = this;
+                /*_.each(jqObjects,function(item,idx,list){
+                    var el = $(item);
+                    that.positions[idx] = el.offset();
+                });*/
+                //把相对位置改成绝对位置
+                _.each(jqObjects,function(item,idx,list){
+                    var el = $(item);
+                    var position = that.positions[idx];
+                    el.css("animation-duration", (4+0.2*idx)+"s");
+                    el.css("animation-delay", (0.4+0.2*idx)+"s");
+                    el.offset(position);
+                    el.css("position", "relative");
                 });
 
             },

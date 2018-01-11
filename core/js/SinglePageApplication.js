@@ -12,9 +12,12 @@ define(["jquery",
     "core/js/Application",
     "core/js/utils/ApplicationUtils",
     "core/js/FrameworkConfAccessor",
+    "core/js/CommonConstant",
     "backbone.routefilter",
-    "core/js/windows/Window","css!core/resources/styles/core.css"
-], function ($, _, Backbone, Application, ApplicationUtils, FrameworkConfAccessor) {
+    "core/js/windows/Window",
+    "css!core/resources/styles/core.css",
+    "css!core/resources/styles/theme.css"
+], function ($, _, Backbone, Application, ApplicationUtils, FrameworkConfAccessor,CommonConstant) {
     $.expr.cacheLength = 0;   //设置jquery中选择器的缓存数为0，默认jquery是缓存数50，如果不设置为0，那么就会缓存已经销毁的对象，从而导致内存飙升 add by 2014.11.10
 
     //在此可以进行应用的初始化操作

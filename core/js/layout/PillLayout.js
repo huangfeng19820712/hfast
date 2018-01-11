@@ -29,7 +29,6 @@ define(["jquery",
          * */
         position:$cons.tabPosition.TOP_LEFT,
 
-        theme:"default",
         /**
          * tab的模式
          */

@@ -535,7 +535,7 @@ define(["jquery",
                         return;
                     }
 
-                    $.window.removeAllErrorTipOnEl();
+                    //$.window.removeAllErrorTipOnEl();
                 });
 
                 var editor = this._getFirstEditor();

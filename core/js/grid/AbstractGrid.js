@@ -44,6 +44,11 @@ define([
          * 组件对象的句柄
          */
         $table:null,
+        /**
+         * 插件的配置信息
+         * @property {Object}
+         */
+        pluginConf:null,
         $pagination:null,
         /**
          * 表单的栏位数

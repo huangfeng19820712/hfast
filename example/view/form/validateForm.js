@@ -37,69 +37,23 @@ define([
                             maxlength: 20,
                         },
                     },{
-                        label: "多行文本",
-                        name: "multiline",
-                        editorType: $Component.TEXTEDITOR,
-                        rules: {
-                            required: true,
-                            maxlength: 20,
-                            textMode:"multiline"
-                        },
-                    },{
-                        label: "日期",
-                        name: "date",
-                        editorType: $Component.DATEEDITOR,
-                        rules: {
-                            required: true,
-                            maxlength: 20,
-                        },
-                    },{
-                        label:"密码",
-                        name:"password",
-                        editorType:$Component.TEXTEDITOR,
-                        rules: {
-                            required: true,
-                        },
-                        textMode:"password"
-                    },{
-                        label:"checkbox",
-                        name:"checkbox",
-                        rules: {
-                            required: true,
-                        },
-                        items:[{
-                            label:"aa",
-                            value:"aa"
+                        label:"选择",
+                        name:"select",
+                        editorType:$Component.SELECTEDITOR,
+                        options:[{
+                            value:"1",
+                            label:"选择一"
                         },{
-                            label:"bb",
-                            value:"bb"
+                            value:"2",
+                            label:"选择二",
+                            disabled:true
+                        },{
+                            value:"3",
+                            label:"选择三"
+                        },{
+                            value:"4",
+                            label:"选择四"
                         }],
-                        editorType:$Component.CHECKBOXEDITOR,
-                    },{
-                        label:"标签",
-                        name:"tag",
-                        editorType:$Component.TAGSEDITOR,
-                        rules: {
-                            required: true,
-                        },
-                    },{
-                        label:"自完成",
-                        name:"auto",
-                        editorType:$Component.AUTOCOMPLETEEDITOR,
-                        rules: {
-                            required: true,
-                        },
-                    },{
-                        label:"数字",
-                        name:"number",
-                        editorType:$Component.TOUCHSPINEDITOR,
-                        rules: {
-                            required: true,
-                        },
-                    },{
-                        label:"上传文件",
-                        name:"fileupload",
-                        editorType:$Component.FILEUPLOADEDITOR,
                         rules: {
                             required: true,
                         },
@@ -156,9 +110,9 @@ define([
                     /*Panel 配置 End*/
                 }
             },
-            onrender:function(){
+            /*onrender:function(){
                 console.info(">>>");
-            }
+            }*/
         });
         return view;
     });

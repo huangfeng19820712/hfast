@@ -9,11 +9,11 @@ define(["core/js/base/BaseView",
         "core/js/CommonConstant",
         "core/js/controls/HelpLink",
         $Component.SKYFORMEDITOR.src,
-        APP_NAME+"/view/form/validateForm"],
+        APP_NAME+"/view/form/validateForm","core/js/windows/messageBox",],
     function (BaseView, Backbone, Button, Window, CommonConstant, ToolStrip,
               ToolStripItem,
               CommonConstant,
-              HelpLink,Skyformeditor,validateForm) {
+              HelpLink,Skyformeditor,validateForm,MessageBox) {
 
         var view = BaseView.extend({
             /**
@@ -81,6 +81,34 @@ define(["core/js/base/BaseView",
                                 title:"有内容的弹窗",
                                 buttons: buttons,
                             });
+                        }
+                    },{
+                        roundedClass:$Rounded.ROUNDED,
+                        text: "消息提示-错误",
+                        onclick: function () {
+                            MessageBox.error("错误！");
+                            //$.window.alert("测试1");
+                        }
+                    },{
+                        roundedClass:$Rounded.ROUNDED,
+                        text: "消息提示-信息",
+                        onclick: function () {
+                            MessageBox.info("信息！");
+                            //$.window.alert("测试1");
+                        }
+                    },{
+                        roundedClass:$Rounded.ROUNDED,
+                        text: "消息提示-警告",
+                        onclick: function () {
+                            MessageBox.warn("警告！");
+                            //$.window.alert("测试1");
+                        }
+                    },{
+                        roundedClass:$Rounded.ROUNDED,
+                        text: "消息提示-成功",
+                        onclick: function () {
+                            MessageBox.success("成功！");
+                            //$.window.alert("测试1");
                         }
                     }]
                 });

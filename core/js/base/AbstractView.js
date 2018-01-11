@@ -46,27 +46,6 @@ define(["core/js/utils/Utils",
 
             /*==============================样式值方法========================================*/
             /**
-             * 主题
-             */
-            theme: null,
-            /**
-             * 主题的css，如果有，已此为准，如果没有则以theme为准
-             */
-            themeClass: null,
-            /**
-             * 圆角的CSS样式
-             */
-            roundedClass: null,
-            /**
-             * 样式
-             */
-            className: null,
-            /**
-             * 对应dom中的class的真实值，如果此属性有值，则className、theme、themeClass 、roundedClass
-             * 全部无效
-             */
-            realClass: null,
-            /**
              * dom中role的属性值
              */
             role: null,
@@ -231,51 +210,6 @@ define(["core/js/utils/Utils",
                         left: this.margin,
                         right: this.margin
                     });
-                }
-            },
-            /**
-             * 出事dom的class
-             */
-            initClass: function () {
-                if (this.realClass != null) {
-                    this.setRealClass(this.realClass);
-                } else {
-                    var xtypeName = this.themeClassPre;
-                    if (this.themeClassPre==null&&this.xtype != null) {
-                        this.$el.addClass($cons.className.view);
-                        /**
-                         * 自动添加标识组件的className
-                         */
-                        this.$el.addClass(this.xtype.name.toLowerCase());
-                        xtypeName =  this.xtype.name;
-                    }
-                    this.setClassName(this.className);
-                    this.setRoundedClass(this.roundedClass);
-                    //主题，默认是this.xtype.name.toLowerCase()+this.theme
-                    this.setTheme(this.themeClass, this.theme,xtypeName);
-                }
-
-                if (this.textAlign) {
-                    this.$el.addClass(this.textAlign);
-                }
-                if (this.float) {
-                    this.$el.addClass(this.float);
-                }
-            },
-            /**
-             * 设置主题
-             * @param theme
-             */
-            setTheme: function (themeClass, theme, xtypeName) {
-                var themeClassNew = themeClass;
-                if (themeClassNew == null) {
-                    if (theme == null || xtypeName == null) {
-                        return;
-                    }
-                    var themeClassNew = (xtypeName?xtypeName.toLowerCase():"") + "-" + theme;
-                }
-                if (themeClassNew != null) {
-                    this.$el.addClass(themeClassNew);
                 }
             },
             /**
@@ -453,37 +387,6 @@ define(["core/js/utils/Utils",
 
                 this.display = display;
                 this.$el.css("display", this.display);
-            },
-            /**
-             * 设置dom的class
-             * @param realClass
-             */
-            setRealClass: function (realClass) {
-                if (realClass == null) {
-                    return;
-                }
-                this.$el.removeClass().addClass(realClass);
-            },
-
-            /**
-             * 设置 {@link className} 字段的值。
-             *
-             * @param className
-             *                   一个字符串，一个或多个空格分隔的class名。
-             */
-            setClassName: function (className) {
-                if (className == null)
-                    return;
-
-                this.className = className;
-                this.$el.addClass($cons.className.container);
-                this.$el.addClass(className);
-            },
-            setRoundedClass: function (roundedClass) {
-                if (roundedClass == null) {
-                    return;
-                }
-                this.$el.addClass(roundedClass);
             },
             /**
              * 设置 {@link position} 字段的值。

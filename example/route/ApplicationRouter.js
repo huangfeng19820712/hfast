@@ -16,6 +16,8 @@ define(["underscore",
             "*action": "faultAction"
         },
         isActiveResAuthMode:false,
+        //去掉关闭效果
+        //closeAnimate:"fadeOut",
         getPost: function (id) {
             alert(id);
         },

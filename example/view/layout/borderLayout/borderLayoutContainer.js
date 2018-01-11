@@ -27,6 +27,9 @@ define(["core/js/layout/BorderLayout",
                         slidable:false,
                         spacing_open:0,
                         padding:0,
+                        onresize:function(){
+                            console.info(BorderLayout.Region.NORTH+">>>");
+                        },
                         border:0
                     },
                     {

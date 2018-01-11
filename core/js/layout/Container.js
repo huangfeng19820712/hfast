@@ -76,6 +76,10 @@ define(["jquery",
          * 如果需要计算区域布局的，就需要添加该样式，基于绝对定位进行布局
          */
         _defaultRegionClassName: null,
+        /**
+         * 已经渲染的子区域
+         */
+        renderdRegion:null,
 
         initialize: function (options, triggerEvent) {
             this._firstRender = true;
@@ -83,6 +87,8 @@ define(["jquery",
             this.set(options, null);
 
             this.initId();
+            //初始化的内容，需要close中清空
+            this.renderdRegion=[];
             this.beforeInitializeHandle(options, triggerEvent);
             this.initializeHandle();
             this.afterInitializeHandle(options, triggerEvent);
@@ -140,8 +146,21 @@ define(["jquery",
                 for (rName in regions) {
                     region = regions[rName];
                     region.render();   //根据区域的配置信息对区域进行渲染
+                    this.renderdRegion.push(rName);
                 }
             }
+        },
+        /**
+         * 根据区域id渲染区域对象
+         *  @param regionId
+         */
+        regionRender:function(regionId){
+            var region = this.getRegion(regionId);
+            if(region){
+                //直接包含内容的，不是region对象
+                region.render();
+            }
+            this.renderdRegion.push(regionId);
         },
         /**
          * 初始化区域属性，此属性与Layout中的regions不一样，需要在进行转化
@@ -411,11 +430,19 @@ define(["jquery",
             /*var className = result["className"] || "";
             className = this._defaultRegionClassName + className;*/
             //this._defaultRegionClassName是容器默认的类型，item
-            result["className"] =result["className"]||item.columnSize ||this._defaultRegionClassName;
+            this.initItemClassName(item,result);
+            //result["className"] =item.className||item.columnSize ||this._defaultRegionClassName;
 
             return result;
         },
-
+        /**
+         * 初始化子项的className，修改result中的className属性
+         * @param item      子项的配置信息
+         * @param result
+         */
+        initItemClassName:function(item,result){
+            result["className"] =item.className||item.columnSize ||this._defaultRegionClassName;
+        },
 
         /**
          * 重新计算布局
@@ -482,6 +509,8 @@ define(["jquery",
                 return;
             }
             this.items = null;
+            //this._firstRender = false;
+            this.renderdRegion = null;
             ApplicationUtils.removeComponent(this.id);
             this.unregisterEvent();
             this._super();

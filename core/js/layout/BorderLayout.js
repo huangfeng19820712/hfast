@@ -67,7 +67,11 @@ define(["jquery",
         },
         _getLayoutConf:function(){
             if(this.items){
-                var conf = {};
+                var conf = {
+                    /*onresize:function(event){
+                        console.info(">>>");
+                    }*/
+                };
                 for(var i=0;i<this.items.length;i++){
                     var item = this.items[i];
                     item.region;

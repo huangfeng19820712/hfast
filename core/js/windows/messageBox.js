@@ -13,7 +13,7 @@ define([ "jquery", "kendo", "dialog",
 			top : 30,
 			right : 30
 		},
-		autoHideAfter : 40000000000,
+		autoHideAfter : 3000,
 		stacking : "down",
 		templates : [ {
 			type : "info",

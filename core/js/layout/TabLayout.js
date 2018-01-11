@@ -32,7 +32,7 @@ define(["jquery",
          * */
         position:$cons.tabPosition.TOP_LEFT,
 
-        theme:"default",
+        //theme:"default",
         /**
          * tab的模式
          */
@@ -53,6 +53,10 @@ define(["jquery",
         leftToolStripOption:null,
         rightToolStrip:null,
         rightToolStripOption:null,
+        /**
+         * {Boolean} 是否需要延迟加载，默认是false
+         */
+        lazyRendered:false,
 
         /**
          * {Array}  所有的tabId
@@ -92,10 +96,21 @@ define(["jquery",
             });
             this.$('a[data-toggle="tab"]').on('shown.bs.tab',function(event){
                 var tabId = $(event.target).parent().data("tabId");
+                var regionId = that.getContentId(tabId);
+                if(that.lazyRendered&&!_.contains(that.renderdRegion,regionId)){
+                    //获取区域的id
+                    that.regionRender(regionId);
+                }
                 that.handleShowJqGrid(tabId);
                 that.trigger("shownTab",event);
             });
-            this.regionsRender();
+            if(!this.lazyRendered){
+                this.regionsRender();
+            }else{
+                //序号从1开始
+                var contentIdByIndex = this.getContentIdByIndex(1);
+                this.regionRender(contentIdByIndex);
+            }
         },
         afterMountContent:function(triggerEvent){
             this._super(triggerEvent);
@@ -345,6 +360,15 @@ define(["jquery",
             return tabId+"_content";
         },
         /**
+         * 根据序号获取内容的id
+         * @param tabId
+         * @returns {string}
+         */
+        getContentIdByIndex: function (index) {
+            var tabId = this.getTabId(index);
+            return this.getContentId(tabId);
+        },
+        /**
          * 根据内容的id获取内容对象
          * @param contentId
          */
@@ -367,7 +391,6 @@ define(["jquery",
             var contentId = this.getContentId(tabId);
             return this.getContentRefById(contentId);
         },
-
         labelTotalWidth: function(l){
             var k = 0;
             $(l).each(function() {
