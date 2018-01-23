@@ -63,6 +63,8 @@ define([
                     fields: [{
                         label:"默认的下拉框",
                         editorType:$Component.SELECTEDITOR,
+                        noneSelectedText:"默认的下拉框",
+                        liveSearchPlaceholder:"默认的下拉框",
                         name:"dd1",
                         searchable:true,
                         value:"1",
@@ -80,6 +82,8 @@ define([
                         //多选
                         label:"多选下拉框",
                         editorType:$Component.SELECTEDITOR,
+                        noneSelectedText:"多选下拉框",
+                        liveSearchPlaceholder:"多选下拉框",
                         searchable:true,
                         name:"dd3",
                         multiple:true,
@@ -90,6 +94,8 @@ define([
                         //多线，分组
                         label:"能分组的下拉框",
                         editorType:$Component.SELECTEDITOR,
+                        noneSelectedText:"能分组的下拉框",
+                        liveSearchPlaceholder:"能分组的下拉框",
                         searchable:true,
                         name:"dd4",
                         multiple:true,

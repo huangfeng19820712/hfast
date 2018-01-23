@@ -1,0 +1,13 @@
+<!--=== Breadcrumbs ===-->
+<div class="col-md-4 ">
+    <ul class="breadcrumb">
+        <%if(data.menuDates){%>
+
+        <%for(var i=0;data.menuDates.length>i;i++){%>
+        <li><i class="fa fa-clipboard"></i><a href="#"><%=data.menuDates[i].name%></a></li>
+        <%}%>
+        <%}%>
+    </ul>
+</div>
+<!--/breadcrumbs-->
+<!--=== End Breadcrumbs ===-->

@@ -46,7 +46,7 @@ define([
          * <code>
          *     [{
          *         value: "[可选]<选择项的值，如果没有则去label的值>",
-         *         label: "[可选]<是否可以选择>",
+         *         label: "[可选]<选择项的显示出来的值>",
          *         disabled: "[可选]<是否可以选择>",
          *     },{optgroup: "[可选，选项分组]"{
          *             disabled: "[可选]<是否可以选择>",
@@ -58,6 +58,16 @@ define([
          * </code>
          */
         options:null,
+
+        /**
+         * 没有的时候，显示的内容
+         */
+        noneSelectedText:null,
+
+        /**
+         * 搜索框没有内容时的，显示的内容
+         */
+        liveSearchPlaceholder:null,
 
         _init$Input: function () {
             //初始化input对象
@@ -149,8 +159,8 @@ define([
             });
             this.plugin = $input.selectpicker({
                 liveSearch:this.searchable,
-                noneSelectedText:"--请选择--",
-                liveSearchPlaceholder:"--请输入--",
+                noneSelectedText:this.noneSelectedText||"--请选择--",
+                liveSearchPlaceholder:this.liveSearchPlaceholder||"--请输入--",
                 maxOptions: this.maxOptions});
             var that = this;
             //添加事件，把选择器的事件

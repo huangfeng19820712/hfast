@@ -1,5 +1,18 @@
 @charset "utf-8";
 $theme-name: -blue -red -green -sea -orange -yellow -grey -purple -aqua -brown -dark-blue -light-green -default-dark;
+$theme:(color-blue: #3498db,
+        color-red: #e74c3c,
+        color-green:#2ecc71,
+        color-sea:#1abc9c,
+        color-orange:#e67e22,
+        color-yellow:#f1c40f,
+        color-grey:#95a5a6,
+        color-purple:#9b6bcc,
+        color-aqua:#27d7e7,
+        color-brown:#9c8061,
+        dark-blue: #4765a0,
+        light-green: #79d5b3,
+        default-dark: #585f69);
 
 $theme-blue: #3498db;
 $theme-red: #e74c3c;
@@ -8,10 +21,12 @@ $theme-sea: #1abc9c;
 $theme-orange: #e67e22;
 $theme-yellow: #f1c40f;
 $theme-grey: #95a5a6;
-
 $theme-purple: #9b6bcc;
 $theme-aqua: #27d7e7;
 $theme-brown: #9c8061;
+$theme-dark-blue: #4765a0;
+$theme-light-green: #79d5b3;
+$theme-default-dark: #585f69;
 
 $color: (
         color-blue: #3498db,
@@ -24,7 +39,24 @@ $color: (
         color-purple:#9b6bcc,
         color-aqua:#27d7e7,
         color-brown:#9c8061,
+        color-dark-blue: #4765a0,
+        color-light-green: #79d5b3,
+        color-default-dark: #585f69
 );
+
+
+/*Switcher start*/
+.del-style-switcher li a.switcher-default,
+.del-style-switcher li a:hover.switcher-default{
+  border-color: #555;
+}
+
+@each $name in $theme-name {
+  .del-style-switcher li a.switcher#{$name} {
+    background: map-get($color, color#{$name});
+  }
+}
+/*Switcher end*/
 
 /*设置fieldset start*/
 @each $name in $theme-name {
@@ -65,20 +97,22 @@ $color: (
 }
 
 /* tab  end */
-/* panel  start */
+/* panel formpanel  start */
 @each $name in $theme-name {
-  .panel#{$name} {
+  .panel#{$name},.formpanel#{$name} {
     border-color: map-get($color, color#{$name});
   }
 
   .panel#{$name} > .panel-heading,
-  .panel#{$name} > .panel-layout > .panel-heading {
+  .panel#{$name} > .panel-layout > .panel-heading,
+  .formpanel#{$name} > .panel-heading,
+  .formpanel#{$name} > .panel-layout > .panel-heading{
     background: map-get($color, color#{$name});
   }
 
 }
 
-/* panel  end */
+/* panel formpanel end */
 
 /* header start*/
 @each $name in $theme-name {
@@ -112,7 +146,7 @@ $color: (
 
 /*pagination start*/
 @each $name in $theme-name {
-  .pagination#{$name} button.btn-default.active {
+  .pagination#{$name} button.toolstripitem.active {
     background-color: map-get($color, color#{$name});
     border-color: map-get($color, color#{$name});
   }
@@ -158,6 +192,19 @@ $color: (
 }
 
 /*navigation end*/
+/*accordion start*/
+@each $name in $theme-name {
+  .accordion#{$name} .panel{
+    border-color: map-get($color, color#{$name});
+  }
+
+  .accordion#{$name} > .panel > .panel-heading {
+    background: map-get($color, color#{$name});
+  }
+}
+/*accordion end*/
+
+
 
 
 

@@ -83,7 +83,7 @@ define(["jquery", "underscore",
             this._super(options,false);
             this.initId();
             this.beforeInitializeHandle(options, triggerEvent);
-            this.initializeHandle();
+            this.initializeHandle(options,triggerEvent);
             //this._initElAttr();    //初始化元素的属性
             this.afterInitializeHandle(options, triggerEvent);
         },
@@ -168,8 +168,10 @@ define(["jquery", "underscore",
          */
         _parseTemplate: function (template) {
             var context = this.getTemplateContext();
-            if (context == null)
-                return template;
+            if (context == null){
+                context = {}
+            }
+                //return template;
             if(this.dataPre){
                 return _.template(template,{variable: this.dataPre})( context);
             } else{
@@ -181,7 +183,7 @@ define(["jquery", "underscore",
          * @return {*}
          */
         getTemplateContext: function () {
-            return this.get("data", null);
+            return this.data||this.get("data", null);
         },
         /**
          * 根据给定的对象，判断该对象是否是Control控件的实例，如果是，则返回该控件实例对象，否则返回false|null

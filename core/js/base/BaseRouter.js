@@ -259,16 +259,29 @@ define(["underscore",
             var obj = $.getRouteObject.apply(this, arguments);
             if($.isNotBank(obj.route)){
                 //this.outAanimate();
+                var showRegion = null;
+                if(obj.param&&obj.param.showRegion){
+                    showRegion = obj.param.showRegion;
+                }
                 var that = this;
                 if(this.closeAnimate&&this.getMainChildren().length>0){
                     this.getMainChildren().animateCss(this.closeAnimate,function(){
-                        that.getMainRegion().show(CONFIG.currentModuleName+"/view/" + obj.route, obj.param);
+                        that.showContent(obj.route,obj.param,showRegion);
                     });
                 }else{
-                    that.getMainRegion().show(CONFIG.currentModuleName+"/view/" + obj.route, obj.param);
+                    that.showContent(obj.route,obj.param,showRegion);
                 }
 
             }
+        },
+        /**
+         * 显示内容
+         * @param routeUrl  {String}    显示的url路径
+         * @param param     {Object}    传给路径的参数
+         */
+        showContent:function(routeUrl,param,showRegion){
+            var url = CONFIG.currentModuleName+"/view/" + routeUrl;
+            this.getMainRegion(showRegion).show(url, param);
         },
         /**
          * 获取组区域的子节点

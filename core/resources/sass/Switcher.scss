@@ -1,0 +1,162 @@
+/* Welcome to Compass. Use this file to define print styles.
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" /> */
+.del-style-switcher {
+  width: 250px;
+  position: fixed;
+  top: 140px;
+  padding: 14px;
+  right: -250px;
+  background: white;
+  border: 1px solid #CCC;
+  z-index: 999;
+}
+
+.del-switcher-toggle {
+  //background: url(../img/cog.png) 8px 8px no-repeat white;
+  background-color: white;
+  display: block;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  left: -40px;
+  cursor: pointer;
+  border: 1px solid #CCC;
+  border-right: none;
+}
+
+.del-switcher-toggle:hover {
+  background-color: #f2f2f2;
+}
+
+.del-section-skin p {
+  margin-bottom: 0;
+}
+
+.del-style-switcher a.del-reset-style {
+  color: #4d4d4d;
+  text-decoration: underline;
+  font-size: 0.8em;
+}
+
+.del-style-switcher a.del-reset-style:hover {
+  text-decoration: none;
+}
+
+.del-switcher-header {
+  color: #4d4d4d;
+  margin-bottom: 7px;
+  font-size: 1.1em;
+}
+
+.del-section {
+  margin-bottom: 10px;
+}
+
+.del-small-info {
+  font-style: italic;
+  font-size: 0.8em;
+}
+
+.del-style-switcher ul {
+  margin-bottom: 10px;
+  padding-left: 0;
+}
+
+.del-style-switcher li {
+  display: -moz-inline-stack;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+
+  margin: 0 10px 5px 10px;
+}
+
+.del-style-switcher li a {
+  display: -moz-inline-stack;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+
+  width: 30px;
+  height: 30px;
+  text-indent: -9999px;
+  border: 2px solid transparent;
+}
+
+.del-style-switcher li a:hover,
+.del-style-switcher li a:focus {
+  border: 2px solid #fff;
+  outline: none;
+}
+
+
+
+
+
+/* button switch style */
+.switch-skin-full {
+  width: 100%;
+  margin-bottom: 10px;
+  border: none;
+  padding: 8px;
+  font-size: 1.2em;
+
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.switch-skin-full.selected:before {
+  content:'\221A';
+  margin-right: 5px;
+}
+
+.switch-skin-full.fulldark {
+  background: #304A54;
+  color: #fff;
+}
+
+.switch-skin-full.fulldark:hover,
+.switch-skin-full.fulldark:focus {
+  background: #3A5762;
+}
+
+.switch-skin-full.fullbright {
+  background: #fff;
+  color: #646464;
+  border: 1px solid #646464;
+}
+
+.switch-skin-full.fullbright:hover,
+.switch-skin-full.fullbright:focus {
+  background: #f2f2f2;
+}
+
+/* start*/
+.del-switcher-toggle {
+  background-image: none;
+}
+.switcher-icon-span{
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: block;
+  height: 40px;
+  width: 40px;
+  border-radius: 5px 0 0 5px;
+  padding: 7px;
+  text-align: center;
+  line-height: 28px;
+  cursor: pointer;
+}
+
+.switcher-icon-span>i {
+  font-size: 25px;
+}
+
+

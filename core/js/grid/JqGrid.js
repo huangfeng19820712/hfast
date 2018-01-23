@@ -187,6 +187,7 @@ define([
                 hoverrows: true, // true by default, can be switched to false if highlight on hover is not needed
                 multiselect: true,
                 onSelectRow: this.selectRow,
+                //loadComplete:this.loadComplete,
                 gridComplete: this.gridComplete//$.proxy(this.gridComplete,this)
             };
             if(this.data){
@@ -421,10 +422,11 @@ define([
         /**
          * 根据加载数据
          * @param params 要求修改postData
-         *
+         * @param page
          */
-        reloadByPostData:function(params){
-            this.reload({"postData":params});
+        reloadByPostData:function(params,page){
+            //强制修改page为1
+            this.reload({"postData":params,page:page||1});
         },
         destroyModal:function(gridId){
             var id = "alertmod_" + gridId;
@@ -439,6 +441,13 @@ define([
                 }
 
             });
+        },
+        /**
+         * 重新设置grid的大小，根据父dom的长宽重新自适应
+         */
+        resize:function(){
+            this.$table.jqGrid("resizeGrid");
+            this.trigger("resize");  //触发布局调整的事件
         },
         destroy:function(){
             jQuery.jgrid.gridDestroy(this.getTableId());

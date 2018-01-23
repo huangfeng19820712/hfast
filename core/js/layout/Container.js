@@ -90,13 +90,13 @@ define(["jquery",
             //初始化的内容，需要close中清空
             this.renderdRegion=[];
             this.beforeInitializeHandle(options, triggerEvent);
-            this.initializeHandle();
+            this.initializeHandle(options, triggerEvent);
             this.afterInitializeHandle(options, triggerEvent);
         },
         /**
          * 初始化核心处理方法，由子类实现,主要是初始化数据，不包含渲染的内容
          */
-        initializeHandle:function(){
+        initializeHandle:function(options,triggerEvent){
             if (this.isClosed) {
                 // a previously closed layout means we need to
                 // completely re-initialize the regions

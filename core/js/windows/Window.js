@@ -129,6 +129,9 @@ define([
                 buttonGroup.render();
                 modalDialog.setFooter(buttonGroup.$el);
                 modalDialog.showFooter();
+                if(options.width){
+                    modalDialog.setWidth(options.width);
+                }
             }else{
                 modalDialog.hideFooter();
             }

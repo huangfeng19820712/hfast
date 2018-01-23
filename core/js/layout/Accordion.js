@@ -62,9 +62,16 @@ define(["jquery",
                     var accordionItem = this.accordionItems[i];
                     accordionItem.id = accordionItem.id || this.getContentId(i);
                     accordionItem.parentId=this.id;
+                    accordionItem.theme=this.getItemTheme(accordionItem);
                     this.$el.append(this._initAccordionItemDom(accordionItem));
                 }
             }
+        },
+        /**
+         * 获取子项的主题
+         */
+        getItemTheme:function(accordionItem){
+            return accordionItem.theme||this.getTheme();
         },
         /**
          * 对象

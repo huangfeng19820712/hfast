@@ -33,6 +33,7 @@ define(["core/js/layout/Panel",
                         placeholder:"查询",
                         buttons:[{
                             text:"查询",
+                            iconSkin:"fa-search",
                             themeClass:ToolStripItem.ThemeClass.PRIMARY,
                             onclick:function(event){
                                 var tree = that.getMainRegionRef().getComRef();

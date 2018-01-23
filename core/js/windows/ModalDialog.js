@@ -25,6 +25,22 @@ define(["jquery",
         $footer:null,
         arguments: null,              //父页面传递给弹出窗口的参数
         returnValue: null,           //弹出窗口关闭时，传递给回调函数的返回值
+        /**
+         * 关闭窗口前触发
+         */
+        onhide:null,
+        /**
+         * 关闭窗口后触发
+         */
+        onhidden:null,
+        /**
+         * 打开窗口前触发
+         */
+        onshow:null,
+        /**
+         * 打开窗口后触发
+         */
+        onshown:null,
         ctor: function (options) {
             this.set(options);
             this.returnValue = null;
@@ -47,6 +63,33 @@ define(["jquery",
             this.$title = this.$el.find(".modal-title");
             this.$body = this.$el.find(".modal-body");
             this.$footer = this.$el.find(".modal-footer");
+            this.registerEvent();
+        },
+        registerEvent:function(){
+            var that = this;
+            this.$el.on("hide.bs.modal",function(event){
+                //清空宽度属性,与bootstrap的日期控件冲突
+                if($(event.target).find(".modal-dialog").length>0){
+                    $(event.target).find(".modal-dialog").width("");
+                    that.trigger("hide",event);
+                }
+            });
+            this.$el.on("hidden.bs.modal",function(event){
+                if($(event.target).find(".modal-dialog").length>0){
+                    that.trigger("hidden",event);
+                }
+            });
+            this.$el.on("show.bs.modal",function(event){
+                if($(event.target).find(".modal-dialog").length>0){
+                    that.trigger("show",event);
+                }
+
+            });
+            this.$el.on("shown.bs.modal",function(event){
+                if($(event.target).find(".modal-dialog").length>0){
+                    that.trigger("show",event);
+                }
+            });
         },
         /**
          * 显示窗口
@@ -87,16 +130,23 @@ define(["jquery",
             this.$footer.hide();
         },
         hide: function () {
-            if(this.beforeHide instanceof Function){
+            /*if(this.beforeHide instanceof Function){
                 var result = this.beforeHide();
                 if(!result){
                     return ;
                 }
-            }
+            }*/
             this.$el.modal('hide');
+            /*this.$el.find(".modal-dialog").width(null);
             if(this.afterHide instanceof Function){
                 this.afterHide();
-            }
+            }*/
+        },
+        /**
+         * 设置模态窗口的宽度
+         */
+        setWidth:function(width){
+            this.$el.find(".modal-dialog").width(width);
         },
         /**
          * 父页面传递给弹出窗口的参数
@@ -118,13 +168,6 @@ define(["jquery",
         setReturnValue: function (returnValue) {
             this.returnValue = returnValue;
         },
-        /**
-         * 需要覆盖的内容，如果返回是
-         * @return Boolean  如果是true，则继续执行，如果是fals，则直接返回
-         *
-         */
-        beforeHide:null,
-        afterHide:null,
     });
 
     return ModalDialog;

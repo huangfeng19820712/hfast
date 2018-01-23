@@ -35,6 +35,11 @@ define(["core/js/Event","backbone","core/js/windows/messageBox",
 
         _registerEvent: false,   //标识是否已经注册了事件
 
+        /**
+         * 添加控件到容器的jquery对象
+         */
+        $container: null,
+
         //事件声明：整个组件初始化完成后的事件
         oninitialized: function(){},
 
@@ -57,7 +62,18 @@ define(["core/js/Event","backbone","core/js/windows/messageBox",
          */
         onresize: null,
 
-
+        /**
+         * 获取一个 Boolean 值，表示是否已经初始化。
+         *
+         * @default false
+         */
+        initialized: false,
+        /**
+         * 是否懒加载，
+         * 1.如果是true，则在初始化的时候没有马上渲染
+         * 2.如果是false（默认值），则初始化时就马上渲染
+         */
+        lazy: false,
         /**
          * 初始化构造函数
          * @param options
@@ -66,12 +82,55 @@ define(["core/js/Event","backbone","core/js/windows/messageBox",
         initialize: function (options, triggerEvent) {
             this.set(options, null);
 
+            this.beforeInitializeHandle(options, triggerEvent);
+            this.initializeHandle(options, triggerEvent);
+            //this._initElAttr();    //初始化元素的属性
+            this.afterInitializeHandle(options, triggerEvent);
+        },
+
+        /**
+         * 需要子类集成
+         * 在此处不能初始化一个默认的函数，
+         */
+        //mountContent:null,
+
+        beforeInitializeHandle:function(options, triggerEvent){
+
+        },
+
+
+        /**
+         * 结束初始化
+         */
+        afterInitializeHandle:function(options, triggerEvent){
+            if(triggerEvent===false){
+                return ;
+            }
             //组件初始化完成，触发事件
-            if (triggerEvent == null || triggerEvent) {
-                this.registerSelfEvent(this);  //预先绑定事件
+            this.initialized = true;
+            if (triggerEvent == null || triggerEvent){
                 this.trigger("initialized");
             }
+            //判断是否需要马上渲染
+            if (this.isRenderInInit()) {
+                this.render();
+            }
         },
+
+        /**
+         * 是否在初始化时就渲染
+         * @return  true,则渲染，fales 则不渲染
+         */
+        isRenderInInit: function () {
+            return !this.lazy && this.$container;
+        },
+        /**
+         * 初始化核心处理方法，由子类实现,主要是初始化数据，不包含渲染的内容
+         */
+        initializeHandle:function(){
+
+        },
+
         _initElAttr: function () {
             this.setHeight(this.height);  //设置视图的高度
             this.setParent(this.parent);  //设置父视图

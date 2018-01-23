@@ -90,7 +90,7 @@ define(["jquery", "core/js/Observable", "core/js/utils/Log"], function ($, Obser
             return Log;
         },
         /**
-         * 注册自身的对外开放的时间
+         * 注册自身的对外开放的事件
          * @param options
          */
         registerSelfEvent: function (options) {

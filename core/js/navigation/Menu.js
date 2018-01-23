@@ -28,6 +28,7 @@ define([
          */
         menus:null,
         className:"dropdown-menu",
+
         _initElAttr:function(){
             this._super();
             this.$el.attr("role","menu");

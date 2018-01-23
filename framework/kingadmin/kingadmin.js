@@ -9,6 +9,7 @@ $KingCons = {
     prefix:"king_",
     xtype:{
         SLIDEBAR:this.prefix+"slideBar",
+        SWITCHER:this.prefix+"switcher",
         MENU:this.prefix+"menu",
         TOPBAR:this.prefix+"topBar",
         TABLE:this.prefix+"table",
@@ -34,7 +35,7 @@ define(["jquery", "text!framework/kingadmin/templates/menu.html",
     "king-chart-stat",
     "king-table",
     "king-components",
-    "king-common", "style-switcher",
+    "king-common",
     , "framework/kingadmin/js/raphael", "core/js/utils/JqueryUtils"], function ($, temple,TopBar,SlideBar,Menu) {
     var topBar = new TopBar({el:$(".dashboard .wrapper")});
     var slideBar = new SlideBar({el: $(".bottom .container .row:first"),topViews:[Menu]});

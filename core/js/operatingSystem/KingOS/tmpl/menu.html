@@ -1,0 +1,22 @@
+<!-- main-nav -->
+<nav class="main-nav">
+    <ul class="main-menu">
+        <!--<li class="active"><a href="index.html"><i class="fa fa-dashboard fa-fw"></i><span class="text">Dashboard</span></a></li>-->
+        <%_.each(data,function(item, j){%>
+            <li >
+                <a href="#<%=item.url%>" class="<%if(item.subMenu){%>js-sub-menu-toggle<%}%>"><i class="fa fa-clipboard fa-fw"></i><span class="text"><%=item.name%></span>
+                <%if(item.subMenu){%><i class="toggle-icon fa fa-angle-left"></i><%}%></a>
+                <%if(item.subMenu){%>
+
+                <ul class="sub-menu ">
+                    <%_.each(item.subMenu,function(menu){%>
+                    <li ><a href="#<%=menu.url%>"><span class="text"><%=menu.name%></span></a></li>
+                    <%})%>
+                </ul>
+                <%}%>
+            </li>
+        <%})%>
+
+    </ul>
+</nav>
+<!-- /main-nav -->

@@ -307,9 +307,10 @@ $(document).ready(function(){
 	}
 
 	/* set minimum height for the left content wrapper, demo purpose only  */
-	if( $('.demo-only-page-blank').length > 0 ) {
-		$('.content-wrapper').css('min-height', $('.wrapper').outerHeight(true) - $('.top-bar').outerHeight(true));
-	}
+	$('.content-wrapper').css('min-height', $('.wrapper').outerHeight(true) - $('.top-bar').outerHeight(true));
+
+	/*if( $('.demo-only-page-blank').length > 0 ) {
+	}*/
 
 
 	//*******************************************

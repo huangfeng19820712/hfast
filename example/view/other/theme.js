@@ -6,15 +6,22 @@ define(["core/js/layout/FluidLayout",
         "core/js/view/Region",
         "core/js/layout/Panel",
         "core/js/controls/ToolStripItem",
-        "core/js/controls/HelpLink",],
-    function (FluidLayout, CommonConstant,Region,Panel,ToolStripItem,HelpLink) {
+        "core/js/controls/HelpLink",
+        $Component.SWITCHER.src,"core/js/utils/ApplicationUtils"],
+    function (FluidLayout, CommonConstant,Region,Panel,ToolStripItem,HelpLink,Switcher,
+              ApplicationUtils) {
 
         var view = FluidLayout.extend({
             defaultColumnSize: $Column.COL_MD_4,
             items: null,
             initItems:function(){
                 var theme = "";
-                this.items = [{
+                this.items = [ {
+                    comRef:new HelpLink({
+                        //$container:this.$el,
+                        mainContent:"<span>span</span>",
+                    })
+                },{
                     comXtype:$Component.PANEL,
                     //className:"utils-inline-block",
                     comRef:new Panel({
@@ -51,11 +58,6 @@ define(["core/js/layout/FluidLayout",
                         totalPage: 2
                     }
                 }, {
-                    comRef:new HelpLink({
-                        $container:this.$el,
-                        mainContent:"<span>span</span>",
-                    })
-                }, {
                     comXtype: $Component.NAVIGATION,
                     comConf: {
                         data:[{
@@ -76,6 +78,17 @@ define(["core/js/layout/FluidLayout",
                             },]
                         },{
                             label:"按钮类"
+                        }]
+                    }
+                }, {
+                    comXtype: $Component.ACCORDION,
+                    comConf: {
+                        accordionItems:[{
+                            label: "one",
+                            height: 40
+                        },{
+                            label: "two",
+                            height: 40
                         }]
                     }
                 }, {
@@ -112,7 +125,32 @@ define(["core/js/layout/FluidLayout",
                     }
                 }
                 ];
-
+            },
+            onrender:function(){
+                var that = this;
+                var switcher = new Switcher({
+                    $container:this.$el,
+                    spinTop:70,
+                    onthemeSelect:function(event){
+                        var childrenComponent = ApplicationUtils.getChildrenComponent(that);
+                        //var jqEvent = event.jqEvent;
+                        var theme = $(event.jqEvent.target).data("skin");
+                        _.each(childrenComponent,function(item,idx,list){
+                            if(item&&item.toggleTheme){
+                                //button不处理
+                                if(!item.$el.is('button')){
+                                    item.toggleTheme(theme);
+                                }
+                            }else{
+                                console.info(">>");
+                            }
+                        });
+                    }
+                });
+                /*//设置到合适的高度
+                switcher.$el.find(".del-style-switcher").css({
+                    top:70,
+                });*/
             }
         });
 

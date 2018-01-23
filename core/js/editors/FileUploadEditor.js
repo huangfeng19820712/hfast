@@ -1,7 +1,7 @@
 /**
  * @author:   * @date: 2016/2/26
- * 代码编辑器使用codemirror插件
- * http://codemirror.net/doc/manual.html#vimapi
+ * 插件地址
+ * http://plugins.krajee.com/file-input/plugin-events#filesuccessremove
  */
 define([
     "core/js/editors/Editor",
@@ -24,6 +24,11 @@ define([
          */
         isExactProgress:false,
         /**
+         * 插件的配置信息
+         * @property {Object}
+         */
+        pluginConf:null,
+        /**
          * 查看进度
          * @private
          */
@@ -44,28 +49,44 @@ define([
          */
         mountContent: function () {
             this._super();
-            this.$input.fileinput({
+            var gridOptions = this.getGridOptions();
+            //pluginConf的配置信息可以覆盖conf中的信息
+            if(this.pluginConf){
+                gridOptions = _.extend(gridOptions,this.pluginConf);
+            }
+
+            this.$input.fileinput(gridOptions);
+            this.registerEvent();
+
+        },
+        getGridOptions:function(){
+            return {
                 language:"zh",
                 uploadUrl: this.uploadUrl,
-                filepreupload: $.proxy(this.filepreupload,this),
-                fileuploaded: $.proxy(this.fileuploaded,this)
-            });
+            };
+        },
+        /**
+         * 注册插件的事件
+         */
+        registerEvent:function(){
+            this.$input.on('fileloaded', $.proxy(this.fileuploaded,this));
+            this.$input.on('filepreupload', $.proxy(this.filepreupload,this));
         },
         /**
          * 文件上传前触发的
          */
-        filepreupload:function(){
-            if(isExactProgress){
+        filepreupload:function(event, file, previewId, index, reader){
+            /*if(this.isExactProgress){
                 this._progressInterval= new Interval();
                 this._progressInterval.addCallBack({
                     id:$Component.FILEUPLOADEDITOR.name,
                     fun:options.fun,
                     context:this
                 });
-            }
+            }*/
         },
-        fileuploaded:function(){
-            this.destroyInterval();
+        fileuploaded:function(event, file, previewId, index, reader){
+            //this.destroyInterval();
         },
         destroyInterval:function(){
             if(this.isExactProgress){

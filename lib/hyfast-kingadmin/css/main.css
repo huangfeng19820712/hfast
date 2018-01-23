@@ -1,3 +1,6 @@
 #application{
     min-height: 100%;
 }
+.wrapper .push-sticky-footer{
+    height: 37px;
+}

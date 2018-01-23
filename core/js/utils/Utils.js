@@ -3,7 +3,7 @@
  * @author:   * @date: 2015/10/2
  */
 
-define(["underscore", "core/js/Class"], function (_, Class) {
+define(["underscore", "core/js/Class",], function (_, Class) {
     /**
      * 判断字符串是否为空“” ，如果是活着是undefine、null、“”，都返回true，
      * 否则返回true

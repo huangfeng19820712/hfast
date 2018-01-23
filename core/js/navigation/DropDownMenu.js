@@ -26,6 +26,10 @@ define([
          * @link DropDownMenu.layout
          */
         layout:null,
+        /**
+         * 带图标按钮上的图标对应的CSS，即className
+         */
+        iconSkin:null,
         _initElAttr:function(){
             this._super();
             if(this.layout==DropDownMenu.layout.right){
@@ -38,6 +42,7 @@ define([
             this.mainButton = new ToolStripItem({
                 text:this.text,
                 $container:this.$el,
+                iconSkin:this.iconSkin,
                 themeClass:[this.btnTheme,"dropdown-toggle"].join(" "),
                 onclick: $.proxy(that.showDropDownRegion,that),
             });

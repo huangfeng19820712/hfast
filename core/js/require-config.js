@@ -70,6 +70,7 @@ function $globalRequireConfig(webRoot) {
             "muuri":$route.getJs("muuri"),
             //与muuri中对hammerjs引用一致
             "hammerjs":$route.getJs("hammer"),
+            "raphael":$route.getJs("raphael"),
             "usa_states":$route.getJs("mapael","usa_states"),
 
 
@@ -78,8 +79,10 @@ function $globalRequireConfig(webRoot) {
             'bootstrap-dataTables':$route.getJs("bootstrap","jquery.dataTables.bootstrap"),
             "bootstrap-datepicker":$route.getJs("bootstrap","bootstrap-datepicker"),
             "bootstrap-datepicker.locale":$route.getLocale("bootstrap","bootstrap-datepicker"),
+            "moment":$route.getJs("moment"),
             "bootstrap-datetimepicker":$route.getJs("bootstrap","bootstrap-datetimepicker"),
             "bootstrap-datetimepicker.locale":$route.getLocale("bootstrap","bootstrap-datetimepicker"),
+            //"bootstrap-datetimepicker.locale":$route.getJs("bootstrap-datetimepicker"),
             "bootstrap-select":$route.getJs("bootstrap-select"),
             "ladda":$route.getJs("ladda"),
 
@@ -189,6 +192,8 @@ function $globalRequireConfig(webRoot) {
             "bootstrap-datetimepicker.locale":{deps:[
                 $route.getCss("bootstrap",
                 "bootstrap-datetimepicker"),"bootstrap-datetimepicker"]},
+            /*"bootstrap-datetimepicker.locale":{deps:[ "moment",
+                $route.getCss("bootstrap-datetimepicker")]},*/
             "bootstrap.touchspin":{deps:["css!lib/touchspin/3.0.1/jquery.bootstrap-touchspin.css"]},
             "bootstrap-select":{deps:['jquery',$route.getCss("bootstrap-select")]},
             "fileinput":{deps:[
@@ -223,8 +228,8 @@ function $globalRequireConfig(webRoot) {
             ]},
             "icheck":{deps:[$route.getCss("icheck","all")]},
             "fuelux.wizard":{deps:[$route.getKingadminCss("components")]},
-            'king-common':{deps:['jquery','jquery.flot.tooltip']},
-            'king-chart-stat':{deps:['jquery','jquery.easypiechart']},
+            'king-common':{deps:['jquery','bootstrap-tour']},
+            'king-chart-stat':{deps:['jquery']},
             'king-table':{deps:['jquery','jquery.dataTables']},
             'king-components':{deps:['jquery',"usa_states"]},
             'style-switcher':{deps:['jquery','king-common']}

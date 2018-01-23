@@ -52,7 +52,10 @@ define(["jquery",
          * model,是按钮，还是超链接
          */
         mode:null,
-
+        /**
+         * 主题的样式class前缀
+         */
+        themeClassPre:"btn",
         theme:$Theme.DEFAULT,
         /**
          * 启动二胎模式，是否有切换的状态，active的一个状态，没有active又是另一种状态
@@ -87,11 +90,7 @@ define(["jquery",
          * 是否允许回车键导航：即按回车键触发单击操作
          */
         enterKeyNavigatable: false,
-        /**
-         * 主题的样式class前缀
-         */
-        themeClassPre:"btn",
-        theme:"default",
+
         /**
          * 聚焦按钮
          * add by 2014.07.14

@@ -71,6 +71,9 @@ $global.constants = {
         'web-animations':'2.0',
         'muuri':'0.5.3',
         'hammer':'2.0.7',
+        'raphael':'2.1.2',
+        'moment':'2.20.1',
+        'bootstrap-datetimepicker':'4.17.37',
         'flowplayer':'3.2.13'
     },
     /**
@@ -123,10 +126,19 @@ $global.constants = {
      },*/
     theme: {
         DEFAULT: "default",
-        GREEN: "green",
-        BLUE: "blue",
-        ORANGE: "orange",
-        LIGHT_GREEN: "light-green",
+        BLUE:"blue",
+        RED:"red",
+        GREEN:"green",
+        SEA:"sea",
+        ORANGE:"orange",
+        YELLOW:"yellow",
+        GREY:"grey",
+        PURPLE:"purple",
+        AQUA:"aqua",
+        BROWN:"brown",
+        "DARK-BLUE":"dark-blue",
+        "LIGHT-GREEN":"light-green",
+        "DEFAULT-DARK":"default-dark",
     },
     rounded: {
         ROUNDED: "rounded",
@@ -336,6 +348,12 @@ $Component = $cons.component = {
         name: "SkyFormEditor",
         label: "sky表单组件",
         src: "core/js/form/SkyFormEditor",
+        type: $cons.componentType.FORM
+    },
+    NAVFORMEDITOR: {
+        name: "NavFormEditor",
+        label: "sky表单组件",
+        src: "core/js/form/NavFormEditor",
         type: $cons.componentType.FORM
     },
     CONTAINER:{
@@ -621,6 +639,11 @@ $Component = $cons.component = {
         name: "Tree",
         label: "树",
         src: "core/js/tree/Tree"
+    },
+    SWITCHER: {
+        name: "Switcher",
+        label: "树",
+        src: "core/js/Controls/Switcher"
     },
 };
 

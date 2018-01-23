@@ -189,6 +189,21 @@ define(["jquery",
             return this.mainRegion;
         },
         /**
+         * 设置主区域对象
+         * @param mainRegion
+         */
+        setMainRegion:function(mainRegion){
+            this.mainRegion = mainRegion
+        },
+        /**
+         * 创建区域对象
+         * @param regionEl
+         * @returns {*}
+         */
+        buildRegion:function(regionEl){
+            return this.regionClass.buildRegion(regionEl);
+        },
+        /**
          *
          * @return {*}
          */

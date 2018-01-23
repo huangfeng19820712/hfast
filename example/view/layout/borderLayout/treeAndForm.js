@@ -19,7 +19,10 @@ define(["core/js/layout/BorderLayout",
             //$bottomReferent:$(".push-sticky-footer").eq(0),
             initItems:function(){
                 var that = this;
-                this.$bottomReferent =  $(".copyright").eq(0);
+                var eq = $(".copyright").eq(0);
+                if(eq.length>0){
+                    this.$bottomReferent =  eq;
+                }
                 this.items =  [
                     {
                         region: BorderLayout.Region.WEST,    //西

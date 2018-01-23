@@ -1073,13 +1073,24 @@ nav.page-tabs .page-tabs-content {
     padding: 5px 15px;
 }*/
 /* tab  end */
-
+/*fluidlayout start*/
 .container-fluid .utils-inline-block{
     display: inline-block;
     float: none;
     /*设置line boxes顶部看起*/
     vertical-align: top;
 }
+.fluidlayout >.hfast-container{
+    padding-top:15px ;
+}
+/*fluidlayout end*/
+
+/*NavFormEditor start*/
+.navformeditor>.form-group{
+    margin-right: 6px;
+    margin-bottom: 2px;
+}
+/*NavFormEditor end*/
 
 
 

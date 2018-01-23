@@ -80,6 +80,7 @@ define(["core/js/base/BaseView",
                             $.window.showMessage(editor.$el, {
                                 title:"有内容的弹窗",
                                 buttons: buttons,
+                                width:800
                             });
                         }
                     },{

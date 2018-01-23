@@ -6,15 +6,13 @@ define([
     $Component.CONTAINER.src,
 ], function (CommonConstant,Container) {
     var NavigationBar = Container.extend({
-        eTag:"<nav />",
-        className:"navbar navbar-default",
-
+        xtype:$Component.NAVIGATIONBAR,
+        //tagName:"nav",
+        //className:"navbar navbar-default",
+        //border:0,
         _initElAttr:function(){
             this._super();
-            this.$el.css({
-                marginBottom: 0,
-                border:0
-            });
+            this.$el.wrap('<nav class="navbar navbar-default" role="navigation"></nav>');
         }
     });
     return NavigationBar;

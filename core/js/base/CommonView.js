@@ -54,6 +54,10 @@ define(["core/js/utils/Utils",
              */
             themeClass: null,
             /**
+             * 最后添加到dom中的主题类
+             */
+            _realThemeClass:null,
+            /**
              * 圆角的CSS样式
              */
             roundedClass: null,
@@ -91,20 +95,20 @@ define(["core/js/utils/Utils",
                 if (this.realClass != null) {
                     this.setRealClass(this.realClass);
                 } else {
-                    var xtypeName = this.themeClassPre;
-                    if (this.themeClassPre==null&&this.xtype != null) {
+                    var themeClassPre = this.getThemeClassPre();
+                    var theme = this.getTheme();
+                    //所有的组件都要添加hfast-view类
+                    if (this.xtype != null) {
                         this.$el.addClass($cons.className.view);
                         /**
                          * 自动添加标识组件的className
                          */
                         this.$el.addClass(this.xtype.name.toLowerCase());
-                        xtypeName =  this.xtype.name;
                     }
                     this.setClassName(this.className);
                     this.setRoundedClass(this.roundedClass);
-                    var theme = this.theme||FrameworkConfAccessor.getProjectTheme();
                     //主题，默认是this.xtype.name.toLowerCase()+this.theme
-                    this.setTheme(this.themeClass, theme,xtypeName);
+                    this.setTheme(this.themeClass, theme,themeClassPre);
                 }
 
                 if (this.textAlign) {
@@ -115,20 +119,51 @@ define(["core/js/utils/Utils",
                 }
             },
             /**
+             * 获取主题的前缀名称
+             * @returns {string}
+             */
+            getThemeClassPre:function(){
+                var xtypeName = this.themeClassPre;
+                if (this.themeClassPre==null&&this.xtype != null) {
+                    xtypeName =  this.xtype.name;
+                }
+                return  xtypeName;
+            },
+
+            /**
+             * 获取主题
+             * @returns {null|*}
+             */
+            getTheme:function(){
+                return this.theme||FrameworkConfAccessor.getProjectTheme();
+            },
+            /**
              * 设置主题
              * @param theme
              */
-            setTheme: function (themeClass, theme, xtypeName) {
+            setTheme: function (themeClass, theme, themeClassPre) {
                 var themeClassNew = themeClass;
                 if (themeClassNew == null) {
-                    if (theme == null || xtypeName == null) {
+                    if (theme == null || themeClassPre == null) {
                         return;
                     }
-                    var themeClassNew = (xtypeName?xtypeName.toLowerCase():"") + "-" + theme;
+                    var themeClassNew = (themeClassPre?themeClassPre.toLowerCase():"") + "-" + theme;
                 }
                 if (themeClassNew != null) {
+                    this._realThemeClass = themeClassNew;
                     this.$el.addClass(themeClassNew);
                 }
+            },
+            /**
+             * 替换掉现有的主题
+             * @param   theme   系统提供的主题对象
+             */
+            toggleTheme:function(theme){
+                //删除主题
+                this.$el.removeClass(this._realThemeClass);
+                var themeClassPre = this.getThemeClassPre();
+                console.info(theme+">>"+themeClassPre);
+                this.setTheme(this.themeClass,theme,themeClassPre);
             },
             /**
              * 设置dom的class
@@ -296,6 +331,24 @@ define(["core/js/utils/Utils",
             unregisterEvent: function () {
 
             },
+
+            /**
+             * 销毁Link，css样式
+             * @param url   {String}
+             */
+            destroyLink:function(url){
+                $("link[href='"+url+"']").remove();
+            },
+            /**
+             * 销毁link集合
+             * @param links  {Array}
+             */
+            destroyLinks:function(links){
+                var that = this;
+                _.each(links,function(item,idx,list){
+                    that.destroyLink(item);
+                });
+            }
             /***********************AbstractView与BaseView一样 END***********************************/
         };
 

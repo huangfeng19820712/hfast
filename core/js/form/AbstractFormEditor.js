@@ -162,7 +162,6 @@ define(["jquery",
         },
         /**
          * 获取编辑器的值
-         *
          * @param fieldName 字段名
          * @return {*}
          */
@@ -726,7 +725,6 @@ define(["jquery",
          * 表单的渲染包含两部分，首先渲染表单模版，然后将组件显示到指定的容器中
          */
         render: function (container, triggerEvent) {
-
             this._super(container, triggerEvent);   //执行父类的渲染方法
             return this;
         },

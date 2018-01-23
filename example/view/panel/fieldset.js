@@ -13,7 +13,7 @@ define(["core/js/layout/FluidLayout",
               ViewUtils
     ) {
         var view = FluidLayout.extend({
-            defaultColumnSize: $Column.COL_MD_4,
+            defaultColumnSize: $Column.COL_MD_12,
             initItems: function () {
                 this._super();
                 this.items.push({
@@ -25,9 +25,27 @@ define(["core/js/layout/FluidLayout",
                         brief:"摘要1",
                         collapsible:false,
                         disabled:true,
-                        totalColumnNum:2,
+                        totalColumnNum:4,
                         fields:[{
-                            label:"文本",
+                            label:"文本1",
+                            name:"text",
+                            value:"asdfasf",
+                            editorType:$Component.TEXTEDITOR,
+                            //className:"col col-6",
+                        },{
+                            label:"文本1",
+                            name:"text",
+                            value:"asdfasf",
+                            editorType:$Component.TEXTEDITOR,
+                            //className:"col col-6",
+                        },{
+                            label:"文本1",
+                            name:"text",
+                            value:"asdfasf",
+                            editorType:$Component.TEXTEDITOR,
+                            //className:"col col-6",
+                        },{
+                            label:"文本1",
                             name:"text",
                             value:"asdfasf",
                             editorType:$Component.TEXTEDITOR,
@@ -36,19 +54,30 @@ define(["core/js/layout/FluidLayout",
                             label:"密码",
                             name:"password",
                             editorType:$Component.TEXTEDITOR,
-                            //className:"col col-6",
                             value:"asdfasf",
                             textMode:"password"
                         },{
                             label:"时间",
                             name:"datetime",
                             editorType:$Component.DATETIMEEDITOR,
-                            //className:"col col-6",
+                            //className:"col col-md-6 ",
+                            colspan:2
                         },{
                             label:"日期",
                             name:"date",
                             editorType:$Component.DATEEDITOR,
                             //className:"col col-6",
+                            colspan:4
+                        },{
+                            label:"touchSpin",
+                            name:"touchSpin",
+                            editorType:$Component.TOUCHSPINEDITOR,
+                            colspan:3
+                        },{
+                            label:"touchSpin",
+                            name:"touchSpin",
+                            editorType:$Component.TOUCHSPINEDITOR,
+                            colspan:1
                         }]
                     }
                 });

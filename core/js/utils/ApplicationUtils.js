@@ -16,6 +16,11 @@ define([ "core/js/context/ApplicationContext"],
             _applicationRouter: null,
 
             /**
+             * 主要的区域对象
+             */
+            _mainRegion:null,
+
+            /**
              * 循环依赖的时候，ApplicationContext会为null
              * @returns {*}
              */
@@ -98,13 +103,40 @@ define([ "core/js/context/ApplicationContext"],
                  mainRegion = $.window.getMainRegion();
                  }*/
                 if(regionName){
-                     //regionName一般是对象的id
-                    return $("#"+regionName).data("control");
+                    //先获取组件，并判断是否是操作系统组件
+                    var component = this.getComponentById(regionName);
+                    var region = null;
+                    //如果有组件，则组件必须是操作系统组件
+                    if(component&&component.getMainRegion){
+                        region = component.getMainRegion();
+                    }else{
+                        //regionName,可以
+                        var el = "#"+regionName;
+                        region = $(el).data("control");
+                        if(!region){
+                            region = ApplicationContext.buildRegion(el);
+                        }
+                    }
+                    return region;
                 }else{
-                    //没有区域名称，则去应用上下文的主区域
-                    return this.getApplicationContext().getMainRegion();
+                    //先区域有没有设置主区域对象
+                    if(this._mainRegion){
+                        return this._mainRegion;
+
+                    }else{
+                        //没有区域名称，则去应用上下文的主区域
+                        return this.getApplicationContext().getMainRegion();
+                    }
                 }
             },
+            /**
+             * 设置主区域对象
+             * @param mainRegion
+             */
+            setMainRegion:function(mainRegion){
+                this.getApplicationContext().setMainRegion(mainRegion);
+            },
+
             /**
              * 根据上下文环境，获取整个应用工作区
              * @param applicationRegion

@@ -1,0 +1,20 @@
+#application{
+    min-height: 100%;
+}
+.king_os .bottom .container ,
+.wrapper{
+    background-color: #ececec;
+}
+
+/*设置底部位置 start */
+.wrapper.king_os_wrapper {
+    /*height: 34px;*/
+    margin: 0 auto -37px;/*此处的37要与push-sticky-footer的height、footer的height一直*/
+}
+.king_os_wrapper .push-sticky-footer{
+    height: 37px;
+}
+.king_footer .footer{
+    height: 37px;
+}
+/*设置底部位置 end*/

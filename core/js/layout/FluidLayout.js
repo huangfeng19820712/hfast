@@ -9,40 +9,6 @@ define([
     "core/js/layout/Container",
     "core/js/Class"
 ], function (CommonConstant, Container,Class) {
-
-    var ClientTop = Class.extend({
-        columnObjs:null,
-        sortObjs:null,
-        ctor:function(conf){
-            this.columnObjs = conf.columnObjs||[];
-            this.sortObjs = conf.sortObjs||[];
-        },
-        /**
-         * 添加高度
-         * @param index         开始至
-         * @param columnSize    跨度
-         * @param height        高度
-         * @returns {*}
-         * @private
-         */
-        addTop:function(index,columnSize,height){
-            for(var i= index;i<this.columnObjs&&i<index+this.columnObjs;i++){
-                if(this.columnObjs[i]==null){
-                    this.columnObjs[i] = 0;
-                }
-                this.columnObjs[i] += height;
-            }
-            return  this.columnObjs;
-        },
-        sort:function(){
-            _.sortBy();
-        },
-
-        getColumnIndex:function(columnSize){
-
-        },
-    });
-
     var FluidLayout = Container.extend({
         xtype:$Component.FLUIDLAYOUT,
         /**

@@ -65,7 +65,8 @@ define(["jquery",
              *      iconSkin:"<小图片的class>",
              *      decimals："<针对number类型的编辑器，保留几位小数>",
              *      step:"<针对number类型的编辑器，增量值>"，
-             *      readonly："<是否可以编辑，true|false，默认是false>"
+             *      readonly："<是否可以编辑，true|false，默认是false>",
+             *      colspan:"<number,占用的栏位>",
              * },...
              * ]
              */
@@ -122,20 +123,29 @@ define(["jquery",
                 _.each(fields,function(field,key){
                     if(field){
                         var fieldObj = that.createField(field);
+                        var fieldColumnSize = 1;
+                        if(field.colspan){
+                            fieldColumnSize = field.colspan;
+                        }
                         that._fieldsObj[field.name] = fieldObj;
                         fieldObj.render();
                         if(that.totalColumnNum>1){
-                            var m = i%that.totalColumnNum;
-                            if(m==0){
+                            //var m = i%that.totalColumnNum;
+                            var m = i+fieldColumnSize;
+                            //i=+fieldColumnSize;
+                            //if(m==0){
+                            if(i==0||that.totalColumnNum<m){
                                 row = that._addRow(j);
                                 that.getMainRegionEl().append(row);
+                                //每新增一个行，清零
+                                i=0;
                                 j++;
                             }
                         }else{
                             row = that.getMainRegionEl();
                         }
                         row.append(fieldObj.$el);
-                        i++;
+                        i+=fieldColumnSize;
                     }
                 });
             }
@@ -164,9 +174,23 @@ define(["jquery",
                 field.readOnly = this.readOnly;
             }
             if(this._defaultColumnClassName){
-                field.className = field.className?field.className+" "+this._defaultColumnClassName:this._defaultColumnClassName;
+                var columnSizeClassName = this._defaultColumnClassName;
+                if(field.colspan){
+                    columnSizeClassName = this._getColumnSizeClassName(field.colspan);
+
+                }
+                field.className = field.className?field.className+" "+columnSizeClassName:columnSizeClassName;
             }
             return ComponentFactory.createEditor(field.editorType,field);
+        },
+        /**
+         * 根据columnSize算出列的大小，如col-md-6
+         * @param columnSize
+         * @returns {string}
+         * @private
+         */
+        _getColumnSizeClassName:function(columnSize){
+            return $cons.fluidLayoutClassnamePre+(Math.floor(12 / this.totalColumnNum)*columnSize);
         },
         getMainRegionEl:function(){
             if(this.getRegion(this.mainRegionConf.id).$el.length==0){
