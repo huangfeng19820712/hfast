@@ -336,6 +336,20 @@
       "visible": "1",
       "orderNo": null
     },{
+      "id": "1004",
+      "name": "fieldset中包含jqgrid",
+      "url": "panel/fieldsetGrid",
+      "pid": "10",
+      "tip": null,
+      "leafed": null,
+      "remark": null,
+      "chain": null,
+      "icon": null,
+      "type": "1",
+      "code": "fieldsetGrid",
+      "visible": "1",
+      "orderNo": null
+    },{
       "id": "11",
       "name": "布局",
       "url": "fluidLayout",
@@ -361,6 +375,132 @@
       "icon": null,
       "type": "1",
       "code": "fluidLayout",
+      "visible": "1",
+      "orderNo": null
+    },{
+      "id": "1101",
+      "name": "borderLayoutContainer",
+      "url": null,
+      "pid": "11",
+      "tip": null,
+      "leafed": null,
+      "remark": null,
+      "chain": null,
+      "icon": null,
+      "type": "1",
+      "code": null,
+      "visible": "1",
+      "orderNo": null
+    },{
+      "id": "110101",
+      "name": "borderLayoutContainer",
+      "url": "layout/borderLayout/borderLayoutContainer",
+      "pid": "1101",
+      "tip": null,
+      "leafed": null,
+      "remark": null,
+      "chain": null,
+      "icon": null,
+      "type": "1",
+      "code": "borderLayoutContainer",
+      "visible": "1",
+      "orderNo": null
+    },{
+      "id": "110101",
+      "name": "树与表单",
+      "url": "layout/borderLayout/treeAndForm",
+      "pid": "1101",
+      "tip": null,
+      "leafed": null,
+      "remark": null,
+      "chain": null,
+      "icon": null,
+      "type": "1",
+      "code": "treeAndForm",
+      "visible": "1",
+      "orderNo": null
+    },{
+      "id": "1102",
+      "name": "vboxLayout",
+      "url": "layout/VBoxLayout/vboxLayout",
+      "pid": "11",
+      "tip": null,
+      "leafed": null,
+      "remark": null,
+      "chain": null,
+      "icon": null,
+      "type": "1",
+      "code": "vboxLayout",
+      "visible": "1",
+      "orderNo": null
+    },{
+      "id": "1103",
+      "name": "手风琴布局",
+      "url": "layout/accordion/accordionDemo",
+      "pid": "11",
+      "tip": null,
+      "leafed": null,
+      "remark": null,
+      "chain": null,
+      "icon": null,
+      "type": "1",
+      "code": "accordionDemo",
+      "visible": "1",
+      "orderNo": null
+    },{
+      "id": "1104",
+      "name": "下拉框容器",
+      "url": "layout/dropDownContainer/button",
+      "pid": "11",
+      "tip": null,
+      "leafed": null,
+      "remark": null,
+      "chain": null,
+      "icon": null,
+      "type": "1",
+      "code": "dropDownContainerButton",
+      "visible": "1",
+      "orderNo": null
+    },{
+      "id": "1105",
+      "name": "简单布局",
+      "url": "layout/simpleLayout/simpleLayout",
+      "pid": "11",
+      "tip": null,
+      "leafed": null,
+      "remark": null,
+      "chain": null,
+      "icon": null,
+      "type": "1",
+      "code": "simpleLayout",
+      "visible": "1",
+      "orderNo": null
+    },{
+      "id": "1106",
+      "name": "多版面布局",
+      "url": "layout/parallaxLayout/parallaxLayout",
+      "pid": "11",
+      "tip": null,
+      "leafed": null,
+      "remark": null,
+      "chain": null,
+      "icon": null,
+      "type": "1",
+      "code": "parallaxLayout",
+      "visible": "1",
+      "orderNo": null
+    },{
+      "id": "1107",
+      "name": "mosaic布局",
+      "url": "layout/mosaic",
+      "pid": "11",
+      "tip": null,
+      "leafed": null,
+      "remark": null,
+      "chain": null,
+      "icon": null,
+      "type": "1",
+      "code": "mosaic",
       "visible": "1",
       "orderNo": null
     },{
@@ -686,7 +826,7 @@
       "visible": "1",
       "orderNo": null
     },{
-      "id": "17",
+      "id": "1108",
       "name": "tab布局",
       "url": null,
       "pid": "11",
@@ -700,10 +840,10 @@
       "visible": "1",
       "orderNo": null
     },{
-      "id": "1701",
+      "id": "110801",
       "name": "tabLayout",
       "url": "layout/tab/tabLayout",
-      "pid": "17",
+      "pid": "1108",
       "tip": null,
       "leafed": null,
       "remark": null,
@@ -714,10 +854,10 @@
       "visible": "1",
       "orderNo": null
     },{
-      "id": "1702",
+      "id": "110802",
       "name": "tab主题",
       "url": "layout/tab/tabLayoutTheme",
-      "pid": "17",
+      "pid": "1108",
       "tip": null,
       "leafed": null,
       "remark": null,
@@ -728,10 +868,10 @@
       "visible": "1",
       "orderNo": null
     },{
-      "id": "1703",
+      "id": "110803",
       "name": "胶囊tab",
       "url": "layout/tab/tabLayoutModel",
-      "pid": "17",
+      "pid": "1108",
       "tip": null,
       "leafed": null,
       "remark": null,
@@ -742,10 +882,10 @@
       "visible": "1",
       "orderNo": null
     },{
-      "id": "1704",
+      "id": "110804",
       "name": "多层级标签",
       "url": "layout/tab/multiTabLayout",
-      "pid": "17",
+      "pid": "1108",
       "tip": null,
       "leafed": null,
       "remark": null,
@@ -756,10 +896,10 @@
       "visible": "1",
       "orderNo": null
     },{
-      "id": "1705",
+      "id": "110805",
       "name": "导航标签",
       "url": "layout/tab/navtabLayout",
-      "pid": "17",
+      "pid": "1108",
       "tip": null,
       "leafed": null,
       "remark": null,
@@ -767,118 +907,6 @@
       "icon": null,
       "type": "1",
       "code": "navtabLayout",
-      "visible": "1",
-      "orderNo": null
-    },{
-      "id": "1101",
-      "name": "borderLayoutContainer",
-      "url": null,
-      "pid": "11",
-      "tip": null,
-      "leafed": null,
-      "remark": null,
-      "chain": null,
-      "icon": null,
-      "type": "1",
-      "code": null,
-      "visible": "1",
-      "orderNo": null
-    },{
-      "id": "110101",
-      "name": "borderLayoutContainer",
-      "url": "layout/borderLayout/borderLayoutContainer",
-      "pid": "1101",
-      "tip": null,
-      "leafed": null,
-      "remark": null,
-      "chain": null,
-      "icon": null,
-      "type": "1",
-      "code": "borderLayoutContainer",
-      "visible": "1",
-      "orderNo": null
-    },{
-      "id": "110101",
-      "name": "树与表单",
-      "url": "layout/borderLayout/treeAndForm",
-      "pid": "1101",
-      "tip": null,
-      "leafed": null,
-      "remark": null,
-      "chain": null,
-      "icon": null,
-      "type": "1",
-      "code": "treeAndForm",
-      "visible": "1",
-      "orderNo": null
-    },{
-      "id": "1102",
-      "name": "vboxLayout",
-      "url": "layout/VBoxLayout/vboxLayout",
-      "pid": "11",
-      "tip": null,
-      "leafed": null,
-      "remark": null,
-      "chain": null,
-      "icon": null,
-      "type": "1",
-      "code": "vboxLayout",
-      "visible": "1",
-      "orderNo": null
-    },{
-      "id": "1103",
-      "name": "手风琴布局",
-      "url": "layout/accordion/accordionDemo",
-      "pid": "11",
-      "tip": null,
-      "leafed": null,
-      "remark": null,
-      "chain": null,
-      "icon": null,
-      "type": "1",
-      "code": "accordionDemo",
-      "visible": "1",
-      "orderNo": null
-    },{
-      "id": "1104",
-      "name": "下拉框容器",
-      "url": "layout/dropDownContainer/button",
-      "pid": "11",
-      "tip": null,
-      "leafed": null,
-      "remark": null,
-      "chain": null,
-      "icon": null,
-      "type": "1",
-      "code": "dropDownContainerButton",
-      "visible": "1",
-      "orderNo": null
-    },{
-      "id": "1105",
-      "name": "简单布局",
-      "url": "layout/simpleLayout/simpleLayout",
-      "pid": "11",
-      "tip": null,
-      "leafed": null,
-      "remark": null,
-      "chain": null,
-      "icon": null,
-      "type": "1",
-      "code": "simpleLayout",
-      "visible": "1",
-      "orderNo": null
-    },{
-      "id": "1106",
-      "name": "多版面布局",
-      "url": "layout/parallaxLayout/parallaxLayout",
-      "pid": "11",
-      "tip": null,
-      "leafed": null,
-      "remark": null,
-      "chain": null,
-      "icon": null,
-      "type": "1",
-      "code": "parallaxLayout",
       "visible": "1",
       "orderNo": null
     },{
@@ -913,6 +941,20 @@
       "icon": null,
       "type": "1",
       "code": "navigationBar",
+      "visible": "1",
+      "orderNo": null
+    },{
+      "id": "0402",
+      "name": "操作栏",
+      "url": "navigation/navFormEditor",
+      "pid": "04",
+      "tip": null,
+      "leafed": null,
+      "remark": null,
+      "chain": null,
+      "icon": null,
+      "type": "1",
+      "code": "navFormEditor",
       "visible": "1",
       "orderNo": null
     },{
@@ -965,5 +1007,8 @@
       "orderNo": null
     }
   ] ,
-  "authenticated":true
+  "authenticated":true,
+  "user":{
+    "userName":"domeUser"
+  }
 }

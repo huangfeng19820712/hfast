@@ -8,7 +8,7 @@ define([
     "text!core/resources/tmpl/ParallaxLayout.html",
      "parallax-slider",
     $route.getCss("animate"),
-    "css!core/resources/styles/screen.css"
+    //"css!core/resources/styles/screen.css"
 ], function (CommonConstant, Container,Template) {
     _.extend($.Slider.prototype,{
         _init 				: function( options ) {
