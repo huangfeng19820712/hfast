@@ -51,6 +51,11 @@ define(["jquery",
         formModel:null,
 
         /**
+         * 默认的fieldset对象的配置
+         */
+        defaultFieldsetConf:null,
+
+        /**
          * 面板的全局默认是否伸缩，如果group有定义则覆盖此值
          */
         defaultCollapsible:true,
@@ -212,6 +217,8 @@ define(["jquery",
          */
         _createFieldset:function(config,fields){
             var fieldsetConfig = {};
+
+            _.extend(fieldsetConfig,this.defaultFieldsetConf);
 
             fieldsetConfig["parent"] = this;   //设置面板的父类为当前编辑器
             if(config==null||config.collapsible==null){

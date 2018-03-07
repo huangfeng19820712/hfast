@@ -123,6 +123,16 @@ define(["core/js/layout/FluidLayout",
                             mode: ToolStripItem.Mode.LINK,
                         }]
                     }
+                },{
+                    comXtype:$Component.LAYDATEEDITOR,
+                    comConf:{
+                        label:"时间",
+                        mode:$cons.LayDateMode.date,
+                        placeholder:"日期格式",
+                        onchangeDate:function(value){
+                            console.info(">>>"+value);
+                        }
+                    }
                 }
                 ];
             },

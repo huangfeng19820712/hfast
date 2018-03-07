@@ -2,6 +2,13 @@
  * @author:
  * @date: 15-1-9
  */
+//如果父窗口已经定义了该变量，就使用父窗口的，保证sharedInstance对于整个应用是唯一的
+if (typeof(parent.sharedInstance) == 'undefined')
+    sharedInstance = {};
+else
+    sharedInstance = parent.sharedInstance;
+
+
 $global = {};
 $global.constants = {
     /**
@@ -74,6 +81,9 @@ $global.constants = {
         'raphael':'2.1.2',
         'moment':'2.20.1',
         'bootstrap-datetimepicker':'4.17.37',
+        'bootstrap-switch':'3.3.2',
+        'store':'1.3.9',
+        'laydate':'5.0.9',
         'flowplayer':'3.2.13'
     },
     /**
@@ -208,7 +218,9 @@ $global.constants = {
             SIMPLE: '<input type="text" class="form-control" />',
             FILE: '<input type="file" class="form-control file" data-preview-file-type="text" />',
             SELECT: '<select class="form-control"></select>',
-            TEXTAREA: '<textarea class="form-control"></textarea>'
+            TEXTAREA: '<textarea class="form-control"></textarea>',
+            VIEW: '<label class="form-control"></label>',
+            CHECKBOX: '<input type="checkbox" class="form-control" checked />'
         },
         Grid: {
             DEFAULT: '<table><thead/><tbody/></table>',
@@ -255,7 +267,11 @@ $global.constants = {
     mount: {
         Model: {
             append: "append",
-            prepend: "prepend"
+            prepend: "prepend",
+            /**
+             *不需要挂载，有些情况下由用户指定在哪个dom下，不需要组件自己挂载
+             */
+            none:"none"
         }
     },
     /**
@@ -323,6 +339,10 @@ $global.constants = {
             label: "其他组件"
         }
     },
+    EditorLayoutMode:{
+        VERTICAL:"vertical",
+        HORIZONTAL:"horizontal",
+    },
     DateEditorMode : {
         INPUT:"Input",
         COMPONENT:"Component",
@@ -333,6 +353,28 @@ $global.constants = {
         FLV:"flv",
         RTMP:"rtmp"
     },
+    LayDateMode:{
+        year:{
+            type:"year",
+            format:"yyyy年",
+        },
+        month:{
+            type:"month",
+            format:"yyyy年MM月",
+        },
+        date:{
+            type:"date",
+            format:"yyyy年MM月dd日",
+        },
+        time:{
+            type:"time",
+            format:"H点M分",
+        },
+        datetime:{
+            type:"datetime",
+            format:"yyyy年M月d日H时m分s秒",
+        }
+    }
 };
 $cons = $global.constants;
 $Component = $cons.component = {
@@ -415,6 +457,18 @@ $Component = $cons.component = {
         src: "core/js/editors/DatetimeEditor",
         type: $cons.componentType.EDITOR
     },
+    LAYDATEEDITOR: {
+        name: "LayDateEditor",
+        label: "时间编辑器",
+        src: "core/js/editors/LayDateEditor",
+        type: $cons.componentType.EDITOR
+    },
+    SWITCHEDITOR: {
+        name: "SwitchEditor",
+        label: "切换编辑器",
+        src: "core/js/editors/SwitchEditor",
+        type: $cons.componentType.EDITOR
+    },
     CHECKBOXEDITOR: {
         name: "CheckboxEditor",
         label: "选择编辑器",
@@ -455,6 +509,12 @@ $Component = $cons.component = {
         name: "FileUploadEditor",
         label: "上传文件编辑器",
         src: "core/js/editors/FileUploadEditor",
+        type: $cons.componentType.EDITOR
+    },
+    VIEWEDITOR: {
+        name: "ViewEditor",
+        label: "可视编辑器",
+        src: "core/js/editors/ViewEditor",
         type: $cons.componentType.EDITOR
     },
     DROPDOWNCONTAINER: {
@@ -644,6 +704,11 @@ $Component = $cons.component = {
         name: "Switcher",
         label: "树",
         src: "core/js/Controls/Switcher"
+    },
+    BREADCRUMBS: {
+        name: "Breadcrumbs",
+        label: "树",
+        src: "core/js/Controls/Breadcrumbs"
     },
 };
 
@@ -950,6 +1015,18 @@ $global.BaseFramework = {
         this._loadScript($route.getAllJs("require"), {"data-main": entryPoint});
 
     },
+    /**
+     * 初始化requireJS全局配置信息
+     * @param currentModuleName
+     * @param theme
+     * @param layout
+     * @param layoutSkin
+     * @private
+     */
+    _initRequireConfig: function (currentModuleName, theme, layout, layoutSkin) {
+        //It is best to use var require = {} and do not use window.require = {}, it will not behave correctly in IE.
+        require = $globalRequireConfig(this.webContextPath, this.frameworkVersion, this.projectVersion, currentModuleName, theme, layout, layoutSkin);  //执行该函数，并且赋值给全局变量
+    },
     _loadCss: function (cssSrc) {
         var head = document.head || document.getElementsByTagName('head')[0];
         var link = document.createElement('link');
@@ -1005,9 +1082,18 @@ $global.BaseFramework = {
     }
 }
 $global.BaseFramework.init();
+
+
+//缓存最顶级的BaseFramework，保证ApplicationContext中能够正常获取到该对象
+if (!sharedInstance["BaseFramework"])
+    sharedInstance["BaseFramework"] = $global.BaseFramework;
+
+$global.sharedInstance = sharedInstance;   //$sharedInstance是整个应用唯一的，存储在入口处的框架页中
 /**
  * 执行的app，在全局中的引用
  * @type {null}
  */
 $global.app = null;
+
+$global.appConf = null;
 

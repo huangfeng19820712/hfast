@@ -7,7 +7,7 @@ define(["core/js/utils/Utils",
         "core/js/utils/ApplicationUtils",
         "core/js/base/CommonView"],
     function (Utils, ApplicationUtils,CommonView) {
-        return _.extend(CommonView,{
+        var AbstractView = _.extend({},CommonView,{
             wrapCom:null,
             /**
              * 有三中显示模式，编辑模式、开发模式、正常模式
@@ -326,6 +326,11 @@ define(["core/js/utils/Utils",
 
                 } else if (this.mountModel == $cons.mount.Model.prepend) {
                     $container.prepend($el);   //添加到指定的位置
+                } else if(this.mountModel == $cons.mount.Model.none){
+                    /**
+                     *不需要挂载，有些情况下由用户指定在哪个dom下，不需要组件自己挂载
+                     */
+                    return ;
                 }
             },
             /*==============================样式值方法========================================*/
@@ -613,6 +618,6 @@ define(["core/js/utils/Utils",
             }
         });
 
-
+        return AbstractView;
     });
 

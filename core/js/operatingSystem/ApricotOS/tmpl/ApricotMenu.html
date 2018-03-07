@@ -1,0 +1,30 @@
+<ul class="topnav menu-left-nest">
+    <li>
+        <a href="<%=data.url?'#'+data.url:'javascript:void(0);'%>"
+           style="border-left:0px solid!important;"
+           class="title-menu-left">
+            <span><%=data.name%></span>
+            <i data-toggle="tooltip" class="entypo-cog pull-right config-wrap"></i>
+        </a>
+    </li>
+    <%if(data.subMenu){%>
+    <%_.each(_.sortBy(data.subMenu, 'orderNo'),function(menu){%>
+    <li>
+        <a class="tooltip-tip ajax-load" href="#<%=menu.url%>" title="<%=menu.name%>">
+            <i class="fa fa-edit"></i>
+            <span><%=menu.name%></span>
+        </a>
+        <%if(menu.subMenu){%>
+        <ul>
+            <%_.sortBy(_.sortBy(menu.subMenu, 'orderNo'), 'orderNo');_.each(menu.subMenu,function(item){%>
+            <li>
+                <a class="tooltip-tip2 ajax-load" href="#<%=item.url%>" title="<%=item.name%>"><i
+                        class="entypo-doc-text"></i><span><%=item.name%></span></a>
+            </li>
+            <%});%>
+        </ul>
+        <%}%>
+    </li>
+    <%});%>
+    <%}%>
+</ul>

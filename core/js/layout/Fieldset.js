@@ -72,6 +72,10 @@ define(["jquery",
              */
         fields: null,
         /**
+         * {Object}默认编辑器的配置
+         */
+        defaultEditorConf:null,
+        /**
          * 字段对象的引用数组
          */
         _fieldsObj:null,
@@ -122,12 +126,14 @@ define(["jquery",
                 var row = null;
                 _.each(fields,function(field,key){
                     if(field){
-                        var fieldObj = that.createField(field);
+                        var fieldConf = {};
+                        _.extend(fieldConf,that.defaultEditorConf,field);
+                        var fieldObj = that.createField(fieldConf);
                         var fieldColumnSize = 1;
-                        if(field.colspan){
-                            fieldColumnSize = field.colspan;
+                        if(fieldConf.colspan){
+                            fieldColumnSize = fieldConf.colspan;
                         }
-                        that._fieldsObj[field.name] = fieldObj;
+                        that._fieldsObj[fieldConf.name] = fieldObj;
                         fieldObj.render();
                         if(that.totalColumnNum>1){
                             //var m = i%that.totalColumnNum;
@@ -179,8 +185,20 @@ define(["jquery",
                     columnSizeClassName = this._getColumnSizeClassName(field.colspan);
 
                 }
-                field.className = field.className?field.className+" "+columnSizeClassName:columnSizeClassName;
+                field.sizeClass = field.sizeClass?field.sizeClass:columnSizeClassName;
             }
+
+            if(this.editorLayoutMode==$cons.EditorLayoutMode.VERTICAL){
+                field.layoutMode = $cons.EditorLayoutMode.VERTICAL;
+                if(this.editorLabelSizeClass){
+                    field.labelSizeClass = this.editorLabelSizeClass
+                }
+                if(this.editorControlGroupSizeClass){
+                    field.controlGroupSizeClass = this.editorControlGroupSizeClass
+                }
+
+            }
+
             return ComponentFactory.createEditor(field.editorType,field);
         },
         /**

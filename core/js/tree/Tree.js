@@ -70,7 +70,6 @@ define([
             var conf = this.getConf();
             //pluginConf的配置信息可以覆盖conf中的信息
             if(this.pluginConf){
-
                 conf = _.extend(conf,this.pluginConf);
             }
             this.plugin = this.$el.fancytree(conf);

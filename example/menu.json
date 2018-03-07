@@ -232,6 +232,15 @@
       "visible": "1",
       "orderNo": null
     },{
+      "id": "0306",
+      "name": "king操作系统",
+      "pid": "03",
+      "url": "operatingSystem/kingOS",
+      "type": "1",
+      "code": "kingOS",
+      "visible": "1",
+      "orderNo": null
+    },{
       "id": "9",
       "name": "表单",
       "url": "form",
@@ -823,6 +832,48 @@
       "icon": null,
       "type": "1",
       "code": "selectEditor",
+      "visible": "1",
+      "orderNo": null
+    },{
+      "id": "1613",
+      "name": "laydate编辑器",
+      "url": "editor/layDateEditor",
+      "pid": "16",
+      "tip": null,
+      "leafed": null,
+      "remark": null,
+      "chain": null,
+      "icon": null,
+      "type": "1",
+      "code": "selectEditor",
+      "visible": "1",
+      "orderNo": null
+    },{
+      "id": "1614",
+      "name": "切换编辑器",
+      "url": "editor/switchEditor",
+      "pid": "16",
+      "tip": null,
+      "leafed": null,
+      "remark": null,
+      "chain": null,
+      "icon": null,
+      "type": "1",
+      "code": "switchEditor",
+      "visible": "1",
+      "orderNo": null
+    },{
+      "id": "1615",
+      "name": "只读编辑器",
+      "url": "editor/viewEditor",
+      "pid": "16",
+      "tip": null,
+      "leafed": null,
+      "remark": null,
+      "chain": null,
+      "icon": null,
+      "type": "1",
+      "code": "viewEditor",
       "visible": "1",
       "orderNo": null
     },{

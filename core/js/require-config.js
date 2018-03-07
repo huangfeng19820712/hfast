@@ -5,7 +5,7 @@
 function $globalRequireConfig(webRoot) {
 
     var result = {
-//        "urlArgs": 'rand=' + (new Date()).getTime(), // for development，js文件不缓存，每次都重新加载
+        //"urlArgs": 'rand=' + (new Date()).getTime(), // for development，js文件不缓存，每次都重新加载
         "baseUrl": webRoot||"" + "/",
         //没有效果
         /*packages:[{
@@ -30,6 +30,8 @@ function $globalRequireConfig(webRoot) {
             "backbone.queryparams": $route.getJs("backbone","backbone.queryparams"),  //实现对URL中?后面参数的支持
             "backbone.subroute": $route.getJs("backbone","backbone.subroute"),  //引入子路由
 
+            "store":$route.getJs("store","store-json2"),
+            "json":$route.getJs("store","json"),
             //artDialog组件
             "dialog": "/lib/artDialog/6.0.2/src/dialog-plus",
             "URI":$route.getJs("URI"),
@@ -73,7 +75,6 @@ function $globalRequireConfig(webRoot) {
             "raphael":$route.getJs("raphael"),
             "usa_states":$route.getJs("mapael","usa_states"),
 
-
             "bootstrap.touchspin":$route.getJs("touchspin","jquery.bootstrap-touchspin"),
             'bootstrap-tour':$route.getJs("bootstrap-tour"),
             'bootstrap-dataTables':$route.getJs("bootstrap","jquery.dataTables.bootstrap"),
@@ -84,8 +85,10 @@ function $globalRequireConfig(webRoot) {
             "bootstrap-datetimepicker.locale":$route.getLocale("bootstrap","bootstrap-datetimepicker"),
             //"bootstrap-datetimepicker.locale":$route.getJs("bootstrap-datetimepicker"),
             "bootstrap-select":$route.getJs("bootstrap-select"),
+            "bootstrap-switch":$route.getJs("bootstrap-switch"),
             "ladda":$route.getJs("ladda"),
 
+            "laydate":$route.getJs("laydate"),
             "icheck":$route.getJs("icheck"),
             "fuelux.wizard":$route.getJs("fuelux","wizard"),
             "flowplayer":$route.getJs("flowplayer"),
@@ -104,6 +107,15 @@ function $globalRequireConfig(webRoot) {
             },
             "underscore": {
                 "exports": "_"
+            },
+            "json": {
+                "exports": "json"
+            },
+            "store": {
+                "exports": "store"
+            },
+            "laydate": {
+                "exports": "laydate"
             },
             "kendoUI": {
                 "deps": [
@@ -196,6 +208,7 @@ function $globalRequireConfig(webRoot) {
                 $route.getCss("bootstrap-datetimepicker")]},*/
             "bootstrap.touchspin":{deps:["css!lib/touchspin/3.0.1/jquery.bootstrap-touchspin.css"]},
             "bootstrap-select":{deps:['jquery',$route.getCss("bootstrap-select")]},
+            "bootstrap-switch":{deps:['jquery',$route.getCss("bootstrap-switch")]},
             "fileinput":{deps:[
                 $route.getJs("fileinput","canvas-to-blob"),
                 $route.getJs("fileinput","sortable"),

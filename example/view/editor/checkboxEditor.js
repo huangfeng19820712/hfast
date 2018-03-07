@@ -57,7 +57,7 @@ define([
             length++;
         }
         var checkboxEditor = FluidLayout.extend({
-
+            defaultColumnSize: $Column.COL_MD_6,
             items: null,
             /*Panel的配置项 start*/
             /*Panel 配置 End*/
@@ -65,6 +65,63 @@ define([
                 this.items = [];
                 //this.items.push(this.getAllModelPanel());
                 this.items.push(this.getActionPanel());
+                this.items.push({
+                    comXtype:$Component.PANEL,
+                    comConf:{
+                        title:"开关编辑器",
+                        mainRegion:{
+                            comXtype: $Component.SKYFORMEDITOR,
+                            comConf: {
+                                totalColumnNum:3,
+                                fields: [{
+                                    label:"checkbox",
+                                    name:"checkbox",
+                                    rules: {
+                                        required: true,
+                                    },
+                                    items:[{
+                                        label:"aa",
+                                        value:"aa"
+                                    },{
+                                        label:"bb",
+                                        value:"bb"
+                                    }],
+                                    editorType:$Component.CHECKBOXEDITOR,
+                                }]
+                            }
+                        },
+                        footerRegion: {
+                            comXtype: $Component.TOOLSTRIP,
+                            textAlign: $TextAlign.RIGHT,
+                            comConf: {
+                                /*Panel的配置项 start*/
+                                itemOptions: [{
+                                    text: "确定",
+                                    onclick: function (e) {
+                                        //var panelRegion = ApplicationUtils.getMainRegion();
+                                        var skyFormEditor = this.parent.parent.getMainRegionRef().getComRef();
+                                        skyFormEditor.validate();
+                                    }
+                                },{
+                                    text: "取值",
+                                    onclick: function (e) {
+                                        var skyFormEditor = this.parent.parent.getMainRegionRef().getComRef();
+                                        var values = skyFormEditor.getValue("switch");
+                                        console.info(values);
+                                    }
+                                },{
+                                    text: "重置",
+                                    onclick: function (e) {
+                                        var skyFormEditor = this.parent.parent.getMainRegionRef().getComRef();
+                                        //需要出发事件
+                                        skyFormEditor.reset();
+                                    }
+                                }]
+                                /*Panel 配置 End*/
+                            }
+                        },
+                    }
+                });
             },
             getAllModelPanel:function(){
                 return {
@@ -87,6 +144,7 @@ define([
                     comXtype:$Component.PANEL,
                     comConf:{
                         title:"操作",
+
                         mainRegion:{
                             //panel下面在赖个流动布局
                             comXtype:$Component.FLUIDLAYOUT,
@@ -97,11 +155,12 @@ define([
                         },
                         footerRegion:{
                             comXtype:$Component.TOOLSTRIP,
+                            textAlign: $TextAlign.RIGHT,
                             comConf:{
                                 /*Panel的配置项 start*/
                                 textAlign:$TextAlign.RIGHT,
                                 realClass:"btn-group text-right",
-                                items: [{
+                                itemOptions: [{
                                     text:"获取值",
                                     onclick: function () {
                                         var component = ApplicationUtils.getComponentById("checkbox0");

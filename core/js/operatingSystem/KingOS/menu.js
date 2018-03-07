@@ -5,11 +5,11 @@
  * Time: 上午8:31
  * To change this template use File | Settings | File Templates.
  */
-define(["underscore", "backbone",
+define([
         "core/js/biz/BaseMenu",
         "text!lib/hyfast-kingadmin/tmpl/menu.html",
         "core/js/context/ApplicationContext"],
-    function (_, Backbone, BaseMenu, temple,ApplicationContext) {
+    function ( BaseMenu, temple,ApplicationContext) {
         var View = BaseMenu.extend({
             initialize: function (options, triggerEvent) {
                 //初始化菜单数据

@@ -13,7 +13,11 @@ define(["core/js/operatingSystem/KingOS",
 
         var view = KingOS.extend({
             initUrl:  "/"+ CONFIG.appName+"/menu.json",
-            sunOSed:true
+            sunOSed:true,
+            close:function(){
+                requirejs.undef("demo/view/operatingSystem/kingOS");
+                this._super();
+            }
         });
 
         return view;

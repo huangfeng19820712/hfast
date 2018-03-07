@@ -627,7 +627,8 @@ define(["jquery",
                 result = button;
             else {
                 if ($.isPlainObject(button)) {
-                    var buttonConfig = _.extend(button,{$container:this.$el});
+                    //避免button被修改
+                    var buttonConfig = _.extend({},button,{$container:this.$el});
                     result = new Button(buttonConfig);
                 }
             }

@@ -4,15 +4,16 @@
  *
  * @version 1.0 @Date: 2013-05-29 下午4:50
  */
-define(["jquery",
-        "underscore",
+define([
         "core/js/Class",
         "core/js/utils/Log",
         "core/js/rpc/SimpleAjaxClient",
         "core/js/windows/ModalDialog" ,
         "core/js/ComponentManager",
+        "core/js/cache/JsonStorage",
     $Component.SPINLOADER.src,
-    ],  function($, _, Class, Log,AjaxClient,ModalDialog,ComponentManager,SpinLoader){
+    ],  function(Class,
+                 Log,AjaxClient,ModalDialog,ComponentManager,JsonStorage,SpinLoader){
     var ApplicationContext = Class.extend({
         ajaxClient: null,
         modalDialog:null,
@@ -86,6 +87,8 @@ define(["jquery",
          * 全局组件管理器
          */
         componentManager:null,
+
+        localStorage: null,
 
         ctor: function($globalContext){
 
@@ -260,7 +263,83 @@ define(["jquery",
         },
         getLoader:function(){
             return this.loader;
-        }
+        },
+        /**客户端缓存存储**/
+        /**
+         * 客户端缓存当前实体用户的历史信息（一个实体用户对应一个账号，一个账号对应多个身份[多岗、多用户]）
+         * add by chenmk 2014.04.15
+         * @param historyType  历史类型，例如：user_history
+         * @param ids          多个值用逗号分隔，此处仅存储ID，不存储对象，对象需要根据ID再去服务端获取
+         * @param maxCount     该类型允许放置的最大记录数，默认是10
+         */
+        addToPersonHistory: function(historyType, ids, maxCount){
+            if (historyType == null || historyType == "" || ids == null || ids == "")
+                return;
+            maxCount = maxCount || 10;
+            var personHistoryTypeKey = this._getPersonHistoryTypeKey(historyType),
+                idArray = ids.split(","),
+                personHistoryIds = this.getFromLocalStorage(personHistoryTypeKey),
+                personHistoryIdArray = personHistoryIds ? personHistoryIds.split(",") : idArray;
+            if (personHistoryIds != null && personHistoryIds != "") {
+                personHistoryIdArray = _.without(personHistoryIdArray, idArray);  //先删除已经存在的，因为最近使用要排在最前面
+                personHistoryIdArray = _.union(idArray, personHistoryIdArray);
+                if (personHistoryIdArray.length > maxCount)
+                    personHistoryIdArray = personHistoryIdArray.slice(0, maxCount);  //不包含maxCount所指定的元素
+            }
+
+            this.saveToLocalStorage(personHistoryTypeKey, personHistoryIdArray.join(","));
+        },
+        /**
+         * 根据类型获取当前用户的历史：多个值用逗号分隔
+         * @param historyType
+         * @return {*}
+         */
+        getPersonHistoryByType: function(historyType){
+            var userHistoryTypeKey = this._getPersonHistoryTypeKey(historyType);
+            return this.getFromLocalStorage(userHistoryTypeKey);
+        },
+        _getPersonHistoryTypeKey: function(historyType){
+            var account = this.getFromLocalStorage("account");  //登录账号
+            return [account, "[" + historyType + "]"].join("");
+        },
+        saveToLocalStorage: function(key, value, ignorePrefix){
+            var key = this._getKey(key, ignorePrefix);
+            if(key == null)
+                return null;
+
+            return this.getLocalStorage().set(key, value);
+        },
+        getFromLocalStorage: function(key, ignorePrefix){
+            var key = this._getKey(key, ignorePrefix);
+            if(key == null)
+                return null;
+
+            return this.getLocalStorage().get(key);
+        },
+        _getKey: function(key, ignorePrefix){
+            if(key == null || $.trim(key) == "")
+                return null;
+
+            key = $.trim(key);
+            ignorePrefix = ignorePrefix == null ? true : ignorePrefix;
+            if(ignorePrefix){
+                var prefix = this.getApplicationName() || "";
+                key = prefix + key;
+            }
+
+            return key;
+        },
+        /**
+         * 获取本地存储
+         *
+         * @return {cache.JsonStorage}
+         */
+        getLocalStorage: function(){
+            if(this.localStorage == null)
+                this.localStorage = new JsonStorage();
+
+            return this.localStorage;
+        },
     });
 
     ApplicationContext.getInstance = function() {

@@ -645,17 +645,7 @@ define(["jquery",
             throw new Error("创建的Region必须是一种Region类型，或者是DOM元素中的一个对象或者字符串");
         }
 
-        var selector, RegionType;
-
-        // get the selector for the region
-
-        if (regionIsString) {
-            selector = regionConfig;
-        }
-
-        if (regionConfig.el) {
-            selector = regionConfig.el;
-        }
+        var RegionType;
 
         // get the type for the region
 
@@ -673,7 +663,23 @@ define(["jquery",
 
         RegionType = RegionType || Region;
         var isVisible = regionConfig.visible == null ? true : regionConfig.visible;
-        var options = {
+
+        var selector;
+        // get the selector for the region
+        if (regionIsString) {
+            selector = regionConfig;
+            //如果regionConfig是字符串，则初始化成对象
+            regionConfig = {};
+        }else{
+            if (regionConfig.el) {
+                selector = regionConfig.el;
+            }
+        }
+        var options = _.extend(regionConfig,{
+            el: selector,
+            visible: isVisible,
+        });
+        /*var options = {
             el: selector,
             id:regionConfig.id,
             width: regionConfig.width,
@@ -701,7 +707,7 @@ define(["jquery",
             comConf: regionConfig.comConf,
             content: regionConfig.content,
             url: regionConfig.url
-        };
+        };*/
 
         //覆写区域的刷新方法，目前模型解析中有用 add by 2014.02.11
         var refresh = regionConfig.refresh;

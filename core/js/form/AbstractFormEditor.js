@@ -187,8 +187,6 @@ define(["jquery",
                 return null;
 
             return editor.getValue();
-
-            return null;
         },
         /**
          * 获取所有的字段值
@@ -374,7 +372,28 @@ define(["jquery",
          * @param triggerChangedEvent 是否要触发编辑器值变更的事件
          */
         reset: function (triggerChangedEvent) {
+            var componentMap = this._editors,
+                fieldName, editor;
+            //重置编辑器的值
+            for (fieldName in componentMap) {
+                editor = componentMap[fieldName];
+                editor.reset(triggerChangedEvent);
+            }
 
+            //重置隐藏域的值为默认值 add by chenmk 2014.09.18
+            var hiddenValueMap = this._inputHiddenValueMap;
+            if (hiddenValueMap) {
+                var fieldConfig, defaultValue;
+                for (fieldName in hiddenValueMap) {
+                    fieldConfig = this._getFieldConfigByFieldName(fieldName);
+                    if (!fieldConfig)
+                        continue;
+                    defaultValue = fieldConfig["defaultValue"] || fieldConfig["value"];
+                    this._inputHiddenValueMap[fieldName] = defaultValue;
+                }
+            }
+
+            this.trigger("reset");
         },
         /**
          * 显示字段必填项提示

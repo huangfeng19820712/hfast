@@ -8,6 +8,11 @@ define(["core/js/Component","validate"],function(Component){
         $form:null,
         $view:null,
         _validator:null,
+        messages: null,
+        /**
+         * 使用jquery的 validator组件
+         */
+        rules: null,
         initialize:function(options,triggerEvent){
             if(this.$form&&this.rules){
                 var conf = this._getValidateConf();
@@ -18,6 +23,44 @@ define(["core/js/Component","validate"],function(Component){
             var conf = {
                 errorPlacement:this.errorPlacement,
                 rules:this.rules,
+                //忽略title中的信息，应该框架中修改input的value会修改title
+                ignoreTitle:true,
+                /**
+                 * 校验成功的方法，支持单个组件校验
+                 */
+                /*success:function(error, element ){
+                    console.info("success");
+                    error.prev().removeClass("state-error");
+                },*/
+                /**
+                 * 修改插件中的方法
+                 * @param element
+                 * @param errorClass
+                 * @param validClass
+                 */
+                highlight: function( element, errorClass, validClass ) {
+                    //添加自动以的class
+                    $(element).parents(".hfast-controlGroup").addClass("state-error");
+
+                    /*下面为插件代码*/
+                    if ( element.type === "radio" ) {
+                        this.findByName( element.name ).addClass( errorClass ).removeClass( validClass );
+                    } else {
+                        $( element ).addClass( errorClass ).removeClass( validClass );
+                    }
+
+                },
+                unhighlight: function( element, errorClass, validClass ) {
+                    //删除自动以的class
+                    $(element).parents(".hfast-controlGroup").removeClass("state-error");
+
+                    /*下面为插件代码*/
+                    if ( element.type === "radio" ) {
+                        this.findByName( element.name ).removeClass( errorClass ).addClass( validClass );
+                    } else {
+                        $( element ).removeClass( errorClass ).addClass( validClass );
+                    }
+                },
                 submitHandler:this.submitHandler,
                 ignore:""
             };
@@ -27,17 +70,16 @@ define(["core/js/Component","validate"],function(Component){
             return conf;
         },
         // Do not change code below
+        /**
+         * 只有第一次初始化的时候，才回调用此方法
+         * @param error
+         * @param element
+         */
         errorPlacement: function (error, element) {
 
             element.closest(".hfast-view").append(error);
-            error.prev().addClass("state-error");
             //error.insertAfter(element.closest(".hfast-view"));
         },
-        messages: null,
-        /**
-         * 使用jquery的 validator组件
-         */
-        rules: null,
         submitHandler: function (form) {
             var that = this.$view;
             var model = that.$form.convertForm2Model();

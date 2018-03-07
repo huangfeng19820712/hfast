@@ -4,9 +4,8 @@
 define([
         "core/js/layout/FluidLayout",
         "core/js/layout/Panel",
-        "core/js/editors/TextEditor",
         "core/js/windows/Window"],
-    function (FluidLayout,Panel, TextEditor, Window) {
+    function (FluidLayout,Panel, Window) {
 
         var view = FluidLayout.extend({
             defaultColumnSize: $Column.COL_MD_4,

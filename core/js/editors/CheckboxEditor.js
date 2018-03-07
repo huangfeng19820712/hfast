@@ -39,14 +39,15 @@ define(["jquery",
          */
         onunchecked:null,
         _init$Input:function(){
-            this.$controlGroup = $(this.controlGroupEl||this.eTag);
+            //this.$controlGroup = $(this.controlGroupEl||this.eTag);
 
             if(this.isShowLabel){
                 this._init$Label();
                 this.$el.append(this.$label);   //添加输入框
             }
+            this.init$controlGroup();
             this.initItems(this.$controlGroup);
-            this.$el.append(this.$controlGroup);
+            //this.$el.append(this.$controlGroup);
         },
         /**
          * 初始化输入框
@@ -59,7 +60,7 @@ define(["jquery",
             });
         },
         createCheckboxContent:function(item){
-            var context = _.extend(item,{
+            var context = _.extend({},item,{
                 name:this.name,
                 displayValue:item.displayValue==null?item.value:item.displayValue
             });

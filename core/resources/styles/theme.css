@@ -1780,3 +1780,213 @@ a.btn-default-dark,
 }
 
 /*accordion end*/
+/*laydate start*/
+/* line 209, ../sass/theme.scss */
+.layui-laydate.laydate-theme-blue .layui-this {
+  background-color: #3498db !important;
+}
+
+/* line 213, ../sass/theme.scss */
+.layui-laydate.laydate-theme-blue .layui-laydate-footer span:hover {
+  color: #3498db;
+}
+
+/* line 217, ../sass/theme.scss */
+.layui-laydate.laydate-theme-blue .layui-laydate-header i:hover,
+.layui-laydate.laydate-theme-blue .layui-laydate-header span:hover {
+  color: #3498db;
+}
+
+/* line 209, ../sass/theme.scss */
+.layui-laydate.laydate-theme-red .layui-this {
+  background-color: #e74c3c !important;
+}
+
+/* line 213, ../sass/theme.scss */
+.layui-laydate.laydate-theme-red .layui-laydate-footer span:hover {
+  color: #e74c3c;
+}
+
+/* line 217, ../sass/theme.scss */
+.layui-laydate.laydate-theme-red .layui-laydate-header i:hover,
+.layui-laydate.laydate-theme-red .layui-laydate-header span:hover {
+  color: #e74c3c;
+}
+
+/* line 209, ../sass/theme.scss */
+.layui-laydate.laydate-theme-green .layui-this {
+  background-color: #2ecc71 !important;
+}
+
+/* line 213, ../sass/theme.scss */
+.layui-laydate.laydate-theme-green .layui-laydate-footer span:hover {
+  color: #2ecc71;
+}
+
+/* line 217, ../sass/theme.scss */
+.layui-laydate.laydate-theme-green .layui-laydate-header i:hover,
+.layui-laydate.laydate-theme-green .layui-laydate-header span:hover {
+  color: #2ecc71;
+}
+
+/* line 209, ../sass/theme.scss */
+.layui-laydate.laydate-theme-sea .layui-this {
+  background-color: #1abc9c !important;
+}
+
+/* line 213, ../sass/theme.scss */
+.layui-laydate.laydate-theme-sea .layui-laydate-footer span:hover {
+  color: #1abc9c;
+}
+
+/* line 217, ../sass/theme.scss */
+.layui-laydate.laydate-theme-sea .layui-laydate-header i:hover,
+.layui-laydate.laydate-theme-sea .layui-laydate-header span:hover {
+  color: #1abc9c;
+}
+
+/* line 209, ../sass/theme.scss */
+.layui-laydate.laydate-theme-orange .layui-this {
+  background-color: #e67e22 !important;
+}
+
+/* line 213, ../sass/theme.scss */
+.layui-laydate.laydate-theme-orange .layui-laydate-footer span:hover {
+  color: #e67e22;
+}
+
+/* line 217, ../sass/theme.scss */
+.layui-laydate.laydate-theme-orange .layui-laydate-header i:hover,
+.layui-laydate.laydate-theme-orange .layui-laydate-header span:hover {
+  color: #e67e22;
+}
+
+/* line 209, ../sass/theme.scss */
+.layui-laydate.laydate-theme-yellow .layui-this {
+  background-color: #f1c40f !important;
+}
+
+/* line 213, ../sass/theme.scss */
+.layui-laydate.laydate-theme-yellow .layui-laydate-footer span:hover {
+  color: #f1c40f;
+}
+
+/* line 217, ../sass/theme.scss */
+.layui-laydate.laydate-theme-yellow .layui-laydate-header i:hover,
+.layui-laydate.laydate-theme-yellow .layui-laydate-header span:hover {
+  color: #f1c40f;
+}
+
+/* line 209, ../sass/theme.scss */
+.layui-laydate.laydate-theme-grey .layui-this {
+  background-color: #95a5a6 !important;
+}
+
+/* line 213, ../sass/theme.scss */
+.layui-laydate.laydate-theme-grey .layui-laydate-footer span:hover {
+  color: #95a5a6;
+}
+
+/* line 217, ../sass/theme.scss */
+.layui-laydate.laydate-theme-grey .layui-laydate-header i:hover,
+.layui-laydate.laydate-theme-grey .layui-laydate-header span:hover {
+  color: #95a5a6;
+}
+
+/* line 209, ../sass/theme.scss */
+.layui-laydate.laydate-theme-purple .layui-this {
+  background-color: #9b6bcc !important;
+}
+
+/* line 213, ../sass/theme.scss */
+.layui-laydate.laydate-theme-purple .layui-laydate-footer span:hover {
+  color: #9b6bcc;
+}
+
+/* line 217, ../sass/theme.scss */
+.layui-laydate.laydate-theme-purple .layui-laydate-header i:hover,
+.layui-laydate.laydate-theme-purple .layui-laydate-header span:hover {
+  color: #9b6bcc;
+}
+
+/* line 209, ../sass/theme.scss */
+.layui-laydate.laydate-theme-aqua .layui-this {
+  background-color: #27d7e7 !important;
+}
+
+/* line 213, ../sass/theme.scss */
+.layui-laydate.laydate-theme-aqua .layui-laydate-footer span:hover {
+  color: #27d7e7;
+}
+
+/* line 217, ../sass/theme.scss */
+.layui-laydate.laydate-theme-aqua .layui-laydate-header i:hover,
+.layui-laydate.laydate-theme-aqua .layui-laydate-header span:hover {
+  color: #27d7e7;
+}
+
+/* line 209, ../sass/theme.scss */
+.layui-laydate.laydate-theme-brown .layui-this {
+  background-color: #9c8061 !important;
+}
+
+/* line 213, ../sass/theme.scss */
+.layui-laydate.laydate-theme-brown .layui-laydate-footer span:hover {
+  color: #9c8061;
+}
+
+/* line 217, ../sass/theme.scss */
+.layui-laydate.laydate-theme-brown .layui-laydate-header i:hover,
+.layui-laydate.laydate-theme-brown .layui-laydate-header span:hover {
+  color: #9c8061;
+}
+
+/* line 209, ../sass/theme.scss */
+.layui-laydate.laydate-theme-dark-blue .layui-this {
+  background-color: #4765a0 !important;
+}
+
+/* line 213, ../sass/theme.scss */
+.layui-laydate.laydate-theme-dark-blue .layui-laydate-footer span:hover {
+  color: #4765a0;
+}
+
+/* line 217, ../sass/theme.scss */
+.layui-laydate.laydate-theme-dark-blue .layui-laydate-header i:hover,
+.layui-laydate.laydate-theme-dark-blue .layui-laydate-header span:hover {
+  color: #4765a0;
+}
+
+/* line 209, ../sass/theme.scss */
+.layui-laydate.laydate-theme-light-green .layui-this {
+  background-color: #79d5b3 !important;
+}
+
+/* line 213, ../sass/theme.scss */
+.layui-laydate.laydate-theme-light-green .layui-laydate-footer span:hover {
+  color: #79d5b3;
+}
+
+/* line 217, ../sass/theme.scss */
+.layui-laydate.laydate-theme-light-green .layui-laydate-header i:hover,
+.layui-laydate.laydate-theme-light-green .layui-laydate-header span:hover {
+  color: #79d5b3;
+}
+
+/* line 209, ../sass/theme.scss */
+.layui-laydate.laydate-theme-default-dark .layui-this {
+  background-color: #585f69 !important;
+}
+
+/* line 213, ../sass/theme.scss */
+.layui-laydate.laydate-theme-default-dark .layui-laydate-footer span:hover {
+  color: #585f69;
+}
+
+/* line 217, ../sass/theme.scss */
+.layui-laydate.laydate-theme-default-dark .layui-laydate-header i:hover,
+.layui-laydate.laydate-theme-default-dark .layui-laydate-header span:hover {
+  color: #585f69;
+}
+
+/*laydate end*/

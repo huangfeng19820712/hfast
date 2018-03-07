@@ -39,7 +39,7 @@ define(["core/js/controls/ToolStripItem", "core/js/CommonConstant"], function (T
      * 系统默认提供的按钮
      * @type {{save: {text: string, className: string}, add: {text: string, iconSkin: string}, update: {text: string, iconSkin: string}, delete: {text: string, iconSkin: string}, view: {text: string, iconSkin: string}, copy: {text: string, iconSkin: string}, print: {text: string, iconSkin: string}, download: {text: string, iconSkin: string}, import: {text: string, iconSkin: string}, export: {text: string, iconSkin: string}, refresh: {text: string, iconSkin: string}, release: {text: string, iconSkin: string}}}
      */
-    Button.DefaultCommand = _.extend( ToolStripItem.DefaultCommand, {
+    Button.DefaultCommand = _.extend( {}, {
         "OK": {
             text: "确定"
         }

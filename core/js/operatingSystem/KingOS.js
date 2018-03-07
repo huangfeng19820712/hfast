@@ -36,12 +36,12 @@ $KingCons = {
         TOPBAR: $KingCons.prefix + "topBar"
     },
     css:[
-        "/core/js/operatingSystem/KingOS/css/font-awesome.css",
-        "/core/js/operatingSystem/KingOS/css/main.css",
-        "/core/js/operatingSystem/KingOS/css/KingOS.css",
+        "css!/core/js/operatingSystem/KingOS/css/font-awesome.css",
+        "css!/core/js/operatingSystem/KingOS/css/main.css",
+        "css!/core/js/operatingSystem/KingOS/css/KingOS.css",
     ]
 };
-define(["core/js/operatingSystem/BaseOS",
+define(_.union(["core/js/operatingSystem/BaseOS",
     "text!core/js/operatingSystem/KingOS/tmpl/framework.html",
     "core/js/biz/BaseApplication",
     "core/js/utils/ApplicationUtils",
@@ -61,7 +61,7 @@ define(["core/js/operatingSystem/BaseOS",
     "king-components",
     "king-common",
     "raphael", "core/js/utils/JqueryUtils"
-], function (BaseOS, temple, BaseApplication, ApplicationUtils,
+],$KingCons.css), function (BaseOS, temple, BaseApplication, ApplicationUtils,
              Header, SlideBar, Menu, Footer, Breadcrumbs,Switcher) {
     var KingOS = BaseOS.extend({
         xtype:$KingCons.xtype.OS,
@@ -69,27 +69,7 @@ define(["core/js/operatingSystem/BaseOS",
         menuDates:null,
         initUrl:null,
         className:"wrapper",
-        /**
-         * 初始化主区域的配置信息
-         */
-        initItems:function(){
-            this._super();
-            this.mainRegionId = this.getRegionName("main");
-            var that = this;
-            this.items = [
-                {
-                    id:this.mainRegionId,
-                    onshow:function(){
-                        var code = Backbone.history.fragment;
-                        //this.setBreadcrumbsData(this.menuDates);
-                        var breadcrumbs = that.getBreadcrumbs();
-                        breadcrumbs.setBreadcrumbsByCode(code);
-                        //修改面包屑
-                        breadcrumbs .render();
-                    }
-                }
-            ]
-        },
+
         initializeHandle: function (options, triggerEvent) {
             this._super(options,false);
             var applicationContext = ApplicationUtils.getApplicationContext();
@@ -111,21 +91,11 @@ define(["core/js/operatingSystem/BaseOS",
                         applicationContext.setSessionUser(obj);
                     }
                 }, false);
-        },
-        loadCss:function(){
-            _.each($KingCons.css,function(item,idx,list){
-                $global.BaseFramework._loadCss(item);
-            });
+
         },
         mountContent:function(triggerEvent){
             var that = this;
-
-            //设置样式
-            require(that.getRequireCss($KingCons.css),
-                function (Class) {
-                that.renderDom();
-            });
-
+            that.renderDom();
         },
         getRequireCss:function(array){
             var result = [];
@@ -179,13 +149,14 @@ define(["core/js/operatingSystem/BaseOS",
         close:function(){
             this.menuDates = null;
             this.defaultMenuDates = null;
-            this.destroyLinks($KingCons.css);
             this.$el.parent().parent().removeClass("king_os_wrapper");
             this.getFooter().destroy();
             this.getMainRegion().destroy();
             this.getHeader().destroy();
             this.getBreadcrumbs().destroy();
             this.getMenu().destroy();
+            ApplicationUtils.undefCsses($KingCons.css);
+            requirejs.undef(this.xtype.src);
 
             this._super();
         }

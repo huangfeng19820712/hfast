@@ -35,7 +35,8 @@ define([
             });
             this.setValue("function myScript(){return 100;}\n");
         },
-        setValue:function(value){
+        setValue: function (value, triggerEvent) {
+            this._super(value, triggerEvent);
             if(this.plugin){
                 this.plugin.setValue(value);
             }

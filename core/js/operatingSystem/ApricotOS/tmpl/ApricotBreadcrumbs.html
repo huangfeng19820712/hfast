@@ -1,0 +1,23 @@
+<!-- BREADCRUMB -->
+<ul id="breadcrumb" class="top-breadcrumb">
+    <li>
+        <span class="entypo-home"></span>
+    </li>
+    <%if(data.menuDates){%>
+    <%for(var i=0;data.menuDates.length>i;i++){%>
+    <li>
+        <i class="fa fa-lg fa-angle-right"></i>
+    </li>
+    <li>
+        <a href="javascript:void(0);" title="<%=data.menuDates[i].name%>"><%=data.menuDates[i].name%></a>
+    </li>
+    <%}%>
+    <%}%>
+    <li class="pull-right">
+        <div class="input-group input-widget">
+            <input style="border-radius:15px" type="text" placeholder="Search..." class="form-control">
+        </div>
+    </li>
+</ul>
+
+<!-- END OF BREADCRUMB -->

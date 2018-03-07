@@ -62,6 +62,10 @@ define(["core/js/utils/Utils",
              */
             roundedClass: null,
             /**
+             * 大小的样式
+             */
+            sizeClass:null,
+            /**
              * 样式
              */
             className: null,
@@ -106,6 +110,7 @@ define(["core/js/utils/Utils",
                         this.$el.addClass(this.xtype.name.toLowerCase());
                     }
                     this.setClassName(this.className);
+                    this.setSizeClass (this.sizeClass);
                     this.setRoundedClass(this.roundedClass);
                     //主题，默认是this.xtype.name.toLowerCase()+this.theme
                     this.setTheme(this.themeClass, theme,themeClassPre);
@@ -162,8 +167,9 @@ define(["core/js/utils/Utils",
                 //删除主题
                 this.$el.removeClass(this._realThemeClass);
                 var themeClassPre = this.getThemeClassPre();
-                console.info(theme+">>"+themeClassPre);
+                //console.info(theme+">>"+themeClassPre);
                 this.setTheme(this.themeClass,theme,themeClassPre);
+                this.theme = theme
             },
             /**
              * 设置dom的class
@@ -190,6 +196,13 @@ define(["core/js/utils/Utils",
                 this.$el.addClass($cons.className.container);
                 this.$el.addClass(className);
             },
+
+            setSizeClass:function(className){
+                if (className == null)
+                    return;
+                this.$el.addClass(className);
+            },
+
             setRoundedClass: function (roundedClass) {
                 if (roundedClass == null) {
                     return;
@@ -331,24 +344,6 @@ define(["core/js/utils/Utils",
             unregisterEvent: function () {
 
             },
-
-            /**
-             * 销毁Link，css样式
-             * @param url   {String}
-             */
-            destroyLink:function(url){
-                $("link[href='"+url+"']").remove();
-            },
-            /**
-             * 销毁link集合
-             * @param links  {Array}
-             */
-            destroyLinks:function(links){
-                var that = this;
-                _.each(links,function(item,idx,list){
-                    that.destroyLink(item);
-                });
-            }
             /***********************AbstractView与BaseView一样 END***********************************/
         };
 

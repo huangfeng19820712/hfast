@@ -132,16 +132,17 @@ define(["core/js/editors/Editor",
          * 设置编辑器的值
          * @param value{String} 值
          */
-        setValue: function (value) {
+        setValue: function (value, triggerEvent) {
             if (!value)
                 return;
 
             var that = this;
             if (this.isHtmlEditorReady()) {
+                this._super(value, triggerEvent);
                 this.setContent(value);
             } else {
                 setTimeout(function () {
-                    that.setValue(value);
+                    that.setValue(value, triggerEvent);
                 });
             }
         },

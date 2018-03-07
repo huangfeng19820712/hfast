@@ -3,9 +3,34 @@ html, body {
     margin: 0;
 }
 
+/*sky-form start*/
 .sky-form section {
     margin-bottom: 0px;
 }
+
+.sky-form .state-error .icheckbox_square-green,
+.sky-form .state-error .iradio_square-green,
+.sky-form .state-error .file-input{
+    background-color: #fff0f0;
+}
+
+.sky-form .label.col{
+    padding-left:0px;
+    padding-right: 0px;
+}
+
+.sky-form .fieldset-row{
+    border-bottom: 1px dashed #dcdada;
+    padding-top: 0.6em;
+    padding-bottom: 0.6em;
+}
+
+label.form-control{
+    border: 0;
+    background-color: inherit;
+}
+
+/*sky-form end*/
 
 .btn-checkbox {
     color: #333;

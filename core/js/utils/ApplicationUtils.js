@@ -225,6 +225,49 @@ define([ "core/js/context/ApplicationContext"],
                 if(component.destory){
                     component.destory
                 }
+            },
+            /**
+             * 销毁requirejs中的css模块，css!XXX.css
+             * @param url
+             */
+            undefCss:function(url){
+                var id,linkUrl;
+                if(url){
+                    id = url.replace(".css","");
+                    linkUrl = url.replace("css!", "");
+                    if($global.appConf.requireUrlArgs!=null){
+                        linkUrl+="?"+$global.appConf.requireUrlArgs;
+                    }
+                }
+                requirejs.undef(id);
+                //销毁style标签
+                this.destroyLink(linkUrl);
+            },
+            /**
+             * 销毁requirejs中的css模块
+             * @param array 样式路径的集合
+             */
+            undefCsses:function(array){
+                for(var i = 0;i<array.length;i++){
+                    this.undefCss(array[i]);
+                }
+            },
+            /**
+             * 销毁Link，css样式
+             * @param url   {String}
+             */
+            destroyLink:function(url){
+                $("link[href='"+url+"']").remove();
+            },
+            /**
+             * 销毁link集合
+             * @param links  {Array}
+             */
+            destroyLinks:function(links){
+                var that = this;
+                _.each(links,function(item,idx,list){
+                    that.destroyLink(item);
+                });
             }
         };
 

@@ -56,7 +56,7 @@ define([
             }
 
             this.$input.fileinput(gridOptions);
-            this.registerEvent();
+            //this.registerEvent();
 
         },
         getGridOptions:function(){

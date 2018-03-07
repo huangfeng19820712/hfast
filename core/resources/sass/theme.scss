@@ -204,6 +204,25 @@ $color: (
 }
 /*accordion end*/
 
+/*laydate start*/
+@each $name in $theme-name {
+  .layui-laydate.laydate-theme#{$name} .layui-this{
+    background-color: map-get($color, color#{$name})!important;
+  }
+
+  .layui-laydate.laydate-theme#{$name} .layui-laydate-footer span:hover{
+    color: map-get($color, color#{$name});
+  }
+
+  .layui-laydate.laydate-theme#{$name} .layui-laydate-header i:hover,
+  .layui-laydate.laydate-theme#{$name} .layui-laydate-header span:hover{
+    color : map-get($color, color#{$name});
+  }
+
+  //.layui-laydate-header i:hover, .layui-laydate-header span:hover
+}
+/*laydate end*/
+
 
 
 

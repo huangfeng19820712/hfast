@@ -7,41 +7,63 @@ define(["core/js/layout/Container"
         /**
          * 是否是子框架，如果是，则需要制定显示的区域
          */
-        sunOSed:false,
+        sunOSed: false,
         /**
          * 主区域的对象
          */
-        mainRegion:null,
+        mainRegion: null,
         /**
          * 主区域的配置信息
          */
-        mainRegionConf:null,
-        mainRegionId:"main",
-        slideBar:null,
-        breadcrumbs:null,
-        switcher:null,
-        menu:null,
+        mainRegionConf: null,
+        mainRegionId: "main",
+        slideBar: null,
+        breadcrumbs: null,
+        switcher: null,
+        menu: null,
+        /**
+         * 初始化主区域的配置信息
+         */
+        initItems: function () {
+            this._super();
+            this.mainRegionId = this.getRegionName("main");
+            var that = this;
+            this.items = [
+                {
+                    id: this.mainRegionId,
+                    mountModel: $cons.mount.Model.none,
+                    onshow: function () {
+                        var code = Backbone.history.fragment;
+                        //this.setBreadcrumbsData(this.menuDates);
+                        var breadcrumbs = that.getBreadcrumbs();
+                        breadcrumbs.setBreadcrumbsByCode(code);
+                        //修改面包屑
+                        breadcrumbs.render();
+                    }
+                }
+            ]
+        },
         /**
          * 显示内容
          * @param routeUrl  {String}    显示的url路径
          * @param param     {Object}    传给路径的参数
          */
-        showContent:function(routeUrl,param){
-            var url = CONFIG.currentModuleName+"/view/" + routeUrl;
+        showContent: function (routeUrl, param) {
+            var url = CONFIG.currentModuleName + "/view/" + routeUrl;
             //显示内容
             this.getMainRegion().show(routeUrl, param);
             //修改面包屑
             var breadcrumbs = this.getBreadcrumbs();
-            if(breadcrumbs){
+            if (breadcrumbs) {
                 breadcrumbs.setBreadcrumbsByCode(Backbone.history.fragment).render();
             }
         },
         /**
          * 获取主区域对象
          * return {Object}
-          */
-        getMainRegion:function(){
-            return  this.getRegion(this.mainRegionId);
+         */
+        getMainRegion: function () {
+            return this.getRegion(this.mainRegionId);
         },
         getHeader: function () {
             return this.header;
@@ -55,7 +77,7 @@ define(["core/js/layout/Container"
         getMenu: function () {
             return this.menu;
         },
-        close:function(){
+        close: function () {
             this.mainRegion = null;
             this.mainRegionConf = null;
             this.slideBar = null;

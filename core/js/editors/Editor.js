@@ -58,7 +58,6 @@ define(["jquery",
          * @ignore
          */
         $input: null,
-
         /**
          * 标签
          */
@@ -73,15 +72,29 @@ define(["jquery",
         isShowLabel:true,
         controlGroupEl:null,
         /**
-         * 组对象，包含input与lable的dom
+         * 组对象，包含input的div,可以在里面放置按钮等其他控件
          */
         $controlGroup:null,
-
+        /**
+         * input的div的class
+         */
+        controlGroupClass:null,
         /**
          * {@link $input} 的表单元素name
          */
         name: null,
-
+        /**
+         * label与input的排版,默认情况下垂直
+         */
+        layoutMode:$cons.EditorLayoutMode.VERTICAL,
+        /**
+         * label大小的class,layoutMode是水平是有效，HORIZONTAL
+         */
+        labelSizeClass:"col-md-2",
+        /**
+         * controlGroup的大小class，layoutMode是水平是有效，HORIZONTAL
+         */
+        controlGroupSizeClass:"col-md-10",
         /**
          * 获取一个字符串，表示 {@link $input} 的输入类型。
          * <p>
@@ -200,6 +213,13 @@ define(["jquery",
         init$controlGroup:function(){
             this.$controlGroup = $(this.controlGroupEl||this.eTag);
             this.$controlGroup.append(this.$input);   //添加输入框
+            //内置class做标志
+            this.$controlGroup.addClass("hfast-controlGroup");
+            this.$controlGroup.addClass(this.controlGroupClass);
+            if(this.layoutMode==$cons.EditorLayoutMode.HORIZONTAL){
+                this.$controlGroup.addClass("col");
+                this.$controlGroup.addClass(this.controlGroupSizeClass);
+            }
             this.$el.append(this.$controlGroup);
             if(this.size){
                 this.$controlGroup.addClass(this.size);
@@ -213,6 +233,12 @@ define(["jquery",
         _init$Label:function(){
             if (this.$label == null&&this.label){
                 this.$label = this.get$('<label class="label"/>');
+
+                if(this.layoutMode==$cons.EditorLayoutMode.HORIZONTAL){
+                    this.$label.addClass("col");
+                    this.$label.addClass(this.labelSizeClass);
+                }
+                //this.$label.width(50)
                 this.$label.append(this.label);
                 if(this.required||(this.rules&&this.rules.required)){
                     this.$label.append('<span class="color-red">*</span>');
@@ -417,6 +443,7 @@ define(["jquery",
                     this.$input.removeClass("h-color-muted");   //移除提示的样式
             }
 
+            //this.setValue(value);
             this.value = value;
 
             var that = this;
