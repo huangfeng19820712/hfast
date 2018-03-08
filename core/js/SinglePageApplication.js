@@ -82,7 +82,7 @@ define(["jquery",
 
             ApplicationContext.setApplicationRegionEl(this._getApplicationRegionEl()); //设置系统整个应用的工作区，全局唯一
             ApplicationContext.setMainRegionEl(this._getMainRegionEl());               //设置应用的主工作区
-            //ApplicationContext.setIFramePageMode(FrameworkConfAccessor.isIFramePageMode());  //页面的渲染模式是否基于iframe
+            ApplicationContext.setIFramePageMode(FrameworkConfAccessor.isIFramePageMode());  //页面的渲染模式是否基于iframe
 
             //this._registerRopClient(ApplicationContext);  //注册Rop客户端
 
