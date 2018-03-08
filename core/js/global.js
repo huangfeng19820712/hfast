@@ -703,12 +703,12 @@ $Component = $cons.component = {
     SWITCHER: {
         name: "Switcher",
         label: "树",
-        src: "core/js/Controls/Switcher"
+        src: "core/js/controls/Switcher"
     },
     BREADCRUMBS: {
         name: "Breadcrumbs",
         label: "树",
-        src: "core/js/Controls/Breadcrumbs"
+        src: "core/js/controls/Breadcrumbs"
     },
 };
 

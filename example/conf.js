@@ -11,12 +11,13 @@ var CONFIG = {
     appName: APP_NAME,
     appCnName: APP_NAME,
     currentModuleName: APP_NAME,
+    version:"1.1",
     //depends: "message", //会去META-INF/web-resources/<depend>/conf.js加载平台客户端内部依赖的模块
-/*    rop: {
-//        serverUrl: "[可选]",
-        appKey: "000001",                            //Rop服务所需的应用键，以确认客户端应用的身份
-        appSecret: "SEPU!PWO@LVE&045#67$"          //Rop服务所需的应用密钥
-    },*/
+    /*    rop: {
+     //        serverUrl: "[可选]",
+     appKey: "000001",                            //Rop服务所需的应用键，以确认客户端应用的身份
+     appSecret: "SEPU!PWO@LVE&045#67$"          //Rop服务所需的应用密钥
+     },*/
     entry: {
 //        point: "",    //[可选]<默认为core_js/initialize，启动文件，即按照requireJS的规范指定data-main属性值，即requireJS的入口点>
         routerUrl: APP_NAME+"/route/ApplicationRouter",
@@ -81,5 +82,9 @@ var CONFIG = {
 };
 
 CONFIG.cons={
+    ROUT_MEMBERINFO:"memberInfo",
     ROUT_MAIN:"main",
 }
+CONFIG.requireUrlArgs="version="+CONFIG.version;
+require.urlArgs = CONFIG.requireUrlArgs;
+$global.appConf = CONFIG;
