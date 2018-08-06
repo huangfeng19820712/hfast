@@ -15,12 +15,12 @@ define(["core/js/base/BaseView",
         regions: null,
 
         /**
-         * 创建Region后触发的事件
+         * 声明事件:创建Region后触发的事件
          */
         onaddregion: null,
 
         /**
-         * 删除Region后触发的事件
+         * 声明事件:删除Region后触发的事件
          */
         onremoveregion: null,
 
@@ -44,7 +44,7 @@ define(["core/js/base/BaseView",
         },
         initializeHandle:function(){
             // this._super();
-            if (this.isClosed) {
+            if (this.isDestroied) {
                 // a previously closed layout means we need to
                 // completely re-initialize the regions
                 this._initializeRegions();
@@ -53,7 +53,7 @@ define(["core/js/base/BaseView",
                 // if this is the first render, don't do anything to
                 // reset the regions
                 this._firstRender = false;
-            } else if (!this.isClosed) {
+            } else if (!this.isDestroied) {
                 // If this is not the first render call, then we need to
                 // re-initializing the `el` for each region
                 this._reInitializeRegions();
@@ -73,7 +73,7 @@ define(["core/js/base/BaseView",
          * 先销毁本身的内容，再调用父类的销毁方法
          */
         close: function () {
-            if (this.isClosed) {
+            if (this.isDestroied) {
                 return;
             }
             //先删除dom相关的关联对象，最后在删除区域对象

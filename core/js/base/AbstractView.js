@@ -184,6 +184,7 @@ define(["core/js/utils/Utils",
                 this.setWidth(this.width);
                 this.setHeight(this.height);
                 this.initElId();
+                this.setNaturalFather(this.naturalFather);
                 this.setParent(this.parent);             //设置该控件的父控件
                 this.$el.data("control", this);
                 this.setDisplay(this.display);
@@ -268,14 +269,14 @@ define(["core/js/utils/Utils",
                 this.mountEl(container);
                 if (this.isControl) { //Control的子类
                     this.doMountContent(triggerEvent);
-
+                    //全部渲染完后，注册相关的事件
+                    this.registerEvent();
                 } else {
                     //BaseView的子类
-                    this._super(container, false);
+                    this._super(container, triggerEvent);
                     // this.triggerRender(triggerEvent);
                 }
-                //全部渲染完后，注册相关的时间
-                this.registerEvent();
+
 
             },
             /**

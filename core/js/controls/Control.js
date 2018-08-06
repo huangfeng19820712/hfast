@@ -50,28 +50,26 @@ define(["jquery", "underscore",
         cascadeFrom: null,
 
         /**
-         * 级联事件：当父对象{@link cascadeFrom}值变更时，会触发该事件
+         * 声明事件：级联事件，当父对象{@link cascadeFrom}值变更时，会触发该事件
          */
         oncascade: null,
-
-
         /**
-         * 声明事件，当编辑器准备渲染前触发。
+         * 声明事件，当组件准备渲染前触发。
          */
         onrendering: null,
 
         /**
-         * 声明事件，当编辑器渲染完成后触发。
+         * 声明事件，当组件渲染完成后触发。
          */
         onrender: null,
 
         /**
-         * 声明事件：当编辑器显示在界面上时触发
+         * 声明事件：当组件显示在界面上时触发
          */
         onshow: null,
 
         /**
-         * 布局调整后触发该事件
+         * 声明事件：布局调整后触发该事件
          */
         onresize: null,
 

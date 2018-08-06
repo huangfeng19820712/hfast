@@ -39,19 +39,38 @@ define(["jquery",
          * 是否可分页，默认值是ture
          */
         pageable:true,
+        /**
+         * 模式，应用$cons.PaginationMode中的模式
+         */
+        paginationMode:$cons.PaginationMode.FULL,
         data:null,
-        onrender:function(){
+        /**
+         * 存放当前列表的记录
+         */
+        _records:null,
+        /**
+         * 行被选择的事件，是function
+         * @param  event    jq的对象
+         * @param   data    被选择行对应的数据
+         */
+        onselect:null,
+        mountContent:function(){
             //初始化
             this.initTable();
             if(this.pageable){
-                this.initPagination();
+                var totalPage = 10;
+                if(this.model){
+                    totalPage = this.model.getTotalPage();
+                }
+                this.initPagination(totalPage);
             }
         },
-        initPagination:function(){
+        initPagination:function(totalPage){
             var that = this;
             this.$pagination = new Pagination({
                 $container:this.$el,
-                totalPage:10,
+                totalPage:totalPage,
+                mode:this.paginationMode,
                 onpage:function(context,currentPage){
                     that.createTbody(currentPage);
                 }
@@ -69,6 +88,15 @@ define(["jquery",
             this.createThead();
             this.createTbody(1);
             this.$el.append(this.$table);
+
+            var that = this;
+            //添加点击事件
+            this.$el.find("tbody>tr").on("click",function(e){
+                $(e.target).parent().siblings().removeClass("active");
+                $(e.target).parent().addClass("active");
+                var id = $(e.currentTarget).data(that.getPrimaryKeyName());
+                that.trigger("select",e,that.getRecordById(that._records,id));
+            });
 
         },
         /**
@@ -103,38 +131,43 @@ define(["jquery",
                 data = this.data;
             }
             if(data){
+                this._records = data;
                 this.clearTbody();
                 for(var i=0;i<data.length;i++){
-                    var model = data[i];
-                    this.addTbody(model);
+                    var record = data[i];
+                    this.addTbody(record);
                 }
             }
         },
         /**
          * 根据model生成表单主体
-         * @param model
+         * @param record
          */
-        addTbody:function(model){
-            if(!model){
+        addTbody:function(record){
+            if(!record){
                 return ;
             }
             var tbodyTr = this.$tbody.find("tr");
             var tr = $("<tr/>");
-            if(_.isArray(model)){
-                for(var i in model){
-                    this._addTd2Tbody(tr,model[i]);
+
+            if(_.isArray(record)){
+                var findIndex = _.findIndex(this.colModel, {"key": true});
+                tr.data(this.getPrimaryKeyName(),record[findIndex]);
+                for(var i in record){
+                    this._addTd2Tbody(tr,record[i]);
                 }
 
             }else{
+                tr.data(this.getPrimaryKeyName(),this.getPrimaryKeyValue(record));
                 //如果是对象,则根据colModel去读取
                 for(var i in this.colModel){
                     var colM = this.colModel[i];
                     var formatter = colM.formatter;
                     var value  = null;
                     if(formatter&& _.isFunction(formatter)){
-                        value = formatter(model);
+                        value = formatter(record);
                     }else{
-                        value = model[colM.name];
+                        value = record[colM.name];
                         if($.isBank(value)){
                             value = "";
                         }
@@ -142,8 +175,42 @@ define(["jquery",
                     this._addTd2Tbody(tr,value);
                 }
             }
+
             this.$tbody.append(tr);
         },
+
+        /**
+         * 获取colModel中的主键字段信息
+         * @returns {String}
+         */
+        getPrimaryKeyName:function(){
+            var keyObj = _.find(this.colModel,{"key":true});
+            if(keyObj){
+                return keyObj.name;
+            }else{
+                return "";
+            }
+        },
+
+        /**
+         * 获取数据中的主键信息
+         * @param record
+         * @returns {*}
+         */
+        getPrimaryKeyValue:function(record){
+            var primaryKeyName = this.getPrimaryKeyName();
+            return record[primaryKeyName];
+        },
+        /**
+         * 根据id获取记录信息
+         * @return {Object}
+         */
+        getRecordById:function(data,id){
+            var obj = {};
+            obj[this.getPrimaryKeyName()] = id;
+            return _.find(data,obj);
+        },
+
         _addTd2Tbody:function(tr,value){
             tr.append("<td>"+value+"</td>");
         },

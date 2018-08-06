@@ -75,8 +75,14 @@ define([
                 this.value = this.offValue;
             }
         },
+
         getConf:function(){
             var that = this;
+            if(this.value==0||this.value=="0"){
+                this.state = false;
+            }else if(this.value==1||this.value=="1") {
+                this.state = true;
+            }
             var options = {
                 onText:this.onText,
                 offText: this.offText,
@@ -104,6 +110,22 @@ define([
                 this.$input = $($Template.Input.CHECKBOX);
             }
             this._super();
+        },
+        /**
+         * 设置隐藏值{@link value}和显示值{@link displayValue}
+         * @param value            隐藏值
+         * @param displayValue     显示值
+         * @param needTranslate    是否根据隐藏值来翻译显示值（当显示值为空，隐藏值不为空时）
+         * @param triggerEvent     是否要触发值变更的事件
+         * @private
+         */
+        _setValueAndDisplayValue: function(value, displayValue, needTranslate, triggerEvent){
+            var state = false;
+            if(value==1||value=="1") {
+                state = true;
+            }
+            this.setState(state);
+            this._super(value, displayValue, needTranslate, triggerEvent);
         },
         setReadOnly:function(readOnly){
             this.$input.bootstrapSwitch('readonly', readOnly);

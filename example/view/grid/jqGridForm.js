@@ -44,9 +44,69 @@ define([
                         { label: 'Amount', name: 'amount',editable:true, width: 80 },
                         { label: 'Tax', name: 'tax',editable:true, width: 80 },
                         { label: 'Total', name: 'total',editable:true, width: 80 },
+                        { label: '说明', name: 'remark',
+                            formatterComConf:function(rowData){
+                                if(rowData.id>5){
+                                    return {
+                                        comXtype:$Component.TOOLSTRIP,
+                                        comConf:{
+                                            /*Panel的配置项 start*/
+                                            textAlign:$TextAlign.RIGHT,
+                                            realClass:"btn-group text-right",
+                                            spacing :CommonConstant.Spacing.DEFAULT,
+                                            itemOptions: [{
+                                                themeClass:ToolStripItem.ThemeClass.PRIMARY,
+                                                text:"确定",
+                                                onclick: function () {
+                                                    var items = $utils.getApplicationUtils().getComponentByXtype($Component.JQGRID);
+                                                    var gridid = this.getParent().$el.parent().data("gridid");
+                                                    var rowid = this.getParent().$el.parent().data("rowid");
+                                                    var grid = $utils.getApplicationUtils().getComponentById(gridid);
+                                                    var rowData = grid.getRowData(rowid);
+                                                    console.info(rowData);
+                                                }
+                                            }]
+                                            /*Panel 配置 End*/
+                                        }
+                                    };
+                                }else{
+                                    return {
+                                        comXtype:$Component.TOOLSTRIP,
+                                        comConf:{
+                                            /*Panel的配置项 start*/
+                                            textAlign:$TextAlign.RIGHT,
+                                            realClass:"btn-group text-right",
+                                            spacing :CommonConstant.Spacing.DEFAULT,
+                                            itemOptions: [{
+                                                themeClass:ToolStripItem.ThemeClass.PRIMARY,
+                                                text:"确定",
+                                                onclick: function () {
+                                                    var items = $utils.getApplicationUtils().getComponentByXtype($Component.JQGRID);
+                                                    var gridid = this.getParent().$el.parent().data("gridid");
+                                                    var rowid = this.getParent().$el.parent().data("rowid");
+                                                    var grid = $utils.getApplicationUtils().getComponentById(gridid);
+                                                    var rowData = grid.getRowData(rowid);
+                                                    console.info(rowData);
+                                                }
+                                            },{
+                                                themeClass:ToolStripItem.ThemeClass.CANCEL,
+                                                text: "取消",
+                                                onclick: function () {
+                                                    $.window.confirm("测试1", {
+                                                        yesHandle: function () {
+                                                            alert(">>>");
+                                                        }
+                                                    });
+                                                }
+                                            }]
+                                            /*Panel 配置 End*/
+                                        }
+                                    };
+                                }
+                            }},
                         { label: 'Notes',
                             name: 'note',
-                            editable:true,
+                            editable:false,
                             formatterComConf:{
                                 comXtype:$Component.TOOLSTRIP,
                                 comConf:{
@@ -59,7 +119,11 @@ define([
                                         text:"确定",
                                         onclick: function () {
                                             var items = $utils.getApplicationUtils().getComponentByXtype($Component.JQGRID);
-
+                                            var gridid = this.getParent().$el.parent().data("gridid");
+                                            var rowid = this.getParent().$el.parent().data("rowid");
+                                            var grid = $utils.getApplicationUtils().getComponentById(gridid);
+                                            var rowData = grid.getRowData(rowid);
+                                            console.info(rowData);
                                         }
                                     },{
                                         themeClass:ToolStripItem.ThemeClass.CANCEL,

@@ -58,6 +58,66 @@ $color: (
 }
 /*Switcher end*/
 
+/*ControlTheme start*/
+.controltheme {
+  white-space: normal;
+  padding: 5px 0px 0px 0px;
+  margin: 0px;
+  width: 200px;
+}
+
+.controltheme li{
+  display: inline-block;
+  zoom: 1;
+  width: 40px;
+  height: 40px;
+}
+
+/*.controltheme li:hover{
+  padding: 0px;
+}*/
+.controltheme li a:hover{
+  border: 2px solid #ffffff;
+}
+
+.controltheme li a {
+  display: -moz-inline-stack;
+  display: inline-block;
+  zoom: 1;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  text-indent: -9999px;
+  border: 5px solid #ffffff;
+}
+
+.controltheme li a.switcher-default{
+  background: #fff;
+  border-color: #555;
+}
+
+/*.controltheme li a.switcher-default,
+.controltheme li a:hover.switcher-default{
+  border-color: #555;
+}*/
+
+@each $name in $theme-name {
+  .controltheme li a.switcher#{$name} {
+    background: map-get($color, color#{$name});
+  }
+}
+
+.controltheme li.selected{
+  background: #d0caca;
+}
+
+.controltheme li.selected a{
+  border: 0px;
+}
+/*ControlTheme end*/
+
 /*设置fieldset start*/
 @each $name in $theme-name {
   .fieldset#{$name} .btn-borderless {

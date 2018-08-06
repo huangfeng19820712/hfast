@@ -42,7 +42,7 @@ define([
                                     layoutMode: layoutMode
                                 }
                             },
-                            fields: [/**/{
+                            fields: [{
                                 label: "时间",
                                 name: "datetime",
                                 editorType: $Component.DATETIMEEDITOR,

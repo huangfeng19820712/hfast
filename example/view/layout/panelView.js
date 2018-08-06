@@ -23,7 +23,7 @@ define([
                 textAlign:$TextAlign.RIGHT,
                 realClass:"btn-group text-right",
                 spacing :CommonConstant.Spacing.DEFAULT,
-                items: [{
+                itemOptions: [{
                     themeClass:ToolStripItem.ThemeClass.PRIMARY,
                     text:"确定",
                     onclick: function () {

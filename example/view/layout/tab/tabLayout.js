@@ -2,8 +2,9 @@
  * @author:   * @date: 2016/2/20
  */
 define(["core/js/layout/TabLayout",
+        "core/js/layout/SimpleLayout",
         "core/js/CommonConstant", "core/js/view/Region",],
-    function (TabLayout, CommonConstant, Region) {
+    function (TabLayout,SimpleLayout, CommonConstant, Region) {
         var mydata = [
             { id: "1", invdate: "2007-10-01", name: "test", note: "note", amount: "200.00", tax: "10.00", total: "210.00" },
             { id: "2", invdate: "2007-10-02", name: "test2", note: "note2", amount: "300.00", tax: "20.00", total: "320.00" },
@@ -16,8 +17,9 @@ define(["core/js/layout/TabLayout",
             { id: "9", invdate: "2007-09-01", name: "test3", note: "note3", amount: "400.00", tax: "30.00", total: "430.00" }
         ];
 
-        var view = TabLayout.extend({
+        var tabLayout = TabLayout.extend({
             lazyRendered:true,
+            height:"100%",
             beforeInitializeHandle: function () {
                 this._super();
                 this.tabs = [{
@@ -139,6 +141,22 @@ define(["core/js/layout/TabLayout",
             },
         });
 
+
+        var view = SimpleLayout.extend({
+            beforeInitializeHandle:function(){
+                this._super();
+                this.$bottomReferent =  $(".copyright").eq(0);
+                this.item = {
+                    comRef:null
+                };
+            },
+            onshow:function(){
+                //this._super();
+                var region = this.getItemRegion();
+                region.show(new tabLayout());
+            }
+        });
+        //return view;
 
         return view;
     });

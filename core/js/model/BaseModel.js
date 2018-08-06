@@ -3,26 +3,121 @@
  * @author:   * @date: 2016/4/5
  */
 define(["underscore",
-    "backbone"
-], function (_, Backbone) {
+    "core/js/rpc/Action",
+    "backbone","core/js/windows/messageBox"
+], function (_, Action,Backbone,MessageBox) {
     /**
      * @class
      * @extends {Backbone.Model}
      */
     var BaseModel = Backbone.Model.extend({
         /**
+         *ajax的发送器,{AjaxClient}
+         */
+        ajaxClient: null,
+        /**
+         *是否可以同步服务器的信息，默认是需要同步的,{Boolean}
+         */
+        syncable: true,
+        /**
+         * 是否异步请求服务器，默认是异步
+         */
+        async: true,
+        /**
+         * 命名空间
+         */
+        nameSpace:null,
+        /**
+         * 方法名
+         */
+        methodName:null,
+
+        METHODNAME_GET:"get",
+        METHODNAME_DELETE:"delete",
+
+        getModel:function(id,async){
+            var asyncValue = true;
+            if(async!=null&&async==false){
+                asyncValue = false;
+            }
+            var action = new Action({
+                nameSpace:this.nameSpace,
+                methodName:this.METHODNAME_GET
+            });
+
+            this.ajax(action.getUrl(),{id:id},async);
+        },
+        /**
+         *
+         * @param id
+         * @param async
+         * @param successCalback
+         */
+        delete:function(id,async,successCalback){
+            var asyncValue = true;
+            if(async!=null&&async==false){
+                asyncValue = false;
+            }
+            var action = new Action({
+                nameSpace:this.nameSpace,
+                methodName:this.METHODNAME_DELETE
+            });
+            this.ajax(action.getUrl(),{id:id},null,async,function(compositeResponse,options){
+                var msg = compositeResponse.getMessage();
+                var obj = compositeResponse.getSuccessResponse();
+                if (compositeResponse.isSuccessful()) {
+                    MessageBox.success(compositeResponse.getSuccessMsg());
+                    that.trigger("fetchSuccess");
+                    that.trigger('sync', that, obj.result, options);
+                } else {
+                    $.window.showMessage(msg, {
+                        handle: function () {
+                            that.trigger('sync', that, obj.result, options);
+                        }
+                    });
+                }
+
+            });
+        },
+        merge:function(){
+
+        },
+        /**
          * 初始化，把本身的属性添加到attributes
          */
         initialize:function(options){
-            this.initAttributes({
-                /**
-                 *ajax的发送器,{AjaxClient}
-                 */
-                ajaxClient: null,
-                /**
-                 *是否可以同步服务器的信息，默认是需要同步的,{Boolean}
-                 */
-                syncable: true,});
+            var keys = _.keys(options);
+            for (var i = 0 ; i < keys.length;i++){
+                var key = keys[i];
+                this[key] = options[key];
+            }
+        },
+
+        /**
+         * 获取Action对象的url
+         * @returns {*}
+         */
+        getActionUrl:function(){
+            var actionUrl = null;
+            if(this.nameSpace&&this.methodName){
+                var action = new Action({
+                    nameSpace:this.nameSpace,
+                    methodName:this.methodName
+                });
+                actionUrl = action.getUrl();
+            }
+            return  actionUrl;
+        },
+
+        /**
+         * 返回的内容转换成模型中的属性，return 是模型本身
+         * @param {Model}  model    模型对象
+         * @param {Object} result   返回的结果
+         * @param {Object} options  请求的参数
+         * @return {Model} 模型本身
+         */
+        responeToModel:function(model,result,options){
+            return model.set(model.parse(result, options), options);
         },
         /**
          * 初始化attributes属性的对象
@@ -42,14 +137,16 @@ define(["underscore",
          * @param {AjaxClient} ajaxClient
          */
         setAjaxClient: function (ajaxClient) {
-            this.set("ajaxClient", ajaxClient);
+            //this.set("ajaxClient", ajaxClient);
+            this.ajaxClient = ajaxClient;
         },
         /**
          *  获取ajax的发送器
          * @returns {AjaxClient}
          */
         getAjaxClient: function () {
-            return this.get("ajaxClient");
+            //return this.get("ajaxClient");
+            return this.ajaxClient;
         },
 
         /**
@@ -57,16 +154,33 @@ define(["underscore",
          * @param {Boolean} syncable
          */
         setSyncable: function (syncable) {
-            this.set("syncable", syncable);
+            //this.set("syncable", syncable);
+            this.syncable = syncable;
         },
         /**
          *  获取是否可以同步服务器的信息，默认是需要同步的
          * @returns {Boolean}
          */
         getSyncable: function () {
-            return this.get("syncable");
+            //return this.get("syncable");
+            return this.syncable;
         },
-
+        /**
+         * 设置同步请求，还是异步请求
+         * @returns {Boolean}
+         */
+        setAsync:function(async){
+            //this.set("async", async);
+            this.async = async;
+        },
+        /**
+         *  获取是否同步请求，还是异步请求，默认是异步
+         * @returns {Boolean}
+         */
+        getAsync: function () {
+            //return this.get("async");
+            return this.async;
+        },
         /**
          * 设置fetchSuccess的回调方法
          * @param {function} func      函数
@@ -127,6 +241,7 @@ define(["underscore",
 
             return this.sync('read', this, options);
         },*/
+
         sync : function (method, model, options) {
             var type = this.methodMap[method];
 
@@ -141,7 +256,7 @@ define(["underscore",
 
             // Ensure that we have a URL.
             if (!options.url) {
-                params.url = _.result(model, 'url') || urlError();
+                params.url = this.getActionUrl()||_.result(model, 'url') || urlError();
             }
 
             // Ensure that we have the appropriate request data.
@@ -181,11 +296,11 @@ define(["underscore",
                 .post(function (compositeResponse) {
                     var obj = compositeResponse.getSuccessResponse();
                     if (obj&&obj.result) {
-                        if (!model.set(model.parse(obj.result, options), options)) return false;
+                        if (!that.responeToModel(model,obj.result,options)) return false;
                         that.trigger("fetchSuccess");
                         model.trigger('sync', model, obj.result, options);
                     }
-                });
+                },this.getAsync());
 
             // If we're sending a `PATCH` request, and we're in an old Internet Explorer
             // that still has ActiveX enabled by default, override jQuery to use that
@@ -195,13 +310,41 @@ define(["underscore",
                     return new ActiveXObject("Microsoft.XMLHTTP");
                 };
             }
-
             // Make the request, allowing the user to override any Ajax options.
             var xhr = options.xhr = Backbone.ajax(_.extend(params, options));*/
-
-
             model.trigger('request', model, ajaxClient, options);
             return ajaxClient;
+        },
+        /**
+         * 发送ajax请求
+         * @param url
+         * @param params
+         * @param options
+         * @param async
+         * @param callback {function(@param compositeResponse,@param options) }
+         *
+         * @returns {*|AjaxClient}
+         */
+        ajax:function(url,params,options,async,callback){
+            var ajaxClient = this.getAjaxClient();
+            var that = this;
+            ajaxClient.buildClientRequest(url)
+                .addParams(params)
+                .post(function (compositeResponse) {
+                    if(!callback){
+                        var obj = compositeResponse.getSuccessResponse();
+                        if (obj&&obj.result) {
+                            if (!that.responeToModel(that,obj.result,options)) return false;
+                            that.trigger("fetchSuccess");
+                        }
+                    }else{
+                        callback(compositeResponse,options);
+                    }
+                    that.trigger('sync', that, obj.result, options);
+
+                },async);
+            that.trigger('request', that, ajaxClient, options);
+            return that;
         },
         methodMap : {
             'create': 'POST',

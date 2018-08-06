@@ -1089,6 +1089,40 @@ nav.page-tabs .page-tabs-content {
 .dropdowncontainer .dropdown-menu{
     padding:0;
 }
+
+.dropdowncontainer-down-right{
+    right: 0;
+    left: auto;
+}
+
+.dropdowncontainer-down-right:before
+{
+    top: -7px;
+    right: 6px;
+}
+.dropdowncontainer-down-right:after{
+    top: -6px;
+    right: 7px;
+}
+
+.dropdowncontainer-down-right:before{
+    content: '';
+    display: inline-block;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid #ccc;
+    border-bottom-color: rgba(0,0,0,0.2);
+    position: absolute;
+}
+.dropdowncontainer-down-right:after{
+    content: '';
+    display: inline-block;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid #fff;
+    position: absolute;
+}
+
 /*dropdowncontainer end*/
 /* tab  start */
 /*.tab-v2 .nav-tabs a,
@@ -1116,6 +1150,70 @@ nav.page-tabs .page-tabs-content {
     margin-bottom: 2px;
 }
 /*NavFormEditor end*/
+
+/*toolstripitem start*/
+.toolstripitem>span.btnpl3{
+    padding-left:3px;
+}
+/*
+    过度效果
+*/
+.toolstripitem .fa{
+    -webkit-transition: -webkit-transform 0.4s linear;
+    -moz-transition: -moz-transform 0.4s linear;
+    transition: transform 0.4s linear;
+}
+
+/*toolstripitem end*/
+
+
+/*fancytree start*/
+.hfast-view.tree .fancytree-ext-childcounter span.fancytree-childcounter,
+.hfast-view.tree .fancytree-ext-filter span.fancytree-childcounter{
+    height: 18px;
+    background: #5cb85c;
+    border: 0px;
+}
+/*fancytree end*/
+/*List start*/
+
+/*.hfast-view.list .list-group-item{
+    background-color: #e8e8e8;
+}*/
+.hfast-view.list .list-group-item:hover{
+    background-color:  #e8e8e8;
+}
+.hfast-view.list .list-group-item.active{
+    background-color:  #dff0d8;
+    color: #333;
+    border-color: #ddd;
+}
+
+
+/*List end*/
+/*bootstrapgrid start*/
+.hfast-view.bootstrapgrid tbody tr:hover{
+    background-color:  #e8e8e8;
+}
+
+.hfast-view.bootstrapgrid tr.active,
+.hfast-view.bootstrapgrid tr.active>td{
+    background-color:  #dff0d8;
+    color: #333;
+    border-color: #ddd;
+}
+
+/*bootstrapgrid end*/
+
+/*tablayout start*/
+.tablayout .content-tabs{
+    padding:0px;
+    border:0px;
+}
+.hfast-view.tablayout .tab-content{
+    padding:0px;
+}
+/*tablayout end*/
 
 
 

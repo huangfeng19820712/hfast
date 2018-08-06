@@ -23,8 +23,17 @@ define([
                                 label:"时间",
                                 mode:$cons.LayDateMode.date,
                                 placeholder:"日期格式",
-                                onchangeDate:function(value){
-                                    console.info(">>>"+value);
+                                pluginConf:{
+                                    done: function(value, date, endDate){
+                                        if(date.year === 2017 && date.month === 8 && date.date === 15){ //点击2017年8月15日，弹出提示语
+                                            ins1.hint('中国人民抗日战争胜利72周年');
+                                        }
+                                        console.info(">done>>"+value+">>"+date);
+                                    },
+                                    change: function(value, date, endDate){
+                                        //ins1.hint(value); //在控件上弹出value值
+                                        console.info(">change>>"+value);
+                                    },
                                 }
                             }
                         }

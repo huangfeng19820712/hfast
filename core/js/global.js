@@ -58,6 +58,7 @@ $global.constants = {
         'jquery.validate': '1.14.0',
         'fuelux': '1.0',
         'counterup': '1.0',
+        'countUp': '1.9.3',
         'icheck': '1.0.2',
         'typeahead': '0.11.1',
         'jquery.layout': '1.4.3',
@@ -84,6 +85,7 @@ $global.constants = {
         'bootstrap-switch':'3.3.2',
         'store':'1.3.9',
         'laydate':'5.0.9',
+        'jquery.contextMenu':'2.6.4',
         'flowplayer':'3.2.13'
     },
     /**
@@ -211,7 +213,7 @@ $global.constants = {
          */
         Button: {
             //DEFAULT: '<button class="btn rounded <%=className%>" type="button"><%=text%></button>',
-            DEFAULT: '<button id="<%=data.id%>" <%if(data.title){%>title="<%=data.title%>"<%}%>  <%if(data.isToggle){%>data-toggle="button"<%}%> autocomplete="off" type="button"><i class="fa <%=data.iconSkin%>"></i><span><%=data.text%></span></button>',
+            DEFAULT: '<button id="<%=data.id%>" <%if(data.title){%>title="<%=data.title%>"<%}%>  <%if(data.isToggle){%>data-toggle="button"<%}%> autocomplete="off" type="button"><i class="<%=data.iconPrefix%> <%=data.iconSkin%>"></i><%if(data.text){%><span class="<%if(data.iconSkin){%>btnpl3<%}%>"><%=data.text%></span><%}%></button>',
         },
         Input: {
             DEFAULT: '<input type="text" class="form-control" /><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>',
@@ -229,7 +231,7 @@ $global.constants = {
             DEFAULT: '<div href="#" id="<%=data.id%>" class="list-group-item"><%if(data.badge){%><span class="badge"><%=data.badge%></span><%}%><%=data.content%></div>',
         },
         Link: {
-            DEFAULT: '<a href="javascript:void(0)" <%if(data.title){%>title="<%=data.title%>"<%}%> class="btn-borderless"><i class="fa <%=data.iconSkin%>"></i><%=data.text%></a>',
+            DEFAULT: '<a href="javascript:void(0)" <%if(data.title){%>title="<%=data.title%>"<%}%> class="btn-borderless"><i class="<%=data.iconPrefix%> <%=data.iconSkin%>"></i><%if(data.text){%><span class="<%if(data.iconSkin){%>btnpl3<%}%>"><%=data.text%></span><%}%></a>',
         },
         Tooltip: {
             //DEFAULT:'<div class="tooltip <%=data.align%>" role=""><div class="tooltip-arrow"></div> <div class="tooltip-inner"> <%=data.text%> </div> </div>'
@@ -331,6 +333,10 @@ $global.constants = {
             name: "dataset",
             label: "数据集"
         },
+        MODEL:{
+            name:"model",
+            label:"模型",
+        },
         /**
          * 其他组件
          */
@@ -374,6 +380,10 @@ $global.constants = {
             type:"datetime",
             format:"yyyy年M月d日H时m分s秒",
         }
+    },
+    PaginationMode:{
+        SIMPLE:"simple",
+        FULL:"full"
     }
 };
 $cons = $global.constants;
@@ -517,10 +527,18 @@ $Component = $cons.component = {
         src: "core/js/editors/ViewEditor",
         type: $cons.componentType.EDITOR
     },
-    DROPDOWNCONTAINER: {
-        name: "DropDownContainer",
+    DROPDOWNEDITOR: {
+        name: "DropDownEditor",
         label: "下拉框容器",
-        src: "core/js/layout/DropDownContainer",
+        src: "core/js/editors/DropDownEditor",
+        type: $cons.componentType.EDITOR
+    },
+    /* 框架的编辑器，含有业务 */
+
+    THEMEEDITOR: {
+        name: "ThemeEditor",
+        label: "组件主题编辑器",
+        src: "framework/js/editors/ThemeEditor",
         type: $cons.componentType.EDITOR
     },
     /*===============容器组件==================*/
@@ -596,6 +614,12 @@ $Component = $cons.component = {
         src: "core/js/navigation/NavigationBar",
         type: $cons.componentType.CONTAINER
     },
+    DROPDOWNCONTAINER: {
+        name: "DropDownContainer",
+        label: "下拉框容器",
+        src: "core/js/layout/DropDownContainer",
+        type: $cons.componentType.CONTAINER
+    },
 
 
     /*===============列表组件==================*/
@@ -656,6 +680,11 @@ $Component = $cons.component = {
         label: "菜单",
         src: "core/js/navigation/Menu"
     },
+    DROPDOWNBUTTON: {
+        name: "DropDownButton",
+        label: "下拉容器的按钮",
+        src: "core/js/controls/DropDownButton"
+    },
     DROPDOWNMENU: {
         name: "DropDownMenu",
         label: "工具栏子项",
@@ -710,6 +739,18 @@ $Component = $cons.component = {
         label: "树",
         src: "core/js/controls/Breadcrumbs"
     },
+    CONTROLTHEME: {
+        name: "ControlTheme",
+        label: "组件的主题",
+        src: "core/js/controls/ControlTheme"
+    },
+    /*模型组件MODEL start*/
+    TREEMODEL:{
+        name:"TreeModel",
+        label:"树模型",
+        src:"core/js/model/TreeModel"
+    }
+    /*模型组件MODEL end*/
 };
 
 $Xtype = $cons.xtype;
@@ -725,7 +766,13 @@ $i18n = {
     "alertLabel": "消息提醒",
     "BTN_CONFIRM": "确定",
     "BTN_CANCEL": "取消",
-    "HELP_LABEL": "帮助"
+    "HELP_LABEL": "帮助",
+    Message:{
+        SUCCESS:"操作成功!",
+        DELETE_SUCCESS : "删除成功!",
+        form:{
+        }
+    },
 }
 $utils = {
     getContextPath: function () {
@@ -1097,3 +1144,67 @@ $global.app = null;
 
 $global.appConf = null;
 
+$ApricotCons={};
+$ApricotCons.prefix = "apricot_";
+$ApricotCons = {
+    xtype: {
+        OS: {
+            name:$ApricotCons.prefix + "OS",
+            src:"core/js/operatingSystem/ApricotOS"
+        },
+        SLIDEBAR: {
+            name:$ApricotCons.prefix + "slideBar",
+            src:"core/js/operatingSystem/ApricotOS/ApricotSlideBar"
+        },
+        HEADER: {
+            name:$ApricotCons.prefix + "header",
+            src:"core/js/operatingSystem/ApricotOS/ApricotHeader"
+        },
+        MENU: {
+            name:$ApricotCons.prefix + "menu",
+            src:"core/js/operatingSystem/ApricotOS/menu"
+        },
+        SWITCHER: {
+            name:$ApricotCons.prefix + "Switcher",
+            src:"core/js/operatingSystem/ApricotOS/Switcher"
+        },
+        FOOTER: {
+            name:$ApricotCons.prefix + "footer",
+            src:"core/js/operatingSystem/ApricotOS/footer"
+        },
+        BREADCRUMBS: {
+            name:$ApricotCons.prefix + "breadcrumbs",
+            src:"core/js/operatingSystem/ApricotOS/breadcrumbs"
+        },
+        TOPBAR: $ApricotCons.prefix + "topBar"
+    },
+    css:[
+        //"css!/framework/unify/css/style.css",
+        "css!/framework/unify/plugins/font-awesome/css/font-awesome.min.css",
+        "css!/core/js/operatingSystem/ApricotOS/css/style.css",
+        "css!/core/js/operatingSystem/ApricotOS/css/entypo-icon.css",
+        "css!/core/js/operatingSystem/ApricotOS/css/weather-icons.min.css",
+        //"css!/core/js/operatingSystem/ApricotOS/js/skin-select/skin-select.css",
+        "css!/core/js/operatingSystem/ApricotOS/js/tip/tooltipster.css",
+        "css!/core/js/operatingSystem/ApricotOS/js/pace/themes/pace-theme-center-simple.css",
+        "css!/core/js/operatingSystem/ApricotOS/js/slidebars/slidebars.css",
+        "css!/core/resources/styles/apricot.css",
+    ]
+};
+
+$cache = {};
+$cache.core={
+    //通用的属性
+    cacheLabel:"核心模块",
+    isSeviceLocal:{
+        name:"isSeviceLocal",
+        label:"是否服务本地化",
+        remark:"把服务器的服务，在客户端本地提供",
+        editorType:$Component.SWITCHEDITOR,
+    },
+    controlColor:{
+        name:"controlColor",
+        label:"组件主题",
+        editorType:$Component.THEMEEDITOR,
+    }
+};

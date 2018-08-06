@@ -14,7 +14,7 @@ define(["core/js/layout/SimpleLayout",
                 };
             },
             onshow:function(){
-                this._super();
+                //this._super();
                 var region = this.getItemRegion();
                 region.show(new clouds());
             }

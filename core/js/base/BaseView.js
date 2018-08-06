@@ -31,7 +31,7 @@ define(["core/js/Event","backbone","core/js/windows/messageBox",
         dataPre:"data",       //引用数据的前缀
         height: null,   //该视图的高度，不指定，默认为100%
 
-        isClosed: false,  //标识该视图是否已经关闭
+        isDestroied: false,
 
         _registerEvent: false,   //标识是否已经注册了事件
 
@@ -44,21 +44,21 @@ define(["core/js/Event","backbone","core/js/windows/messageBox",
         oninitialized: function(){},
 
         /**
-         * 当视图渲染完成后触发的事件，渲染完成不一定可见
+         * 事件声明：当视图渲染完成后触发的事件，渲染完成不一定可见
          */
         onrender:function (event) {},
 
         /**
-         * 当视图显示完成（已经可见了）后触发的事件
+         * 事件声明：当视图显示完成（已经可见了）后触发的事件
          */
         onshow: null,
         /**
-         * 销毁完后调用
+         * 事件声明：销毁完后调用
          */
         onclose: null,
 
         /**
-         * 布局调整后触发该事件
+         * 事件声明：布局调整后触发该事件
          */
         onresize: null,
 
@@ -348,11 +348,11 @@ define(["core/js/Event","backbone","core/js/windows/messageBox",
          *
          */
         close: function () {
-            if (this.isClosed) {
+            if (this.isDestroied) {
                 return;
             }
 
-            this.isClosed = true;
+            this.isDestroied = true;
 
             this.el = null;
 
@@ -372,7 +372,7 @@ define(["core/js/Event","backbone","core/js/windows/messageBox",
             this.parent = null;
             delete this.parent;
 
-            this.trigger("close");   //触发关闭的事件
+            this.trigger("destroied");   //触发关闭的事件
             this.off();  //退订该视图的所有事件
         },
         /**
@@ -437,6 +437,10 @@ define(["core/js/Event","backbone","core/js/windows/messageBox",
             e.type = eventType;
             if (!e.target)
                 e.target = this;
+            //设置父函数，由于要转化上下文，所以如果_super与本方法名不一致，则去掉
+            if(this[etype]&&this._super.name!=etype){
+                this._super=null;
+            }
 
             return this[etype].fire(e, this);
         },

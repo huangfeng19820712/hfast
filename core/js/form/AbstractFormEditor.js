@@ -11,10 +11,14 @@ define(["jquery",
     "core/js/rpc/AjaxClient",
     "core/js/controls/Control",
     "core/js/controls/ComponentFactory",
-    "core/js/form/Validator", "core/js/utils/FormUtils"
+    "core/js/form/Validator",
+    "core/js/utils/FormUtils",
+    "core/js/utils/Utils",
+    "core/js/windows/messageBox"
 ], function ($, _, CommonConstant,
              MessageDigest, AjaxClient,
-             Control, ComponentFactory,Validator,FormUtils) {
+             Control, ComponentFactory,Validator,
+             FormUtils,Utils,MessageBox) {
 
     var AbstractFormEditor = Control.extend({
         /**
@@ -80,12 +84,17 @@ define(["jquery",
         validateOnBlur: false,
         showErrorType: null,
         errorContainer: null,
+        /**
+         * 属性前缀，如:editObj,则提交的属性为editObj.name
+         */
+        paramPrefix: null,
 
         /*-------------------表单与服务端交互的ajax客户端---------------*/
         ajaxClient: null,
         methodName: null,
         methodVersion: "1.0",
         parseParameters: null,       //{function}对请求参数进行解析处理
+        action:null,    //存储url路径的对象，通过此对象的getUrl获取路径
 
         /*-----------------------事件------------------------------------*/
         /**
@@ -189,15 +198,35 @@ define(["jquery",
             return editor.getValue();
         },
         /**
-         * 获取所有的字段值
-         * @returns {{}}
+         * 获取表单的参数：包括隐藏域的值和编辑器的值
+         * @param   {Boolean}  addParamPrefixed  是否要添加前缀,默认是不添加
+         * @param   {String} needEmptyValue 空值是否也需要包含在结果集中，默认是不需要空值的，但是查询参数中可能需要
+         * @return {{}}
          */
-        getAllFieldValue:function(){
-            var values = {};
-            for(var key in this._editors){
-                values[key] = this._editors[key].getValue();
+        getAllFieldValue:function(addParamPrefixed,needEmptyValue){
+            var result = {};
+            var prefix = "",value=null;
+            if(addParamPrefixed&&$.isNotBank(this.paramPrefix)){
+                var prefix = this.paramPrefix+".";
             }
-            return values;
+            var hiddenValueMap = this._inputHiddenValueMap;
+            if (hiddenValueMap != null) {
+                for (var fieldName in hiddenValueMap) {
+                    value = hiddenValueMap[fieldName];
+                    //如果值为空，那么就不加入到参数
+                    if (!needEmptyValue && (value == null || $.trim(value) == ""))
+                        continue;
+                    result[prefix+fieldName] = value;
+                }
+            }
+            //获取编辑器的值
+            for(var key in this._editors){
+                value = this._editors[key].getValue();
+                if (!needEmptyValue && (value == null || $.trim(value) == ""))
+                    continue;
+                result[prefix+key] = value;
+            }
+            return result;
         },
         /**
          * 获取编辑器的显示值
@@ -245,6 +274,18 @@ define(["jquery",
             //如果不存在表达控件，则将值存储到隐藏域中
             this._inputHiddenValueMap[fieldName] = value;
         },
+        /**
+         * 清空所有的值，包括隐藏值
+         */
+        clearValue:function(){
+            var that = this;
+            _.each(this._inputHiddenValueMap,function(value,key,list){
+                that._inputHiddenValueMap[key] = "";
+            });
+            _.each(this._editors,function(value,key,list){
+                that._editors[key].clearValue();
+            });
+        },
         _initKey: function (key) {
             key = key ? $.trim(key) : "";
 
@@ -287,25 +328,6 @@ define(["jquery",
         setEditors:function(editors){
             return this._editors;
         },
-
-        getHiddenValue: function (fieldName) {
-
-        },
-        addHiddenValue: function (options, value) {
-
-        },
-        _addHiddenValue: function (fieldName, value) {
-
-        },
-        /**
-         * 根据给定的字段名，判断是否存在该隐藏域
-         *
-         * @param fieldName 字段名
-         * @return {*}
-         */
-        hasHiddenValue: function (fieldName) {
-
-        },
         /**
          * 设置与远程交互的Ajax客户端
          * @param ajaxClient
@@ -316,28 +338,24 @@ define(["jquery",
         },
         /**
          * 设置远程请求得action
-         * @param methodName
+         * @param {Action} action   Action对象，通过这个类获取url
          * @param methodVersion
          */
-        setAction: function (methodName, methodVersion) {
-            this.methodName = methodName;
+        setAction: function (action) {
+            this.action = action;
+        },
 
-            if (methodVersion == null || methodVersion == "")
-                methodVersion = "1.0";
-            this.methodVersion = methodVersion;
+        getAction:function(){
+            return this.action;
         },
         /**
-         * 获取表单的参数：包括隐藏域的值和编辑器的值
-         * @param needEmptyValue 空值是否也需要包含在结果集中，默认是不需要空值的，但是查询参数中可能需要
-         * @return {{}}
+         * 根据Action获取url
+         * @private
          */
-        getParameterMap: function (needEmptyValue) {
-            var result = {};
-
-
-
-            return result;
+        _getUrl:function(){
+            return  this.getAction()?this.getAction().getUrl():null;
         },
+
         /**
          * 对表单进行验证
          * @return {*}
@@ -355,17 +373,93 @@ define(["jquery",
          * @return {boolean}
          */
         submit: function (options) {
+            options = options || {};
+            /*var follow = options["follow"],    //用于控制成功提示信息显示的位置
+                progressDialogId = options["progressDialogId"];   //用于关闭模态窗口的提示信息*/
 
+            //验证
+            var valid = this.validate();
+            if (!valid) {
+                /*//关闭模态提示框
+                if (progressDialogId)
+                    $.window.closeProgressTip(progressDialogId);*/
+                return false;
+            }
+
+            this.submitSaveHandle(options);   //提交保存操作，将该操作分开，是为了能够使该方法被独立调用 add by chenmk 2014.09.11
         },
         /**
          * 提交保存操作
          * @param options
          */
         submitSaveHandle: function (options) {
+            options = options || {};
+           /* var progressDialogId = options["progressDialogId"];   //用于关闭模态窗口的提示信息
+            if (!progressDialogId) {
+                progressDialogId = $.window.showProgressTip();   //显示模态窗提示信息
+                options["progressDialogId"] = progressDialogId;
+            }*/
+
+            //提交之前触发事件
+            var valid = this.trigger("beforesubmit");
+            if (!valid) {
+                /*//关闭模态提示框
+                if (progressDialogId)
+                    $.window.closeProgressTip(progressDialogId);*/
+                return false;
+            }
+
+            //添加前缀
+            var params = this.getAllFieldValue(true) || {};
+
+            //在请求之前对参数进行加工处理，例如在此处对其中的参数名进行转换等操作
+            if (this.parseParameters) {
+                params = this.parseParameters(params);
+            }
+
+            //提交表单，此处采用异步的方式，否则会使页面变成假死，因为同步的ajax请求将阻塞所有的处理请求
+            var that = this;
+            this.ajaxClient.buildClientRequest(this._getUrl())
+                .addParams(params)
+                .post(function (compositeResponse) {
+                    that._submitHandle(compositeResponse, options);   //表单提交成功后的回调处理
+                });
 
         },
         _submitHandle: function (ajaxResponse, options) {
+            options = options || {};
+            /*var progressDialogId = options["progressDialogId"];   //用于关闭模态窗口的提示信息
 
+            //关闭模态提示框
+            if (progressDialogId)
+                $.window.closeProgressTip(progressDialogId);*/
+
+            //在显示结果前触发事件
+            var result = this.trigger("beforeshowresult", ajaxResponse);
+
+            if (!result)
+                return;
+
+            var that = this;
+            var msg = ajaxResponse.getMessage();
+            if (ajaxResponse.isSuccessful()) {
+                //$.window.markUpdated();    //标识表单值已经发生了变更
+                MessageBox.success(ajaxResponse.getSuccessMsg());
+                /*msg = (msg == null || msg == "") ? "操作成功" : msg;
+                msg = "<strong>" + msg + "</strong>";
+                $.window.showMessage(msg, {
+                    handle: function () {
+                        that.trigger("submit", ajaxResponse);  //触发提交后的事件
+                    }
+                });*/
+            } else {
+                //MessageBox.error("成功！");
+                $.window.showMessage(msg, {
+                    handle: function () {
+                        that.trigger("submit", ajaxResponse);  //触发提交后的事件
+                    }
+                });
+            }
         },
         /**
          * 重置表单：目前仅对编辑器进行重置(默认是不触发编辑器值变更的事件)，同时触发重置后的事件
@@ -904,6 +998,14 @@ define(["jquery",
             var componentNameStr = componentNameArray.join(",");
 
             this.setReadOnly(componentNameStr, true);
+        },
+        /**
+         * 获取所有组件的名称
+         *
+         * @return {Array}
+         */
+        getAllComponentName: function () {
+            return _.keys(this._editors);
         },
         /**
          * 根据字段名获取其相关的验证属性对象

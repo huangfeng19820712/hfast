@@ -32,6 +32,10 @@ define(["jquery",
          */
         iconSkin: null,
         /**
+         * 带图标按钮上前缀,以识别是哪些类的图标，应为有很多类图标如:glyphicon，fontawesome，默认是fontawesome类图标
+         */
+        iconPrefix: "fa",
+        /**
          * 提示内容
          */
         title:null,
@@ -181,6 +185,7 @@ define(["jquery",
                 id: this.id,
                 className: this.className,
                 iconSkin: this.iconSkin,
+                iconPrefix:this.iconPrefix,
                 text: this.text,
                 template: this.template,
                 onclick: this.onclick
@@ -190,12 +195,6 @@ define(["jquery",
             this.className = ToolStripItem.ClassName.DEFAULT;
             this._super(options,triggerEvent);
         },
-        /*render: function (container, triggerEvent) {
-            this._super(options,triggerEvent);
-            this._init$El();    //初始化$el
-
-
-        },*/
         /**
          * 初始化当前元素
          *
@@ -209,6 +208,7 @@ define(["jquery",
                 id: this.id,
                 iconSkin: "",
                 text: "",
+                iconPrefix:this.iconPrefix,
                 isToggle:this.isToggle,
                 title:this.title
             };
@@ -424,60 +424,58 @@ define(["jquery",
      * @type {{save: {text: string, className: string}, add: {text: string, iconSkin: string}, update: {text: string, iconSkin: string}, delete: {text: string, iconSkin: string}, view: {text: string, iconSkin: string}, copy: {text: string, iconSkin: string}, print: {text: string, iconSkin: string}, download: {text: string, iconSkin: string}, import: {text: string, iconSkin: string}, export: {text: string, iconSkin: string}, refresh: {text: string, iconSkin: string}, release: {text: string, iconSkin: string}}}
      */
     ToolStripItem.DefaultCommand = {
-        "clear": {
+        /*"clear": {
             template: '<a id="<%=id%>" class=" h-icon h-icon-close" href="javascript:void(0)">&nbsp;</a>'
-        },
+        },*/
         "save": {
             text: "保 存",
-            className: "h-btn-primary"
+            iconSkin: CommonConstant.Icon.SAVE
         },
         "add": {
             text: "新 增",
-            iconSkin: ToolStripItem.IconSkin.ADD
+            iconSkin: CommonConstant.Icon.PLUS
         },
         "update": {
             text: "修 改",
-            iconSkin: ToolStripItem.IconSkin.EDIT
+            iconSkin: CommonConstant.Icon.PENCIL_SQUARE_O
         },
         "delete": {
             text: "删 除",
-            iconSkin: ToolStripItem.IconSkin.DELETE
+            iconSkin: CommonConstant.Icon.TRASH_O
         },
         "view": {
             text: "查 看",
-            iconSkin: ToolStripItem.IconSkin.VIEW
+            iconSkin: CommonConstant.Icon.SEARCH
         },
         "copy": {
             text: "复 制",
-            iconSkin: ToolStripItem.IconSkin.COPY
+            iconSkin: CommonConstant.Icon.COPY
         },
         "print": {
             text: "打 印",
-            iconSkin: ToolStripItem.IconSkin.PRINT
+            iconSkin: CommonConstant.Icon.PRINT
         },
         "download": {
             text: "下 载",
-            iconSkin: ToolStripItem.IconSkin.DOWNLOAD
+            iconSkin: CommonConstant.Icon.DOWNLOAD
         },
         "upload": {
             text: "上 传",
-            iconSkin: ToolStripItem.IconSkin.UPLOAD
+            iconSkin: CommonConstant.Icon.UPLOAD
         },
         "import": {
             text: "导 入",
-            iconSkin: ToolStripItem.IconSkin.IMPORT
+            iconPrefix:"glyphicon",
+            iconSkin: "glyphicon-import",
         },
         "export": {
             text: "导 出",
-            iconSkin: ToolStripItem.IconSkin.EXPORT
+            iconPrefix:"glyphicon",
+            iconSkin: "glyphicon-export",
         },
         "refresh": {
             text: "刷 新",
-            iconSkin: ToolStripItem.IconSkin.REFRESH
-        },
-        "release": {
-            text: "发 布",
-            iconSkin: ToolStripItem.IconSkin.RELEASE
+            iconSkin: CommonConstant.Icon.REFRESH
         }
     }
 

@@ -77,6 +77,24 @@ define([
                 elem:this.$input[0],
                 theme:this.getTheme(),
                 type: this.mode.type,
+                /*
+                //控件上操作时间的改变事件
+                change: function(value, date, endDate){
+                    //ins1.hint(value); //在控件上弹出value值
+                    console.info(">>>"+value);
+                },
+                done: function(value, date, endDate){
+                    if(date.year === 2017 && date.month === 8 && date.date === 15){ //点击2017年8月15日，弹出提示语
+                        ins1.hint('中国人民抗日战争胜利72周年');
+                    }
+                    console.info(">>>"+value+">>"+date);
+                }*/
+                done: function(value, date, endDate){
+                    if(date.year === 2017 && date.month === 8 && date.date === 15){ //点击2017年8月15日，弹出提示语
+                        ins1.hint('中国人民抗日战争胜利72周年');
+                    }
+                    console.info(">>>"+value+">>"+date);
+                }
                 //format: this.mode.format,
             };
             if(this.format){

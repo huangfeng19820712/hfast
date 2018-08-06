@@ -97,7 +97,7 @@ define(["jquery",
          * 初始化核心处理方法，由子类实现,主要是初始化数据，不包含渲染的内容
          */
         initializeHandle:function(options,triggerEvent){
-            if (this.isClosed) {
+            if (this.isDestroied) {
                 // a previously closed layout means we need to
                 // completely re-initialize the regions
                 this._initializeRegions();
@@ -106,7 +106,7 @@ define(["jquery",
                 // if this is the first render, don't do anything to
                 // reset the regions
                 this._firstRender = false;
-            } else if (!this.isClosed) {
+            } else if (!this.isDestroied) {
                 // If this is not the first render call, then we need to
                 // re-initializing the `el` for each region
                 this._reInitializeRegions();
@@ -141,8 +141,15 @@ define(["jquery",
             var rName, region,
                 regions = this.getAllRegions();
             if(regions){
-
+                //
                 this.childrenCount = _.keys(regions).length;
+                //设置parent的childrenCount也需要+1，因为是异步渲染
+                //如果父组件是Container，则不需要再+1
+                //如果有RegionParent则不需要+1，应为parent会根据Region的个数增加n
+                //如果没有Regionparent，则是非容器组件，则需要+1
+                if(this.getParent()&&!this.regionParent){
+                    this.getParent().childrenCount++;
+                }
                 for (rName in regions) {
                     region = regions[rName];
                     region.render();   //根据区域的配置信息对区域进行渲染
@@ -505,7 +512,7 @@ define(["jquery",
             return regionName;
         },
         close:function(){
-            if (this.isClosed) {
+            if (this.isDestroied) {
                 return;
             }
             this.items = null;

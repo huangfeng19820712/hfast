@@ -78,6 +78,11 @@ define(["core/js/layout/FluidLayout",
                             name:"touchSpin",
                             editorType:$Component.TOUCHSPINEDITOR,
                             colspan:1
+                        },{
+                            label:"SwitchEditor",
+                            name:"switchEditor",
+                            editorType:$Component.SWITCHEDITOR,
+                            colspan:1
                         }]
                     }
                 });

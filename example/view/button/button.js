@@ -64,6 +64,11 @@ define(["core/js/base/BaseView",
                         isToggle: true,
                     }]
                 });
+                var commands = _.values(ToolStripItem.DefaultCommand);
+                var defaultCommandGroup = new ToolStrip({
+                    $container: this.$el,
+                    itemOptions: commands
+                });
                 var helpButton = new HelpLink({
                     $container:this.$el,
                     mainContent:"aaaaaaaaaa",

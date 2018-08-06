@@ -12,7 +12,6 @@ define([
     function (NavigationBar,ToolStripItem,DropDownMenu,Menu,ApplicationUtils,BaseViewModel) {
 
         var view = BaseViewModel.extend({
-            $INIT: "/"+ CONFIG.appName+"/menu.json",
             mountContent:function(){
                 this.rendNavBar();
             },

@@ -31,7 +31,7 @@ define(["core/js/layout/BorderLayout",
                     {
                         region: BorderLayout.Region.CENTER,  //中间区域
                         padding:0,
-                        showOverflowOnHover:true
+                        showOverflowOnHover:false,//鼠标移过显示被隐藏的，只在禁用滚动条时用。
                     }
                 ];
             },
@@ -43,9 +43,6 @@ define(["core/js/layout/BorderLayout",
                 this.getWestRegion().show(APP_NAME+"/view/tree/filterTree", {
                     height:"100%",
                     onshow: function (e) {
-                        if (this._super) {
-                            this._super(e);
-                        }
                         that.resizeRegion(BorderLayout.Region.WEST);
                     }
                 });

@@ -5,8 +5,9 @@ define([
     "core/js/CommonConstant",
     "core/js/layout/DropDownContainer",
     "core/js/controls/ToolStripItem",
+    "core/js/CommonConstant",
     $Component.MENU.src,
-], function (CommonConstant, DropDownContainer,ToolStripItem,Menu) {
+], function (CommonConstant, DropDownContainer,ToolStripItem,CommonConstant,Menu) {
     var DropDownMenu = DropDownContainer.extend({
         xtype:$Component.DROPDOWNMENU,
         /**
@@ -42,12 +43,12 @@ define([
             this.mainButton = new ToolStripItem({
                 text:this.text,
                 $container:this.$el,
-                iconSkin:this.iconSkin,
+                iconSkin:CommonConstant.Icon.CARET_DOWN,
                 themeClass:[this.btnTheme,"dropdown-toggle"].join(" "),
                 onclick: $.proxy(that.showDropDownRegion,that),
             });
-            this.mainButton.$el.append('<span class="caret"></span>')
-                .append('<span class="sr-only">Toggle Dropdown</span>');
+            /*this.mainButton.$el.append('<span class="caret"></span>')
+                .append('<span class="sr-only">Toggle Dropdown</span>');*/
             var menu = new Menu({
                 id:this.getDropDownRegionId(),
                 menus:this.menus,

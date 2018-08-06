@@ -7,7 +7,8 @@ define(["jquery",
     $Component.TOOLSTRIP.src,
     "core/js/layout/Container",
     "core/js/utils/ApplicationUtils",
-    "text!core/resources/tmpl/tabLabel.html"
+    "text!core/resources/tmpl/tabLabel.html",
+    "jquery.layout"
 ], function ($, CommonConstant,ToolStrip, Container,ApplicationUtil,tabLabelTmpl) {
     var TabLayout = Container.extend({
         xtype:$Component.TABLAYOUT,
@@ -40,7 +41,7 @@ define(["jquery",
         className:"tab",
         template:null,
         $navs:null,
-        $labels:true,
+        $labels:null,
         /**
          * 是否需要导航
          */
@@ -62,6 +63,9 @@ define(["jquery",
          * {Array}  所有的tabId
          */
         tabIds:null,
+
+
+
         /*-------------------------------  初始化及私有方法 start ---------------------------------------------------*/
         initItems:function(options){
             this._super(options);
@@ -111,12 +115,41 @@ define(["jquery",
                 var contentIdByIndex = this.getContentIdByIndex(1);
                 this.regionRender(contentIdByIndex);
             }
+
         },
         afterMountContent:function(triggerEvent){
             this._super(triggerEvent);
             if(this.navable&&this.leftToolStrip){
                 var width = this.leftToolStrip.$el.outerWidth(true);
                 this.$navs.css("margin-left",width+"px");
+            }
+
+            if(this.height){
+                var that = this;
+                this.plugin = this.$el.layout({
+                    defaults:{
+                        //closable:false,
+                        slidable:false,
+                        spacing_open:0,
+                    },
+                    center:{
+                        //className:"tab-content",
+                        paneSelector:"#"+this.getTabContentId(),
+                        id:this.getTabContentId()
+                    },
+                    north:{
+                        paneSelector:"#"+this.getContentTabsId(),
+                        id:this.getContentTabsId()
+                    },/*
+                     south:{
+                     paneSelector:"#"+this.getConfId(this.footerRegionConf),
+                     id:this.getConfId(this.footerRegionConf)
+                     }*/
+                });
+                //设置content-tabs下面的按钮，都能跨域中间层显示
+                this.$labels.find(".btn-group").on("mouseover",function(){
+                    that.plugin.allowOverflow(this);
+                });
             }
         },
         /**
@@ -139,6 +172,23 @@ define(["jquery",
 
             }
         },
+        /**
+         * 获取content-tabs的
+         * @returns {string}
+         */
+        getContentTabsId:function(){
+            return this.getId()+"content-tabs";
+        },
+        /**
+         * 获取tab-content
+         * @returns {string}
+         */
+        getTabContentId:function(){
+            return this.getId()+"tab-content";
+        },
+
+
+
         /**
          * 刷新grid组件，让其显示出来
          * @param gridComponent
@@ -165,7 +215,7 @@ define(["jquery",
                 }
                 //this.$el.append('<ul class="nav '+navClass+'"/>');
                 this.$el.append(this._initTabLabel());
-                this.$el.append('<div class="tab-content"/>');
+                this.$el.append('<div class="tab-content" id='+this.getTabContentId()+'/>');
                 var ulEl = this.$("ul.page-tabs-content");
                 var tabContent = this.$("div.tab-content");
                 this.tabIds = [];
@@ -224,6 +274,7 @@ define(["jquery",
         _initTabLabel:function(){
             this.$labels = $("<div/>");
             this.$labels.addClass("content-tabs");
+            this.$labels.attr("id",this.getContentTabsId());
             var that = this;
             if(this.navable){
                 var leftToolStripOption = [{
@@ -645,6 +696,16 @@ define(["jquery",
          */
         getActiveTabId:function(){
             return $(this.$(".page-tabs-content>li.active")[0]).data("tabId");
+        },
+
+        /**
+         * 重新刷新区域的内容，当高度改变，或者是内容改变时，需要刷新相关的区域
+         */
+        resizeCenterRegion:function(region,size){
+            //刷新区域的方法
+            if(this.plugin){
+                this.plugin.resizeAll();
+            }
         },
 
         close:function(){

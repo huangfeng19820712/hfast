@@ -1,7 +1,7 @@
 /**
  * @module 编辑器[Editor]
  * @description 提供所有编辑器的抽象基类
- *
+ * 编辑器有三类值：服务器端需要用的值（字符串格式），显示的值（字符串格式），值的对象格式（date，Array，自定义对象）
  * @date: 2013-08-12 下午1:59
  */
 define(["jquery",
@@ -25,6 +25,13 @@ define(["jquery",
          * 编辑器的默认值对应的显示值
          */
         defaultDisplayValue: null,
+
+        /**
+         * 值对应的对象，可是Date、Array、或者是自定义类型
+         * @private
+         */
+        valueObject:null,
+
 
         /**
          * 获取编辑器的值，该值是与服务端通讯用的。
@@ -410,6 +417,13 @@ define(["jquery",
          */
         setValue: function (value, triggerEvent) {
             this._setValueAndDisplayValue(value, null, true, triggerEvent);
+        },
+        /**
+         * 把值清空
+          * @param triggerEvent
+         */
+        clearValue:function(triggerEvent){
+            this._setValueAndDisplayValue("", null, true, triggerEvent);
         },
         /**
          * 设置隐藏值{@link value}和显示值{@link displayValue}

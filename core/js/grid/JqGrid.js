@@ -196,6 +196,13 @@ define([
             return options;
         },
         /**
+         * 获取行数据对象
+         * @param rowId 行id
+         */
+        getRowData:function(rowId){
+            return this.$table.jqGrid("getRowData",rowId);
+        },
+        /**
          * 获取列模型
          */
         getColModel:function(colModel){
@@ -223,10 +230,13 @@ define([
         },
         addFormatterCom:function(formatterComConf,name){
             if(this.formatterComs==null){
-                this.formatterComs = [];
+                this.formatterComs = {};
             }
-            formatterComConf.formatterClass = this.getFormatterClass(name);
-            this.formatterComs.push(formatterComConf);
+            this.formatterComs[name] = {
+                conf:formatterComConf
+            };
+            /*formatterComConf.formatterClass = this.getFormatterClass(name);
+            this.formatterComs.push(formatterComConf);*/
         },
         /**
          * 使用自身的组件来生成formatter
@@ -237,7 +247,8 @@ define([
          */
         gridformatter:function(cellValue, options, cellObject){
             var grid = getGrid(this);
-            return "<div class="+grid.getFormatterClass(options.colModel.name)+"/>";
+            var id = grid.getId();
+            return "<div class="+grid.getFormatterClass(options.colModel.name)+" data-gridid="+id+" data-rowid="+cellObject.id+"/>";
         },
         getFormatterClass:function(name){
             return this.getTableId()+name ;
@@ -390,22 +401,38 @@ define([
         selectRow:null,
         gridComplete:function(){
             var grid = getGrid(this);
-            _.each(grid.formatterComs,function(element, index, list){
-                grid.eachTrAddComponent(element);
+            _.mapObject(grid.formatterComs,function(formatterCom,name){
+                if(formatterCom){
+
+                    grid.eachTrAddComponent(formatterCom,name);
+                }
             });
 
         },
         /**
          * 给每个tr添加组件
          */
-        eachTrAddComponent:function(formatterCom){
+        eachTrAddComponent:function(formatterCom,name){
             var trs = this.$("tbody>tr");
+            var that = this;
             _.each(trs,function(element, index, list){
                 var id = $(element).attr("id");
+
                 if($.isNotBank(id)){
-                    var formatterClass = formatterCom.formatterClass;
+                    var result;
+                    var conf = formatterCom.conf;
+                    if(_.isFunction(conf)){
+                        var rowData = that.getRowData(id);
+                        result = conf(rowData);
+                    }else{
+                        result = conf;
+                    }
+                    var formatterClass = that.getFormatterClass(name);
+                    var comXtype = result.comXtype;
+                    var comConf = result.comConf;
+                    /*var formatterClass = formatterCom.formatterClass;
                     var comXtype = formatterCom.comXtype;
-                    var comConf = formatterCom.comConf;
+                    var comConf = formatterCom.comConf;*/
 
                     comConf.$container = $(element).find("."+formatterClass);
                     formatterCom.comRef = ComponentFactory.createComponent(comXtype, comConf);
@@ -434,8 +461,8 @@ define([
             el.remove();
         },
         destroyFormatterComs:function(){
-            _.each(this.formatterComs,function(element, index, list){
-                var comRef = element.comRef;
+            _.mapObject(this.formatterComs,function(formatterCom,name){
+                var comRef = formatterCom.comRef;
                 if(comRef!=null&&comRef.destroy){
                     comRef.destroy();
                 }

@@ -5,7 +5,9 @@
  * @author:
  * @date: 2013-08-28 下午10:08
  */
-define(["core/js/Class", "core/js/rpc/ErrorResponse"], function (Class, ErrorResponse) {
+define(["core/js/Class",
+    "core/js/rpc/ErrorResponse",
+    "core/js/CommonConstant",], function (Class, ErrorResponse,CommonConstant) {
     var CompositeResponse = Class.extend({
         successful: false,
         errorResponse: null,
@@ -28,7 +30,7 @@ define(["core/js/Class", "core/js/rpc/ErrorResponse"], function (Class, ErrorRes
             return this.getErrorMsg();
         },
         getSuccessMsg: function () {
-            return "操作成功！";
+            return $i18n.Message.SUCCESS;
         },
         getErrorMsg: function () {
             var errorResponse = this.getErrorResponse();

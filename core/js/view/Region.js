@@ -219,7 +219,8 @@ define(["jquery",
             //此处主要实现组件的懒加载
             var comSrc = this._getComSrc();
             if (comSrc) {
-                this.childrenCount++;
+                //设置辞职，告诉Region的不需要出发render事件
+                //this.childrenCount++;
                 this.show(comSrc, this.comConf);  //如果有指定组件（视图）源，就先创建组件（视图）源
                 return;
             }
@@ -240,6 +241,12 @@ define(["jquery",
          */
         setRelatedObject: function (relatedObject) {
             if (relatedObject) {
+                //设置区域父节点
+                if(this){
+                    relatedObject.regionParent = this;
+                    relatedObject.setNaturalFather(this);
+                }
+
                 //如果不想重新设置关联组件的父对象，就将ignoreResetComParent参数设置成true add by 2014.09.03
                 if (!this.ignoreResetComParent) {
                     if (this.parent)
@@ -249,10 +256,7 @@ define(["jquery",
                             relatedObject.parent = this;  //如果关联组件没有设置父对象，那么就将当前区域设置为其父对象
                     }
                 }
-                //设置区域父节点
-                if(this){
-                    relatedObject.regionParent = this;
-                }
+
             }
 
             //该区域显示的内容关联的对象：某个BaseView类型（包括继承于BaseView）的组件
@@ -356,8 +360,10 @@ define(["jquery",
 
                 this.comConf = null;  //使用过后即清空上下文信息，避免下次使用再用到上次的结果 add by 2014.02.18
             }
-            //
-            // this.childrenCount++;
+            //没有渲染过的区域组件才增加
+            if(!this.rendered){
+                this.childrenCount++;
+            }
             // this.addParentAsynChild();
             require([objectUrl], function (Class) {
                 if (Class == null) {
@@ -411,8 +417,11 @@ define(["jquery",
          * 触发该区域显示完成的事件
          * @private
          */
-        _triggerShowEvent: function () {
+        _triggerShowEvent: function (isSonTrigger) {
+            if(this.childrenCount>0&&!isSonTrigger){
+                return ;
 
+            }
             this.trigger("show");       //该区域显示完成后，触发显示的事件
 
             var relatedObject = this.getRelatedObject();
@@ -515,7 +524,7 @@ define(["jquery",
             return this._super(selector);
         },
         /**
-         * 关闭（销毁）当前区域内容
+         * 关闭并销毁当前区域内容的对象
          */
         close: function () {
             //$.window.removeAllErrorTipOnEl();   //移除所有跟随在元素后面的提示信息（因为这些提示信息不会自动关闭，必须由程序进行控制销毁），而此处正是页面切换的一个统一的入口 add by 2014.11.15
@@ -543,7 +552,7 @@ define(["jquery",
                 return;
 
             //销毁关联对象：依次查找关联对象是否有close、destroy、remove方法，先找到先执行
-            if (!relatedObject.isClosed) {
+            if (!relatedObject.isDestroied) {
                 if (relatedObject.close) {
                     relatedObject.close();
                 } else {

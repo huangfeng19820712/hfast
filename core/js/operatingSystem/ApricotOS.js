@@ -1,53 +1,6 @@
 /**
  * @author:   * @date: 2017/1/30
  */
-$ApricotCons={};
-$ApricotCons.prefix = "apricot_";
-$ApricotCons = {
-    xtype: {
-        OS: {
-            name:$ApricotCons.prefix + "OS",
-            src:"core/js/operatingSystem/ApricotOS"
-        },
-        SLIDEBAR: {
-            name:$ApricotCons.prefix + "slideBar",
-            src:"core/js/operatingSystem/ApricotOS/ApricotSlideBar"
-        },
-        HEADER: {
-            name:$ApricotCons.prefix + "header",
-            src:"core/js/operatingSystem/ApricotOS/ApricotHeader"
-        },
-        MENU: {
-            name:$ApricotCons.prefix + "menu",
-            src:"core/js/operatingSystem/ApricotOS/menu"
-        },
-        SWITCHER: {
-            name:$ApricotCons.prefix + "Switcher",
-            src:"core/js/operatingSystem/ApricotOS/Switcher"
-        },
-        FOOTER: {
-            name:$ApricotCons.prefix + "footer",
-            src:"core/js/operatingSystem/ApricotOS/footer"
-        },
-        BREADCRUMBS: {
-            name:$ApricotCons.prefix + "breadcrumbs",
-            src:"core/js/operatingSystem/ApricotOS/breadcrumbs"
-        },
-        TOPBAR: $ApricotCons.prefix + "topBar"
-    },
-    css:[
-        //"css!/framework/unify/css/style.css",
-        "css!/framework/unify/plugins/font-awesome/css/font-awesome.min.css",
-        "css!/core/js/operatingSystem/ApricotOS/css/style.css",
-        "css!/core/js/operatingSystem/ApricotOS/css/entypo-icon.css",
-        "css!/core/js/operatingSystem/ApricotOS/css/weather-icons.min.css",
-        //"css!/core/js/operatingSystem/ApricotOS/js/skin-select/skin-select.css",
-        "css!/core/js/operatingSystem/ApricotOS/js/tip/tooltipster.css",
-        "css!/core/js/operatingSystem/ApricotOS/js/pace/themes/pace-theme-center-simple.css",
-        "css!/core/js/operatingSystem/ApricotOS/js/slidebars/slidebars.css",
-        "css!/core/resources/styles/apricot.css",
-    ]
-};
 define(_.union(["core/js/operatingSystem/BaseOS",
     "text!core/js/operatingSystem/ApricotOS/tmpl/framework.html",
     "core/js/biz/BaseApplication",
@@ -124,7 +77,10 @@ define(_.union(["core/js/operatingSystem/BaseOS",
                 menuDates:this.menuDates
             });
             //this.header = new Header({$container:this.$el});
-            var content = _.template(temple,{variable: "data"})({id:this.mainRegionId});
+            var content = _.template(temple,{variable: "data"})({
+                id:this.mainRegionId,
+                version:CONFIG.version,
+            });
             this.$el.append(content);
             //渲染区域
             this.regionsRender();

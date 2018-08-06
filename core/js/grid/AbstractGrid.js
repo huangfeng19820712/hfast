@@ -10,10 +10,13 @@ define([
         model:null,
         /**
          * [{
-         *      name:{String}[必填]<字段的唯一表示>
-         *      label：{String}<显示的列标题,如果不填，则显示name的内容>
-         *      editor:{String|Object}<编辑器,可以是字符串，也可以是编辑器的对象>
-         *      searchoptions：{Array}<下拉框的选项>
+         *      name:{String}[必填]<字段的唯一表示>；
+         *      label：{String}<显示的列标题,如果不填，则显示name的内容>；
+         *      editor:{String|Object}<编辑器,可以是字符串，也可以是编辑器的对象>；
+         *      searchoptions：{Array}<下拉框的选项>；
+         *      formatterComConf:{function|Object}<可以是方法与可以是对象，主要是生成这个cell的内容>
+         *          function(rowData):rowData为行的数据；
+         *
          * }
          * ]
          */

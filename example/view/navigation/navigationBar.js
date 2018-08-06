@@ -39,6 +39,7 @@ define([
             rendNavBar:function(data){
                 var view = new NavigationBar({
                     $container:this.$el,
+                    parent:this,
                     items:[{
                         comXtype:$Component.NAVIGATION,
                         comConf:{
@@ -113,6 +114,12 @@ define([
                 }
                 return doneMenus;
             },
+            onshow:function(){
+                console.info(">>>")
+            },
+            onrender:function(){
+                console.info(">>>")
+            }
         });
 
 

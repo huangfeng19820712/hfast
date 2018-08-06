@@ -46,10 +46,6 @@ define(["core/js/layout/BorderLayout",
                 //获取中心区域
                 this.getCenterRegion().show("demo/view/layout/panelView");
             },
-            onshow:function(e){
-                this._super();
-                //this.plugin.allowOverflow(BorderLayout.Region.CENTER);
-            }
         });
         return view;
     });

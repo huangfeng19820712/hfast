@@ -27,6 +27,11 @@ define([
         className: "pagination",
         goButton: null,
         textInput:null,
+
+        /**
+         * 模式，应用$cons.PaginationMode中的模式
+         */
+        mode:$cons.PaginationMode.FULL,
         /**
          * 按钮组
          */
@@ -47,24 +52,27 @@ define([
             this.$buttonGroup = $("<div class='pull-right'/>");
             this.pageButtons = this.createPageButtons(this.createButtonItems());
             this.pageButtons.activeItems([1]);
-            this.$buttonGroup.append("<div class='pageLabel'>"+"&nbsp;&nbsp;&nbsp;&nbsp;总共"+this.totalPage+"页&nbsp;&nbsp;到第&nbsp;"+"</div>");
-            this.textInput = new TouchSpinEditor({
-                $container: this.$buttonGroup,
-                size:TouchSpinEditor.size.sm,
-                min:1,
-                max: this.totalPage,
-                displayButtons:true,
-                width:30,
-                //prefix:"总共"+this.totalPage+"页 "
-            });
-            this.$buttonGroup.append("<div class='pageLabel'>"+"&nbsp;页&nbsp;&nbsp;"+"</div>");
-            var that = this;
-            this.goButton = new ToolStripItem({
-                $container: this.$buttonGroup,
-                text:"确定",
-                size:ToolStripItem.size.sm,
-                onclick:$.proxy(that.clickGo, that)
-            });
+            if(this.mode==$cons.PaginationMode.FULL){
+                this.$buttonGroup.append("<div class='pageLabel'>"+"&nbsp;&nbsp;&nbsp;&nbsp;总共"+this.totalPage+"页&nbsp;&nbsp;到第&nbsp;"+"</div>");
+                this.textInput = new TouchSpinEditor({
+                    $container: this.$buttonGroup,
+                    size:TouchSpinEditor.size.sm,
+                    min:1,
+                    max: this.totalPage,
+                    displayButtons:true,
+                    width:30,
+                    //prefix:"总共"+this.totalPage+"页 "
+                });
+                this.$buttonGroup.append("<div class='pageLabel'>"+"&nbsp;页&nbsp;&nbsp;"+"</div>");
+                var that = this;
+                this.goButton = new ToolStripItem({
+                    $container: this.$buttonGroup,
+                    text:"确定",
+                    size:ToolStripItem.size.sm,
+                    onclick:$.proxy(that.clickGo, that)
+                });
+            }
+
         },
         /**
          * 点击按钮确定的时间

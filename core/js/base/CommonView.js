@@ -6,12 +6,15 @@ define(["core/js/utils/Utils",
         "core/js/utils/ApplicationUtils",
         "core/js/FrameworkConfAccessor"],
     function (Utils, ApplicationUtils,FrameworkConfAccessor) {
-
-        return {
+        var CommonView = _.extend({},{
             /**
              * 是否已经渲染
              */
             rendered:false,
+            /**
+             * 是否完成挂载
+             */
+            mounted:false,
             /**
              * 统计初始化的子组件个数
              */
@@ -86,11 +89,13 @@ define(["core/js/utils/Utils",
             },
             afterMountContent:function(triggerEvent){
                 this.initDraggable();
-                //当没有子组件的时候，才触发渲染事件
-                if(this.childrenCount==0){
+                this.mounted =true;
+
+                if(this.isTriggerRender()){
                     //子组件都渲染完后，才触发本组件渲染完成事件
                     this.triggerRender(triggerEvent);
                 }
+                //console.info("组件ID："+this.getId()+"完成渲染！");
             },
             /**
              * 出事dom的class
@@ -230,14 +235,39 @@ define(["core/js/utils/Utils",
              * @param triggerEvent
              */
             triggerRender:function(triggerEvent){
+
                 this.rendered = true;
                 //触发渲染完成后的事件
                 if (triggerEvent == null || triggerEvent) {
                     this.trigger("render");   //触发渲染完成后的事件
                 }
-                if(this.getNaturalFather()&&this.getNaturalFather().childRenderDone){
+
+                if(this.getParent()&&this.getParent().childRenderDone){
                     //如果是异步渲染，则通知父节点，他的字节点已经渲染好
-                    this.getNaturalFather().childRenderDone(this.id);
+                    this.getParent().childRenderDone(this.getId());
+                }
+
+                //如果是Region，则需要出发Region的Show事件
+                if(this.regionParent&&this.regionParent._triggerShowEvent){
+                    //由子节点调用出发事件
+                    this.regionParent._triggerShowEvent(true);
+
+                }
+            },
+            /**
+             * 是否需要触发渲染的事件
+             */
+            isTriggerRender:function(){
+                /*
+                 1.当没有子组件的时候，this.childrenCount与this.childRenderCount都是0，则触发
+                 2.子组件都渲染完，本组件也完成挂载，则触发
+                 3.子组件渲染完，但是本组件还没有完成挂载（this.mounted为false），则也不触发
+                 4.当本组件已经渲染的，则不触发
+                 */
+                if(this.mounted&&!this.rendered&&this.childrenCount==this.childRenderCount){
+                    return true;
+                }else{
+                    return false;
                 }
             },
             /**
@@ -246,14 +276,17 @@ define(["core/js/utils/Utils",
              */
             childRenderDone:function(id){
                 /*if(this.xtype.name=="Panel"){
-                    console.info(this.childRenderCount);
-                }*/
-
-
+                 console.info(this.childRenderCount);
+                 }*/
+                /* if(this.childIds==null){
+                 this.childIds = [];
+                 }*/
+                if(this.childrenCount==0){
+                    return;
+                }
                 this.childRenderCount++;
-                // console.info("组件id："+this.id+"有子组件:"+this.childrenCount+";子组件id："+id+"完成渲染；已渲染："+this.childRenderCount);
-                if(!this.rendered&&this.childrenCount==this.childRenderCount){
-                    //子组件都渲染完后，才触发本组件渲染完成事件
+                if(this.isTriggerRender()){
+                    //console.info("组件id："+this.id+"有子组件:"+this.childrenCount+";子组件id："+id+"完成渲染；已渲染："+this.childRenderCount);
                     this.triggerRender();
                 }
             },
@@ -291,9 +324,13 @@ define(["core/js/utils/Utils",
              */
             setParent: function (parent) {
                 this.set("parent", parent);
-                if(parent&&parent.addChildId){
-                    parent.addChildId(this.id);
-                    // parent.childInitializedCount++;
+                this.parent = parent;
+                if(parent&&parent.getId){
+                    //console.info("组件id："+this.id+"的parentId:"+parent.getId());
+                }
+                //由于是先设置naturalFather，如果没有辞职，默认是parent
+                if(!this.getNaturalFather()){
+                    this.setNaturalFather(parent);
                 }
             },
             /**
@@ -314,15 +351,38 @@ define(["core/js/utils/Utils",
                 }
             },
             /**
+             * 获取ID
+             * @returns {*}
+             */
+            getId:function(){
+                return this.id;
+            },
+            /**
              * 获取亲生父组件，有可能是region
              */
             getNaturalFather:function(){
-                if(this.regionParent){
-                    return this.regionParent;
-                }else {
-                    return this.parent;
+                /*if(this.naturalFather){
+                 return this.naturalFather;
+                 }else {
+                 return this.parent;
+                 }*/
+                return this.get("naturalFather");
+            },
+            /**
+             *
+             * @param naturalFather
+             */
+            setNaturalFather:function(naturalFather){
+                if(this.get("naturalFather")){
+                    return ;
                 }
-
+                this.set("naturalFather", naturalFather);
+                this.naturalFather  = naturalFather;
+                if(naturalFather&&naturalFather.addChildId){
+                    naturalFather.addChildId(this.id);
+                    //console.info("组件id："+this.id+"的naturalFatherId:"+naturalFather.getId());
+                    // parent.childInitializedCount++;
+                }
             },
             /**
              * 从新刷新内容
@@ -345,8 +405,8 @@ define(["core/js/utils/Utils",
 
             },
             /***********************AbstractView与BaseView一样 END***********************************/
-        };
+        });
 
-
+        return CommonView;
     });
 

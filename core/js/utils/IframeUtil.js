@@ -51,7 +51,7 @@ define(["core/js/context/ApplicationContext"], function (ApplicationContext) {
                 return;
 
             //销毁关联对象：依次查找关联对象是否有close、destroy、remove方法，先找到先执行
-            if(!relatedObject.isClosed){
+            if(!relatedObject.isDestroied){
                 if (relatedObject.close) {
                     relatedObject.close();
                 }else {

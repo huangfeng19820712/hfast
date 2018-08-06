@@ -23,7 +23,7 @@ define([
                     datatype: "local",
                     data: mydata,
                     colModel: [
-                        { label: 'Inv No', name: 'id', width: 75, key:true },
+                        { label: 'Inv No', name: 'id', width: 75, key:true ,hidden:true},
                         { label: 'Date', name: 'invdate', width: 90 },
                         { label: 'Client', name: 'name', width: 100 },
                         { label: 'Amount', name: 'amount', width: 80 },

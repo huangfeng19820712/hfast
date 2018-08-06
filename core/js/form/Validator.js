@@ -107,7 +107,7 @@ define(["core/js/Component","validate"],function(Component){
             return false;
         },
         validate:function(){
-            this._validator.form();
+            return this._validator.form();
         }
     });
     return Validator;

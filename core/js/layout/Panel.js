@@ -135,6 +135,7 @@ define(["jquery",
                     headerLeftRegion.ensureEl();
                     if(headerLeftRegion.$el!=null){
                         var helpButton = new HelpLink({
+                            parent:this,
                             mode:ToolStripItem.Mode.BUTTON,
                             realClass:"btn btn-link btn-help",
                             mainContent:this.help,
@@ -337,6 +338,14 @@ define(["jquery",
         },
         getTopToolbarEl:function(){
             return this.$el.children(".panel-topToolbar");
+        },
+        resizeLayout:function(){
+            if (this._super) {
+                this._super();
+            }
+            if(this.plugin){
+                this.plugin.resizeAll();
+            }
         }
     });
     return Panel;

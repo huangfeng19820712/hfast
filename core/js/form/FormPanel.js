@@ -19,18 +19,29 @@ define([
              * 此fields的内容同AbstractFormEditor的fields
              */
             fields:null,
-            submitLabel:"确定",
+            ajaxClient:null,
+            /**
+             * 属性前缀，如:editObj,则提交的属性为editObj.name
+             */
+            paramPrefix:null,
+            action:null,
+            submitLabel:"保存",
             cancelLabel:"取消",
             beforeInitializeHandle:function(options, triggerEvent){
                 this.mainRegion =  {
                     comXtype: $Component.SKYFORMEDITOR,
                         comConf: {
                         fields: this.fields,
+                        ajaxClient:this.ajaxClient,
+                        action:this.action,
+                        defaultCollapsible:false,
+                        paramPrefix:this.paramPrefix
                         /*groups:[{
                             collapsible:false,
                         }]*/
                     }
                 }
+                var that = this;
                 this.footerRegion = {
                     comXtype: $Component.TOOLSTRIP,
                     textAlign: $TextAlign.RIGHT,
@@ -41,7 +52,9 @@ define([
                             itemOptions: [{
                             themeClass: ToolStripItem.ThemeClass.PRIMARY,
                             text: this.submitLabel,
-                            onclick: $.proxy(this.onSubmit,this),
+                            onclick: function(){
+                                that.submit();
+                            }
                         }, {
                             themeClass: ToolStripItem.ThemeClass.CANCEL,
                             text: this.cancelLabel,
@@ -52,6 +65,10 @@ define([
                 }
                 // this._super();
             },
+            setAction:function(methodName, methodVersion){
+                var skyFormEditor = this.getMainRegionRef().getComRef();
+                skyFormEditor.setAction(methodName,methodVersion);
+            },
             /**
              * 获取表单编辑器对象
              * @returns {*|null}
@@ -60,11 +77,11 @@ define([
                 var skyFormEditor = this.getMainRegionRef().getComRef();
                 return  skyFormEditor;
             },
-            onSubmit:function(){
+            submit:function(){
                 var skyFormEditor = this.getFormEditor();
-                skyFormEditor.validate();
+                skyFormEditor.submit();
             },
-            onCancel:function(){
+            cancel:function(){
 
             }
         });

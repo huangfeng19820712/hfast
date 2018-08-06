@@ -121,7 +121,8 @@ define(["jquery",
          * 显示后才调用jquery layout的控件，如果只是渲染后马上调用center区域会少一块，那块是滚动的宽度
          * @override
          */
-        onshow:function(){
+        mountContent:function(){
+            this._super();
             if(!this.height){
                 //如果没有设置高度，则计算高度
                 var height = 0;
@@ -131,8 +132,6 @@ define(["jquery",
                     height = $("body").height() - this.$container.offset().top ;
                 }
                 this.setHeight(height);
-                //注册窗口改变事件
-                this.registerEvent();
             }
 
             //this.setHeight("100px");
@@ -140,6 +139,7 @@ define(["jquery",
         },
         resizeHandle:function(){
             this._autoCalculateHeight($(window).height());
+            console.info("resize");
         },
         unregisterEvent:function(){
             //取消绑定
@@ -167,6 +167,8 @@ define(["jquery",
          * 刷新所有的区域
          */
         resizeAll:function(){
+            if(this.plugin){
+            }
             this.plugin.resizeAll();
         },
         /**

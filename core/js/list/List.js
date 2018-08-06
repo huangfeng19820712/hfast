@@ -30,6 +30,13 @@ define(["jquery",
                     }
                     this.$el.append(this.createItem(item));
                 }
+                var that = this;
+                //添加点击事件
+                this.$el.find(".list-group-item").on("click",function(e){
+                    $(e.target).siblings().removeClass("active");
+                    $(e.target).addClass("active");
+                    that.trigger("select",e);
+                });
             }else{
                 this.data = [];
             }

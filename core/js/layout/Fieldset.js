@@ -271,7 +271,7 @@ define(["jquery",
         },
 
         close:function(triggerEvent){
-            if (this.isClosed) {
+            if (this.isDestroied) {
                 return;
             }
             for(var i in this._fieldsObj){

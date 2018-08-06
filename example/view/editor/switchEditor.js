@@ -16,13 +16,15 @@ define([
                 this.items = [{
                     comXtype:$Component.PANEL,
                     comConf:{
-                        title:"时间格式",
+                        title:"二态编辑器",
                         help:"内容",
                         brief:"摘要",
                         mainRegion:{
                             comXtype:$Component.SWITCHEDITOR,
                             comConf:{
                                 //disabled:true,
+                                //state:false,
+                                value:0,
                             }
                         },
                         footerRegion: {
@@ -54,6 +56,16 @@ define([
                                     text: "取值",
                                     onclick: function () {
                                         console.info("值："+this.parent.parent.getMainRegionRef().getComRef().getValue());
+                                    }
+                                },{
+                                    text: "设值为1",
+                                    onclick: function () {
+                                        console.info("值："+this.parent.parent.getMainRegionRef().getComRef().setValue("1"));
+                                    }
+                                },{
+                                    text: "设值为0",
+                                    onclick: function () {
+                                        console.info("值："+this.parent.parent.getMainRegionRef().getComRef().setValue("0"));
                                     }
                                 },{
                                     text: "toggleIndeterminate",
@@ -103,6 +115,9 @@ define([
                                         required: true,
                                         maxlength: 20,
                                     },
+                                    onchanged:function(){
+                                        console.info(">>>"+this.getState());
+                                    }
                                 }]
                             }
                         },

@@ -117,6 +117,11 @@ define(["jquery",
             var result = itemOption;
 
             if ($.isPlainObject(itemOption)) {
+
+                if(!itemOption.parent){
+                    itemOption.parent = this;
+                }
+
                 if(itemOption.toolStripItemType){
                     result = new itemOption.toolStripItemType(itemOption);
                 }else{
@@ -128,7 +133,7 @@ define(["jquery",
 
             this._appendItem(result);
 
-            result.setParent(this);   //设置该工具栏项归属的工具栏
+            //result.setParent(this);   //设置该工具栏项归属的工具栏
 
             return result;
         },

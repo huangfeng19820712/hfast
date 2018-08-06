@@ -33,6 +33,10 @@ define([
                 var itemRegion = this.getItemRegion();
                 itemRegion.getComRef().setOffset()
             },
+            onshow:function(){
+                var itemRegion = this.getItemRegion();
+                itemRegion.getComRef().setOffset()
+            },
             beforeInitializeHandle:function(){
                 this._super();
                 this.$bottomReferent =  $(".copyright").eq(0);

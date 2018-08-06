@@ -329,6 +329,10 @@ define([
 
             return key;
         },
+
+        setIFramePageMode: function(iframePageMode){
+            this._iframePageMode = iframePageMode;
+        },
         /**
          * 获取本地存储
          *
