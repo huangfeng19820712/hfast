@@ -72,6 +72,15 @@
       "visible": "1",
       "orderNo": null
     },{
+      "id": "0008",
+      "pid":"00",
+      "name": "可下拉的按钮",
+      "url": "button/dropDownButton",
+      "type": "1",
+      "code": "dropDownButton",
+      "visible": "1",
+      "orderNo": null
+    },{
       "id": "01",
       "name": "其他",
       "url": "other",
@@ -116,15 +125,6 @@
       "visible": "1",
       "orderNo": null
     },{
-      "id": "0103",
-      "name": "设计器",
-      "url": "designer/designerLayout",
-      "type": "1",
-      "pid": "01",
-      "code": "designerLayout",
-      "visible": "1",
-      "orderNo": null
-    },{
       "id": "0104",
       "name": "包装器",
       "url": "wrap/editWrap",
@@ -140,15 +140,6 @@
       "type": "1",
       "pid": "01",
       "code": "panelWrap",
-      "visible": "1",
-      "orderNo": null
-    },{
-      "id": "0106",
-      "name": "编码设计器",
-      "url": "designer/CodeDesigner?jsPath=demo/view/button/toolStrip",
-      "type": "1",
-      "pid": "01",
-      "code": "CodeDesigner",
       "visible": "1",
       "orderNo": null
     },{
@@ -185,6 +176,15 @@
       "type": "1",
       "pid": "01",
       "code": "theme",
+      "visible": "1",
+      "orderNo": null
+    },{
+      "id": "0111",
+      "name": "内容盒子",
+      "url": "box/contentBox",
+      "type": "1",
+      "pid": "01",
+      "code": "contentBox",
       "visible": "1",
       "orderNo": null
     },{
@@ -232,15 +232,6 @@
       "visible": "1",
       "orderNo": null
     },{
-      "id": "0306",
-      "name": "king操作系统",
-      "pid": "03",
-      "url": "operatingSystem/kingOS",
-      "type": "1",
-      "code": "kingOS",
-      "visible": "1",
-      "orderNo": null
-    },{
       "id": "9",
       "name": "表单",
       "url": "form",
@@ -273,6 +264,24 @@
       "url": "form/validateForm",
       "type": "1",
       "code": "validateForm",
+      "visible": "1",
+      "orderNo": null
+    },{
+      "id": "904",
+      "name": "弹窗表单",
+      "pid": "9",
+      "url": "form/windowForm",
+      "type": "1",
+      "code": "windowForm",
+      "visible": "1",
+      "orderNo": null
+    },{
+      "id": "905",
+      "name": "动态表单",
+      "pid": "9",
+      "url": "form/dynamicSkyFormEditor",
+      "type": "1",
+      "code": "windowForm",
       "visible": "1",
       "orderNo": null
     },{
@@ -513,6 +522,104 @@
       "visible": "1",
       "orderNo": null
     },{
+      "id": "1109",
+      "name": "居中布局",
+      "url": "layout/centerLayout/centerLayoutForm",
+      "pid": "11",
+      "tip": null,
+      "leafed": null,
+      "remark": null,
+      "chain": null,
+      "icon": null,
+      "type": "1",
+      "code": "mosaic",
+      "visible": "1",
+      "orderNo": null
+    },{
+      "id": "1108",
+      "name": "tab布局",
+      "url": null,
+      "pid": "11",
+      "tip": null,
+      "leafed": null,
+      "remark": null,
+      "chain": null,
+      "icon": null,
+      "type": "1",
+      "code": "",
+      "visible": "1",
+      "orderNo": null
+    },{
+      "id": "110801",
+      "name": "tabLayout",
+      "url": "layout/tab/tabLayout",
+      "pid": "1108",
+      "tip": null,
+      "leafed": null,
+      "remark": null,
+      "chain": null,
+      "icon": null,
+      "type": "1",
+      "code": "tabLayout",
+      "visible": "1",
+      "orderNo": null
+    },{
+      "id": "110802",
+      "name": "tab主题",
+      "url": "layout/tab/tabLayoutTheme",
+      "pid": "1108",
+      "tip": null,
+      "leafed": null,
+      "remark": null,
+      "chain": null,
+      "icon": null,
+      "type": "1",
+      "code": "tabLayoutTheme",
+      "visible": "1",
+      "orderNo": null
+    },{
+      "id": "110803",
+      "name": "胶囊tab",
+      "url": "layout/tab/tabLayoutModel",
+      "pid": "1108",
+      "tip": null,
+      "leafed": null,
+      "remark": null,
+      "chain": null,
+      "icon": null,
+      "type": "1",
+      "code": "tabLayoutModel",
+      "visible": "1",
+      "orderNo": null
+    },{
+      "id": "110804",
+      "name": "多层级标签",
+      "url": "layout/tab/multiTabLayout",
+      "pid": "1108",
+      "tip": null,
+      "leafed": null,
+      "remark": null,
+      "chain": null,
+      "icon": null,
+      "type": "1",
+      "code": "multiTabLayout",
+      "visible": "1",
+      "orderNo": null
+    },{
+      "id": "110805",
+      "name": "导航标签",
+      "url": "layout/tab/navtabLayout",
+      "pid": "1108",
+      "tip": null,
+      "leafed": null,
+      "remark": null,
+      "chain": null,
+      "icon": null,
+      "type": "1",
+      "code": "navtabLayout",
+      "visible": "1",
+      "orderNo": null
+    },{
       "id": "13",
       "name": "表格",
       "url": null,
@@ -584,6 +691,20 @@
       "orderNo": null
     },{
       "id": "1305",
+      "name": "聊天列表",
+      "url": "list/chatList",
+      "pid": "13",
+      "tip": null,
+      "leafed": null,
+      "remark": null,
+      "chain": null,
+      "icon": null,
+      "type": "1",
+      "code": "chatList",
+      "visible": "1",
+      "orderNo": null
+    },{
+      "id": "1305",
       "name": "分页控件",
       "url": "grid/pagination",
       "pid": "13",
@@ -622,6 +743,48 @@
       "icon": null,
       "type": "1",
       "code": "jqGridForm",
+      "visible": "1",
+      "orderNo": null
+    },{
+      "id": "1308",
+      "name": "jqGrid列表-sky表单",
+      "url": "grid/jqGridSkyForm",
+      "pid": "13",
+      "tip": null,
+      "leafed": null,
+      "remark": null,
+      "chain": null,
+      "icon": null,
+      "type": "1",
+      "code": "jqGridSkyForm",
+      "visible": "1",
+      "orderNo": null
+    },{
+      "id": "1308",
+      "name": "jqGrid列表-分组",
+      "url": "grid/jqGridGroup",
+      "pid": "13",
+      "tip": null,
+      "leafed": null,
+      "remark": null,
+      "chain": null,
+      "icon": null,
+      "type": "1",
+      "code": "jqGridGroup",
+      "visible": "1",
+      "orderNo": null
+    },{
+      "id": "1308",
+      "name": "jqGrid列表-树状列表",
+      "url": "grid/treeGrid",
+      "pid": "13",
+      "tip": null,
+      "leafed": null,
+      "remark": null,
+      "chain": null,
+      "icon": null,
+      "type": "1",
+      "code": "jqGridGroup",
       "visible": "1",
       "orderNo": null
     },{
@@ -877,87 +1040,17 @@
       "visible": "1",
       "orderNo": null
     },{
-      "id": "1108",
-      "name": "tab布局",
-      "url": null,
-      "pid": "11",
+      "id": "1616",
+      "name": "下拉编辑器",
+      "url": "editor/dropdownEditor",
+      "pid": "16",
       "tip": null,
       "leafed": null,
       "remark": null,
       "chain": null,
       "icon": null,
       "type": "1",
-      "code": "",
-      "visible": "1",
-      "orderNo": null
-    },{
-      "id": "110801",
-      "name": "tabLayout",
-      "url": "layout/tab/tabLayout",
-      "pid": "1108",
-      "tip": null,
-      "leafed": null,
-      "remark": null,
-      "chain": null,
-      "icon": null,
-      "type": "1",
-      "code": "tabLayout",
-      "visible": "1",
-      "orderNo": null
-    },{
-      "id": "110802",
-      "name": "tab主题",
-      "url": "layout/tab/tabLayoutTheme",
-      "pid": "1108",
-      "tip": null,
-      "leafed": null,
-      "remark": null,
-      "chain": null,
-      "icon": null,
-      "type": "1",
-      "code": "tabLayoutTheme",
-      "visible": "1",
-      "orderNo": null
-    },{
-      "id": "110803",
-      "name": "胶囊tab",
-      "url": "layout/tab/tabLayoutModel",
-      "pid": "1108",
-      "tip": null,
-      "leafed": null,
-      "remark": null,
-      "chain": null,
-      "icon": null,
-      "type": "1",
-      "code": "tabLayoutModel",
-      "visible": "1",
-      "orderNo": null
-    },{
-      "id": "110804",
-      "name": "多层级标签",
-      "url": "layout/tab/multiTabLayout",
-      "pid": "1108",
-      "tip": null,
-      "leafed": null,
-      "remark": null,
-      "chain": null,
-      "icon": null,
-      "type": "1",
-      "code": "multiTabLayout",
-      "visible": "1",
-      "orderNo": null
-    },{
-      "id": "110805",
-      "name": "导航标签",
-      "url": "layout/tab/navtabLayout",
-      "pid": "1108",
-      "tip": null,
-      "leafed": null,
-      "remark": null,
-      "chain": null,
-      "icon": null,
-      "type": "1",
-      "code": "navtabLayout",
+      "code": "dropdownEditor",
       "visible": "1",
       "orderNo": null
     },{
