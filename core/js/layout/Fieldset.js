@@ -1,18 +1,19 @@
 /**
  * @author:   * @date: 2016/1/21
  */
-define(["jquery",
+define([
     "core/js/CommonConstant",
     "core/js/layout/Container",
     "text!core/resources/tmpl/Fieldset.html",
-    "core/js/view/Region", "core/js/controls/ToolStrip",
-    "core/js/controls/ToolStripItem",
+    "core/js/view/Region",
     "core/js/controls/ComponentFactory","core/js/layout/AbstractPanel","core/js/utils/Utils",
     "css!framework/unify/plugins/sky-forms-pro/skyforms/css/sky-forms.css",
     "css!framework/unify/plugins/sky-forms-pro/skyforms/custom/custom-sky-forms.css"
-], function ($, CommonConstant, Container, LayoutTemplate,
-             Region, ToolStrip, ToolStripItem,  ComponentFactory,AbstractPanel) {
-
+], function (CommonConstant, Container, LayoutTemplate,
+             Region, ComponentFactory,AbstractPanel) {
+    /**
+     * 注意，仅处理隐藏的字段
+     */
     var Fieldset = Container.extend(AbstractPanel).extend({
         xtype: $Component.FIELDSET,
         mainRegionConf: {
@@ -57,7 +58,7 @@ define(["jquery",
              *      name:"[必填]<字段名称，定义提交到服务端的参数名称>",
              *      realName:"[必须存在，但不是必填]<最后传输到服务器的参数名称,默认同name>",
              *      label:"<字段显示的别名，如果，没有则使用name>",
-             *      hidden："<是否是隐藏，true|false ,默认是false>",
+             *      hidden："<是否是隐藏，true|false ,默认是false>",不处理隐藏的字段
              *      value："<值>",
              *      rules:"<校验规则,jquery.validate的关于这个字段的rules属性>{}",
              *      message："<校验规则,jquery.validate的关于这个字段的messages属性>{",
@@ -92,6 +93,11 @@ define(["jquery",
          * 默认的栏位class类
          */
         _defaultColumnClassName:null,
+
+        /**
+         * 设置是否有滚动条
+         */
+        autoScroll:true,
         /*-------------------------------  初始化及私有方法 start ---------------------------------------------------*/
         initializeHandle: function () {
             this._super();
@@ -119,11 +125,23 @@ define(["jquery",
          * @param fields
          */
         createFields: function (fields) {
+            var fieldObj = this._addFields(fields, 0);
+            this._fieldsObj = _.extend(this._fieldsObj,fieldObj);
+        },
+        /**
+         *
+         * @param fields
+         * @param startColumn   开始的列
+         * @param startRow      开始的行
+         * @private
+         */
+        _addFields:function(fields,startColumn,startRow){
+            var fieldObjs = {};
             if (fields != null && _.isArray(fields)) {
                 var that = this;
-                var i = 0;
+                var i = startColumn;
                 var j = 0;
-                var row = null;
+                var row = startRow;
                 _.each(fields,function(field,key){
                     if(field){
                         var fieldConf = {};
@@ -133,8 +151,18 @@ define(["jquery",
                         if(fieldConf.colspan){
                             fieldColumnSize = fieldConf.colspan;
                         }
-                        that._fieldsObj[fieldConf.name] = fieldObj;
+
+                        fieldObjs[fieldConf.name] = fieldObj;
                         fieldObj.render();
+                        //Todo 此处初始化后在设置父节点，这样造成Region渲染后，才会渲染子组件，与框架整体思路违背
+                        //如果在配置参数中就设置parent与naturalFather、regionParent，会在成渲染事件冒泡中断，父组件的children不一致
+                        fieldObj.setParent(that);
+
+                        /*//给Region添加子组件
+                        fieldObj.regionParent = that.getRegion(that.mainRegionConf.id);
+                        fieldObj.setNaturalFather(that.getRegion(that.mainRegionConf.id));*/
+
+
                         if(that.totalColumnNum>1){
                             //var m = i%that.totalColumnNum;
                             var m = i+fieldColumnSize;
@@ -154,7 +182,27 @@ define(["jquery",
                         i+=fieldColumnSize;
                     }
                 });
+
             }
+            return fieldObjs;
+        },
+        /**
+         * 动态的添加字段
+         * @param fields
+         */
+        addFields:function(fields){
+            var length = this.fields.length;
+            var fieldObj = {};
+            if(length>0){
+                //添加到field中
+                this.fields = _.union(this.fields, fields);
+                //添加UI的部分
+                var mod = length %this.totalColumnNum;
+                var row = this.getLastRow();
+                fieldObj = this._addFields(fields, mod,row);
+                this._fieldsObj = _.extend(this._fieldsObj,fieldObj);
+            }
+            return fieldObj;
         },
         /**
          * 创建行
@@ -169,7 +217,18 @@ define(["jquery",
             el.attr("id",this.id+"_row"+num);
             return el;
         },
-        createField: function (field) {
+        /**
+         * 获取最后一行
+         */
+        getLastRow:function(){
+            return this.$el.find(".fieldset-row:last");
+        },
+        createField: function (fieldConf) {
+            var field = _.extend(fieldConf);
+
+            /*if (field.parent == null) {
+                field.parent = this;
+            }*/
             if(field.editorType==null){
                 field.editorType = $Component.TEXTEDITOR;
             }
@@ -232,8 +291,29 @@ define(["jquery",
                     }
                 });
             }
+            // this.setAutoScroll(this.autoScroll);
             //this.renderComponents(_.values(this._fieldsObj));
         },
+
+        /**
+         * 如果设置为true，则当显示内容超出区域时显示滚动条。
+         * @param autoScroll
+         */
+        /*setAutoScroll: function (autoScroll) {
+            /!* if (autoScroll == null)
+                 return;
+
+             this.autoScroll = autoScroll;
+             if (autoScroll)
+                 this.$el.css("overflow", "auto");*!/
+            if (autoScroll) {
+                this.$el.mCustomScrollbar({
+                    theme: "minimal-dark",
+                    autoExpandScrollbar: true,
+                    advanced: {autoExpandHorizontalScroll: true}
+                });
+            }
+        },*/
 
         /**
          * 初始化面板标题栏区域项

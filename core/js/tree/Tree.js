@@ -101,6 +101,7 @@ define([
          *              parent:[选填]<父节点信息>
          *              data:[选填]<业务数据信息>
          *              children:[选填]<子节点>
+         *              selected：[选填]<是否被选择>
          *          },...]
          *     }...]
          */
@@ -124,6 +125,17 @@ define([
          * @property    {Object} 编辑的配置信息
          */
         editConf:null,
+
+        /**
+         * 保存前的触发事件
+         * @Event
+         */
+        oneditSave:null,
+        /**
+         * 保存后的触发事件
+         * @Event
+         */
+        oneditClose:null,
 
         /*-------------------------------  初始化及私有方法 start ---------------------------------------------------*/
         _initElAttr: function () {
@@ -181,6 +193,7 @@ define([
             }
             if(this.editable){
                 conf.extensions.push("edit");
+                var that = this;
                 conf.edit = this.editConf||{
                     triggerStart: ["f2", "dblclick", "shift+click", "mac+enter"],
                         beforeEdit: function(event, data){
@@ -205,15 +218,11 @@ define([
                     save: function(event, data){
                         // Save data.input.val() or return false to keep editor open
                         console.log("save...", this, data);
-                        // Simulate to start a slow ajax request...
-                        setTimeout(function(){
-                            $(data.node.span).removeClass("pending");
-                            // Let's pretend the server returned a slightly modified
-                            // title:
-                            data.node.setTitle(data.node.title + "!");
-                        }, 2000);
-                        // We return true, so ext-edit will set the current user input
-                        // as title
+                        $(data.node.span).removeClass("pending");
+                        // Let's pretend the server returned a slightly modified
+                        // title:
+                        data.node.setTitle(data.node.title);
+                        that.trigger("editSave",event,data);
                         return true;
                     },
                     close: function(event, data){
@@ -221,6 +230,7 @@ define([
                         if( data.save ) {
                             // Since we started an async request, mark the node as preliminary
                             $(data.node.span).addClass("pending");
+                            that.trigger("editClose",event,data);
                         }
                     }
                 };
@@ -252,7 +262,7 @@ define([
         },
         /**
          * 重新加载树
-         * @param data  从新接在的树节点信息
+         * @param data  从新加载树节点信息
          */
         reload:function(data){
             this.getTreePlugin().reload(data)
@@ -265,8 +275,10 @@ define([
             node.setSelected( !node.isSelected() );
         },
         /**
-         * 三态下只返回
+         * 三态返回被选中的节点信息
          * @param stopOnParents only return the topmost selected node (useful with selectMode 3)
+         *          true，返回子节点都被选择的父节点信息，只返回部分节点
+         *          false，返回所有的选择的节点
          * @return {Array}  返回节点的数组
          */
         getSelectedNodes:function(stopOnParents){
@@ -341,6 +353,9 @@ define([
          */
         getRootNode:function(){
             return this.getTreePlugin().getRootNode();
+        },
+        activateByKey:function(key){
+            this.getTreePlugin().activateKey(key);
         },
         /**
          * 根据key删除节点

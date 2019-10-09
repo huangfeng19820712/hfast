@@ -36,7 +36,7 @@ define(["core/js/editors/Editor",
                 this._ueditorId = this.id + "-ueditor";
                 this.$input = $('<script id="' + this._ueditorId + '" type="text/plain"></script>');
                 var that = this;
-                setTimeout(function () {     //延迟初始化，否则ie下快速连续刷新页面会导致页面错乱 add by chenwy 14-11-11
+                setTimeout(function () {     //延迟初始化，否则ie下快速连续刷新页面会导致页面错乱
                     that._initUEditor();
                     that.setValue(that.value); //初始化编辑器的值
                 })

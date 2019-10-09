@@ -31,20 +31,22 @@ define([
         onText: "ON",
         offText: "OFF",
         labelText: "&nbsp;",
+        inputClassName:"form-control-switchEditor",
         /**
          * 设置开关的状态，与value的值应该一致
          */
         state:true,
+        defaultValue:"1",
         /**
          * 打开时候的value,
          * 注意，不能是boolean值，会变成字符串"true"，与服务器交互都是字符串
          */
-        onValue:1,
+        onValue:"1",
         /**
          * 关闭时候的value
          * 注意，不能是boolean值，会变成字符串"true"，与服务器交互都是字符串
          */
-        offValue:0,
+        offValue:"0",
 
         /**
          * value与state是否同步过，如果是则是true
@@ -89,15 +91,15 @@ define([
                 labelText: this.labelText,
                 state: this.state,
                 onSwitchChange:function(event){
-                    if(!this._valueAndStateSync){
-                        this._valueAndStateSync = true;
+                    if(!that._valueAndStateSync){
+                        that._valueAndStateSync = true;
                         if(that.getState()){
                             //修改值，并不更新状态
                             that.setValue(that.onValue,true,true);
                         }else{
                             that.setValue(that.offValue,true,true);
                         }
-                        this._valueAndStateSync = false;
+                        that._valueAndStateSync = false;
                     }
                     //console.info(that.getState());
                 }
@@ -108,8 +110,12 @@ define([
             //初始化input对象
             if (!this.$input) {
                 this.$input = $($Template.Input.CHECKBOX);
+                this.$input.addClass(this.inputClassName);
             }
             this._super();
+        },
+        clearValue:function(triggerEvent){
+            this._setValueAndDisplayValue(this.defaultValue, null, true, triggerEvent);
         },
         /**
          * 设置隐藏值{@link value}和显示值{@link displayValue}
@@ -124,7 +130,9 @@ define([
             if(value==1||value=="1") {
                 state = true;
             }
+            this._valueAndStateSync = true;
             this.setState(state);
+            this._valueAndStateSync = false;
             this._super(value, displayValue, needTranslate, triggerEvent);
         },
         setReadOnly:function(readOnly){

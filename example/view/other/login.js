@@ -12,7 +12,7 @@ define(["core/js/base/BizBaseView",
         var loginUrl = "";
         var View = BizBaseView.extend({
             $form: $("form.login-page"),
-            $LOGIN: "/AppAuthentication!login.action",
+            $LOGIN: "/AppAuthentication/login.action",
             debuged: null,
             events: {
                 "click #login": "login"
@@ -25,7 +25,7 @@ define(["core/js/base/BizBaseView",
                 var $password = $("#password");
 
                 var userName = $.trim($userName.val());
-                if (userName == "" || userName == $userName.attr("placeholder")) {
+                if (userName === "" || userName == $userName.attr("placeholder")) {
                     this.showErrorMsg("请输入用户名");
                     $userName.focus();
                     return;
@@ -35,7 +35,7 @@ define(["core/js/base/BizBaseView",
                 if (!this.debuged) {
                     //如果是调试模式，怎不用校验
                     password = $.trim($password.val());
-                    if (password == "" || password == $password.attr("placeholder")) {
+                    if (password === "" || password == $password.attr("placeholder")) {
                         this.showErrorMsg("请输入密码");
                         $password.focus();
                         return;
@@ -46,7 +46,7 @@ define(["core/js/base/BizBaseView",
                     if (this.$("#verifyCode").length > 0) {
                         var $verifyCode = $("#verifyCode");
                         verifyCode = $.trim($verifyCode.val());
-                        if (verifyCode == "") {
+                        if (verifyCode === "") {
                             this.showErrorMsg("请输入验证码");
                             $verifyCode.focus();
                             return;
@@ -63,6 +63,8 @@ define(["core/js/base/BizBaseView",
                         if (!obj.successful) {
                             //成功失败
                             that.showErrorMsg(obj.errMsg);
+                            //更新验证码
+                            that.$el.find("#verifyImg").click();
                         }else{
                             var application = ApplicationContext.getApplication();
 

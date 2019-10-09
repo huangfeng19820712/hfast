@@ -78,3 +78,26 @@ img.verify-code{
     padding-top: 20px;
     padding-top: 20px;
 }
+
+/*-----------unify start-----------*/
+
+/*--------------------------------------------------
+    [3. Header - Responsive Navbar Style]
+----------------------------------------------------*/
+
+/*Responsive Navbar*/
+@media (max-width: 991px) {
+    /*Responsive code for max-width: 991px*/
+    .header .navbar-collapse.collapse.in.hide {
+        display: none !important;
+    }
+}
+
+@media (min-width: 992px) {
+    /*Navbar Collapse*/
+    .header .navbar-collapse.collapse.in.hide {
+        display: none !important;
+    }
+
+}
+/*-----------unify start-----------*/

@@ -3,11 +3,10 @@
  * @Deprecated
  * @author:   * @date: 2015/12/8
  */
-define(["jquery",
-        "underscore",
+define([
         "core/js/CommonConstant",
         "core/js/controls/Control"
-    ], function ($, _, CommonConstant, Control) {
+    ], function ( CommonConstant, Control) {
         var ButtonGroup = Control.extend({
             /**
              * 按钮的大小

@@ -4,8 +4,7 @@
  * @author:
  * @date:
  */
-define(["jquery",
-    "underscore",
+define([
     "core/js/CommonConstant",
     "lib/sha1",
     "core/js/rpc/AjaxClient",
@@ -15,7 +14,7 @@ define(["jquery",
     "core/js/utils/FormUtils",
     "core/js/utils/Utils",
     "core/js/windows/messageBox"
-], function ($, _, CommonConstant,
+], function ( CommonConstant,
              MessageDigest, AjaxClient,
              Control, ComponentFactory,Validator,
              FormUtils,Utils,MessageBox) {
@@ -85,6 +84,11 @@ define(["jquery",
         showErrorType: null,
         errorContainer: null,
         /**
+         * 是否需要激活第一个编辑器，默认是需要
+         */
+        focusFirstEditorable:true,
+
+        /**
          * 属性前缀，如:editObj,则提交的属性为editObj.name
          */
         paramPrefix: null,
@@ -95,7 +99,7 @@ define(["jquery",
         methodVersion: "1.0",
         parseParameters: null,       //{function}对请求参数进行解析处理
         action:null,    //存储url路径的对象，通过此对象的getUrl获取路径
-
+        submitUrl:null,       //提交表单的url，当有这个url时，action无效
         /*-----------------------事件------------------------------------*/
         /**
          * 事件：声明表单验证后的事件
@@ -214,7 +218,7 @@ define(["jquery",
                 for (var fieldName in hiddenValueMap) {
                     value = hiddenValueMap[fieldName];
                     //如果值为空，那么就不加入到参数
-                    if (!needEmptyValue && (value == null || $.trim(value) == ""))
+                    if (!needEmptyValue && (value == null || $.trim(value) === ""))
                         continue;
                     result[prefix+fieldName] = value;
                 }
@@ -222,7 +226,7 @@ define(["jquery",
             //获取编辑器的值
             for(var key in this._editors){
                 value = this._editors[key].getValue();
-                if (!needEmptyValue && (value == null || $.trim(value) == ""))
+                if (!needEmptyValue && (value == null || $.trim(value) === ""))
                     continue;
                 result[prefix+key] = value;
             }
@@ -353,7 +357,11 @@ define(["jquery",
          * @private
          */
         _getUrl:function(){
-            return  this.getAction()?this.getAction().getUrl():null;
+            var url = this.submitUrl;
+            if(!url&&this.getAction()){
+                url = this.getAction().getUrl();
+            }
+            return  url;
         },
 
         /**
@@ -442,9 +450,18 @@ define(["jquery",
 
             var that = this;
             var msg = ajaxResponse.getMessage();
+            var obj = ajaxResponse.getSuccessResponse();
             if (ajaxResponse.isSuccessful()) {
                 //$.window.markUpdated();    //标识表单值已经发生了变更
-                MessageBox.success(ajaxResponse.getSuccessMsg());
+                if(obj.successful){
+                    MessageBox.success(ajaxResponse.getSuccessMsg());
+                    that.trigger("submit", ajaxResponse);
+                }else{
+                    //请求正常，但是有系统异常
+                    $.window.alert(obj.errMsg, {
+                        title: $i18n.errorLabel
+                    });
+                }
                 /*msg = (msg == null || msg == "") ? "操作成功" : msg;
                 msg = "<strong>" + msg + "</strong>";
                 $.window.showMessage(msg, {
@@ -453,8 +470,8 @@ define(["jquery",
                     }
                 });*/
             } else {
-                //MessageBox.error("成功！");
-                $.window.showMessage(msg, {
+                //请求的操作就异常，网络异常，
+                $.window.alert(msg, {
                     handle: function () {
                         that.trigger("submit", ajaxResponse);  //触发提交后的事件
                     }
@@ -486,6 +503,8 @@ define(["jquery",
                     this._inputHiddenValueMap[fieldName] = defaultValue;
                 }
             }
+            //重置校验信息
+            this._validator.reset();
 
             this.trigger("reset");
         },
@@ -797,6 +816,10 @@ define(["jquery",
             });
             return newFields
         },
+
+        getHiddenFields:function(fields){
+            return _.where(fields,{"hidden":true});
+        },
         /**
          * 处理没有hidden的字段
          * @param fields
@@ -816,7 +839,7 @@ define(["jquery",
          */
         handleHiddenFields:function(fields){
             //获取hidden的字段
-            var hiddenFields = _.where(fields,{"hidden":true});
+            var hiddenFields = this.getHiddenFields(fields);
             for(var i=0;i<hiddenFields.length;i++){
                 var field = hiddenFields[i];
                 var value = field["defaultValue"] || field["value"];
@@ -831,8 +854,9 @@ define(["jquery",
 
             /*var className = this.isLabelTopAlign() ? "" : "h-form-horizontal";   //水平表单的样式
              this.setClassName(className);*/
-
-            this._focusFirstEditor();   //表单一进入，焦点聚焦在第一个编辑器上
+            if(this.focusFirstEditorable){
+                this._focusFirstEditor();   //表单一进入，焦点聚焦在第一个编辑器上
+            }
         },
         /**
          * 表单的渲染包含两部分，首先渲染表单模版，然后将组件显示到指定的容器中
@@ -909,7 +933,23 @@ define(["jquery",
                     if(!this._validateConfig.rules){
                         this._validateConfig.rules = {};
                     }
-                    this._validateConfig.rules[fields[i].name] = fields[i].rules;
+                    if(fields[i].rules){
+
+                        var rules = this._validateConfig.rules[fields[i].name] = $.extend(true, {}, fields[i].rules);
+                        //特殊处理equalTo 情况，需要带上表单的id
+                        if (rules && rules.equalTo instanceof Object&&rules.equalTo.formContext) {
+
+                            var id = this.getId();
+                            rules.equalTo = "#"+id+" "+ rules.equalTo.value;
+                        }
+                    }
+                    //messages
+                    if(!this._validateConfig.messages){
+                        this._validateConfig.messages = {};
+                    }
+                    if(fields[i].messages){
+                        this._validateConfig.messages[fields[i].name] = fields[i].messages;
+                    }
                 }
                 /*fieldResult = this._processField(fields[i]);
                 if (fieldResult == null) {
@@ -967,7 +1007,7 @@ define(["jquery",
             return null;
         },
         _getFiledEmphasisEl: function (fieldName) {
-            if (fieldName == null || fieldName == "")
+            if (fieldName == null || fieldName === "")
                 return null;
             var hintName = FormUtils.getFieldEmphasisHintName(fieldName);
 

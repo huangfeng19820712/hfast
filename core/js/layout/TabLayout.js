@@ -2,14 +2,14 @@
  * @author:   * @date: 2016/2/20
  */
 
-define(["jquery",
+define([
     "core/js/CommonConstant",
     $Component.TOOLSTRIP.src,
     "core/js/layout/Container",
     "core/js/utils/ApplicationUtils",
     "text!core/resources/tmpl/tabLabel.html",
     "jquery.layout"
-], function ($, CommonConstant,ToolStrip, Container,ApplicationUtil,tabLabelTmpl) {
+], function (CommonConstant,ToolStrip, Container,ApplicationUtil,tabLabelTmpl) {
     var TabLayout = Container.extend({
         xtype:$Component.TABLAYOUT,
         /**
@@ -101,6 +101,7 @@ define(["jquery",
             this.$('a[data-toggle="tab"]').on('shown.bs.tab',function(event){
                 var tabId = $(event.target).parent().data("tabId");
                 var regionId = that.getContentId(tabId);
+                //延迟加载
                 if(that.lazyRendered&&!_.contains(that.renderdRegion,regionId)){
                     //获取区域的id
                     that.regionRender(regionId);
@@ -135,7 +136,10 @@ define(["jquery",
                     center:{
                         //className:"tab-content",
                         paneSelector:"#"+this.getTabContentId(),
-                        id:this.getTabContentId()
+                        id:this.getTabContentId(),
+                        onresize:function() {
+                            that.resizeCenterRegion();
+                        }
                     },
                     north:{
                         paneSelector:"#"+this.getContentTabsId(),
@@ -388,6 +392,11 @@ define(["jquery",
          */
         onshownTab:null,
         /**
+         * 中间区域改变的事件
+         * @param event jquery的事件对象
+         */
+        onresizeCenter:null,
+        /**
          * 获取tabid
          * @returns {string}
          */
@@ -433,6 +442,7 @@ define(["jquery",
         getContentRefByTabId:function(tabId){
             return this.getRegion(this.getContentId(tabId));
         },
+
         /**
          * 根据序号获取内容的区域对象
          * @param index
@@ -697,15 +707,49 @@ define(["jquery",
         getActiveTabId:function(){
             return $(this.$(".page-tabs-content>li.active")[0]).data("tabId");
         },
+        /**
+         * 获取没有激活的tabId
+         */
+        getDeactiveTabIds:function(){
+            return $(this.$(".page-tabs-content>li:not(.active)")[0]).data("tabId");
+        },
 
         /**
          * 重新刷新区域的内容，当高度改变，或者是内容改变时，需要刷新相关的区域
          */
-        resizeCenterRegion:function(region,size){
+        resizeCenterRegion:function(){
             //刷新区域的方法
-            if(this.plugin){
+            /*if(this.plugin){
                 this.plugin.resizeAll();
+            }*/
+            //触发子组件的resize事件
+            //获取子组件信息
+            var activeTabId = this.getActiveTabId();
+            var component = this.getComponentByTabId(activeTabId);
+            if(component&&component.resize){
+                component.resize();
             }
+        },
+
+        /**
+         * 根据id，返回流布局中的对象
+         * @param id
+         * @returns {*}
+         */
+        getComponentByTabId:function(id){
+            var index = id.replace(this.id + "_", "");
+            return this.getComponentByIndex(index);
+        },
+        /**
+         * 根据数组的下标找到组件
+         */
+        getComponentByIndex:function(index){
+            if(index>0){
+                var region = this.getRegionByIndex(index-1);
+                var comRef = region.getComRef();
+                return comRef;
+            }
+            return;
         },
 
         close:function(){

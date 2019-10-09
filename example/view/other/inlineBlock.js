@@ -21,5 +21,3 @@ define(["core/js/layout/FluidLayout",
 
         return view;
     });
-
-                  ''

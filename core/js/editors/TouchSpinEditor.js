@@ -1,12 +1,11 @@
 /**
  * @author:   * @date: 2016/2/26
  */
-define(["jquery",
-    "underscore",
+define([
     "core/js/CommonConstant",
     "core/js/editors/Editor",
     "bootstrap.touchspin"
-], function ($, _, CommonConstant, Editor) {
+], function ( CommonConstant, Editor) {
     var TouchSpinEditor = Editor.extend({
         xtype: $Component.TOUCHSPINEDITOR,
         type: "component",

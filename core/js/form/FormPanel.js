@@ -7,7 +7,7 @@ define([
         "core/js/CommonConstant",
         "core/js/editors/TextEditor",
         "core/js/windows/Window",
-        "core/js/controls/ToolStripItem",
+        $Component.TOOLSTRIPITEM.src,
         "core/js/utils/ApplicationUtils"
     ],
     function ( Panel, CommonConstant, TextEditor, Window, ToolStripItem,
@@ -27,19 +27,43 @@ define([
             action:null,
             submitLabel:"保存",
             cancelLabel:"取消",
+            /**
+             * 编辑器默认的布局模式，参考SkyFormEditor.defaultFieldsetConf.layoutMode
+             */
+            defaultEditorLayoutMode:null,
+            /**
+             * 表单编辑器的配置信息
+             */
+            formEditorConf:null,
+            /**
+             * 提交后触发的事件
+             */
+            onsubmit:null,
             beforeInitializeHandle:function(options, triggerEvent){
+                var that = this;
+                var defaultFormEdtorConf = {
+                    fields: this.fields,
+                    defaultFieldsetConf: {
+                        defaultEditorConf: {
+                            layoutMode: this.defaultEditorLayoutMode
+                        }
+                    },
+                    ajaxClient:this.ajaxClient,
+                    action:this.action,
+                    defaultCollapsible:false,
+                    paramPrefix:this.paramPrefix,
+                    onsubmit:function(ajaxResponse){
+                        that.trigger("submit",ajaxResponse);
+                    }
+                    /*groups:[{
+                     collapsible:false,
+                     }]*/
+                };
+                var _FormEdtorConf = _.extend(defaultFormEdtorConf,this.formEditorConf);
+
                 this.mainRegion =  {
                     comXtype: $Component.SKYFORMEDITOR,
-                        comConf: {
-                        fields: this.fields,
-                        ajaxClient:this.ajaxClient,
-                        action:this.action,
-                        defaultCollapsible:false,
-                        paramPrefix:this.paramPrefix
-                        /*groups:[{
-                            collapsible:false,
-                        }]*/
-                    }
+                    comConf: _FormEdtorConf
                 }
                 var that = this;
                 this.footerRegion = {
@@ -47,7 +71,6 @@ define([
                     textAlign: $TextAlign.RIGHT,
                     comConf: {
                         /*Panel的配置项 start*/
-
                             spacing: CommonConstant.Spacing.DEFAULT,
                             itemOptions: [{
                             themeClass: ToolStripItem.ThemeClass.PRIMARY,
@@ -80,6 +103,15 @@ define([
             submit:function(){
                 var skyFormEditor = this.getFormEditor();
                 skyFormEditor.submit();
+            },
+            /**
+             * 获取表单的参数：包括隐藏域的值和编辑器的值
+             * @param   {Boolean}  addParamPrefixed  是否要添加前缀,默认是不添加
+             * @param   {String} needEmptyValue 空值是否也需要包含在结果集中，默认是不需要空值的，但是查询参数中可能需要
+             * @return {{}}
+             */
+            getAllFieldValue:function(addParamPrefixed,needEmptyValue){
+                return this.getFormEditor().getAllFieldValue(addParamPrefixed,needEmptyValue);
             },
             cancel:function(){
 

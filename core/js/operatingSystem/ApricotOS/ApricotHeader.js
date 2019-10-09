@@ -11,10 +11,9 @@ define(["core/js/controls/AbstractControlView",
     function (AbstractControlView, Template,ApplicationContext,ApplicationUtils) {
         var View = AbstractControlView.extend({
             xtype: $ApricotCons.xtype.HEADER,
-            $LOGOUT:"/AppAuthentication!logout.action",
+            $LOGOUT:"/AppAuthentication/logout.action",
             ajaxClient:ApplicationContext.getAjaxClient(),
             $container: null,
-            menu:null,
             template:Template,
             dataPre:"data",
             onSearch:null,
@@ -66,6 +65,9 @@ define(["core/js/controls/AbstractControlView",
                     var bgImg = $(event.target).data("bgimg");
                     that.setBackground(bgImg);
                 });
+
+                this.$("a.logout").on("click", $.proxy(this.logout, this));
+
             },
             setDate:function(date){
                 var monthNames = ["1月", "2月", "3月", "4月", "5月", "6月",
@@ -83,9 +85,6 @@ define(["core/js/controls/AbstractControlView",
                 this.bodyBackgroundClass = bgImg;
                 $("body").addClass(this.bodyBackgroundClass);
 
-            },
-            getMenu:function(){
-                return this.menu;
             },
             showLogin:function(){
                 //显示登录的页面

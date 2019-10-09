@@ -6,12 +6,11 @@
  * @author:
  * @date:
  */
-define(["jquery",
-    "underscore",
+define([
     "core/js/Component",
     "core/js/view/Region",
     "core/js/view/ContentRegion"
-], function ($, _, Component, Region, ContentRegion) {
+], function ( Component, Region, ContentRegion) {
     var RegionManager = Component.extend({
         _regions: null,
 
@@ -169,7 +168,7 @@ define(["jquery",
          */
         _store: function (name, region, regionName, isBefore) {
             var regions, _name, _regions, isAdd = false;
-            if (regionName == null || regionName == "") {
+            if (regionName == null || regionName === "") {
                 regions = this._regions;
             } else {
                 regions = {}, _regions = this._regions;

@@ -18,10 +18,11 @@
  *
  * @date: 2013-10-30 下午7:01
  */
-define(["jquery",
-    "underscore",
-    "core/js/controls/Control"
-], function ($, _, Control) {
+define([
+    "core/js/controls/Control",
+    $Component.TOOLSTRIPITEM.src,
+    "core/js/controls/HelpLink"
+], function (Control,ToolStripItem,HelpLink) {
     var Label = Control.extend({
         xtype:$Component.LABEL,
         eTag: "<span />",
@@ -74,6 +75,13 @@ define(["jquery",
          */
         onclick: null,
 
+        /**
+         * 是否可以删除的
+         */
+        closeable:false,
+
+        onclose:null,
+        closeBtn:null,
 
         /**
          * 设置标签的显示文本。
@@ -139,12 +147,31 @@ define(["jquery",
             this.setTextAlign(this.textAlign);
             this.setVerticalAlign(this.verticalAlign);
             this.setFontSize(this.fontSize);
+            if(this.closeable){
+                var that = this;
+                this.closeBtn = new ToolStripItem({
+                    iconSkin: "fa-times",
+                    mode: ToolStripItem.Mode.LINK,
+                    themeClass:ToolStripItem.ThemeClass.LINK,
+                    $container:this.$el,
+                    onclick:function(event){
+                        that.trigger("close",event);
+                        //that.destroy();
+                    }
+                });
+            }
 
             this.$el.on("click", function (e) {
                 e.preventDefault();
                 var that = $(this).data("control");
                 that.trigger("click");    //触发单击操作
             });
+        },
+        destroy:function(){
+            if(this.closeBtn){
+                this.closeBtn.destroy();
+            }
+            this._super();
         }
     });
 

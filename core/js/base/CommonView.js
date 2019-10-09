@@ -91,14 +91,16 @@ define(["core/js/utils/Utils",
                 this.initDraggable();
                 this.mounted =true;
 
+                //console.info("组件ID："+this.getId()+"完成渲染！");
+
                 if(this.isTriggerRender()){
                     //子组件都渲染完后，才触发本组件渲染完成事件
                     this.triggerRender(triggerEvent);
                 }
-                //console.info("组件ID："+this.getId()+"完成渲染！");
+
             },
             /**
-             * 出事dom的class
+             * 初始化dom的class
              */
             initClass: function () {
                 if (this.realClass != null) {
@@ -231,7 +233,7 @@ define(["core/js/utils/Utils",
                 }
             },
             /**
-             * 组件完全渲染后，触发此时间
+             * 组件完全渲染后，触发此事件
              * @param triggerEvent
              */
             triggerRender:function(triggerEvent){
@@ -240,6 +242,7 @@ define(["core/js/utils/Utils",
                 //触发渲染完成后的事件
                 if (triggerEvent == null || triggerEvent) {
                     this.trigger("render");   //触发渲染完成后的事件
+                    //console.info("组件id："+this.id+"完成渲染事件。");
                 }
 
                 if(this.getParent()&&this.getParent().childRenderDone){
@@ -247,12 +250,13 @@ define(["core/js/utils/Utils",
                     this.getParent().childRenderDone(this.getId());
                 }
 
-                //如果是Region，则需要出发Region的Show事件
+                //如果是Region，则需要触发Region的Show事件
                 if(this.regionParent&&this.regionParent._triggerShowEvent){
                     //由子节点调用出发事件
                     this.regionParent._triggerShowEvent(true);
 
                 }
+
             },
             /**
              * 是否需要触发渲染的事件
@@ -286,8 +290,8 @@ define(["core/js/utils/Utils",
                 }
                 this.childRenderCount++;
                 if(this.isTriggerRender()){
-                    //console.info("组件id："+this.id+"有子组件:"+this.childrenCount+";子组件id："+id+"完成渲染；已渲染："+this.childRenderCount);
                     this.triggerRender();
+                    //console.info("组件id："+this.id+"有子组件:"+this.childrenCount+";子组件id："+id+"完成渲染；已渲染："+this.childRenderCount);
                 }
             },
             addParentAsynChild:function(id){
@@ -328,7 +332,7 @@ define(["core/js/utils/Utils",
                 if(parent&&parent.getId){
                     //console.info("组件id："+this.id+"的parentId:"+parent.getId());
                 }
-                //由于是先设置naturalFather，如果没有辞职，默认是parent
+                //由于是先设置naturalFather，如果没有值，默认是parent
                 if(!this.getNaturalFather()){
                     this.setNaturalFather(parent);
                 }

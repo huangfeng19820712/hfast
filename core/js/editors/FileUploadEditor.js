@@ -69,7 +69,7 @@ define([
          * 注册插件的事件
          */
         registerEvent:function(){
-            this.$input.on('fileloaded', $.proxy(this.fileuploaded,this));
+            this.$input.on('fileuploaded', $.proxy(this.fileuploaded,this));
             this.$input.on('filepreupload', $.proxy(this.filepreupload,this));
         },
         /**

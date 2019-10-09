@@ -5,7 +5,8 @@
  * @author:
  * @date: 2013-08-29 下午1:55
  */
-define(["jquery", "core/js/Class", "core/js/rpc/AjaxEngine"], function ($, Class, AjaxEngine) {
+define(["core/js/Class", "core/js/rpc/AjaxEngine"],
+    function (Class, AjaxEngine) {
     var AjaxRequest = Class.extend({
         ajaxClient: null,
         paramMap: null,
@@ -27,7 +28,7 @@ define(["jquery", "core/js/Class", "core/js/rpc/AjaxEngine"], function ($, Class
             return this;
         },
         addParam: function (paramName, paramValue) {
-            if (paramName == null || paramName == "") {
+            if (paramName == null || paramName === "") {
                 alert("[AjaxRequest.addParam] 参数名不能为空");
                 return this;
             }
@@ -39,8 +40,8 @@ define(["jquery", "core/js/Class", "core/js/rpc/AjaxEngine"], function ($, Class
 
             return this;
         },
-        getParamValue: function(paramName){
-            if (paramName == null || paramName == "")
+        getParamValue: function (paramName) {
+            if (paramName == null || paramName === "")
                 return null;
             return this.paramMap[paramName];
         },
@@ -67,11 +68,11 @@ define(["jquery", "core/js/Class", "core/js/rpc/AjaxEngine"], function ($, Class
          * add by 2014.03.25
          * @return {String}
          */
-        getUrl: function(){
+        getUrl: function () {
             var result = [],
                 params = this.getParameterMap();
             result.push(this.ajaxClient.getServerUrl());
-            if(params != null){
+            if (params != null) {
                 result.push("?");
                 result.push($.param(params));
             }

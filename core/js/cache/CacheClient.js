@@ -69,7 +69,7 @@ define(["core/js/Component"], function (Component) {
             if (model == null)
                 return model;
             var id = model[this.keyField];
-            if (id == null || id == "")
+            if (id == null || id === "")
                 return null;
 
             this.data[id] = model;
@@ -114,7 +114,7 @@ define(["core/js/Component"], function (Component) {
          * @param id 键值
          */
         getFromLocal: function (id) {
-            if (id == null || id == "")
+            if (id == null || id === "")
                 return null;
 
             return this.data[id];
@@ -136,7 +136,7 @@ define(["core/js/Component"], function (Component) {
          * @return {*}
          */
         remove: function (id) {
-            if (id == null || id == "")
+            if (id == null || id === "")
                 return;
 
             delete this.data[id];

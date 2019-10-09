@@ -218,12 +218,12 @@ define([ "core/js/context/ApplicationContext"],
              * 统一调用此方法来销毁组件
              * @Deprecated
              */
-            destoryCom:function(component){
+            destroyCom:function(component){
                 if(component.close){
                     component.close();
                 }
-                if(component.destory){
-                    component.destory
+                if(component.destroy){
+                    component.destroy
                 }
             },
             /**

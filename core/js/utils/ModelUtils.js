@@ -28,6 +28,8 @@ define(["core/js/Class",], function (Class) {
 
             var menus = {};
             var noDealIds = new Array();
+            //把菜单添加到subMenu子菜单属性中
+            //把根节点找出来，即使没有父节点的菜单，并不是pid为null，是pid不在存在当前的menuDates中
             _.each(menuDates, function (menuDate, key, list) {
                 menus[menuDate.id] = menuDate;
                 menus[menuDate.id].subMenu = null;
@@ -35,7 +37,6 @@ define(["core/js/Class",], function (Class) {
                     var menu = menus[menuDate.pid];
                     if (menu != null) {
                         if(menu.subMenu==null){
-
                             menu.subMenu = new Array();
                         }
                         menu.subMenu.push(menus[menuDate.id]);
@@ -63,12 +64,34 @@ define(["core/js/Class",], function (Class) {
              */
             var doneMenus = new Array();
             for (var i in menus) {
-                if (!menus[i].pid) {
+                //判断是否根节点
+                // 1.当pid为null时，即使根节点，
+                // 2.有pid，但是pid没有在menus中，也是根节点
+                if (!menus[i].pid||menus[menus[i].pid]==null) {
                     doneMenus.push(menus[i]);
                 }
             }
-            return doneMenus;
+
+            return this.sortMenu(doneMenus);
         },
+        /**
+         * 排序
+         * @param menus
+         */
+        sortMenu: function (menus) {
+            var that = this;
+            var newMenus = _.sortBy(menus,function(menu){
+                if(menu.subMenu!=null&&menu.subMenu.length>0){
+                    menu.subMenu = that.sortMenu(menu.subMenu);
+                }
+                if(menu.orderNo!=null){
+                    return menu.orderNo;
+                }else{
+                    return ;
+                }
+            });
+            return newMenus;
+        }
     });
     ModelUtils.getInstance = function () {
         return new ModelUtils();

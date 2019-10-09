@@ -23,7 +23,7 @@ define(["core/js/base/BaseView",
              */
             updateMenu: function (menuDates) {
                 if (!menuDates) {
-                    return;
+                    return this;
                 }
                 this.menuDates = menuDates;
                 this.clearMenu();

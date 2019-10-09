@@ -1,14 +1,14 @@
 /**
  * @author:   * @date: 2016/1/7
  */
-define(["jquery",
+define([
     "core/js/CommonConstant",
     "core/js/layout/Container",
     "core/js/view/Region","core/js/controls/ToolStrip",
     "core/js/controls/ToolStripItem",
     "core/js/controls/HelpLink",
      "core/js/utils/Utils"
-], function ($, CommonConstant, Container,
+], function ( CommonConstant, Container,
              Region,ToolStrip,ToolStripItem,HelpLink,Utils) {
     var DropDownContainer = Container.extend({
         xtype:$Component.DROPDOWNCONTAINER,

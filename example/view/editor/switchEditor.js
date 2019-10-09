@@ -150,6 +150,20 @@ define([
                                         //需要出发事件
                                         skyFormEditor.reset();
                                     }
+                                },{
+                                    text: "校验",
+                                    onclick: function (e) {
+                                        var skyFormEditor = this.parent.parent.getMainRegionRef().getComRef();
+                                        //需要出发事件
+                                        skyFormEditor.validate();
+                                    }
+                                },{
+                                    text: "clear",
+                                    onclick: function (e) {
+                                        var skyFormEditor = this.parent.parent.getMainRegionRef().getComRef();
+                                        //需要出发事件
+                                        skyFormEditor.clearValue();
+                                    }
                                 }]
                                 /*Panel 配置 End*/
                             }

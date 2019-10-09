@@ -88,7 +88,7 @@ define(["core/js/layout/FluidLayout",
                 });
             },
             onrender:function(){
-                // console.info("?>>>>");
+                console.info("?>>>>");
             }
 
 

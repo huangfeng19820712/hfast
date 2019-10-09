@@ -99,7 +99,7 @@ define(["core/js/context/ApplicationContext"], function (ApplicationContext) {
         },
         getIframeUrl: function (url) {
             var result = "about:blank";
-            if (url == null || url == "")
+            if (url == null || url === "")
                 return result;
 
             if (this.isInnerUrl(url)) {

@@ -427,22 +427,44 @@ define(["core/js/Event","backbone","core/js/windows/messageBox",
             return false;
         },
         trigger: function (eventType, args) {
-            var etype = "on" + eventType;
-
+            var etype = "on" + eventType,
+                eventObject = this[etype];
             //不存在的话，默认代表触发成功
-            if (typeof(this[etype]) == "undefined" || this[etype] == null)
+            if (typeof(eventObject) == "undefined" || eventObject == null)
                 return true;
 
-            var e = args || {};
-            e.type = eventType;
-            if (!e.target)
-                e.target = this;
-            //设置父函数，由于要转化上下文，所以如果_super与本方法名不一致，则去掉
-            if(this[etype]&&this._super.name!=etype){
-                this._super=null;
+            var e = {type:eventType,
+                target:this};
+            if(args!=undefined){
+                if (args instanceof jQuery.Event){
+                    e.jqEvent = args
+                }else if(MessageEvent!=undefined&&(args instanceof MessageEvent)){
+                    //websocket
+                    e.messageEvent = args
+                }else{
+                    //当不是跟html交互而触发的事件时
+                    e = args;
+                }
+            }
+            var argArray = _.toArray(arguments);
+            var eventObj = null;
+            if(argArray.length>1){
+                var otherArgs = _.toArray(arguments).slice(1);
+                //过滤掉jQuery的event对象，应该已经存在e.jqEvent中
+                otherArgs = _.filter(otherArgs, function(obj){
+                    //通过jquery.event特有的属性来判断是否是event对象
+                    if(obj&&obj.preventDefault&&obj.type&&obj.currentTarget&&obj.delegateTarget){
+                        return false;
+                    }else{
+                        return true;
+                    }
+                });
+                eventObj = eventObject.fire(e, this,otherArgs);
+            }else{
+                eventObj = eventObject.fire(e, this);
             }
 
-            return this[etype].fire(e, this);
+            return eventObj;
         },
         /**
          * 该方法与 this.$el.find(p_expression) 等同。

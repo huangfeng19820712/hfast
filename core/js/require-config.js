@@ -33,7 +33,7 @@ function $globalRequireConfig(webRoot) {
             "store":$route.getJs("store","store-json2"),
             "json":$route.getJs("store","json"),
             //artDialog组件
-            "dialog": "/lib/artDialog/6.0.2/src/dialog-plus",
+            "dialog": "lib/artDialog/6.0.2/src/dialog-plus",
             "URI":$route.getJs("URI"),
             "bootstrap":$route.getJs("bootstrap"),
             "modernizr":$route.getJs("modernizr"),
@@ -57,7 +57,7 @@ function $globalRequireConfig(webRoot) {
             "jquery.fileDownload":$route.getJs("jquery.fileDownload"),
             "jquery.contextMenu":$route.getJs("jquery.contextMenu"),
             "fileinput":$route.getJs("fileinput","zh"),
-            "ueditor": "/lib/ueditor/1.4.3/lang/zh-cn/zh-cn", //必须先加载语言包，否则ie下会报错,
+            "ueditor": "/lib/ueditor/1.4.3.3/lang/zh-cn/zh-cn", //必须先加载语言包，否则ie下会报错,
             "spin":$route.getJs("spin"),
             "fancytree":$route.getJs("fancytree","fancytree-all"),
             "waypoints":$route.getJs("counterup","waypoints"),
@@ -89,18 +89,21 @@ function $globalRequireConfig(webRoot) {
             "bootstrap-select":$route.getJs("bootstrap-select"),
             "bootstrap-switch":$route.getJs("bootstrap-switch"),
             "ladda":$route.getJs("ladda"),
+            "codemirror":"core/js/editors/CodeEditorFormatting",
 
             "laydate":$route.getJs("laydate"),
             "icheck":$route.getJs("icheck"),
             "fuelux.wizard":$route.getJs("fuelux","wizard"),
             "flowplayer":$route.getJs("flowplayer"),
-
             "parallax-slider":$route.getJs("parallax-slider"),
-
             'king-common':$route.getKingadminJs("king-common"),
             'king-chart-stat':$route.getKingadminJs("king-chart-stat"),
             'king-table':$route.getKingadminJs("king-table"),
             'king-components':$route.getKingadminJs("king-components"),
+            'pnotify':$route.getJs("pnotify"),
+            'pnotify.nonblock':$route.getJs("pnotify","pnotify.nonblock"),
+            'pnotify.desktop':$route.getJs("pnotify","pnotify.desktop"),
+
             'style-switcher':$route.getJs("style-switcher")
         },
         "shim": {
@@ -242,12 +245,20 @@ function $globalRequireConfig(webRoot) {
                 $route.getCss("ladda",
                     "ladda-themeless")
             ]},
+            "codemirror":{
+                deps:["lib/codemirror/5.22.0/lib/codemirror",
+                    "css!lib/codemirror/5.22.0/lib/codemirror.css",
+                    "lib/codemirror/5.22.0/mode/htmlmixed/htmlmixed"],
+                "exports": "codemirror"
+            },
             "icheck":{deps:[$route.getCss("icheck","all")]},
             "fuelux.wizard":{deps:[$route.getKingadminCss("components")]},
             'king-common':{deps:['jquery','bootstrap-tour']},
             'king-chart-stat':{deps:['jquery']},
             'king-table':{deps:['jquery','jquery.dataTables']},
             'king-components':{deps:['jquery',"usa_states"]},
+            'pnotify':{deps:['jquery',$route.getCss("pnotify")]},
+            'pnotify.nonblock':{deps:['jquery',$route.getCss("pnotify","pnotify.nonblock")]},
             'style-switcher':{deps:['jquery','king-common']}
         }
     };

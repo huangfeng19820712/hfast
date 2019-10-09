@@ -1215,6 +1215,23 @@ nav.page-tabs .page-tabs-content {
 }
 /*tablayout end*/
 
+/*ContentBox start*/
+
+
+/*ContentBox end*/
+/*Label start*/
+.hfast-view.label .btn-link{
+    padding:  0px 0px 0px 5px;
+    color: #595a5a;
+}
+/*Label end*/
+
+/*navbar start*/
+.hfast-view nav.navbar{
+    margin-bottom:0px;
+}
+/*navbar end*/
+
 
 
 

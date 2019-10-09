@@ -16,7 +16,7 @@ define(["underscore","core/js/Class"], function (_,Class) {
         isRun:false,
         intervalId:null,
         /**
-         * 间隔时间
+         * 间隔时间,单位是秒
          */
         intervalSecond:3*60,
 

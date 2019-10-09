@@ -7,11 +7,11 @@
  * @author:
  * @date:
  */
-define(["jquery", "underscore",
+define([
         "core/js/Component",
         "core/js/base/AbstractView",
         "core/js/utils/ApplicationUtils"],
-    function ($, _, MXComponent, AbstractView,ApplicationUtils) {
+    function ( MXComponent, AbstractView,ApplicationUtils) {
         /**
          * @class
          * @extends {Component}

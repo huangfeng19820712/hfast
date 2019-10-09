@@ -44,6 +44,14 @@ $color: (
         color-default-dark: #585f69
 );
 
+/*color start*/
+
+@each $name in $theme-name {
+  .hfast-view .color#{$name} {
+    color: map-get($color, color#{$name});
+  }
+}
+/*color end*/
 
 /*Switcher start*/
 .del-style-switcher li a.switcher-default,
@@ -282,6 +290,38 @@ $color: (
   //.layui-laydate-header i:hover, .layui-laydate-header span:hover
 }
 /*laydate end*/
+
+/*block-grid start*/
+@each $name in $theme-name {
+  .baseview#{$name} .block-grid-v1:hover{
+    border-color: map-get($color, color#{$name});
+  }
+}
+
+
+/*block-grid end*/
+
+/*navbar-toggle start*/
+@each $name in $theme-name {
+  .baseview#{$name} .header .navbar-toggle,
+  .baseview#{$name} .header .navbar-toggle:hover,
+  .baseview#{$name} .header .navbar-toggle:focus {
+      background: map-get($color, color#{$name});
+  }
+  .baseview#{$name} .header .navbar-toggle{
+      border-color: map-get($color, color#{$name});
+  }
+  .baseview#{$name} .header .navbar-toggle,
+  .baseview#{$name} .header .navbar-toggle:hover,
+  .baseview#{$name} .header .navbar-toggle:focus{
+      background: map-get($color, color#{$name});
+  }
+
+  .baseview#{$name} .header .navbar-toggle:hover{
+    background: map-get($color, color#{$name}) !important;
+  }
+}
+/*navbar-toggle end*/
 
 
 

@@ -6,8 +6,7 @@
  * @author:
  * @date: 2014-04-30 下午1:03
  */
-define(["jquery",
-    "underscore",
+define([
     "backbone",
     "core/js/Application",
     "core/js/utils/ApplicationUtils",
@@ -17,7 +16,7 @@ define(["jquery",
     "core/js/windows/Window",
     "css!core/resources/styles/core.css",
     "css!core/resources/styles/theme.css"
-], function ($, _, Backbone, Application, ApplicationUtils, FrameworkConfAccessor,CommonConstant) {
+], function (Backbone, Application, ApplicationUtils, FrameworkConfAccessor,CommonConstant) {
     $.expr.cacheLength = 0;   //设置jquery中选择器的缓存数为0，默认jquery是缓存数50，如果不设置为0，那么就会缓存已经销毁的对象，从而导致内存飙升 add by 2014.11.10
 
     //在此可以进行应用的初始化操作
@@ -32,6 +31,10 @@ define(["jquery",
          * @default #main
          */
         mainRegionEl: null,
+        /**
+         * [可选]{boolean}是否演出启动路由，如果设置成true，则不马上执行启动路由，如果设置false需要手动设置路由
+         */
+        lazyRouter:false,
 
         /**
          * 启动应用
@@ -42,12 +45,33 @@ define(["jquery",
             //加载路由器与路由过滤器，并启动Backbone路由监听
             var applicationRouterUrl = FrameworkConfAccessor.getApplicationRouterFilterUrl()||"core/js/ApplicationRouterFilter";
             var that = this;
+
             require([FrameworkConfAccessor.getApplicationRouterUrl(),applicationRouterUrl], function (ApplicationRouter,ApplicationRouterFilter) {
                 var applicationContext = ApplicationUtils.getApplicationContext();
+                //必须要先加载此模块，因为后面会使用在此模块
                 applicationContext.setApplicationRouterFilter(that._getApplicationRouterFilter());  //设置应用的路由过滤器
-                applicationContext.setApplicationRouter(new ApplicationRouter());   //设置全局路由  add by 2014.11.06
-                Backbone.history.start();   //启动Backbone的路由
+                that.initApplicationRouter(ApplicationRouter);
+                that.afterInitApplicationRouter();
             });
+        },
+        /**
+         * 设置应用的路由
+         * @param ApplicationRouter
+         * @param ApplicationRouterFilter
+         */
+        initApplicationRouter:function(ApplicationRouter){
+            var applicationContext = ApplicationUtils.getApplicationContext();
+            var applicationRouter = new ApplicationRouter();
+            applicationContext.setApplicationRouter(new ApplicationRouter());   //设置全局路由  add by 2014.11.06
+            if(!this.lazyRouter){
+                applicationRouter.start();
+            }
+        },
+        /**
+         * 初始化应用路由后调用的方法
+         */
+        afterInitApplicationRouter:function(){
+
         },
         initialize: function () {
             this._initApplicationContext();   //初始化应用上下文信息
@@ -107,8 +131,9 @@ define(["jquery",
          */
         _bindDocumentEvent: function () {
             $(document).keydown(function (event) {
+                var ev = document.all ? window.event : arguments[0] ? arguments[0]: event;
                 //屏蔽ALT+方向键前进或后退网页
-                if ((window.event.altKey) && ((window.event.keyCode == 37) || (window.event.keyCode == 39))) {
+                if ((ev.altKey) && ((ev.keyCode == 37) || (ev.keyCode == 39))) {
                     if (event && event.preventDefault)
                         event.preventDefault();
                 }
@@ -156,6 +181,18 @@ define(["jquery",
         },
         _getMainRegionEl: function () {
             return this.mainRegionEl || "#main";
+        },
+        /**
+         * 登陆成功后，需要处理的业务
+         */
+        loginSuc: function () {
+
+        },
+        /**
+         * 服务端退出后，需要处理的前端业务
+         */
+        logoutSuc:function(){
+
         }
     });
 

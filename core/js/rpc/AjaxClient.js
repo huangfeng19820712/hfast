@@ -5,11 +5,11 @@
  * @author:
  * @date: 2013-08-29 下午1:48
  */
-define(["jquery",
+define([
     "core/js/Class",
     "core/js/rpc/AjaxRequest",
     "core/js/rpc/JsonResponse",
-    "jquery.fileDownload"], function ($, Class, AjaxRequest, JsonResponse) {
+    "jquery.fileDownload"], function (Class, AjaxRequest, JsonResponse) {
     var AjaxClient = Class.extend({
         /**
          * 服务地址

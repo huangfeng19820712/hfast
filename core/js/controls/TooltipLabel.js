@@ -2,11 +2,10 @@
  * 提示框，弹出框
  * @author:   * @date: 2016/3/24
  */
-define(["jquery",
-    "underscore",
+define([
     "core/js/CommonConstant",
     "core/js/controls/AbstractControlView"
-], function ($, _, CommonConstant, AbstractControlView) {
+], function ( CommonConstant, AbstractControlView) {
     var TooltipLabel = AbstractControlView.extend({
         xtype:$Component.TOOLTIPLABEL,
         align: $cons.tooltip.Align.LEFT,

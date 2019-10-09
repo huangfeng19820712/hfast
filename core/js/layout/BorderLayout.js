@@ -4,11 +4,11 @@
  *
  * @author:   * @date: 2015/12/15
  */
-define(["jquery",
+define([
     "core/js/CommonConstant",
     "core/js/layout/Container",
     "jquery.layout"
-], function ($, CommonConstant, Container) {
+], function ( CommonConstant, Container) {
     var BorderLayout = Container.extend({
         xtype:$Component.BORDERLAYOUT,
         /**
@@ -133,6 +133,12 @@ define(["jquery",
                 }
                 this.setHeight(height);
             }
+            //判断是否为0
+            if(this.getHeight()==0){
+                console.warn(this.getId() + " height is 0");
+                //当前出现这种情况，主要是html的高度设置成height auto
+                $("html").height("");
+            }
 
             //this.setHeight("100px");
             this.plugin = this.$el.layout(this._getLayoutConf());
@@ -168,21 +174,8 @@ define(["jquery",
          */
         resizeAll:function(){
             if(this.plugin){
+                this.plugin.resizeAll();
             }
-            this.plugin.resizeAll();
-        },
-        /**
-         * 根据id，返回流布局中的对象
-         * @param id
-         * @returns {*}
-         */
-        getComponent:function(id){
-
-        },
-        /**
-         * 根据数组的下标找到组件
-         */
-        getComponentByIndex:function(index){
 
         },
         close:function(){

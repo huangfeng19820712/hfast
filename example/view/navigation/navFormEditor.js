@@ -20,12 +20,12 @@ define([
                 var view = new NavigationBar({
                     $container:this.$el,
                     items:[this.navigationOption(),
-                        this.formOption(),
+                        this.topToolbarOption(),
                         this.dropDownMenuOption()
                         ]
                 });
             },
-            formOption: function () {
+            topToolbarOption: function () {
               return {
                   comXtype:$Component.NAVFORMEDITOR,
                   //左边浮动

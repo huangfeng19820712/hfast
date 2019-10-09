@@ -2,12 +2,11 @@
  * @author:   * @date: 2016/1/18
  */
 
-define(["jquery",
-    "underscore",
+define([
     "core/js/CommonConstant",
     "core/js/editors/DateEditor",
     "bootstrap-datetimepicker.locale"
-], function ($, _, CommonConstant, DateEditor, Button) {
+], function ( CommonConstant, DateEditor, Button) {
     var DatetimeEditor = DateEditor.extend({
         xtype:$Component.DATETIMEEDITOR,
         plugin:"datetimepicker",

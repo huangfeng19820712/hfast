@@ -2,11 +2,10 @@
  * 列表对象
  * @author:   * @date: 2016/2/29
  */
-define(["jquery",
-    "underscore",
+define([
     "core/js/controls/Control",
     "core/js/CommonConstant","core/js/utils/Utils"
-], function ($, _, Control,CommonConstant) {
+], function ( Control,CommonConstant) {
     var List = Control.extend({
         xtype:$Component.LIST,
         className:"list-group",
@@ -20,6 +19,10 @@ define(["jquery",
          * ]
          */
         data:null,
+        /**
+         * 存放数据的键值对，key是id，数据项是值
+         */
+        _dataMap:[],
         itemTemplate:$Template.List.DEFAULT,
         mountContent:function(){
             if(this.data){
@@ -28,6 +31,7 @@ define(["jquery",
                     if(!item.id){
                         item.id = this.getItemId(i);
                     }
+                    this._dataMap[item.id] = item;
                     this.$el.append(this.createItem(item));
                 }
                 var that = this;
@@ -61,7 +65,8 @@ define(["jquery",
                     return;
                 }
             }
-            var itemContent = _.template(this.itemTemplate, {variable: this.dataPre})(item);
+            //var itemContent = _.template(this.itemTemplate, {variable: this.dataPre})(item);
+            var itemContent = this.createItem(item);
             $item.replaceWith(itemContent);
         },
 
@@ -105,6 +110,15 @@ define(["jquery",
         },
         getItemId:function(i){
             return this.id+"_"+i;
+        },
+        /**
+         * 根据item的id获取item的数据对象
+         * @param id
+         * @returns {*}
+         */
+        getItemDataById:function(id){
+            return this._dataMap[id];
+
         },
         clear:function(){
             this.data = [];

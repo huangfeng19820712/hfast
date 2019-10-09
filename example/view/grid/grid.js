@@ -6,9 +6,10 @@ define([
         "core/js/grid/BootstrapGrid",
         "core/js/windows/Window", "core/js/context/ApplicationContext",
         "core/js/utils/ApplicationUtils",
+        $Component.TOOLSTRIPITEM.src,
         "core/js/model/PageModel"],
     function (Backbone, BootstrapGrid, Window,
-              ApplicationContext, ApplicationUtils,PageModel) {
+              ApplicationContext, ApplicationUtils,ToolStripItem,PageModel) {
         var view = BootstrapGrid.extend({
             thead: ["test1", "test2", "test3", "test4", "test5"],
             colModel: [{
@@ -19,7 +20,7 @@ define([
                     if(!row.periodNum){
                         return null;
                     }else{
-                        return row.periodNum.substr(8,3);
+                        //return row.periodNum.substr(8,3);
                     }
                 },
             }, {name: "result", label: "test2"},
@@ -27,7 +28,6 @@ define([
                 {name: "", label: "test4"},
                 {name: "", label: "test5"},
             ],
-            $url: "/ssResult/getAll.action",
             data:null,
             oninitialized: function () {
                 //初始化data
@@ -40,6 +40,19 @@ define([
                     syncable:false,
                     records:data
                 });
+
+                this.toolbarItemOptions = [
+                    _.extend(ToolStripItem.DefaultCommand.add,{
+                        onclick: function () {
+                            $.window.alert("测试1");
+                        }
+                    }),{
+                        text: "选中第一条",
+                        onclick: function () {
+                            that.activeFirstTr();
+                        }
+                    }
+                ];
 
             },
 

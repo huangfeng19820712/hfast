@@ -21,13 +21,12 @@
  *
  * @date: 2013-08-14 下午2:59
  */
-define(["jquery",
-    "underscore",
+define([
     "core/js/CommonConstant",
     "core/js/editors/Editor",
     "core/js/controls/Button",
     "core/js/editors/AutoCompleteEditor"
-], function ($, _, CommonConstant, Editor, Button, AutoComplete) {
+], function (CommonConstant, Editor, Button, AutoComplete) {
 
     var TextEditor = Editor.extend({
         xtype:$Component.TEXTEDITOR,
@@ -261,7 +260,7 @@ define(["jquery",
             this._setButtonsVisible(btnIds, true);
         },
         _setButtonsVisible: function(btnIds, isVisible){
-            if (btnIds == null || btnIds == "")
+            if (btnIds == null || btnIds === "")
                 return;
             var btnIdArray = btnIds.split(","),
                 btn;
@@ -742,7 +741,7 @@ define(["jquery",
             this.maxLength = maxLength;
 
             if ("normal" == this.textMode || "password" == this.textMode) {
-                this.$input.attr("maxLength", this.maxLength);
+                this.$input.attr("maxlength", this.maxLength);
                 return;
             }
 

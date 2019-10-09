@@ -8,8 +8,10 @@
             <em> - <%=data.brief%></em>
             <%}%>
         </div>
+        <%if(data.isShowHeaderRightRegion){%>
         <div id="<%=data.headerRightRegionId%>" class="panel-heading-rightToolbar panel-heading-toolbar">
         </div>
+        <%}%>
     </div>
     <%}%>
     <%if(data.topToolbarRegionId){%>

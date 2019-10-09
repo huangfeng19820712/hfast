@@ -16,6 +16,7 @@ define([
                 comXtype:$Component.TEXTEDITOR,
                 comConf:{
                     defaultValue:"name",
+                    height:500,
                     textMode:"multiline"
                 }
             }

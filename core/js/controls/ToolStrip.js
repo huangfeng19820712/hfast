@@ -3,12 +3,11 @@
  *
  * @date: 2013-09-03 下午5:04
  */
-define(["jquery",
-    "underscore",
+define([
     "core/js/controls/Control",
     "core/js/CommonConstant",
     "core/js/controls/ToolStripItem"
-], function ($, _, Control,CommonConstant, ToolStripItem) {
+], function (Control,CommonConstant, ToolStripItem) {
     var ToolStrip = Control.extend({
         xtype:$Component.TOOLSTRIP,
         items: null,

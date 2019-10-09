@@ -32,9 +32,9 @@ define(componetArray, function (Component) {
             CHECKBOX_EDITOR: 7,            //checkbox
             RADIO_EDITOR: 8,                //radio
             DIMORPHIC_EDITOR: 9,          //二态编辑器
-            FILE_EDITOR: 21,          //文件上传编辑器   add by chenwy 14-9-24
-            HTML_EDITOR: 22,          //富文本编辑器    add by chenwy 14-10-21
-            IMAGE_EDITOR: 23,        //图片编辑器 add by chenwy 14-12-3
+            FILE_EDITOR: 21,          //文件上传编辑器
+            HTML_EDITOR: 22,          //富文本编辑器
+            IMAGE_EDITOR: 23,        //图片编辑器
             ORG_SELECTOR_EDITOR: 31,          //部门选择编辑器
             USER_SELECTOR_EDITOR: 32,          //人员选择编辑器
             LOOKUP_SELECTOR_EDITOR: 33,          //查询选择编辑器

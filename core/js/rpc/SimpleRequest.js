@@ -3,9 +3,8 @@
  */
 
 define(["core/js/rpc/AjaxRequest",
-    "core/js/rpc/AjaxEngine",
     "core/js/rpc/SimpleConstant"
-], function (AjaxRequest, AjaxEngine, SimpleConstant) {
+], function (AjaxRequest, SimpleConstant) {
 
     var SimpleRequest = AjaxRequest.extend({
 

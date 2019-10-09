@@ -1,7 +1,7 @@
 /**
  * @author:   * @date: 2016/1/25
  */
-define(["jquery",
+define([
     "core/js/CommonConstant",
     "core/js/layout/Container",
     "text!core/resources/tmpl/Panel.html",
@@ -9,7 +9,7 @@ define(["jquery",
     "core/js/controls/ToolStripItem",
     "core/js/controls/HelpLink",
     "core/js/utils/Utils",
-], function ($, CommonConstant, Container, LayoutTemplate,Region,ToolStrip,ToolStripItem,HelpLink) {
+], function (CommonConstant, Container, LayoutTemplate,Region,ToolStrip,ToolStripItem,HelpLink) {
     return {
         /**
          * {boolean}控制该面板是否允许折叠，默认是不可折叠

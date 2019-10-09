@@ -111,7 +111,7 @@ define(["underscore", "core/js/Class"], function (_, Class) {
             if (subErrors == null || subErrors.length == 0)
                 return "";
 
-            var subErrorCodeArray = (subErrorCodes == null || subErrorCodes == "") ? null : subErrorCodes.split(",");
+            var subErrorCodeArray = (subErrorCodes == null || subErrorCodes === "") ? null : subErrorCodes.split(",");
             var isMore = subErrorCodeArray == null || subErrorCodeArray.length > 1;
             ignoreCode = (ignoreCode == null) ? false : ignoreCode;  //默认是不显示code
 

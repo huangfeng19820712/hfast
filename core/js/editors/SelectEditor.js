@@ -91,10 +91,10 @@ define([
             if(this.multiple){
                 this.$input.attr("multiple","true");
                 this.maxOptions = null;
-            }else{
-                this.$input.attr("multiple","true");
+            }/*else{
+                this.$input.attr("multiple","false");
                 this.maxOptions =1;
-            }
+            }*/
             if(this.placeholder){
                 this.$input.attr("title",this.placeholder);
             }
@@ -165,7 +165,7 @@ define([
             var that = this;
             //添加事件，把选择器的事件
             $input.on("changed.bs.select",function(e){
-                that.setValue($(e.target).val());
+                that.setValue($(e.target).val(),true);
             })
         },
         /**
@@ -185,6 +185,12 @@ define([
             this._super(result, result, needTranslate, triggerEvent);
             //设置控件的值
             this.$input.selectpicker('val', value);
+        },
+        updateOptions:function(option){
+            this.$input.empty();
+            this._initOptions(this.$input,option);
+            this.plugin.selectpicker('destroy');
+            this._initWithPlugIn();
         },
         /**
          * 组件销毁，便于浏览器进行内存回收，防止内存不断飙升

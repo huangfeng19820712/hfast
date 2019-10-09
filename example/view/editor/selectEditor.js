@@ -69,7 +69,17 @@ define([
                         searchable:true,
                         value:"1",
                         className:"col col-6",
-                        options:options
+                        options:options,
+                        onchanged: function (event) {
+                            console.info(event);
+                            var editor = event.target;
+                            var formEditor = editor.parent;
+                            var editordd2 = formEditor.getEditor("dd2");
+                            if(editordd2!=null){
+                                editordd2.updateOptions(optionGroup);
+                            }
+
+                        }
                     },{
                         label:"能查询的下拉框",
                         editorType:$Component.SELECTEDITOR,

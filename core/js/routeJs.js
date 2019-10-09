@@ -98,7 +98,7 @@ define(["underscore","URI","backbone"], function (_,URI) {
 			var len = pathName.lastIndexOf(".");
 			pathName = pathName.substring(0, len)+".js";
 			run(pathName);
-	}
+		}
 	}
 
 	function run(pathName){

@@ -106,7 +106,7 @@ define([
                                     text: "取值",
                                     onclick: function (e) {
                                         var skyFormEditor = this.parent.parent.getMainRegionRef().getComRef();
-                                        var values = skyFormEditor.getValue("switch");
+                                        var values = skyFormEditor.getValue("checkbox");
                                         console.info(values);
                                     }
                                 },{
@@ -144,7 +144,6 @@ define([
                     comXtype:$Component.PANEL,
                     comConf:{
                         title:"操作",
-
                         mainRegion:{
                             //panel下面在赖个流动布局
                             comXtype:$Component.FLUIDLAYOUT,
@@ -163,7 +162,7 @@ define([
                                 itemOptions: [{
                                     text:"获取值",
                                     onclick: function () {
-                                        var component = ApplicationUtils.getComponentById("checkbox0");
+                                        var component = ApplicationUtils.getComponentById("checkbox");
                                         console.info(component.getValue());
                                     }
                                 },{

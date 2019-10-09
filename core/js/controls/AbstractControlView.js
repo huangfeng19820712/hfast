@@ -2,11 +2,10 @@
  * @author:   * @date: 2016/3/24
  */
 
-define(["jquery",
-    "underscore",
+define([
     "core/js/CommonConstant",
     "core/js/controls/Control",
-], function ($, _, CommonConstant, Control) {
+], function (CommonConstant, Control) {
     var AbstractControlView = Control.extend({
         template:null,
         dataPre:$cons.dataPre,

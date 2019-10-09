@@ -10,16 +10,18 @@ define(["core/js/grid/JqGrid",
             exportExcelUrl:null,
             hiddenColumns:null,
             initializeHandle: function () {
-                var ajaxClient = this.getAjaxClient();
+                this.ajaxClient = this.getAjaxClient();
                 //同步执行
                 var that = this;
-                ajaxClient.buildClientRequest(this.columnsUrl)
-                    .post(function (compositeResponse) {
-                        var obj = compositeResponse.getSuccessResponse();
-                        if(obj&&obj.result){
-                            that.initColumns(obj.result);
-                        }
-                    },false);
+                if(this.columnsUrl){
+                    this.ajaxClient.buildClientRequest(this.columnsUrl)
+                        .post(function (compositeResponse) {
+                            var obj = compositeResponse.getSuccessResponse();
+                            if(obj&&obj.result&&obj.result.records){
+                                that.initColumns(obj.result.records);
+                            }
+                        },false);
+                }
                 if(!this.postData){
                     this.postData = {};
                 }
@@ -66,6 +68,10 @@ define(["core/js/grid/JqGrid",
                             //设置隐藏属性
                             data[i].hidden = true;
                         }
+                    }
+                    //当有caption，但是没有label属性时，需要把把caption设置成label
+                    if(data[i].caption&&!data[i].label){
+                        data[i].label = data[i].caption;
                     }
                 }
                 this.colModel = data;

@@ -4,11 +4,10 @@
  * 编辑器有三类值：服务器端需要用的值（字符串格式），显示的值（字符串格式），值的对象格式（date，Array，自定义对象）
  * @date: 2013-08-12 下午1:59
  */
-define(["jquery",
-        "underscore",
+define([
         "core/js/CommonConstant",
         "core/js/controls/Control",
-    ], function ($, _, CommonConstant, Control) {
+    ], function (CommonConstant, Control) {
 
     var Editor = Control.extend({
         /**
@@ -267,7 +266,7 @@ define(["jquery",
         _init$InputAttrs: function(){
             this.set$InputAttr("name", this.name);
             //this.$input.css("width", this.width);
-            //this.$input.css("height", this.height);
+            this.$input.css("height", this.height);
 
             var that = this;
 
@@ -354,7 +353,7 @@ define(["jquery",
                 return;
             var isBoolean = typeof(value) == "boolean";
             //如果值为空，就把该属性移除
-            if ((!isBoolean && (value == null || value == "")) || (isBoolean && !value)) {
+            if ((!isBoolean && (value == null || value === "")) || (isBoolean && !value)) {
                 this.$input.removeAttr(key);
                 return;
             }
@@ -438,7 +437,7 @@ define(["jquery",
                 triggerEvent = false;
             //如果要求触发事件，但是前后值是一样的，就不触发
             var oldValue = this.value
-            if (triggerEvent && (oldValue == value || ((oldValue == null || oldValue == "") && (value == null || value == "")))) {
+            if (triggerEvent && (oldValue == value || ((oldValue == null || oldValue === "") && (value == null || value === "")))) {
                 triggerEvent = false;
             }
 
@@ -450,7 +449,8 @@ define(["jquery",
             //此处使用三个等号，是因为如果value为0时，会返回true add by 2014.06.10
             if(value === ""){
                 this.togglePlaceholder(true);   //显示提示信息
-                displayValue = this.placeholder;
+                //当内容为空时，也不显示提示信息，不然跟laydate的组件有冲突 20190528
+                // displayValue = this.placeholder;
                 needTranslate = false;
             }else{
                 if(this.$input)
@@ -536,7 +536,7 @@ define(["jquery",
                 value = this.getValue();
 
             //如果两者值为空，就直接返回false
-            if((defaultValue == null || defaultValue == "") && (value == null || value == ""))
+            if((defaultValue == null || defaultValue === "") && (value == null || value === ""))
                 return false;
 
             return defaultValue != value;
@@ -564,7 +564,7 @@ define(["jquery",
                 return;
 
             this.placeholder = placeholder;
-            if (this.value == null || this.value == "") {
+            if (this.value == null || this.value === "") {
                 //this.setDisplayValue(placeholder);
                 this.$input.attr("placeholder",this.placeholder);
                 this.$input.addClass("h-color-muted");    //添加提示的样式

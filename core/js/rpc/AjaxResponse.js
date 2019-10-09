@@ -6,7 +6,9 @@
  * @date: 2013-08-28 下午9:11
  */
 define(["core/js/Class",
-    "core/js/rpc/CompositeResponse","core/js/windows/Window"], function (Class, CompositeResponse,Window) {
+    "core/js/rpc/CompositeResponse","core/js/windows/Window",
+    "core/js/utils/ApplicationUtils"],
+    function (Class, CompositeResponse,Window,ApplicationUtils) {
     var AjaxResponse = Class.extend({
 
         transport: null,
@@ -80,11 +82,12 @@ define(["core/js/Class",
             return transport.responseText;
         },
         /**
-         * 获取错误的响应报文
+         * 获取系统级别的错误的响应报文,当前主要获取未登陆信息,
          * @param transport
          * @return {null}
          */
         getErrorResponse: function (transport) {
+
             return null;
         },
         /**
@@ -114,25 +117,27 @@ define(["core/js/Class",
          */
         _validateResponse: function (compositeResponse) {
 
-            if (compositeResponse.isSuccessful())
+            if (compositeResponse.isSuccessful()&&compositeResponse.getErrorResponse() == null)
                 return true;
             //$.window.closeProgressTip(null);   //关闭最近的正在处理的提示窗口 add  by mkc 2014.10.20
             var errorResponse = compositeResponse.getErrorResponse();
-            /*//系统尚未登陆的异常
+            //系统尚未登陆的异常
             if (errorResponse.isUnLogonException()) {
                 try{
                     //存储当前的URL，然后调转到登陆界面
                     var path = Backbone.history.location.hash;
-                    SessionContext.setRedirectFrom(path);
-                    SessionContext.clear();   //清除会话
-                    $.window.closeAll();     //关闭所有的弹出窗口 add by 2014.07.17
-                    Backbone.history.navigate('login', { trigger: true });
+                    var applicationContext = ApplicationUtils.getApplicationContext();
+                    applicationContext.setRedirectFrom(path);
+                    var application = applicationContext.getApplication();
+                    if(application){
+                        application.logoutSuc();
+                    }
                 }catch(e){
                 }finally{
                 };
                 return false;
             }
-            //拒绝访问，权限不足
+           /* //拒绝访问，权限不足
             if (errorResponse.isAccessDeniedException()) {
                 $.window.showErrorMsg("对不起，您的权限不足，无法访问！");
                 return false;

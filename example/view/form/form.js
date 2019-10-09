@@ -9,7 +9,7 @@ define(["core/js/form/BaseForm",
     function (BaseForm, Backbone, MessageBox, ApplicationContext,
               ApplicationUtils, ComponentFactory,Utils) {
         var View = BaseForm.extend({
-            $SUBMIT: "/member!save.action",
+            $SUBMIT: "/Member/save.action",
             paramPrefix: "editObj",
             title:"请完善您的个人信息",
             warnInfo:{

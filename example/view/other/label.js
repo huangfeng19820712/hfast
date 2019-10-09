@@ -21,6 +21,10 @@ define([
                 $container:this.$el,
                 themeClass:Label.ThemeClass.INFO,
                 text:"信息标签",
+                closeable:true,
+                onclose:function(event){
+                    this.destroy();
+                }
             });
             new Label({
                 $container:this.$el,

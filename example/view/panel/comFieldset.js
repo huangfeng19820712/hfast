@@ -68,7 +68,6 @@ define(["core/js/layout/FluidLayout",
                         {name: "", label: "test4"},
                         {name: "", label: "test5"},
                     ],
-                    $url: "/ssResult/getAll.action",
                     data: [
                         ["001","test2","test3","test4","test51"],
                         ["001","test2","test3","test4","test5"],

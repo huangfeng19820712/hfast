@@ -5,7 +5,7 @@
  * @author:
  * @date: 2013-08-29 上午9:06
  */
-define(["jquery", "core/js/rpc/AjaxResponse", "core/js/rpc/ErrorResponse"], function ($, AjaxResponse, ErrorResponse) {
+define(["core/js/rpc/AjaxResponse", "core/js/rpc/SimpleErrorResponse"], function ( AjaxResponse, SimpleErrorResponse) {
     var TextResponse = AjaxResponse.extend({
         /**
          * 将响应的报文（JSON格式的数据）转换成对象
@@ -40,7 +40,7 @@ define(["jquery", "core/js/rpc/AjaxResponse", "core/js/rpc/ErrorResponse"], func
          * @override
          */
         getErrorResponse: function (transport) {
-            return ErrorResponse.create(transport);
+            return SimpleErrorResponse.create(transport);
         }
     });
 

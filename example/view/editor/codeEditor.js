@@ -16,6 +16,7 @@ define([
             mainRegion:{
                 comXtype:$Component.CODEEDITOR,
                 comConf:{
+                    mode:$cons.CodeEditorMode.javascript,
                     onrender:function(event){
                         var applicationContext = ApplicationUtils.getApplicationContext();
                         var ajaxClient = applicationContext.getAjaxClient();
@@ -29,28 +30,47 @@ define([
                     },
                 }
             },
-            footerRegion: {
-                comXtype: $Component.TOOLSTRIP,
-                comConf: {
-                    /*Panel的配置项 start*/
-                    textAlign: $TextAlign.RIGHT,
-                    itemOptions: [{
-                        text: "确定",
-                        onclick: function (e) {
 
+            beforeInitializeHandle:function(){
+                this.footerRegion = {
+                    comXtype: $Component.TOOLSTRIP,
+                        comConf: {
+                        /*Panel的配置项 start*/
+                        textAlign: $TextAlign.RIGHT,
+                            itemOptions: [{
+                            text: "json",
+                            onclick: $.proxy(this.jsonCode,this)/*function (e) {
+                             console.info(">>");
+                             /!*ajaxClient.buildClientRequest("/core/js/utils/ApplicationUtils.js")
+                             .get(function (compositeResponse) {
+                             var obj = compositeResponse.getSuccessResponse();
+                             if (obj) {
+                             var codeEditor =  that.getParent().getParent().getMainRegionRef().comRef;
+                             //codeEditor.setValue(obj);
+                             }
+                             },false, TextResponse);*!/
+                             }*/
+                        }]
+                        /*Panel 配置 End*/
+                    }
+                };
+            },
 
-                            /*ajaxClient.buildClientRequest("/core/js/utils/ApplicationUtils.js")
-                                .get(function (compositeResponse) {
-                                    var obj = compositeResponse.getSuccessResponse();
-                                    if (obj) {
-                                        var codeEditor =  that.getParent().getParent().getMainRegionRef().comRef;
-                                        //codeEditor.setValue(obj);
-                                    }
-                                },false, TextResponse);*/
-                        }
-                    }]
-                    /*Panel 配置 End*/
-                }
+            getEditor:function(){
+                return this.getMainRegionRef().getComRef();
+            },
+
+            jsonCode:function(){
+                var applicationContext = ApplicationUtils.getApplicationContext();
+                var ajaxClient = applicationContext.getAjaxClient();
+                var that =this;
+                ajaxClient.buildClientRequest("/demo/view/editor/codeEditor.json").get(function (compositeResponse) {
+                    var obj = compositeResponse.getSuccessResponse();
+                    if (obj) {
+                        that.getEditor().setValue(obj);
+                        that.getEditor().format();
+                    }
+                },false, TextResponse);
             },
 
             close: function () {

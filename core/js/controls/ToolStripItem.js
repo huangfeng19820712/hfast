@@ -5,12 +5,11 @@
  *
  * @date: 2013-09-03 下午2:50
  */
-define(["jquery",
-    "underscore",
+define([
     "core/js/CommonConstant",
     "core/js/controls/Control",
     "ladda"
-], function ($, _, CommonConstant, Control) {
+], function (CommonConstant, Control) {
     var ToolStripItem = Control.extend({
         xtype:$Component.TOOLSTRIPITEM,
         eTag: "<a />",
@@ -408,7 +407,7 @@ define(["jquery",
         "WARNING":"btn-warning",
         "DANGER":"btn-danger",
         "LINK":"btn-link",
-        "CANCEL":"btn-u-default",
+        "CANCEL":"btn-default",
         "CHECKBOX":"btn-checkbox",
     }
 

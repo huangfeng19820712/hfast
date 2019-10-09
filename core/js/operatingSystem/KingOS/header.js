@@ -8,7 +8,7 @@ define(["core/js/controls/Control",
     function (Control, Backbone, temple,ApplicationContext,ApplicationUtils) {
         var View = Control.extend({
             xtype: $KingCons.xtype.HEADER,
-            $LOGOUT:"/AppAuthentication!logout.action",
+            $LOGOUT:"/AppAuthentication/logout.action",
             ajaxClient:ApplicationContext.getAjaxClient(),
             $container: null,
             menu:null,

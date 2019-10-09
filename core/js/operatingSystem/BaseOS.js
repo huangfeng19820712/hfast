@@ -77,6 +77,9 @@ define(["core/js/layout/Container"
         getMenu: function () {
             return this.menu;
         },
+        getSlideBar:function(){
+            return this.slideBar;
+        },
         close: function () {
             this.mainRegion = null;
             this.mainRegionConf = null;

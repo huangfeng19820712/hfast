@@ -2,11 +2,11 @@
  * 胶囊布局，雷士TabLayout
  * @author:   * @date: 2016/3/2
  */
-define(["jquery",
+define([
     "core/js/CommonConstant",
     "core/js/layout/Container",
     "core/js/layout/TabLayout"
-], function ($, CommonConstant, Container) {
+], function (CommonConstant, Container) {
     var PillLayout = Container.extend({
         xtype:$Component.TABLAYOUT,
         /**

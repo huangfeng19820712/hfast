@@ -2,12 +2,12 @@
  * @module 手风琴布局
  * @author:   * @date: 2015/12/15
  */
-define(["jquery",
+define([
     "core/js/CommonConstant",
     "core/js/layout/Container",
     "text!core/resources/tmpl/Accordion.html",
     "jquery.layout"
-], function ($, CommonConstant, Container,LayoutTemplate) {
+], function ( CommonConstant, Container,LayoutTemplate) {
     var Accordion = Container.extend({
         xtype:$Component.ACCORDION,
         className:"panel-group",

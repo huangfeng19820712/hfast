@@ -53,7 +53,7 @@ define([
                 cancel: options["cancel"],
                 quickClose: options["quickClose"] == null ? false : options["quickClose"],
                 align: options["align"],
-                title: $i18n.alertLabel,
+                title:options["title"] ||$i18n.alertLabel,
                 icon: options["icon"] || "h-icon-xl h-icon-info-xl",
                 duration: options["duration"],
                 lock: options["lock"] == null ? true : options["lock"],
@@ -115,6 +115,18 @@ define([
             };
             $.window.showMessage(msg,confirmOpts);
         };
+        /**
+         * 弹出一个模态对话框。
+         *
+         * @param {Object} msg    [必填]确认的内容
+         * @param {Object} options [可选]配置参数，json格式，可配置的信息说明如下：
+         * <pre>
+         *        title：    确认信息的标题(默认为：提示信息)
+         *        buttons：  按钮的参数
+         *        width：    弹窗的宽
+         *        onhidden:    关闭事件触发的函数
+         * </pre>
+         */
         $.window.showMessage = function(msg,options){
             var modalDialog = $.window.getActive();
             modalDialog.setTitle(options.title||$i18n.alertLabel);
@@ -136,6 +148,8 @@ define([
                 modalDialog.hideFooter();
             }
             modalDialog.show();
+            modalDialog.off("hidden");
+            modalDialog.on("hidden", options.onhidden);
         };
         $.window.alertError = function(){
             $.window.alert("系统异常，请与管理员联系！");

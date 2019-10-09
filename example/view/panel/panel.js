@@ -94,7 +94,19 @@ define(["core/js/layout/FluidLayout",
                     }
                 }
             }
-        })
+        });
+        items.push({
+            comXtype:$Component.PANEL,
+            comConf: {
+                title: "测试1",
+                height: 300,
+                theme: $Theme.BLUE,
+                help: "内容1",
+                brief: "摘要1",
+                mainRegion: "aaaa",
+                isShowHeaderRightRegion:false
+            }
+        });
 
 
         var view = FluidLayout.extend({

@@ -2,13 +2,12 @@
  * @author:   * @date: 2015/9/5
  */
 
-define(["jquery",
-    "underscore",
+define([
     "core/js/Component",
     "core/js/utils/Log",
     'text!/core/js/windows/templates/ModalDialog.html',
     "bootstrap",
-], function ($, _, MXComponent , Log,tmpl) {
+], function (MXComponent , Log,tmpl) {
     var ModalDialog = MXComponent.extend({
         /**
          * 模态对话框的dom对象

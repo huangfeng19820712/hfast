@@ -2,14 +2,15 @@
  * @author:   * @date: 2015/12/29
  */
 define(["core/js/base/BaseView",
-        "backbone",
+        "core/js/utils/PathUtils",
         "core/js/controls/Button", "core/js/windows/Window",
         "core/js/CommonConstant", "core/js/controls/ToolStrip",
         "core/js/controls/ToolStripItem",
         "core/js/CommonConstant",
         "core/js/controls/HelpLink",
         "core/js/utils/Utils","core/js/layout/DropDownContainer","core/js/view/Region","core/js/layout/Panel"],
-    function (BaseView, Backbone, Button, Window, CommonConstant, ToolStrip,
+    function (BaseView, PathUtils,
+              Button, Window, CommonConstant, ToolStrip,
               ToolStripItem,
               CommonConstant,
               HelpLink,
@@ -49,6 +50,11 @@ define(["core/js/base/BaseView",
                         title:'测试1',
                         onclick: function () {
                             $.window.alert("测试1");
+                            console.info(PathUtils.parseCurrentExecutionScript());
+                            console.info(PathUtils.getCurrentExecutionScriptModuleName());
+                            console.info(PathUtils.getCurrentExecutionScriptDirectory());
+                            console.info(PathUtils.getCurrentExecutionScriptFileName());
+
                         }
                     },{
                         text: "confirm",

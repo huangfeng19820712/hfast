@@ -23,7 +23,8 @@ define([
                                 label:"时间",
                                 mode:$cons.LayDateMode.date,
                                 placeholder:"日期格式",
-                                pluginConf:{
+                                //value:"2017-08-15",
+                                /*pluginConf:{
                                     done: function(value, date, endDate){
                                         if(date.year === 2017 && date.month === 8 && date.date === 15){ //点击2017年8月15日，弹出提示语
                                             ins1.hint('中国人民抗日战争胜利72周年');
@@ -34,7 +35,21 @@ define([
                                         //ins1.hint(value); //在控件上弹出value值
                                         console.info(">change>>"+value);
                                     },
-                                }
+                                }*/
+                            }
+                        } ,
+                        footerRegion: {
+                            comXtype: $Component.TOOLSTRIP,
+                            textAlign: $TextAlign.RIGHT,
+                            comConf: {
+                                /*Panel的配置项 start*/
+                                itemOptions: [{
+                                    text: "取值",
+                                    onclick: function () {
+                                        console.info(this.parent.parent.getMainRegionRef().getComRef().getValue());
+                                    }
+                                }]
+                                /*Panel 配置 End*/
                             }
                         }
                     })

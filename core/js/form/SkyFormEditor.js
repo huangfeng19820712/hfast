@@ -7,7 +7,7 @@ define(["jquery",
     "core/js/layout/Fieldset", "core/js/utils/Utils"
 ], function ($, _, AbstractFormEditor, Fieldset) {
     var SkyFormEditor = AbstractFormEditor.extend({
-        eTag:"<form/>",
+        eTag:"<form onsubmit='return false'/>",
         xtype: $Component.SKYFORMEDITOR,
         /**
          * {Array}实体表单上的面板信息,没有groups时，所有的fields都在一个默认的group中
@@ -189,7 +189,7 @@ define(["jquery",
          */
         getFieldset:function(index){
             //var group = this.groups[index];
-            var id = this._indexIdMap(index);
+            var id = this._indexIdMap[index];
             return  this._groupMap[id];
         },
         /**
@@ -269,7 +269,18 @@ define(["jquery",
 
             return new Fieldset(fieldsetConfig);
         },
-
+        /**
+         * 添加字段
+         * @param fields    字段信息
+         * @param index     在第几个面板显示
+         */
+        addFields:function(fields,index){
+            var fieldset = this.getFieldset(index);
+            this.handleHiddenFields(fields);
+            var withoutHiddenFields = this.getWithoutHiddenFields(fields);
+            var fieldObjs = fieldset.addFields(withoutHiddenFields);
+            this._editors = _.extend(this._editors?this._editors:{},fieldObjs);
+        },
 
         /**
          * 向表单中追加分组

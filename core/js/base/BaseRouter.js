@@ -1,6 +1,11 @@
 /**
  * @module 路由器的基类[BaseRouter]
  * @description 路由器的基类：主要是在路由回调函数执行之前和之后注入相应的事件
+ * 路径主要是显示可以可视化的js的内容，可视化的js默认都是放在view下面，所以具体的路径有下面几种模式:
+ * 1.显示是本模块的页面，直接传入view后面的路径，完整路径是应用+/view/+具体的显示页面；app/view/test.js,
+ *   只要传入test
+ * 2.显示其他模块的页面，如当前应用是app，要显示demo应用下面view/play.js的页面时，
+ *   传入方式是：$demo/view/play
  *
  * @author:
  * @date:
@@ -65,6 +70,12 @@ define(["underscore",
             }*/
             //初始化allPassAction
             this.allValidAction = this.localValidAction;
+        },
+        /**
+         * 启动路由
+         */
+        start:function(){
+            Backbone.history.start();   //启动Backbone的路由
         },
         /**
          * 加载所有的子路由
@@ -280,7 +291,17 @@ define(["underscore",
          * @param param     {Object}    传给路径的参数
          */
         showContent:function(routeUrl,param,showRegion){
-            var url = CONFIG.currentModuleName+"/view/" + routeUrl;
+            //路径有两种模式，需要处理
+            var url = null;
+            if(routeUrl.startsWith("$")){
+                //完整模式
+                url = routeUrl.replace("$","");
+            }else{
+                //缺省模式
+                url = CONFIG.currentModuleName+"/view/" + routeUrl;
+            }
+
+
             this.getMainRegion(showRegion).show(url, param);
         },
         /**
@@ -315,8 +336,34 @@ define(["underscore",
          */
         getAllValidAction:function(){
             return this.allValidAction;
+        },
+        getPost: function (id) {
+            alert(id);
+        },
+        defaultRoute: function (actions) {
+            alert(actions);
+        },
+        downloadFile: function (path) {
+            alert(path); // user/images/hey.gif
+        },
+        loadView: function (route, action) {
+            alert(route + "_" + action); // dashboard_graph
+        },
+        faultAction: function (actions) {
+            var route = null;
+            if (arguments.length > 0) {
+                route = arguments[arguments.length - 1][0];
+            }
+            if(this.isActiveResAuthMode){
+                if (_.contains(this.getAllValidAction(), route)) {
+                    this.doAction.apply(this, arguments[arguments.length - 1]);
+                } else {
+                    this.getMainRegion().showException("您没有访问此路径[" + route + "]的权限!");
+                }
+            }else{
+                this.doAction.apply(this, arguments[arguments.length - 1]);
+            }
         }
-
     });
     return BaseRouter;
 });

@@ -2219,7 +2219,7 @@ i.icon-bg-light-grey {
   float: right;
 }
 
-@media (max-width: 768px){
+/*@media (max-width: 768px){
   .content-boxes-v3.content-boxes-v3-right {
     text-align: inherit;
   }
@@ -2228,7 +2228,7 @@ i.icon-bg-light-grey {
     float: left;
     margin-left: 0;
   }
-}
+}*/
 
 /*Content Boxes v4*/
 .content-boxes-v4 h2 {

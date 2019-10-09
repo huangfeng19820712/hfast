@@ -7,7 +7,7 @@
  * @author:
  * @date: 2013-08-14 上午9:29
  */
-define(["jquery", "core/js/Observable", "core/js/utils/Log"], function ($, Observable, Log) {
+define(["core/js/Observable", "core/js/utils/Log"], function (Observable, Log) {
     /**
      * @class
      * @extends {Observable}

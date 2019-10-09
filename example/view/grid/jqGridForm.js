@@ -44,7 +44,7 @@ define([
                         { label: 'Amount', name: 'amount',editable:true, width: 80 },
                         { label: 'Tax', name: 'tax',editable:true, width: 80 },
                         { label: 'Total', name: 'total',editable:true, width: 80 },
-                        { label: '说明', name: 'remark',
+                        { label: '说明', name: 'remark', search:false,editable:false,
                             formatterComConf:function(rowData){
                                 if(rowData.id>5){
                                     return {
@@ -69,7 +69,7 @@ define([
                                             /*Panel 配置 End*/
                                         }
                                     };
-                                }else{
+                                }else if(rowData.id<3){
                                     return {
                                         comXtype:$Component.TOOLSTRIP,
                                         comConf:{
@@ -102,11 +102,14 @@ define([
                                             /*Panel 配置 End*/
                                         }
                                     };
+                                }else{
+                                    return ;
                                 }
                             }},
                         { label: 'Notes',
                             name: 'note',
                             editable:false,
+                            search:false,
                             formatterComConf:{
                                 comXtype:$Component.TOOLSTRIP,
                                 comConf:{

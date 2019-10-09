@@ -2,8 +2,8 @@
  * @author:
  * @date: 15-1-9
  */
-define([ "jquery", "kendo"],
-		function($,kendo,template) {
+define([  "kendo"],
+		function(kendo,template) {
 			var tree = {
 				menuTree : function(el) {
 					homogeneous = new kendo.data.HierarchicalDataSource({

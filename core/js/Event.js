@@ -5,7 +5,7 @@
  * @author:
  * @date: 2013-08-13 下午5:06
  */
-define(["jquery", "underscore", "core/js/Class"], function ($, _, Class) {
+define([ "core/js/Class"], function (Class) {
     var Event = Class.extend({
         /**
          * 获取监听事件的方法集合。请使用 {@link addEventListener}、{@link insertEventListener} 或

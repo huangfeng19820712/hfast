@@ -2,11 +2,21 @@
  * @author:
  * @date: 15-1-9
  */
+/**
+ * 整个框架的入口文件，首先加载global，然后global会自动加载require框架
+ */
 //如果父窗口已经定义了该变量，就使用父窗口的，保证sharedInstance对于整个应用是唯一的
 if (typeof(parent.sharedInstance) == 'undefined')
     sharedInstance = {};
 else
     sharedInstance = parent.sharedInstance;
+
+//String添加startsWith功能
+if (typeof String.prototype.startsWith != 'function') {
+    String.prototype.startsWith = function (prefix){
+        return this.slice(0, prefix.length) === prefix;
+    };
+}
 
 
 $global = {};
@@ -34,7 +44,7 @@ $global.constants = {
      */
     moduleVersion: {
         jquery: '1.9.1',
-        require: '2.1.11',
+        require: '2.3.6',
         kendo: '2014.3.1119',
         artDialog: '6.0.2',
         underscore: '1.8.2',
@@ -86,6 +96,8 @@ $global.constants = {
         'store':'1.3.9',
         'laydate':'5.0.9',
         'jquery.contextMenu':'2.6.4',
+        'currentExecutingScript':'0.1.3',
+        'pnotify':'3.2',
         'flowplayer':'3.2.13'
     },
     /**
@@ -150,13 +162,13 @@ $global.constants = {
         BROWN:"brown",
         "DARK-BLUE":"dark-blue",
         "LIGHT-GREEN":"light-green",
-        "DEFAULT-DARK":"default-dark",
+        "DEFAULT-DARK":"default-dark"
     },
     rounded: {
         ROUNDED: "rounded",
         ROUNDED_2X: "rounded-2x",
         ROUNDED_3X: "rounded-3x",
-        ROUNDED_4X: "rounded-4x",
+        ROUNDED_4X: "rounded-4x"
     },
     fluidLayoutClassnamePre: "col-md-",
     column: {
@@ -171,7 +183,7 @@ $global.constants = {
         COL_MD_9: "col-md-9",
         COL_MD_10: "col-md-10",
         COL_MD_11: "col-md-11",
-        COL_MD_12: "col-md-12",
+        COL_MD_12: "col-md-12"
     },
     textAlign: {
         CENTER: "text-center",
@@ -190,7 +202,7 @@ $global.constants = {
         TOP_LEFT: "sky-tabs-pos-top-left",
         TOP_JUSTIFY: "sky-tabs-pos-top-justify",
         LEFT: "sky-tabs-pos-left",
-        RIGHT: "sky-tabs-pos-right",
+        RIGHT: "sky-tabs-pos-right"
     },
     /**
      * tab的显示模式
@@ -205,7 +217,7 @@ $global.constants = {
     /* tab end*/
     float: {
         RIGHT: "pull-right",
-        LEFT: "pull-left",
+        LEFT: "pull-left"
     },
     template: {
         /**
@@ -213,7 +225,7 @@ $global.constants = {
          */
         Button: {
             //DEFAULT: '<button class="btn rounded <%=className%>" type="button"><%=text%></button>',
-            DEFAULT: '<button id="<%=data.id%>" <%if(data.title){%>title="<%=data.title%>"<%}%>  <%if(data.isToggle){%>data-toggle="button"<%}%> autocomplete="off" type="button"><i class="<%=data.iconPrefix%> <%=data.iconSkin%>"></i><%if(data.text){%><span class="<%if(data.iconSkin){%>btnpl3<%}%>"><%=data.text%></span><%}%></button>',
+            DEFAULT: '<button id="<%=data.id%>" <%if(data.title){%>title="<%=data.title%>"<%}%>  <%if(data.isToggle){%>data-toggle="button"<%}%> autocomplete="off" type="button"><i class="<%=data.iconPrefix%> <%=data.iconSkin%>"></i><%if(data.text){%><span class="<%if(data.iconSkin){%>btnpl3<%}%>"><%=data.text%></span><%}%></button>'
         },
         Input: {
             DEFAULT: '<input type="text" class="form-control" /><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>',
@@ -225,13 +237,13 @@ $global.constants = {
             CHECKBOX: '<input type="checkbox" class="form-control" checked />'
         },
         Grid: {
-            DEFAULT: '<table><thead/><tbody/></table>',
+            DEFAULT: '<table><thead/><tbody/></table>'
         },
         List: {
-            DEFAULT: '<div href="#" id="<%=data.id%>" class="list-group-item"><%if(data.badge){%><span class="badge"><%=data.badge%></span><%}%><%=data.content%></div>',
+            DEFAULT: '<div href="#" id="<%=data.id%>" class="list-group-item"><%if(data.badge){%><span class="badge"><%=data.badge%></span><%}%><%=data.content%></div>'
         },
         Link: {
-            DEFAULT: '<a href="javascript:void(0)" <%if(data.title){%>title="<%=data.title%>"<%}%> class="btn-borderless"><i class="<%=data.iconPrefix%> <%=data.iconSkin%>"></i><%if(data.text){%><span class="<%if(data.iconSkin){%>btnpl3<%}%>"><%=data.text%></span><%}%></a>',
+            DEFAULT: '<a href="javascript:void(0)" <%if(data.title){%>title="<%=data.title%>"<%}%> class="btn-borderless"><i class="<%=data.iconPrefix%> <%=data.iconSkin%>"></i><%if(data.text){%><span class="<%if(data.iconSkin){%>btnpl3<%}%>"><%=data.text%></span><%}%></a>'
         },
         Tooltip: {
             //DEFAULT:'<div class="tooltip <%=data.align%>" role=""><div class="tooltip-arrow"></div> <div class="tooltip-inner"> <%=data.text%> </div> </div>'
@@ -263,7 +275,13 @@ $global.constants = {
             SQUARE: "Square",
             FLAT: "Flat",
             LINE: "Line",
-            MINIMAL: "Minimal",
+            MINIMAL: "Minimal"
+        }
+    },
+    JqGrid:{
+        formModel:{
+            "default":"default",
+            "skyForm":"skyForm"
         }
     },
     mount: {
@@ -275,6 +293,10 @@ $global.constants = {
              */
             none:"none"
         }
+    },
+    CodeEditorMode:{
+        javascript:"javascript",
+        json:"application/json"
     },
     /**
      * 主要在浏览器端，区别组件、合成组件、容器、控制器等组件内容
@@ -335,7 +357,7 @@ $global.constants = {
         },
         MODEL:{
             name:"model",
-            label:"模型",
+            label:"模型"
         },
         /**
          * 其他组件
@@ -347,7 +369,7 @@ $global.constants = {
     },
     EditorLayoutMode:{
         VERTICAL:"vertical",
-        HORIZONTAL:"horizontal",
+        HORIZONTAL:"horizontal"
     },
     DateEditorMode : {
         INPUT:"Input",
@@ -362,35 +384,52 @@ $global.constants = {
     LayDateMode:{
         year:{
             type:"year",
-            format:"yyyy年",
+            format:"yyyy年"
         },
         month:{
             type:"month",
-            format:"yyyy年MM月",
+            format:"yyyy年MM月"
         },
         date:{
             type:"date",
-            format:"yyyy年MM月dd日",
+            format:"yyyy年MM月dd日"
         },
         time:{
             type:"time",
-            format:"H点M分",
+            format:"H点M分"
         },
         datetime:{
             type:"datetime",
-            format:"yyyy年M月d日H时m分s秒",
+            format:"yyyy年M月d日H时m分s秒"
         }
     },
     PaginationMode:{
         SIMPLE:"simple",
         FULL:"full"
+    },
+    MCustomScrollbarConf:{
+        theme: "minimal-dark",
+        autoExpandScrollbar: true,
+        advanced: {autoExpandHorizontalScroll: true}
     }
 };
 $cons = $global.constants;
+/**
+ * 组件定义信息
+ * @type {{BASEVIEW: {name: string, src: string}, BASEGRID: {name: string, src: string}, REGION: {name: string, src: string}, SKYFORMEDITOR: {name: string, label: string, src: string, type: ($global.constants.componentType.FORM|{name, label})}, NAVFORMEDITOR: {name: string, label: string, src: string, type: ($global.constants.componentType.FORM|{name, label})}, CONTAINER: {name: string, src: string}, CONTROL: {name: string, src: string}, PORTFOLIOBOX: {name: string, src: string}, DATEFILTER: {name: string, src: string, label: string, type: ($global.constants.componentType.FILTER|{name, label})}, DATETIMEFILTER: {name: string, src: string, label: string, type: ($global.constants.componentType.FILTER|{name, label})}, TOUCHSPINFILTER: {name: string, src: string, label: string, type: ($global.constants.componentType.FILTER|{name, label})}, TEXTEDITOR: {name: string, src: string, label: string, type: ($global.constants.componentType.EDITOR|{name, label})}, HTMLEDITOR: {name: string, src: string, label: string, type: ($global.constants.componentType.EDITOR|{name, label})}, DATEEDITOR: {name: string, src: string, label: string, type: ($global.constants.componentType.EDITOR|{name, label})}, DATETIMEEDITOR: {name: string, label: string, src: string, type: ($global.constants.componentType.EDITOR|{name, label})}, LAYDATEEDITOR: {name: string, label: string, src: string, type: ($global.constants.componentType.EDITOR|{name, label})}, SWITCHEDITOR: {name: string, label: string, src: string, type: ($global.constants.componentType.EDITOR|{name, label})}, CHECKBOXEDITOR: {name: string, label: string, src: string, type: ($global.constants.componentType.EDITOR|{name, label})}, TOUCHSPINEDITOR: {name: string, label: string, src: string, type: ($global.constants.componentType.EDITOR|{name, label})}, AUTOCOMPLETEEDITOR: {name: string, label: string, src: string, type: ($global.constants.componentType.EDITOR|{name, label})}, SELECTEDITOR: {name: string, label: string, src: string, type: ($global.constants.componentType.EDITOR|{name, label})}, TAGSEDITOR: {name: string, label: string, src: string, type: ($global.constants.componentType.EDITOR|{name, label})}, CODEEDITOR: {name: string, label: string, src: string, type: ($global.constants.componentType.EDITOR|{name, label})}, FILEUPLOADEDITOR: {name: string, label: string, src: string, type: ($global.constants.componentType.EDITOR|{name, label})}, CHATEDITOR: {name: string, label: string, src: string, type: ($global.constants.componentType.EDITOR|{name, label})}, VIEWEDITOR: {name: string, label: string, src: string, type: ($global.constants.componentType.EDITOR|{name, label})}, DROPDOWNEDITOR: {name: string, label: string, src: string, type: ($global.constants.componentType.EDITOR|{name, label})}, THEMEEDITOR: {name: string, label: string, src: string, type: ($global.constants.componentType.EDITOR|{name, label})}, PANEL: {name: string, label: string, src: string, type: ($global.constants.componentType.CONTAINER|{name, label})}, FIELDSET: {name: string, label: string, src: string, type: ($global.constants.componentType.CONTAINER|{name, label})}, FORMPANEL: {name: string, label: string, src: string, type: ($global.constants.componentType.CONTAINER|{name, label})}, FLUIDLAYOUT: {name: string, label: string, src: string, type: ($global.constants.componentType.CONTAINER|{name, label})}, BORDERLAYOUT: {name: string, label: string, src: string, type: ($global.constants.componentType.CONTAINER|{name, label})}, SIMPLELAYOUT: {name: string, label: string, src: string, type: ($global.constants.componentType.CONTAINER|{name, label})}, ACCORDION: {name: string, label: string, src: string, type: ($global.constants.componentType.CONTAINER|{name, label})}, TABLAYOUT: {name: string, label: string, src: string, type: ($global.constants.componentType.CONTAINER|{name, label})}, PARALLAXLAYOUT: {name: string, label: string, src: string, type: ($global.constants.componentType.CONTAINER|{name, label})}, PILLLAYOUT: {name: string, label: string, src: string, type: ($global.constants.componentType.CONTAINER|{name, label})}, NAVIGATION: {name: string, label: string, src: string, type: ($global.constants.componentType.CONTAINER|{name, label})}, NAVIGATIONBAR: {name: string, label: string, src: string, type: ($global.constants.componentType.CONTAINER|{name, label})}, DROPDOWNCONTAINER: {name: string, label: string, src: string, type: ($global.constants.componentType.CONTAINER|{name, label})}, LIST: {name: string, label: string, src: string, type: ($global.constants.componentType.GRID|{name, label})}, CHATLIST: {name: string, label: string, src: string, type: ($global.constants.componentType.GRID|{name, label})}, SHORTCUTLIST: {name: string, label: string, src: string, type: ($global.constants.componentType.GRID|{name, label})}, BOOTSTRAPGRID: {name: string, label: string, src: string, type: ($global.constants.componentType.GRID|{name, label})}, JQGRID: {name: string, label: string, src: string, type: ($global.constants.componentType.GRID|{name, label})}, PAGINATION: {name: string, label: string, src: string, type: ($global.constants.componentType.GRID|{name, label})}, SPINLOADER: {name: string, label: string, src: string}, TOOLSTRIP: {name: string, label: string, src: string}, TOOLSTRIPITEM: {name: string, label: string, src: string}, MENU: {name: string, label: string, src: string}, DROPDOWNBUTTON: {name: string, label: string, src: string}, DROPDOWNMENU: {name: string, label: string, src: string}, FILEDOWNLOADITEM: {name: string, label: string, src: string}, TOOLTIPLABEL: {name: string, src: string}, PLAYER: {name: string, label: string, src: string}, ICON: {name: string, label: string, src: string}, ECHART: {name: string, label: string, src: string}, LABEL: {name: string, label: string, src: string}, CHATBOX: {name: string, label: string, src: string, floatMode: {right: string}}, EDITWRAP: {name: string, label: string, src: string}, TREE: {name: string, label: string, src: string}, SWITCHER: {name: string, label: string, src: string}, BREADCRUMBS: {name: string, label: string, src: string}, CONTROLTHEME: {name: string, label: string, src: string}, TREEMODEL: {name: string, label: string, src: string}, SELECTEDTREEMODEL: {name: string, label: string, src: string}, PAGEMODEL: {name: string, label: string, src: string}}}
+ */
 $Component = $cons.component = {
     BASEVIEW: {
         name: "BaseView",
         src: "core/js/base/BaseView"
+    },
+    BASEGRID: {
+        name: "BaseGrid",
+        src: "core/js/biz/BaseGrid"
+    },
+    BASEWEBSOCKET: {
+        name: "BaseWebSocket",
+        src: "core/js/websocket/BaseWebSocket"
     },
     REGION: {
         name: "Region",
@@ -415,6 +454,10 @@ $Component = $cons.component = {
     CONTROL:{
         name: "Control",
         src: "core/js/controls/Control"
+    },
+    WINDOW:{
+        name:window,
+        src:"core/js/windows/Window"
     },
     /*===============media的过滤器组件start===========================*/
     PORTFOLIOBOX:{
@@ -452,7 +495,7 @@ $Component = $cons.component = {
     HTMLEDITOR: {
         name: "HtmlEditor",
         src: "core/js/editors/HtmlEditor",
-        label: "文本编辑器",
+        label: "HTML编辑器",
         type: $cons.componentType.EDITOR
     },
     DATEEDITOR: {
@@ -469,7 +512,7 @@ $Component = $cons.component = {
     },
     LAYDATEEDITOR: {
         name: "LayDateEditor",
-        label: "时间编辑器",
+        label: "Lay时间编辑器",
         src: "core/js/editors/LayDateEditor",
         type: $cons.componentType.EDITOR
     },
@@ -521,6 +564,12 @@ $Component = $cons.component = {
         src: "core/js/editors/FileUploadEditor",
         type: $cons.componentType.EDITOR
     },
+    CHATEDITOR: {
+        name: "ChatEditor",
+        label: "聊天编辑器",
+        src: "core/js/editors/ChatEditor",
+        type: $cons.componentType.EDITOR
+    },
     VIEWEDITOR: {
         name: "ViewEditor",
         label: "可视编辑器",
@@ -556,7 +605,7 @@ $Component = $cons.component = {
     },
     FORMPANEL: {
         name: "FormPanel",
-        label: "表单字段组件",
+        label: "表单面板组件",
         src: "core/js/form/FormPanel",
         type: $cons.componentType.CONTAINER
     },
@@ -596,6 +645,12 @@ $Component = $cons.component = {
         src: "core/js/layout/ParallaxLayout",
         type: $cons.componentType.CONTAINER
     },
+    CENTERLAYOUT: {
+        name: "CenterLayout",
+        label: "标签布局",
+        src: "core/js/layout/CenterLayout",
+        type: $cons.componentType.CONTAINER
+    },
     PILLLAYOUT: {
         name: "PillLayout",
         label: "药丸布局",
@@ -610,7 +665,7 @@ $Component = $cons.component = {
     },
     NAVIGATIONBAR: {
         name: "NavigationBar",
-        label: "导航条",
+        label: "导航面板",
         src: "core/js/navigation/NavigationBar",
         type: $cons.componentType.CONTAINER
     },
@@ -620,6 +675,12 @@ $Component = $cons.component = {
         src: "core/js/layout/DropDownContainer",
         type: $cons.componentType.CONTAINER
     },
+    VBOXLAYOUT: {
+        name: "VBoxLayout",
+        label: "垂直布局",
+        src: "core/js/layout/VBoxLayout",
+        type: $cons.componentType.CONTAINER
+    },
 
 
     /*===============列表组件==================*/
@@ -627,6 +688,18 @@ $Component = $cons.component = {
         name: "List",
         label: "列表组件",
         src: "core/js/list/List",
+        type: $cons.componentType.GRID
+    },
+    CHATLIST: {
+        name: "ChatList",
+        label: "聊天列表",
+        src: "core/js/list/ChatList",
+        type: $cons.componentType.GRID
+    },
+    CONTACTLIST: {
+        name: "ContactList",
+        label: "聊天列表",
+        src: "core/js/list/ContactList",
         type: $cons.componentType.GRID
     },
     SHORTCUTLIST: {
@@ -649,7 +722,7 @@ $Component = $cons.component = {
     },
     PAGINATION: {
         name: "Pagination",
-        label: "导航条组件",
+        label: "分页组件",
         src: "core/js/grid/Pagination",
         type: $cons.componentType.GRID
     },
@@ -687,7 +760,7 @@ $Component = $cons.component = {
     },
     DROPDOWNMENU: {
         name: "DropDownMenu",
-        label: "工具栏子项",
+        label: "工具栏下拉子项",
         src: "core/js/navigation/DropDownMenu"
     },
     FILEDOWNLOADITEM: {
@@ -719,6 +792,14 @@ $Component = $cons.component = {
         label: "标签组件",
         src: "core/js/controls/Label"
     },
+    CHATBOX: {
+        name: "ChatBox",
+        label: "标签组件",
+        src: "core/js/box/ChatBox",
+        floatMode:{
+            right:"content-boxes-v3-right"
+        }
+    },
     EDITWRAP: {
         name: "EditWrap",
         label: "编辑模式包",
@@ -731,12 +812,12 @@ $Component = $cons.component = {
     },
     SWITCHER: {
         name: "Switcher",
-        label: "树",
+        label: "切换按钮",
         src: "core/js/controls/Switcher"
     },
     BREADCRUMBS: {
         name: "Breadcrumbs",
-        label: "树",
+        label: "面包屑",
         src: "core/js/controls/Breadcrumbs"
     },
     CONTROLTHEME: {
@@ -749,6 +830,16 @@ $Component = $cons.component = {
         name:"TreeModel",
         label:"树模型",
         src:"core/js/model/TreeModel"
+    },
+    SELECTEDTREEMODEL:{
+        name:"SelectedTreeModel",
+        label:"包含选择项的树模型",
+        src:"core/js/model/SelectedTreeModel"
+    },
+    PAGEMODEL:{
+        name:"PageModel",
+        label:"分页模型",
+        src:"core/js/model/PageModel"
     }
     /*模型组件MODEL end*/
 };
@@ -760,10 +851,15 @@ $Column = $cons.column;
 $Rounded = $cons.rounded;
 $Theme = $cons.theme;
 $global.model = $cons.model.DEVELOP;
-$cons.cssSubfix = $global.model == $cons.model.DEVELOP ? ".min.css" : ".css";
+$cons.cssSubfix = $global.model == $cons.model.DEVELOP ?  ".css":".min.css";
 $Template = $cons.template;
+/**
+ * 国际化信息
+ * @type {{alertLabel: string, errorLabel: string, BTN_CONFIRM: string, BTN_CANCEL: string, HELP_LABEL: string, Message: {SUCCESS: string, DELETE_SUCCESS: string, form: {}}, BootstrapGrid: {showNumberLabel: string}}}
+ */
 $i18n = {
     "alertLabel": "消息提醒",
+    "errorLabel": "系统异常",
     "BTN_CONFIRM": "确定",
     "BTN_CANCEL": "取消",
     "HELP_LABEL": "帮助",
@@ -773,6 +869,18 @@ $i18n = {
         form:{
         }
     },
+    BootstrapGrid:{
+        showNumberLabel:"序号"
+    },
+    JqGrid:{
+        editLabel:"编辑",
+        addLabel:"添加",
+        deleteLabel:"删除",
+        detailLabel:"详情",
+        searchLabel:"查询",
+        refreshLabel:"刷新",
+        noneSelectWarn:"请选着记录！"
+    }
 }
 $utils = {
     getContextPath: function () {
@@ -823,8 +931,12 @@ $utils = {
     },
     getApplicationUtils:function(){
         return $global.app.getApplicationUtils();
-    },
+    }
 }
+/**
+ * 日志工具
+ * @type {{info: Function, debug: Function, error: Function, warn: Function, getCurrentDate: Function}}
+ */
 $Log = {
     info: function (s) {
         if (typeof console != "undefined") {
@@ -936,7 +1048,10 @@ $route = {
 
     }
 }
-
+/**
+ * 需要先加载此
+ * @type {{locale: string, layout: string, layoutSkin: string, theme: string, jsConfig: null, init: Function, _loadConf: Function, _getConfPath: Function, getCurrentParentPath: Function, _loadConfCallBack: Function, _initRequireConfig: Function, _loadCss: Function, _loadScript: Function, getJSConfig: Function}}
+ */
 $global.BaseFramework = {
     /**
      * 获取框架的国际化信息。
@@ -962,7 +1077,7 @@ $global.BaseFramework = {
          "/core/js/routeJs.js" + "'  src='" + $route.getAllJs("require") + "'></" + "script>");*/
         var mappingPath = "";
         var that = this;
-        this._loadScript(mappingPath + "/core/js/require-config.js", null, function () {   //加载require的配置信息
+        this._loadScript(mappingPath + this.getVersionUrl("/core/js/require-config.js"), null, function () {   //加载require的配置信息
             that._loadConf();   //加载平台配置文件
         })
     },
@@ -992,14 +1107,37 @@ $global.BaseFramework = {
      */
     _getConfPath: function () {
         var result = [this.getCurrentParentPath()];
-        /* var projectVersion = this.projectVersion;
-         if(projectVersion){
-         result.push(projectVersion);
-         }*/
         //默认
-        result.push("conf.js");
+        var projectVersion = this.getGlobalVersion();
+         // var projectVersion = this.projectVersion;
+         if(projectVersion){
+             result.push("conf.js?version="+projectVersion);
+         }else{
+             result.push("conf.js");
+         }
 
         return result.join("/");
+    },
+    getGlobalVersion:function(){
+        var jsArray = document.getElementsByTagName("script");
+        var src = jsArray[0].src;
+        var startIndex = src.lastIndexOf("?version=");
+        var result = null;
+        if(startIndex>0){
+            result = src.substring(startIndex+9);
+        }
+        return result;
+
+    },
+    /**
+     * 获取有版本信息的url
+     */
+    getVersionUrl:function(url){
+        var globalVersion = this.getGlobalVersion();
+        if(globalVersion){
+            url+="?version="+globalVersion
+        }
+        return url;
     },
     /**
      * 默认情况下conf文件都在请求文件的同一个目录下
@@ -1035,7 +1173,7 @@ $global.BaseFramework = {
 
         //如果非平台的模块，而是工程的项目，又没有指定工程版本，就报错
         if (!currentModuleName && !this.projectVersion) {
-            alert("请在工程配置文件[conf/euler-conf.properties,spring/<projectName>-web.xml]中指定工程的版本号[project.version]，否则系统无法使用！");
+            //alert("请在工程配置文件[conf/euler-conf.properties,spring/<projectName>-web.xml]中指定工程的版本号[project.version]，否则系统无法使用！");
             return;
         }
 
@@ -1057,7 +1195,7 @@ $global.BaseFramework = {
          this._initRequireConfig(currentModuleName, theme, layout, layoutSkin);*/
 
         //启动requireJS的入口文件
-        var entryPoint = jsConfig["entry"]["point"] || "/core/js/routeJs.js";  //启动文件，即按照requireJS的规范指定data-main属性值，即requireJS的入口点
+        var entryPoint = jsConfig["entry"]["point"] || this.getVersionUrl("/core/js/routeJs.js");  //启动文件，即按照requireJS的规范指定data-main属性值，即requireJS的入口点
         document.title = appCnName;
         this._loadScript($route.getAllJs("require"), {"data-main": entryPoint});
 
@@ -1188,7 +1326,7 @@ $ApricotCons = {
         "css!/core/js/operatingSystem/ApricotOS/js/tip/tooltipster.css",
         "css!/core/js/operatingSystem/ApricotOS/js/pace/themes/pace-theme-center-simple.css",
         "css!/core/js/operatingSystem/ApricotOS/js/slidebars/slidebars.css",
-        "css!/core/resources/styles/apricot.css",
+        "css!/core/resources/styles/apricot.css"
     ]
 };
 
@@ -1200,11 +1338,11 @@ $cache.core={
         name:"isSeviceLocal",
         label:"是否服务本地化",
         remark:"把服务器的服务，在客户端本地提供",
-        editorType:$Component.SWITCHEDITOR,
+        editorType:$Component.SWITCHEDITOR
     },
     controlColor:{
         name:"controlColor",
         label:"组件主题",
-        editorType:$Component.THEMEEDITOR,
+        editorType:$Component.THEMEEDITOR
     }
 };

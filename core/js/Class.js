@@ -8,7 +8,7 @@
  * MIT Licensed.
  */
 // Inspired by base2 and Prototype
-define(["jquery"], function ($) {
+define([], function () {
     var initializing = false, fnTest = /\b_super\b/;
 
     /**
@@ -30,7 +30,7 @@ define(["jquery"], function ($) {
                 return;
 
             key = $.trim(key);
-            if (key == "")
+            if (key === "")
                 return;
 
             options = {};

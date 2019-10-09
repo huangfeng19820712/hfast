@@ -2,7 +2,7 @@
  * @author:
  * @date: 15-1-9
  */
-define(["jquery", "kendo","core/js/windows/messageBox"], function ($,kendo,messageBox) {
+define(["kendo","core/js/windows/messageBox"], function (kendo,messageBox) {
 	var moduleName = "test";
 	// 在body中添加提示的span;
 	// $(document.body).append('<span id="popupNotification"></span>');

@@ -4,7 +4,7 @@
  *
  * @author:
  */
-define(["jquery", "core/js/view/Region"], function ($, Region) {
+define(["core/js/view/Region"], function ( Region) {
     var ContentRegion = Region.extend({
         /**
          * 显示区域的内容

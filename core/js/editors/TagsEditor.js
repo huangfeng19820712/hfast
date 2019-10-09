@@ -3,12 +3,11 @@
  * 使用bootstrap-tagsinput插件
  * http://bootstrap-tagsinput.github.io/bootstrap-tagsinput/examples/
  */
-define(["jquery",
-    "underscore",
+define([
     "core/js/CommonConstant",
     "core/js/editors/Editor",
     "bootstrap-tagsinput"
-], function ($, _, CommonConstant, Editor) {
+], function (CommonConstant, Editor) {
     var TagsEditor = Editor.extend({
         xtype: $Component.TAGSEDITOR,
         name: null,

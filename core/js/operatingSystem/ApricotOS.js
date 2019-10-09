@@ -336,6 +336,14 @@ define(_.union(["core/js/operatingSystem/BaseOS",
             });
         },
 
+        /**
+         * 获取菜单信息
+         * @returns {*}
+         */
+        getMenu: function () {
+            return this.getSlideBar().getMenuRef();
+        },
+
         close:function(){
             this.menuDates = null;
             this.defaultMenuDates = null;

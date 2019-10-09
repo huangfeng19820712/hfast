@@ -143,26 +143,35 @@ define(["core/js/Class", "core/js/Event"], function (Class, MXEvent) {
             return false;
         },
         /**
-         * 触发事件。
-         *
+         * 触发事件。在调用此方法后，此方法的上下文本对象
+         * 触发事件的第二个输入参数有4种情况：
+         * 1.触发事件是跟html触发的，主要通过jquery去触发，则args是jquery.Eventjquery的jquery的事件对象
+         * 2.如果是websocket，则是MessageEvent对象
+         * 3.自定的对象，则是args的本身
+         * 4.什么都不输入的时候
          * @param eventType 事件类型。
-         * @param args 事件参数。事件参数中默认有两个属性“target”和“type”，分别表示事件触发者和触发的事件类型。
+         * @param args 事件参数。如果是jquery.Event对象则参数中默认有两个属性“target”和“type”，分别表示事件触发者和触发的事件类型。
          */
         trigger: function (eventType, args) {
             var etype = "on" + eventType,
                 eventObject = this[etype];
-
-
             //不存在的话，默认代表触发成功
             if (typeof(eventObject) == "undefined" || eventObject == null)
                 return true;
 
             var e = {type:eventType,
                 target:this};
-            if (args){
-                e.jqEvent = args
+            if(args!=undefined){
+                if (args instanceof jQuery.Event){
+                    e.jqEvent = args
+                }else if(MessageEvent!=undefined&&(args instanceof MessageEvent)){
+                    //websocket
+                    e.messageEvent = args
+                }else{
+                    //当不是跟html交互而触发的事件时
+                    e = args;
+                }
             }
-
             var argArray = _.toArray(arguments);
             var eventObj = null;
             if(argArray.length>1){

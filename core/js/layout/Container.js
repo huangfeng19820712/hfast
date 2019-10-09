@@ -4,14 +4,13 @@
  *
  * @date: 2013-11-07 下午1:36
  */
-define(["jquery",
-    "core/js/CommonConstant",
+define(["core/js/CommonConstant",
     "core/js/view/Layout",
     "text!core/resources/tmpl/layout.html",
     "core/js/base/AbstractView",
     "core/js/utils/Utils",
     "core/js/utils/ApplicationUtils"
-], function ($, CommonConstant,
+], function ( CommonConstant,
              Layout,
              LayoutTemplate,
              AbstractView,
@@ -380,7 +379,7 @@ define(["jquery",
          */
         _setRegionsVisible: function (regionNames, isVisible) {
             regionNames = $.trim(regionNames);
-            if (regionNames == "")
+            if (regionNames === "")
                 return;
             var regionNameArray = regionNames.split(","), region, i;
             for (i = 0; i < regionNameArray.length; i++) {
@@ -420,7 +419,7 @@ define(["jquery",
                 region = item["region"],
                 result = item;
 
-            if (!id || id == "") {
+            if (!id || id === "") {
                 id = el && el.indexOf("#") == 0 ? el.substr(1) : null;
                 var preStr = region||"";
                 if(!id){
@@ -429,7 +428,7 @@ define(["jquery",
             }
 
             //此处不直接使用#id，是因为如果id是带有.的字符串（例如orderPanel.id_group）时，那么点后面的就被识别为className  add by 2014.4.12
-            if (!el || el == "")
+            if (!el || el === "")
                 result["el"] = ["[id='", id, "']"].join("");
 
             result["id"] = id;

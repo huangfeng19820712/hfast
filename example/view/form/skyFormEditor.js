@@ -9,6 +9,7 @@ define([
     function (Backbone,SkyFormEditor, TextEditor, Window) {
         var skyFormEditor = SkyFormEditor.extend({
             test:{text:1},
+            focusFirstEditorable:false,
             fields:[{
                 label:"时间",
                 name:"datetime",
@@ -29,6 +30,20 @@ define([
             },],
             groups:[{fields:["datetime","date"],},
                 {fields:["text","password"]},{
+                    comXtype:$Component.TOOLSTRIP,
+                    comConf:{
+                        itemOptions:[  {
+                            text:"test",
+                            onclick:function(event){
+                                var editor = this.parent.parent.parent;
+                                editor.getFieldset(2);
+                               console.info(event);
+                            }
+                        }
+
+                        ]
+                    }
+                },{
                     comXtype:$Component.BOOTSTRAPGRID,
                     comConf:{
                         thead: ["test1", "test2", "test3", "test4", "test5"],
@@ -48,7 +63,6 @@ define([
                             {name: "", label: "test4"},
                             {name: "", label: "test5"},
                         ],
-                        $url: "/ssResult/getAll.action",
                         data: [
                             ["001","test2","test3","test4","test51"],
                             ["001","test2","test3","test4","test5"],

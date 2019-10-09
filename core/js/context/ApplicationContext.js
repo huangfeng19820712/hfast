@@ -47,7 +47,7 @@ define([
         /**
          * 服务器端配置文件的url
          */
-        $CONF:"/conf!get.action",
+        $CONF:"/conf/get.action",
         /**
          * 设置设置当前的application实例
          */
@@ -88,7 +88,16 @@ define([
          */
         componentManager:null,
 
+        /**
+         * 全局的webSocket的对象
+         */
+        webSocket:null,
+
         localStorage: null,
+        /**
+         * 记录跳转的位置
+         */
+        redirectFrom:null,
 
         ctor: function($globalContext){
 
@@ -113,6 +122,17 @@ define([
         },
         getSessionUser:function(){
             return this.sessionUser;
+        },
+        /**
+         * 获取系统的用户Id信息
+         * @returns {*}
+         */
+        getUserId:function(){
+            if (this.sessionUser&&this.sessionUser.user) {
+                return this.sessionUser.user.id;
+            }else{
+                return;
+            }
         },
         setSessionUser:function(sessionUser){
             this.sessionUser = sessionUser;
@@ -273,7 +293,7 @@ define([
          * @param maxCount     该类型允许放置的最大记录数，默认是10
          */
         addToPersonHistory: function(historyType, ids, maxCount){
-            if (historyType == null || historyType == "" || ids == null || ids == "")
+            if (historyType == null || historyType === "" || ids == null || ids === "")
                 return;
             maxCount = maxCount || 10;
             var personHistoryTypeKey = this._getPersonHistoryTypeKey(historyType),
@@ -317,7 +337,7 @@ define([
             return this.getLocalStorage().get(key);
         },
         _getKey: function(key, ignorePrefix){
-            if(key == null || $.trim(key) == "")
+            if(key == null || $.trim(key) === "")
                 return null;
 
             key = $.trim(key);
@@ -344,6 +364,28 @@ define([
 
             return this.localStorage;
         },
+
+        /**
+         * 设置全局的webSocket
+         */
+        setWebSocket:function(webSocket){
+            this.webSocket = webSocket;
+        },
+        getWebSocket:function(){
+            return this.webSocket;
+        },
+        setRedirectFrom:function(redirectFrom){
+            this.redirectFrom = redirectFrom;
+        },
+        getRedirectFrom:function(){
+            return this.redirectFrom;
+        },
+        /**
+         * 清空session的信息，主要是sessionUser信息
+         */
+        clearSessionUser:function(){
+            this.sessionUser = null;
+        }
     });
 
     ApplicationContext.getInstance = function() {

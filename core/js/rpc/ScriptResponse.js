@@ -2,7 +2,7 @@
  * @module script响应对象[ScriptResponse]
  * @description script响应对象
  *
- * @author : chenw(chenw@hsit.com.cn)
+ * @author :
  * @date: 13-11-4
  */
 define(["jquery", "core/js/rpc/AjaxResponse", "core/js/rpc/ErrorResponse"], function ($, AjaxResponse, ErrorResponse) {

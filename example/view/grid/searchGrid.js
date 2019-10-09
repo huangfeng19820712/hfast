@@ -40,18 +40,17 @@ define([
                         label: "no.",
                         formatter: function (row) {
                             //获取最后三位数
-                            if(!row.periodNum){
+                            /*if(!row.periodNum){
                                 return null;
                             }else{
                                 return row.periodNum.substr(8,3);
-                            }
+                            }*/
                         },
                     }, {name: "result", label: "test2"},
                         {name: "", label: "test3"},
                         {name: "", label: "test4"},
                         {name: "", label: "test5"},
                     ],
-                    $url: "/ssResult/getAll.action",
                     oninitialized: function () {
                         //初始化data
                         var that = this;

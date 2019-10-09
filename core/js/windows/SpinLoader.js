@@ -70,7 +70,7 @@ define([
             this.$el.hide();
             return this;
         },
-        destory:function(){
+        destroy:function(){
             this.plugin = null;
             this._super();
         }

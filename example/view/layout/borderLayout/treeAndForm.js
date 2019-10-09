@@ -31,6 +31,7 @@ define(["core/js/layout/BorderLayout",
                     {
                         region: BorderLayout.Region.CENTER,  //中间区域
                         padding:0,
+                        autoScroll:true,
                         showOverflowOnHover:false,//鼠标移过显示被隐藏的，只在禁用滚动条时用。
                     }
                 ];

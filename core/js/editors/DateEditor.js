@@ -6,12 +6,11 @@
  *
  * @author:   * @date: 2016/1/14
  */
-define(["jquery",
-    "underscore",
+define([
     "core/js/CommonConstant",
     "core/js/editors/Editor",
     "bootstrap-datepicker.locale"
-], function ($, _, CommonConstant, Editor, Button) {
+], function (CommonConstant, Editor, Button) {
 
     var DateEditor = Editor.extend({
         xtype:$Component.DATEEDITOR,

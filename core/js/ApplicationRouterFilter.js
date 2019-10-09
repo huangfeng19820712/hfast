@@ -4,8 +4,8 @@
  * @author:
  * @date:
  */
-define(["jquery", "underscore", "core/js/Class","core/js/context/ApplicationContext",
-    "core/js/FrameworkConfAccessor"], function ($, _, Class,ApplicationContext,FrameworkConfAccessor) {
+define([ "core/js/Class","core/js/context/ApplicationContext",
+    "core/js/FrameworkConfAccessor"], function (Class,ApplicationContext,FrameworkConfAccessor) {
     var ApplicationRouterFilter = Class.extend({
         /**
          * 是否需要进行验证
@@ -36,13 +36,13 @@ define(["jquery", "underscore", "core/js/Class","core/js/context/ApplicationCont
          */
         addEscapedAuthUrl: function (escapedUrlStr) {
             var result = this.escapedAuth || [];
-            if (escapedUrlStr == null || escapedUrlStr == "")
+            if (escapedUrlStr == null || escapedUrlStr === "")
                 return result;
             var escapedUrlArray = escapedUrlStr.split(","),
                 escapedUrl;
             for (var i = 0, count = escapedUrlArray.length; i < count; i++) {
                 escapedUrl = $.trim(escapedUrlArray[i]);
-                if (escapedUrl == "")
+                if (escapedUrl === "")
                     continue;
                 result.push(escapedUrl);
             }
@@ -196,7 +196,7 @@ define(["jquery", "underscore", "core/js/Class","core/js/context/ApplicationCont
                 return false;
             var webContextPath = FrameworkConfAccessor.getAppName();
             pathName = pathName.replace(webContextPath, "");
-            return pathName == "" || pathName == "/" || pathName.indexOf("/index.html") != -1;
+            return pathName === "" || pathName == "/" || pathName.indexOf("/index.html") != -1;
         },
         ctor: function (options) {
             this.set(options);

@@ -66,10 +66,6 @@ define(["jquery",
             } else {
                 /******增加多种ajax报文的支持 (added by chenw at 2013.12.27)  *************/
                 switch (this._responseFormat) {
-                    case ResponseFormat.JSON :
-                    case ResponseFormat.JSONP :
-                        this.ajaxResponse = JsonResponse;
-                        break;
                     case ResponseFormat.SCRIPT :
                         this.ajaxResponse = ScriptResponse;
                         break;
@@ -77,7 +73,11 @@ define(["jquery",
                     case ResponseFormat.HTML :
                         this.ajaxResponse = AjaxResponse;
                         break;
+                    case ResponseFormat.JSON :
+                    case ResponseFormat.JSONP :
                     default :
+
+                        //调整默认是SimpleErrorResponse
                         this.ajaxResponse = JsonResponse;
                         break;
                 }

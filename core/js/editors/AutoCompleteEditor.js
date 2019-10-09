@@ -3,11 +3,10 @@
  * @description 自动补齐编辑器
  * @date: 2014-05-12 下午2:43
  */
-define(["jquery",
-    "underscore",
+define([
     "core/js/CommonConstant",
     "core/js/editors/Editor","bootstrap3-typeahead"
-], function ($, _, CommonConstant, Editor) {
+], function (CommonConstant, Editor) {
     var AutoCompleteEditor = Editor.extend({
         xtype: $Component.AUTOCOMPLETEEDITOR,
         name:null,

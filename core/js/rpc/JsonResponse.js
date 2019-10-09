@@ -6,8 +6,8 @@
  * @author:
  * @date: 2013-08-29 上午9:06
  */
-define(["jquery", "core/js/rpc/TextResponse", "core/js/rpc/ErrorResponse"],
-    function ($, TextResponse, ErrorResponse) {
+define(["core/js/rpc/TextResponse", "core/js/rpc/ErrorResponse"],
+    function ( TextResponse, ErrorResponse) {
     var JsonResponse = TextResponse.extend({
         /**
          * 将响应的报文（JSON格式的数据）转换成对象

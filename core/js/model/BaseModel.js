@@ -2,10 +2,10 @@
  * 集成Backbone的Model
  * @author:   * @date: 2016/4/5
  */
-define(["underscore",
-    "core/js/rpc/Action",
-    "backbone","core/js/windows/messageBox"
-], function (_, Action,Backbone,MessageBox) {
+define([
+    "core/js/rpc/Action","core/js/windows/messageBox",
+    "core/js/rpc/ResponseHandle"
+], function (Action,MessageBox,ResponseHandle) {
     /**
      * @class
      * @extends {Backbone.Model}
@@ -24,6 +24,11 @@ define(["underscore",
          */
         async: true,
         /**
+         * 直接请求的url路径
+         */
+        url:null,
+
+        /**
          * 命名空间
          */
         nameSpace:null,
@@ -34,6 +39,18 @@ define(["underscore",
 
         METHODNAME_GET:"get",
         METHODNAME_DELETE:"delete",
+        /**
+         * 删除成功的事件
+         */
+        ondeleteSuccess:null,
+        /**
+         * 不管成功或者失败，都回调
+         */
+        onfetchAlways:null,
+        /**
+         * 发送请求的事件
+         */
+        onsync:null,
 
         getModel:function(id,async){
             var asyncValue = true;
@@ -45,8 +62,30 @@ define(["underscore",
                 methodName:this.METHODNAME_GET
             });
 
-            this.ajax(action.getUrl(),{id:id},async);
+            this.ajax(this.url|action.getUrl(),{id:id},async);
         },
+
+        /**
+         * 获取数据
+         * @parma
+         * {nameSpace:{String} 命令空间
+         *  methodName:{String}方法名
+         *  postParam:{String}发送请求的参数 }
+         * @returns {BaseModel}
+         */
+        getData:function(option){
+            var action = new Action({
+                nameSpace:option.nameSpace||this.nameSpace,
+                methodName:option.methodName
+            });
+            this.fetch({
+                url:action.getUrl(),
+                data:option.postParam
+            });
+            return this;
+
+        },
+
         /**
          *
          * @param id
@@ -62,25 +101,37 @@ define(["underscore",
                 nameSpace:this.nameSpace,
                 methodName:this.METHODNAME_DELETE
             });
+            var that = this;
             this.ajax(action.getUrl(),{id:id},null,async,function(compositeResponse,options){
-                var msg = compositeResponse.getMessage();
-                var obj = compositeResponse.getSuccessResponse();
-                if (compositeResponse.isSuccessful()) {
-                    MessageBox.success(compositeResponse.getSuccessMsg());
-                    that.trigger("fetchSuccess");
-                    that.trigger('sync', that, obj.result, options);
-                } else {
-                    $.window.showMessage(msg, {
-                        handle: function () {
-                            that.trigger('sync', that, obj.result, options);
-                        }
-                    });
-                }
 
+                ResponseHandle.successHandle(compositeResponse,function(compositeResponse){
+                    MessageBox.success(compositeResponse.getSuccessMsg());
+                    if(successCalback){
+                        successCalback();
+                    }else{
+                        that.trigger("deleteSuccess",id);
+                    }
+                });
             });
+        },
+        deleteSuccess:function(){
+
         },
         merge:function(){
 
+        },
+        post:function(action,postParam,async,successCalback){
+            this.ajax(action.getUrl(),postParam,null,async,function(compositeResponse,options){
+
+                ResponseHandle.successHandle(compositeResponse,function(compositeResponse){
+                    //刷新
+                    var obj = compositeResponse.getSuccessResponse();
+                    MessageBox.success(compositeResponse.getSuccessMsg());
+                    if(successCalback){
+                        successCalback(obj);
+                    }
+                });
+            });
         },
         /**
          * 初始化，把本身的属性添加到attributes
@@ -181,6 +232,25 @@ define(["underscore",
             //return this.get("async");
             return this.async;
         },
+
+        /**
+         * 设置fetch的回调方法,不管成功或者失败
+         * @param func
+         * @param context
+         */
+        setFetchAlwaysFunction:function(func,context){
+            var args = [];
+            if(!_.isFunction(func)){
+                return ;
+            }
+            if(arguments.length>2){
+                args = args.slice.call(arguments,2);
+                //args = arguments.slice(2);
+            }
+            //$.proxy.apply(func,context,args);
+            this.on("fetchAlways",function(){ return func.apply(context,args)});
+        },
+
         /**
          * 设置fetchSuccess的回调方法
          * @param {function} func      函数
@@ -294,12 +364,20 @@ define(["underscore",
             ajaxClient.buildClientRequest(params.url)
                 .addParams(params.data)
                 .post(function (compositeResponse) {
-                    var obj = compositeResponse.getSuccessResponse();
-                    if (obj&&obj.result) {
+                    ResponseHandle.successHandle(compositeResponse,function(compositeResponse){
+                        var obj = compositeResponse.getSuccessResponse();
                         if (!that.responeToModel(model,obj.result,options)) return false;
                         that.trigger("fetchSuccess");
                         model.trigger('sync', model, obj.result, options);
-                    }
+                    });
+
+
+                    /*var obj = compositeResponse.getSuccessResponse();
+                    if (obj&&obj.successful) {
+                        if (!that.responeToModel(model,obj.result,options)) return false;
+                        that.trigger("fetchSuccess");
+                        model.trigger('sync', model, obj.result, options);
+                    }*/
                 },this.getAsync());
 
             // If we're sending a `PATCH` request, and we're in an old Internet Explorer
@@ -331,17 +409,20 @@ define(["underscore",
             ajaxClient.buildClientRequest(url)
                 .addParams(params)
                 .post(function (compositeResponse) {
-                    if(!callback){
+                    ResponseHandle.successHandle(compositeResponse,function(compositeResponse){
                         var obj = compositeResponse.getSuccessResponse();
-                        if (obj&&obj.result) {
-                            if (!that.responeToModel(that,obj.result,options)) return false;
-                            that.trigger("fetchSuccess");
-                        }
-                    }else{
-                        callback(compositeResponse,options);
-                    }
-                    that.trigger('sync', that, obj.result, options);
+                        if(!callback){
 
+                            if (obj&&obj.result) {
+                                if (!that.responeToModel(that,obj.result,options)) return false;
+                                that.trigger("fetchSuccess");
+                            }
+                        }else{
+                            callback(compositeResponse,options);
+                        }
+                        that.trigger('sync', that, obj.result, options);
+                    });
+                    that.trigger("fetchAlways");
                 },async);
             that.trigger('request', that, ajaxClient, options);
             return that;

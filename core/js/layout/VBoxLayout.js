@@ -5,9 +5,10 @@
  * @author:
  * @date: 2013-11-07 下午2:33
  */
-define(["jquery", "underscore", "core/js/layout/Container", "core/js/CommonConstant"],
-    function ($, _, Container, CommonConstant) {
+define(["core/js/layout/Container", "core/js/CommonConstant"],
+    function (Container, CommonConstant) {
     var VBoxLayout = Container.extend({
+        xtype:$Component.VBOXLAYOUT,
         /**
          * {String}垂直布局方式：
          * 1、auto: 没有定任何布局方式，Auto布局就是默认的布局方式，它采用原始的HTML流式排版的布局方式，如果内容超出容器，那么就自动出现容器级的滚动条

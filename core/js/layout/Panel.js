@@ -6,7 +6,7 @@
  *
  * @author:   * @date: 2015/12/14
  */
-define(["jquery",
+define([
     "core/js/CommonConstant",
     "core/js/layout/Container",
     "text!core/resources/tmpl/Panel.html",
@@ -14,7 +14,7 @@ define(["jquery",
     "core/js/controls/ToolStripItem","core/js/controls/HelpLink","core/js/layout/AbstractPanel",
     "jquery.layout",
     "core/js/utils/Utils"
-], function ($, CommonConstant, Container, LayoutTemplate,Region,ToolStrip,ToolStripItem,HelpLink,AbstractPanel) {
+], function (CommonConstant, Container, LayoutTemplate,Region,ToolStrip,ToolStripItem,HelpLink,AbstractPanel) {
     var Panel = Container.extend(AbstractPanel).extend({
         xtype:$Component.PANEL,
         headerLeftRegionConf:{
@@ -30,7 +30,8 @@ define(["jquery",
         mainRegionConf:{
             id:null,
             className:"panel-content",
-            containerName:"mainRegion"
+            containerName:"mainRegion",
+            autoScroll:true
         },
         footerRegionConf:{
             className:"panel-footer",
@@ -89,6 +90,11 @@ define(["jquery",
          * 是否显示标题
          */
         isShowHeader:true,
+
+        /**
+         * 是否显示标题的工具栏
+         */
+        isShowHeaderRightRegion:true,
         /**
          * 标题栏左边的小图片css
          */
@@ -110,7 +116,8 @@ define(["jquery",
                 headerRightRegionId:this.getConfId(this.headerRightRegionConf),
                 mainRegionId:this.getConfId(this.mainRegionConf),
                 footerRegionId:this.getConfId(this.footerRegionConf),
-                topToolbarRegionId:this.getConfId(this.topToolbarRegionConf)
+                topToolbarRegionId:this.getConfId(this.topToolbarRegionConf),
+                isShowHeaderRightRegion:this.isShowHeaderRightRegion
             };
             //this._super(options,triggerEvent);
         },
@@ -229,78 +236,50 @@ define(["jquery",
             if(this.isShowHeader){
 
                 this._addItem(this.headerLeftRegionConf);
-                var linkItems = [];
-                /*{
-                    mode:ToolStripItem.Mode.LINK,
+                if(this.isShowHeaderRightRegion){
+                    var linkItems = [];
+                    linkItems.push({
+                        mode:ToolStripItem.Mode.LINK,
                         iconSkin:"fa-eye",
-                    realClass:"btn-borderless",
-                    onclick:function(){
-                    if(that._focus){
-                        that.unfocus();
-                    }else{
-                        that.focus();
-                    }
-                }
-                }/!*,{
-                 mode:ToolStripItem.Mode.LINK,
-                 iconSkin:"fa-chevron-up",
-                 realClass:"btn-borderless",
-                 onclick:function(e){
-                 if(that._collapsed){
-                 that.expand();
-                 }else{
-                 that.collapse();
-                 }
-                 }
-                 }*!/,{
-                    iconSkin:"fa-times",
+                        realClass:"btn-borderless",
+                        onclick:function(){
+                            if(that._focus){
+                                that.unfocus();
+                            }else{
+                                that.focus();
+                            }
+                        }
+                    });
+                    linkItems.push({
+                        mode:ToolStripItem.Mode.LINK,
+                        iconSkin:"fa-chevron-up",
+                        realClass:"btn-borderless",
+                        onclick:function(){
+                            //e.preventDefault();
+                            if (that._collapsed) {
+                                that.expand();
+                            } else {
+                                that.collapse();
+                            }
+                        }
+                    });
+                    linkItems.push({
+                        iconSkin:"fa-times",
                         realClass:"btn-borderless",
                         mode:ToolStripItem.Mode.LINK,
                         onclick:function(e){
-                        that.close();
-                    }
-                }*/
-                linkItems.push({
-                    mode:ToolStripItem.Mode.LINK,
-                    iconSkin:"fa-eye",
-                    realClass:"btn-borderless",
-                    onclick:function(){
-                        if(that._focus){
-                            that.unfocus();
-                        }else{
-                            that.focus();
+                            that.close();
+                        }});
+                    this.headerRightRegion = {
+                        comXtype:$Component.TOOLSTRIP,
+                        comConf:{
+                            className:"btn-group panel-header-toolbar",
+                            itemOptions:linkItems
                         }
-                    }
-                });
-                linkItems.push({
-                    mode:ToolStripItem.Mode.LINK,
-                    iconSkin:"fa-chevron-up",
-                    realClass:"btn-borderless",
-                    onclick:function(){
-                        //e.preventDefault();
-                        if (that._collapsed) {
-                            that.expand();
-                        } else {
-                            that.collapse();
-                        }
-                    }
-                });
-                linkItems.push({
-                    iconSkin:"fa-times",
-                    realClass:"btn-borderless",
-                    mode:ToolStripItem.Mode.LINK,
-                    onclick:function(e){
-                        that.close();
-                    }});
-                this.headerRightRegion = {
-                    comXtype:$Component.TOOLSTRIP,
-                    comConf:{
-                        className:"btn-group panel-header-toolbar",
-                        itemOptions:linkItems
-                    }
-                };
+                    };
 
-                this._addItem(this.headerRightRegionConf);
+                    this._addItem(this.headerRightRegionConf);
+                }
             }
             if(this.topToolbarRegion!=null){
                 this.topToolbarRegionConf  = _.extend(this.topToolbarRegionConf,this.topToolbarRegion);

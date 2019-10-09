@@ -44,7 +44,7 @@ define(["underscore",
         getItemsByCodes: function(dictCode, codes, callback){
             var isAsync = _.isFunction(callback);  //判断是否是异步请求
 
-            if(dictCode == null || dictCode == "" || codes == null || codes == ""){
+            if(dictCode == null || dictCode === "" || codes == null || codes === ""){
                 //如果是异步请求，就执行回调函数
                 if(isAsync){
                     callback(null);
@@ -110,7 +110,7 @@ define(["underscore",
          * @return {Array|null} [{code: "<字典表编码>", items: [{code: "<编码>", title: "<名称>", <扩展字段>: "<扩展字段值>"}]}]
          */
         get: function (dictCodes) {
-            if (dictCodes == null || dictCodes == "")
+            if (dictCodes == null || dictCodes === "")
                 return null;
             var dictCodeArray = dictCodes.split(","),
                 notExistedCodeArray = [],
@@ -154,7 +154,7 @@ define(["underscore",
         getDictItemsFromRemote: function(dictCode, props, pitemCode, fields, descendant, callback){
             var isAsync = _.isFunction(callback);  //判断是否是异步请求
 
-            if(dictCode == null || dictCode == ""){
+            if(dictCode == null || dictCode === ""){
                 //如果是异步请求，就执行回调函数
                 if(isAsync){
                     callback(null);
@@ -197,7 +197,7 @@ define(["underscore",
          * @param key
          */
         getFromRemote: function (key) {
-            if (key == null || key == "")
+            if (key == null || key === "")
                 return null;
 
             var result = null;

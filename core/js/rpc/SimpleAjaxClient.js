@@ -5,8 +5,9 @@
 define(["core/js/rpc/AjaxRequest",
     "core/js/rpc/AjaxClient",
     "core/js/rpc/SimpleConstant",
-    "core/js/rpc/SimpleRequest"
-], function (AjaxRequest, AjaxClient,SimpleConstant,SimpleRequest) {
+    "core/js/rpc/SimpleRequest",
+    "core/js/rpc/SimpleErrorResponse"
+], function (AjaxRequest, AjaxClient,SimpleConstant,SimpleRequest,SimpleErrorResponse) {
     var SimpleClient = AjaxClient.extend({
         /**
          * 获取框架的国际化信息。
@@ -31,7 +32,7 @@ define(["core/js/rpc/AjaxRequest",
             return result;
         },
         buildJsonResponse: function (transport, callback, responseData) {
-            return new RopJsonResponse(transport, callback, responseData);
+            return new SimpleErrorResponse(transport, callback, responseData);
         },
         getLocale: function () {
             return this.locale;

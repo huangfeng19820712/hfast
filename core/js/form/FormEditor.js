@@ -1,12 +1,11 @@
 /**
  * @author:   * @date: 2016/1/18
  */
-define(["jquery",
-    "underscore",
+define([
     "core/js/form/AbstractFormEditor",
     "core/js/layout/Panel",
     "text!core/templates/form/form.html"
-], function ($, _, AbstractFormEditor, Panel, FormViewTemplate) {
+], function (AbstractFormEditor, Panel, FormViewTemplate) {
 
     AbstractFormEditor.DEFAULT_FORM_TEMPLATE = FormViewTemplate;
     var FormUtils = AbstractFormEditor.FormUtils;
@@ -226,7 +225,7 @@ define(["jquery",
          * @param groupObject
          */
         addGroupObject: function (groupId, groupObject) {
-            if (groupId == null || groupId == "" || groupObject == null)
+            if (groupId == null || groupId === "" || groupObject == null)
                 return;
             var groupMap = {};
             groupMap[groupId] = groupObject;
@@ -331,7 +330,7 @@ define(["jquery",
          * @return HTML ELEMENT
          */
         getFieldGroupColEl: function (fieldName) {
-            if (fieldName == null || fieldName == "")
+            if (fieldName == null || fieldName === "")
                 return null;
             var fieldGroupName = FormUtils.getFieldGroupName(fieldName);
             var $fieldGroupEl = this.$("#" + fieldGroupName);
@@ -711,7 +710,7 @@ define(["jquery",
          * @return {*}
          */
         getGroupConfigById: function(groupId){
-            if(groupId == null || groupId == "" || !this.groups)
+            if(groupId == null || groupId === "" || !this.groups)
                 return null;
             var groups = this.groups,
                 group;

@@ -51,7 +51,6 @@ define([
                         {name: "", label: "test4"},
                         {name: "", label: "test5"},
                     ],
-                    $url: "/ssResult/getAll.action",
                     oninitialized: function () {
                         //初始化data
                         var that = this;

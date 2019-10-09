@@ -4,8 +4,7 @@
  * @author:
  * @date: 2014-03-24 上午10:25
  */
-define(["jquery",
-    "underscore",
+define([
     "core_js/CommonConstant",
     "core_js/lib/sha1",
     "core_js/rpc/AjaxClient",
@@ -15,7 +14,7 @@ define(["jquery",
     "core_js/validate/Validator",
     "core_js/utils/CheckUtil",
     "text!core_templates/form/form.html"
-], function ($, _, CommonConstant, MessageDigest, AjaxClient, Control, ComponentFactory, ComponentUtil, Validator, CheckUtil, FormViewTemplate) {
+], function (CommonConstant, MessageDigest, AjaxClient, Control, ComponentFactory, ComponentUtil, Validator, CheckUtil, FormViewTemplate) {
 
     var AbstractFormEditor = Control.extend({
         id: "form_editor",

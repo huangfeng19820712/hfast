@@ -2,17 +2,17 @@
  * @author:   * @date: 2015/9/22
  */
 
-define(["jquery",
+define([
     "core/js/SinglePageApplication",
     "core/js/utils/ApplicationUtils"
-], function ($, SinglePageApplication, ApplicationUtils) {
+], function (SinglePageApplication, ApplicationUtils) {
 
     var app = SinglePageApplication.extend({
         header: null,
         breadcrumbs: null,
         footer: null,
         main: null,
-        $INIT: "/app!init.action",
+        $INIT: "/App/init.action",
         run: function () {
             this._super();
             //加载路由器，并启动Backbone路由监听

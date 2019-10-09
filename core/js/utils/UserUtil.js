@@ -72,7 +72,7 @@ define(["underscore", "core/js/context/SessionContext", "core/js/utils/Log"], fu
          */
         refreshSessionInfo: function(){
             var sessionId = SessionContext.getSessionId();
-            if(sessionId == null || sessionId == "")
+            if(sessionId == null || sessionId === "")
                 return;
             var session = this._getUserSessionInfo(sessionId);
             SessionContext.set(session);

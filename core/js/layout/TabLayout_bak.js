@@ -2,10 +2,10 @@
  * @author:   * @date: 2016/2/20
  */
 
-define(["jquery",
+define([
     "core/js/CommonConstant",
     "core/js/layout/Container"
-], function ($, CommonConstant, Container) {
+], function ( CommonConstant, Container) {
     var TabLayout = Container.extend({
         xtype:$Component.TABLAYOUT,
         /**

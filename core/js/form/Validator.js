@@ -4,6 +4,37 @@
  * @author:   * @date: 2016/2/8
  */
 define(["core/js/Component","validate"],function(Component){
+
+    //处理一个checkbox的switchEditor插件
+    $.validator.prototype.elementValue = function( element ) {
+        var val,
+            $element = $( element ),
+            type = element.type;
+
+        if (( type === "radio" || type === "checkbox")&&!$element.hasClass("form-control-switchEditor") ) {
+            return this.findByName( element.name ).filter(":checked").val();
+        } else if ( type === "number" && typeof element.validity !== "undefined" ) {
+            return element.validity.badInput ? false : $element.val();
+        }
+
+        val = $element.val();
+        if ( typeof val === "string" ) {
+            return val.replace(/\r/g, "" );
+        }
+        return val;
+    };
+    $.validator.prototype.getLength =  function( value, element ) {
+        switch ( element.nodeName.toLowerCase() ) {
+            case "select":
+                return $( "option:selected", element ).length;
+            case "input":
+                $element = $( element );
+                if ( this.checkable( element )&&!$element.hasClass("form-control-switchEditor")  ) {
+                    return this.findByName( element.name ).filter( ":checked" ).length;
+                }
+        }
+        return value.length;
+    };
     var Validator = Component.extend({
         $form:null,
         $view:null,
@@ -61,7 +92,8 @@ define(["core/js/Component","validate"],function(Component){
                         $( element ).removeClass( errorClass ).addClass( validClass );
                     }
                 },
-                submitHandler:this.submitHandler,
+                //去掉自身的提交事件
+                // submitHandler:this.submitHandler,
                 ignore:""
             };
             if(this.messages){
@@ -108,6 +140,12 @@ define(["core/js/Component","validate"],function(Component){
         },
         validate:function(){
             return this._validator.form();
+        },
+        /**
+         * 重置表单中的状态
+         */
+        reset:function(){
+            this._validator.resetForm();
         }
     });
     return Validator;

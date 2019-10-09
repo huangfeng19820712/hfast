@@ -3,13 +3,13 @@
  * @author:   * @date: 2015/10/2
  */
 
-define(["underscore", "core/js/Class",], function (_, Class) {
+define([ "core/js/Class",], function ( Class) {
     /**
      * 判断字符串是否为空“” ，如果是活着是undefine、null、“”，都返回true，
      * 否则返回true
      */
     $.isBank = function (str) {
-        if (_.isUndefined(str) || _.isNull(str) || str == "") {
+        if (_.isUndefined(str) || _.isNull(str) || str === "") {
             return true;
         } else {
             return false;
@@ -331,7 +331,7 @@ define(["underscore", "core/js/Class",], function (_, Class) {
             value = $.Date.formatDate(value, format);
         }
 
-        if (value == null || (_.isString(value) && $.trim(value) == ""))
+        if (value == null || (_.isString(value) && $.trim(value) === ""))
             return null;
 
         value = value.replace(/\W+/g, ""); //无格式的字符串
@@ -437,7 +437,7 @@ define(["underscore", "core/js/Class",], function (_, Class) {
      * @return {*}
      */
     $.Date.formatMilliseconds = function (milliseconds, format) {
-        if (milliseconds == null || milliseconds == "")
+        if (milliseconds == null || milliseconds === "")
             return "";
         var date = new Date();                // 创建 Date 对象。
         date.setTime(milliseconds);    // 设置毫秒数。
@@ -450,7 +450,7 @@ define(["underscore", "core/js/Class",], function (_, Class) {
      * @returns {*}
      */
     $.Date.formatDateTime = function (dateStr, format) {
-        if (dateStr == null || dateStr == "")
+        if (dateStr == null || dateStr === "")
             return "";
         var date = $.Date.parseDate(dateStr);                // 创建 Date 对象。
         return $.Date.formatDate(date, format);
@@ -461,7 +461,7 @@ define(["underscore", "core/js/Class",], function (_, Class) {
      * @param dateStr
      */
     $.Date.formatDateTimeToFriendly = function (dateStr) {
-        if (dateStr == null || dateStr == "")
+        if (dateStr == null || dateStr === "")
             return "";
         var date = $.Date._parseDate(dateStr)
         var milliseconds = date.getTime();
@@ -473,7 +473,7 @@ define(["underscore", "core/js/Class",], function (_, Class) {
      * @return {*}
      */
     $.Date.formatMillisecondsToFriendly = function (milliseconds) {
-        if (milliseconds == null || milliseconds == "")
+        if (milliseconds == null || milliseconds === "")
             return "";
         var today = new Date();//今日0点0分0秒
         today.setHours(0);
@@ -524,12 +524,12 @@ define(["underscore", "core/js/Class",], function (_, Class) {
      */
     $.Date.format = function (str, replaceFormat, withFormat) {
 
-        if (replaceFormat == null || $.trim(replaceFormat) == "" || withFormat == null || $.trim(withFormat) == "") {
+        if (replaceFormat == null || $.trim(replaceFormat) === "" || withFormat == null || $.trim(withFormat) === "") {
             alert("您未指定日期转换前或转换后的格式，无法进行转换！");
             return;
         }
 
-        if (str == null || $.trim(str) == "")
+        if (str == null || $.trim(str) === "")
             return "";
 
         str = str.replace(/\W+/g, ""); //无格式的字符串
@@ -652,7 +652,7 @@ define(["underscore", "core/js/Class",], function (_, Class) {
      * @return Date 类型的日期
      */
     $.Date.getDate = function (str, interval, value) {
-        if (str == null || $.trim(str) == "")
+        if (str == null || $.trim(str) === "")
             return null;
 
         str = $.trim(str);
@@ -716,7 +716,7 @@ define(["underscore", "core/js/Class",], function (_, Class) {
      */
     $.Date.add = function (str, interval, value) {
 
-        if (str == null || $.trim(str) == "")
+        if (str == null || $.trim(str) === "")
             return "";
 
         str = $.trim(str);

@@ -14,7 +14,8 @@ define([
                 comXtype:$Component.TEXTEDITOR,
                 comConf:{
                     label:"名称",
-                    defaultValue:"name"
+                    defaultValue:"name",
+                    maxLength:5
                 }
             }
             /*Panel 配置 End*/

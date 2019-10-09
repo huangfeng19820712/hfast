@@ -1,12 +1,11 @@
 /**
  * @author:   * @date: 2016/3/25
  */
-define(["jquery",
-    "underscore",
+define([
     "core/js/CommonConstant",
     "core/js/editors/Editor",
     "icheck"
-], function ($, _, CommonConstant, Editor) {
+], function (CommonConstant, Editor) {
     var CheckboxEditor = Editor.extend({
         xtype:$Component.CHECKBOXEDITOR,
         /**
@@ -107,6 +106,8 @@ define(["jquery",
         },
         _setValueAndDisplayValue:function(value, displayValue, needTranslate, triggerEvent){
             this._super(value, displayValue, needTranslate,false);
+            //把所有的的checkbox状态设置成uncheck
+            this.seAllUnchecked();
             if(value!=null){
                 if(value.indexOf(",")>=0){
                     var values = value.split(",");
@@ -118,6 +119,13 @@ define(["jquery",
                 }
             }
         },
+        /**
+         * 设置为都未选中的状态
+         */
+        seAllUnchecked:function(){
+            this.$("input").iCheck('uncheck');
+        },
+
         getValue:function(){
             var checkboxes = this.$(".checked>input");
             var values = [];

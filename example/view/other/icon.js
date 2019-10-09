@@ -83,6 +83,7 @@ define(["core/js/layout/FluidLayout",
                         {
                             comRef:new Icon({
                                 icon:icon,
+                                size: CommonConstant.IconSize.X3,
                                 text:icon
                             }),
                         });

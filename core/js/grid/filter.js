@@ -2,7 +2,7 @@
  * @author:
  * @date: 15-1-9
  */
-define(["jquery", "kendo"], function ($) {
+define([ "kendo"], function () {
 
     var grid = {
         run: function () {

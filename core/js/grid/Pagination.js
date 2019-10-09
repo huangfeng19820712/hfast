@@ -51,7 +51,7 @@ define([
         initButtonGroup:function(){
             this.$buttonGroup = $("<div class='pull-right'/>");
             this.pageButtons = this.createPageButtons(this.createButtonItems());
-            this.pageButtons.activeItems([1]);
+            this.pageButtons.activeItems([this.currentPage]);
             if(this.mode==$cons.PaginationMode.FULL){
                 this.$buttonGroup.append("<div class='pageLabel'>"+"&nbsp;&nbsp;&nbsp;&nbsp;总共"+this.totalPage+"页&nbsp;&nbsp;到第&nbsp;"+"</div>");
                 this.textInput = new TouchSpinEditor({
@@ -96,6 +96,7 @@ define([
             var that = this;
             var result = [{
                 text: "<上一页",
+                enabled:this.currentPage==1?false:true,
                 onclick: function () {
                     that.prev();
                 }
@@ -121,6 +122,7 @@ define([
 
             result.push({
                 text: "下一页>",
+                enabled:this.totalPage==1?false:true,
                 onclick: function () {
                     that.next();
                 }
@@ -140,7 +142,7 @@ define([
          * 分页事件
          * @param currentPage
          */
-        onpage:function(context,currentPage){
+        onpage:function(currentPage){
 
         },
         /**
@@ -218,6 +220,29 @@ define([
                 itemValues[i] = start;
             }
             return itemValues;
+        },
+        /**
+         *
+         * @param options        主要包含以下属性
+         *    pageSize
+         *    currentPage
+         *    totalPage
+         */
+        reload:function(options){
+            this.$el.empty();
+            if(options){
+                if(options.pageSize){
+                    this.pageSize = options.pageSize
+                }
+                if(options.currentPage){
+                    this.currentPage = options.currentPage
+                }
+                if(options.totalPage){
+                    this.totalPage = options.totalPage
+                }
+
+            }
+            this.mountContent();
         }
     });
     return Pagination;

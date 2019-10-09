@@ -8,11 +8,11 @@
  * @author:
  * @date:
  */
-define(["jquery",
+define([
     "core/js/controls/Control",
     "core/js/utils/ApplicationUtils",
     "core/js/Class","text!core/resources/tmpl/loading.html","jquery.mCustomScrollbar"
-], function ($, Control, ApplicationUtil, Class, LoadingTemplate) {
+], function ( Control, ApplicationUtil, Class, LoadingTemplate) {
     var Region = Control.extend({
         /**
          * 本身的类型
@@ -387,6 +387,7 @@ define(["jquery",
         },
         /**
          * 显示区域的内容
+         *
          * @param relatedObject
          */
         _showRegionContent: function (relatedObject) {
@@ -399,9 +400,12 @@ define(["jquery",
             //如果没有挂载的容器的时候或者不是我们组件对象，才需要调用_open函数，加载内容
             if(!relatedObject.getContainer||!relatedObject.getContainer()){
                 this._open(content);                //打开（显示）区域中的内容
+                this._triggerShowEvent();   //触发该区域显示完成的事件
             }
+            //统一设置滚动条
+            this.setAutoScroll(this.autoScroll);
 
-            this._triggerShowEvent();   //触发该区域显示完成的事件
+
         },
         /**
          * 显示（打开）该区域的内容
@@ -411,22 +415,24 @@ define(["jquery",
             if (this.manualShowed) {
                 this.$el.fadeIn("slow");
             }
-            this.setAutoScroll(this.autoScroll);   //设置当显示内容超出区域时是否要显示滚动条
+            //this.setAutoScroll(this.autoScroll);   //设置当显示内容超出区域时是否要显示滚动条
         },
         /**
          * 触发该区域显示完成的事件
+         * 1.如果内容是html,则需要触发此方法
+         * 2.如果不是我们的组件，在_showRegionContent中调用
+         * 3.如果是我们的组件，则子组件渲染介绍后，调用此方式，在CommonView中的triggerRender
          * @private
          */
         _triggerShowEvent: function (isSonTrigger) {
             if(this.childrenCount>0&&!isSonTrigger){
                 return ;
-
             }
-            this.trigger("show");       //该区域显示完成后，触发显示的事件
-
             var relatedObject = this.getRelatedObject();
             if (relatedObject)
                 relatedObject.trigger("show");
+
+            this.trigger("show");       //该区域显示完成后，触发显示的事件
         },
         /**
          * 获取该区域显示的内容(默认显示的内容是视图[继承于Backbone.View])
@@ -501,11 +507,7 @@ define(["jquery",
             if (autoScroll)
                 this.$el.css("overflow", "auto");*/
             if (this.autoScroll) {
-                this.$el.mCustomScrollbar({
-                    theme: "minimal-dark",
-                    autoExpandScrollbar: true,
-                    advanced: {autoExpandHorizontalScroll: true}
-                });
+                this.$el.mCustomScrollbar($cons.MCustomScrollbarConf);
             }
         },
         /**
