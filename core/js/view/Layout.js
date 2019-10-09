@@ -91,7 +91,7 @@ define(["core/js/base/BaseView",
             return this.regionManager.getAllRegions();
         },
         /**
-         * 根据名车获取区域对象，即使对象中的属性
+         * 根据名称获取区域对象，即使对象中的属性
          * @param name
          * @returns {*}
          */

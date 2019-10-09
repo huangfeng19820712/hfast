@@ -188,6 +188,15 @@
       "visible": "1",
       "orderNo": null
     },{
+      "id": "0112",
+      "name": "仪表盘",
+      "url": "other/dashboard/dashboard",
+      "type": "1",
+      "pid": "01",
+      "code": "dashboard",
+      "visible": "1",
+      "orderNo": null
+    },{
       "id": "02",
       "name": "树",
       "url": null,
