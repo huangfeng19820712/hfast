@@ -34,32 +34,7 @@ define([
          */
         $.window.alert = function (msg, options) {
             var modalDialog = $.window.getActive();
-
-            options = options || {};
-            var yesBtnTitle = options["yesBtnTitle"] || $i18n.BTN_CONFIRM;
-            var yesHandle = options["yesHandle"]|| function(){
-                    modalDialog.hide();
-                };
-            var buttons = [
-                {text: yesBtnTitle,
-                    onclick: yesHandle,
-                    themeClass:Button.ThemeClass.rounded ,
-                    className: Button.ClassName.primary,
-                    autofocus: true}
-            ];
-
-            var alertOpts = {
-                buttons: buttons,
-                cancel: options["cancel"],
-                quickClose: options["quickClose"] == null ? false : options["quickClose"],
-                align: options["align"],
-                title:options["title"] ||$i18n.alertLabel,
-                icon: options["icon"] || "h-icon-xl h-icon-info-xl",
-                duration: options["duration"],
-                lock: options["lock"] == null ? true : options["lock"],
-                id: options["id"]
-            };
-            $.window.showMessage(msg,alertOpts);
+            modalDialog.alert(msg, options);
             //return modalDialog;
         };
         /**
@@ -81,39 +56,7 @@ define([
          */
         $.window.confirm = function (msg, options) {
             var modalDialog = $.window.getActive();
-            options = options || {};
-            var yesBtnTitle = options["yesBtnTitle"] || $i18n.BTN_CONFIRM;
-            var noBtnTitle = options["noBtnTitle"] || $i18n.BTN_CANCEL;
-            var yesHandle = options["yesHandle"];
-            var noHandle = options["noHandle"] || function(){
-                    modalDialog.hide();
-                };
-
-
-            var buttons = [{
-                text: yesBtnTitle,
-                onclick: yesHandle,
-                themeClass:Button.ThemeClass.rounded ,
-                className: Button.ClassName.primary,
-                autofocus: true
-            },{
-                text: noBtnTitle,
-                onclick: noHandle,
-                themeClass:Button.ThemeClass.rounded ,
-                className: Button.ClassName.cancel,
-            }];
-            var confirmOpts = {
-                buttons: buttons,
-                cancel: options["cancel"],
-                quickClose: options["quickClose"] == null ? false : options["quickClose"],
-                align: options["align"],
-                title: options["title"] || "确认信息",
-                icon: options["icon"] || "h-icon-xl h-icon-info-xl",
-                duration: options["duration"],
-                lock: options["lock"] == null ? true : options["lock"],
-                id: options["id"]
-            };
-            $.window.showMessage(msg,confirmOpts);
+            modalDialog.confirm(msg, options)
         };
         /**
          * 弹出一个模态对话框。
@@ -129,27 +72,7 @@ define([
          */
         $.window.showMessage = function(msg,options){
             var modalDialog = $.window.getActive();
-            modalDialog.setTitle(options.title||$i18n.alertLabel);
-            modalDialog.setBody(msg);
-            if(options.buttons){
-                var buttonGroup = new ToolStrip({
-                    textAlign:$TextAlign.RIGHT,
-                    realClass:"btn-group text-right",
-                    spacing :CommonConstant.Spacing.DEFAULT,
-                    itemOptions: options.buttons
-                });
-                buttonGroup.render();
-                modalDialog.setFooter(buttonGroup.$el);
-                modalDialog.showFooter();
-                if(options.width){
-                    modalDialog.setWidth(options.width);
-                }
-            }else{
-                modalDialog.hideFooter();
-            }
-            modalDialog.show();
-            modalDialog.off("hidden");
-            modalDialog.on("hidden", options.onhidden);
+            modalDialog.showMessage(msg, options);
         };
         $.window.alertError = function(){
             $.window.alert("系统异常，请与管理员联系！");

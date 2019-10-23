@@ -280,9 +280,13 @@ label.form-control{
     border: 0px
 }
 
-/*
-    panel  end
-*/
+.panel-heading-rightToolbar .toolstripitem{
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+    /*
+        panel  end
+    */
 
 #focus-overlay {
     background: rgba(0, 0, 0, 0.95);

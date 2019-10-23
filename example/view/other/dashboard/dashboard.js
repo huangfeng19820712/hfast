@@ -14,11 +14,12 @@ define(["core/js/layout/FluidLayout",
         "text!"+CONFIG.appCnName+"/view/other/dashboard/tmpl/percent.html",
         "text!"+CONFIG.appCnName+"/view/other/dashboard/tmpl/notice.html",
         "text!"+CONFIG.appCnName+"/view/other/dashboard/tmpl/card.html",
+        "text!"+CONFIG.appCnName+"/view/other/dashboard/tmpl/statItem2.html",
         "css!"+CONFIG.appCnName+"/view/other/dashboard/css/dashboard.css",
         "jquery.sparkline","jquery.easypiechart","jquery.counterup"],
     function (FluidLayout, CommonConstant, Region, Panel, ToolStripItem, HelpLink, Switcher,
               ApplicationUtils,minChartTemplate,statItemTemplate,reminderTemplate,percentTemplate,
-              noticeTemplate,cardTemplate) {
+              noticeTemplate,cardTemplate,statItem2Template) {
         var view = FluidLayout.extend({
             defaultColumnSize: $Column.COL_MD_4,
             items: null,
@@ -92,7 +93,87 @@ define(["core/js/layout/FluidLayout",
                     content: _.template(cardTemplate,{variable: "data"})
                 });
 
+                this.items.push(this.getStatePanelConf());
             },
+
+            getStatePanelConf:function(){
+                var items = [];
+
+                items.push({
+                    columnSize: $Column.COL_MD_6,
+                    content: _.template(statItem2Template,{variable: "data"})({
+                        color:"bg-gradient-blue",
+                        icon:"fa-area-chart",
+                        data:"2,624,123"
+                    })
+                });
+                items.push({
+                    columnSize: $Column.COL_MD_6,
+                    content: _.template(statItem2Template,{variable: "data"})({
+                        color:"bg-gradient-purple",
+                        icon:"fa-pie-chart",
+                        data:"123,624,123"
+                    })
+                });
+                var that = this;
+                return {
+                    columnSize: $Column.COL_MD_6,
+                    comXtype:$Component.PANEL,
+                    comConf: {
+                        // height: 300,
+                        theme: $Theme.DEFAULT,
+                        help: "统计",
+                        brief: "统计",
+                        mainRegion: {
+                            comXtype:$Component.FLUIDLAYOUT,
+                            comConf:{
+                                defaultColumnSize: $Column.COL_MD_4,
+                                items: items,
+                            }
+                        },
+                        headerRightRegion:{
+                            comXtype:$Component.TOOLSTRIP,
+                            comConf:{
+                                /*Panel的配置项 start*/
+                                // spacing :CommonConstant.Spacing.DEFAULT,
+                                itemOptions: [{
+                                    // themeClass:ToolStripItem.ThemeClass.SUCCESS,
+                                    text:"修改统计值",
+                                    onclick: function () {
+                                       //获取组件中的信息
+                                        var panel = that.getRegionByIndex(10).getComRef();
+                                        var panelFluidLayout = that.getRegionByIndex(10).getComRef().getMainRegionRef().getComRef();
+                                        var regionByIndex = panelFluidLayout.getRegionByIndex(0);
+                                        regionByIndex.html( _.template(statItem2Template,{variable: "data"})({
+                                            color:"bg-gradient-pink",
+                                            icon:"fa-area-chart",
+                                            data:"11,624,123"
+                                        }));
+                                    }
+                                },{
+                                    // themeClass:ToolStripItem.ThemeClass.INFO,
+                                    text: "恢复",
+                                    onclick: function () {
+                                        //获取组件中的信息
+                                        var panel = that.getRegionByIndex(10).getComRef();
+                                        var panelFluidLayout = that.getRegionByIndex(10).getComRef().getMainRegionRef().getComRef();
+                                        var regionByIndex = panelFluidLayout.getRegionByIndex(0);
+                                        regionByIndex.html( _.template(statItem2Template,{variable: "data"})({
+                                            color:"bg-gradient-blue",
+                                            icon:"fa-area-chart",
+                                            data:"2,624,123"
+                                        }));
+                                    }
+                                }]
+                                /*Panel 配置 End*/
+                            }
+                        }
+                    }
+                };
+            },
+
+
+
             onrender: function (event) {
                 var values = this.getRandomValues();
                 var params = {

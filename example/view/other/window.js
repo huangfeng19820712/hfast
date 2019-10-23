@@ -9,13 +9,18 @@ define(["core/js/base/BaseView",
         "core/js/CommonConstant",
         "core/js/controls/HelpLink",
         $Component.SKYFORMEDITOR.src,
-        APP_NAME+"/view/form/validateForm","core/js/windows/messageBox"],
+        APP_NAME+"/view/form/validateForm","core/js/windows/messageBox",
+        $Component.MODALDIALOG.src],
     function (BaseView, Backbone, Button, Window, CommonConstant, ToolStrip,
               ToolStripItem,
               CommonConstant,
-              HelpLink,Skyformeditor,validateForm,MessageBox) {
+              HelpLink,Skyformeditor,validateForm,MessageBox,ModalDialog) {
 
         var view = BaseView.extend({
+            /**
+             * 注意使用完后，需要销毁
+             */
+            secondModelDialog:null,
             /**
              * 多选的bg
              */
@@ -40,6 +45,7 @@ define(["core/js/base/BaseView",
             },
             onrender: function () {
                 var that = this;
+                this.secondModelDialog = new ModalDialog();
                 var buttonGroup = new ToolStrip({
                     $container: this.$el,
 
@@ -81,6 +87,19 @@ define(["core/js/base/BaseView",
                                 title:"有内容的弹窗",
                                 buttons: buttons,
                                 width:800
+                            });
+                        }
+                    },{
+                        text: "同时显示多个弹窗",
+                        onclick: function () {
+                            $.window.confirm("第二层", {
+                                yesHandle: function () {
+                                    that.secondModelDialog.confirm("嵌套弹窗！", {
+                                        yesHandle: function () {
+                                            alert(">>>");
+                                        }
+                                    });
+                                }
                             });
                         }
                     },{
@@ -260,6 +279,13 @@ define(["core/js/base/BaseView",
                     }]
                 };
                 return editor;
+            },
+            /**
+             * 销毁方法：BaseView是close，Control是destory
+             */
+            close:function(){
+                this._super();
+                this.secondModelDialog.destroy();
             }
         });
         //view.$el.append(buttonGroup);

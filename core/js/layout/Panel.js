@@ -237,46 +237,48 @@ define([
 
                 this._addItem(this.headerLeftRegionConf);
                 if(this.isShowHeaderRightRegion){
-                    var linkItems = [];
-                    linkItems.push({
-                        mode:ToolStripItem.Mode.LINK,
-                        iconSkin:"fa-eye",
-                        realClass:"btn-borderless",
-                        onclick:function(){
-                            if(that._focus){
-                                that.unfocus();
-                            }else{
-                                that.focus();
+                    if(!this.headerRightRegion){
+                        var linkItems = [];
+                        linkItems.push({
+                            mode:ToolStripItem.Mode.LINK,
+                            iconSkin:"fa-eye",
+                            realClass:"btn-borderless",
+                            onclick:function(){
+                                if(that._focus){
+                                    that.unfocus();
+                                }else{
+                                    that.focus();
+                                }
                             }
-                        }
-                    });
-                    linkItems.push({
-                        mode:ToolStripItem.Mode.LINK,
-                        iconSkin:"fa-chevron-up",
-                        realClass:"btn-borderless",
-                        onclick:function(){
-                            //e.preventDefault();
-                            if (that._collapsed) {
-                                that.expand();
-                            } else {
-                                that.collapse();
+                        });
+                        linkItems.push({
+                            mode:ToolStripItem.Mode.LINK,
+                            iconSkin:"fa-chevron-up",
+                            realClass:"btn-borderless",
+                            onclick:function(){
+                                //e.preventDefault();
+                                if (that._collapsed) {
+                                    that.expand();
+                                } else {
+                                    that.collapse();
+                                }
                             }
-                        }
-                    });
-                    linkItems.push({
-                        iconSkin:"fa-times",
-                        realClass:"btn-borderless",
-                        mode:ToolStripItem.Mode.LINK,
-                        onclick:function(e){
-                            that.close();
-                        }});
-                    this.headerRightRegion = {
-                        comXtype:$Component.TOOLSTRIP,
-                        comConf:{
-                            className:"btn-group panel-header-toolbar",
-                            itemOptions:linkItems
-                        }
-                    };
+                        });
+                        linkItems.push({
+                            iconSkin:"fa-times",
+                            realClass:"btn-borderless",
+                            mode:ToolStripItem.Mode.LINK,
+                            onclick:function(e){
+                                that.close();
+                            }});
+                        this.headerRightRegion = {
+                            comXtype:$Component.TOOLSTRIP,
+                            comConf:{
+                                className:"btn-group panel-header-toolbar",
+                                itemOptions:linkItems
+                            }
+                        };
+                    }
 
                     this._addItem(this.headerRightRegionConf);
                 }

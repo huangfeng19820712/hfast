@@ -107,6 +107,53 @@ define(["core/js/layout/FluidLayout",
                 isShowHeaderRightRegion:false
             }
         });
+        items.push({
+            comXtype:$Component.PANEL,
+            comConf: {
+                isShowHeader:false,
+                height: 300,
+                theme: $Theme.BLUE,
+                help: "内容1",
+                brief: "摘要1",
+                mainRegion: "aaaa",
+                isShowHeaderRightRegion:false
+            }
+        });
+        items.push({
+            comXtype:$Component.PANEL,
+            comConf: {
+                height: 300,
+                theme: $Theme.BLUE,
+                help: "内容1",
+                brief: "摘要1",
+                mainRegion: "aaaa",
+                headerRightRegion:{
+                    comXtype:$Component.TOOLSTRIP,
+                    comConf:{
+                        /*Panel的配置项 start*/
+                        // spacing :CommonConstant.Spacing.DEFAULT,
+                        itemOptions: [{
+                            // themeClass:ToolStripItem.ThemeClass.SUCCESS,
+                            text:"确定",
+                            onclick: function () {
+                                $.window.alert("测试1");
+                            }
+                        },{
+                            // themeClass:ToolStripItem.ThemeClass.INFO,
+                            text: "取消",
+                            onclick: function () {
+                                $.window.confirm("测试1", {
+                                    yesHandle: function () {
+                                        alert(">>>");
+                                    }
+                                });
+                            }
+                        }]
+                        /*Panel 配置 End*/
+                    }
+                }
+            }
+        });
 
 
         var view = FluidLayout.extend({

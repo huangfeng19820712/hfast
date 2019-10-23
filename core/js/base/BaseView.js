@@ -376,7 +376,7 @@ define(["core/js/Event","backbone","core/js/windows/messageBox",
             this.off();  //退订该视图的所有事件
         },
         /**
-         * 为了与control一直，添加destroy，实际上就是close
+         * 为了与control一致，添加destroy，实际上就是close
          */
         destroy:function(){
             this.close();

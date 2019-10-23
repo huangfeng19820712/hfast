@@ -459,6 +459,10 @@ $Component = $cons.component = {
         name:window,
         src:"core/js/windows/Window"
     },
+    MODALDIALOG:{
+        name:"ModalDialog",
+        src:"core/js/windows/ModalDialog"
+    },
     /*===============media的过滤器组件start===========================*/
     PORTFOLIOBOX:{
         name: "Portfoliobox",

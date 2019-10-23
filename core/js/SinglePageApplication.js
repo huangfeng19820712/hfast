@@ -73,6 +73,27 @@ define([
         afterInitApplicationRouter:function(){
 
         },
+        /**
+         * 把服务端中的菜单信息添加到router，以便校验路径的有效性
+         * 1.登陆后，需要把菜单添加到路由器中
+         * 2.如果已经登陆，则刷新页面时就需要把菜单的内容添加到路由器中
+         */
+        addMenuToRouter:function(){
+            //设置菜单到路由ApplicationRouter
+            var applicationContext = ApplicationUtils.getApplicationContext();
+            var applicationRouter = applicationContext.getApplicationRouter();
+            var menu = this.getMenu();
+            var menuDates = menu.menuDates;
+            var validAction = [];
+            for (var i in menuDates) {
+                var menuDate = menuDates[i];
+                if (menuDate.url != null) {
+                    validAction.push(menuDate.url);
+                }
+            }
+            applicationRouter.setServerValidAction(validAction);
+        },
+
         initialize: function () {
             this._initApplicationContext();   //初始化应用上下文信息
             this._bindDocumentEvent();        //绑定文档级的全局事件 add by 2014.09.09
